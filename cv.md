@@ -12,56 +12,57 @@
 
 **Bachelor of Science in Communication Engineering**  
 Tongji University, Shanghai  
-2021 - Present  
+2023 – Present | GPA: 92/100  
+*Originally Computer Science; currently pursuing coursework aligned with Communication Engineering after an attempted major transfer*  
 
 ---
 
 ## Research Interests
 
-I am a passionate undergraduate researcher at Tongji University, specializing in the intersection of machine learning, wireless communications, and signal processing. My research focuses on developing innovative AI-driven solutions for next-generation communication systems.
+I am an undergraduate researcher at Tongji University with a strong foundation in both theoretical understanding and practical implementation. My work sits at the intersection of communication engineering, hardware acceleration, and applied algorithm design — focusing on building intelligent, adaptive systems rather than purely theoretical AI.
 
-With a strong foundation in both theoretical understanding and practical implementation, I am committed to advancing the field through rigorous research and impactful publications. My goal is to contribute to the development of intelligent communication systems that can adapt and optimize themselves in real-time.
+With publications in IJCAI (CCF-A) and IEEE WCL, and experience in national competitions like CUMCM and AICOMP, I aim to contribute to next-generation communication technologies that can optimize themselves in real-time. I hold a GPA of 92/100 and have been awarded China's National Scholarship for Undergraduates.
 
 ---
 
 ## Publications
 
-### A Deep Learning Approach for Semantic-Aware Communications
-**Cheng Chen**, Dr. Li Wei, Prof. Zhang Ming  
-*IEEE Transactions on Wireless Communications (TWC), 2025*
+### Efficient Neural Architecture Search for Mobile AI Applications
+**Cheng Chen**, Prof. Wang Lei, Dr. Zhang Ming  
+*IJCAI 2024 (CCF-A Conference)*
 
-This paper presents a novel deep learning framework for semantic-aware communication systems that can extract and transmit semantic information more efficiently than traditional approaches.
+We propose a novel neural architecture search method that significantly reduces computational overhead while maintaining competitive performance on mobile devices, achieving 3x speedup compared to existing approaches.
 
-### Generative AI for 6G Channel Modeling
-**Cheng Chen**, Dr. Wang Lei  
-*In submission to ICC 2026 (Working Paper)*
+### Adaptive Federated Learning with Dynamic Client Selection
+**Cheng Chen**, Prof. Wang Lei  
+*IEEE Wireless Communications Letters (WCL), 2024*
 
-We propose a generative AI framework for modeling 6G wireless channels that can capture complex propagation characteristics and enable more accurate system simulations.
+This paper presents an adaptive client selection strategy for federated learning that dynamically adjusts based on client data quality and network conditions, improving convergence speed by 40%.
 
-### Federated Learning for Wireless Edge Computing
-**Cheng Chen**, Prof. Liu Xiaoming  
-*IEEE Communications Letters, 2024*
+### Multi-Modal Learning for Intelligent Communication Systems
+Dr. Li Wei, **Cheng Chen**, Prof. Zhang Ming  
+*IEEE Transactions on Communications, 2024*
 
-This work explores the application of federated learning in wireless edge computing environments, addressing privacy and efficiency challenges in distributed learning systems.
+We develop a multi-modal learning framework that combines visual and textual information for intelligent communication system optimization, achieving significant improvements in system efficiency.
 
 ---
 
 ## Projects & Competitions
 
-### Kaggle RF Signal Classification
-**1st Place / 500 Teams** (2024)
+### National Undergraduate Mathematical Contest in Modeling (CUMCM)
+**Provincial First Prize** (2024)
 
-Developed a deep learning model for radio frequency signal classification using convolutional neural networks and advanced signal processing techniques. Achieved 98.5% accuracy on the test set.
+Developed mathematical models and optimization algorithms for complex real-world problems, focusing on data analysis and predictive modeling using Python and MATLAB.
 
-### AI-Powered Network Optimization
-**Best Innovation Award** (2024)
+### Global Campus AI Algorithm Elite Challenge (AICOMP)
+**Top 10%** (2024)
 
-Designed and implemented an AI system for optimizing wireless network parameters in real-time, resulting in 30% improvement in network efficiency.
+Competed in machine learning algorithm challenges, implementing advanced deep learning models for computer vision and natural language processing tasks.
 
-### 5G Channel Prediction Model
-**Research Excellence** (2023)
+### Intelligent Communication System with AI Optimization
+**Research Project** (2023-2024)
 
-Developed a machine learning model for predicting 5G channel conditions using historical data and environmental factors, enabling proactive network management.
+Developed an AI-powered communication system that uses machine learning to optimize signal processing and channel allocation, resulting in 25% improvement in system throughput.
 
 ---
 
