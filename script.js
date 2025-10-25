@@ -112,10 +112,7 @@ function navigateToSection(sectionId, updateHistory = true) {
     
     currentSection = sectionId;
     
-    // Force re-initialize icons immediately after navigation
-    setTimeout(() => {
-        forceReinitializeIcons();
-    }, 100);
+    // The icon observer will handle re-initialization automatically
 }
 
 /**
@@ -137,8 +134,7 @@ function showTargetSection(targetSection) {
         onComplete: () => {
             isAnimating = false;
             
-            // Force re-initialize icons after content is shown
-            forceReinitializeIcons();
+            // Icon observer will handle re-initialization
             
             // Trigger entrance animations for content
             animateContentEntrance(targetSection);
@@ -166,8 +162,7 @@ function animateContentEntrance(section) {
             stagger: 0.1,
             ease: "back.out(1.7)",
             onComplete: () => {
-                // Force re-initialize icons after animation
-                forceReinitializeIcons();
+                // Icon observer will handle re-initialization
             }
         });
     }
@@ -265,23 +260,7 @@ function handleResize() {
     }
 }
 
-/**
- * Force re-initialize all icons
- */
-function forceReinitializeIcons() {
-    if (typeof lucide !== 'undefined') {
-        // Remove all existing icons first
-        const existingIcons = document.querySelectorAll('[data-lucide]');
-        existingIcons.forEach(icon => {
-            icon.innerHTML = '';
-        });
-        
-        // Re-create all icons
-        lucide.createIcons();
-        
-        console.log('Icons re-initialized');
-    }
-}
+// Icon functions removed - using inline SVG instead
 
 /**
  * Initialize entrance animations
