@@ -201,6 +201,14 @@ body {
     color: var(--text-secondary);
 }
 
+.education-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
 .skills-container {
     display: flex;
     flex-wrap: wrap;
