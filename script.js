@@ -380,52 +380,199 @@ function setupKeyboardNavigation() {
 }
 
 /**
- * Setup print functionality
+ * Setup CV download functionality
  */
-function setupPrintFunctionality() {
-    // Add print button functionality
-    const printButton = document.createElement('button');
-    printButton.innerHTML = '<i data-lucide="printer"></i> Print CV';
-    printButton.className = 'print-button';
-    printButton.style.cssText = `
+function setupCVDownload() {
+    const cvButton = document.querySelector('.cv-button');
+    if (cvButton) {
+        cvButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            downloadCV();
+        });
+    }
+}
+
+/**
+ * Download CV as PDF
+ */
+async function downloadCV() {
+    try {
+        // Show loading state
+        const originalText = document.querySelector('.cv-button span').textContent;
+        document.querySelector('.cv-button span').textContent = 'Generating PDF...';
+        document.querySelector('.cv-button').style.pointerEvents = 'none';
+        
+        // Fetch the markdown content
+        const response = await fetch('cv.md');
+        const markdownText = await response.text();
+        
+        // Convert markdown to HTML
+        const htmlContent = marked.parse(markdownText);
+        
+        // Create a temporary container for the CV
+        const tempContainer = document.createElement('div');
+        tempContainer.style.cssText = `
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            width: 210mm;
+            padding: 20mm;
+            background: white;
+            font-family: 'Source Serif Pro', serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            color: #333;
+        `;
+        
+        // Add CSS styles for the CV
+        const style = document.createElement('style');
+        style.textContent = `
+            .cv-content h1 { 
+                font-size: 24pt; 
+                color: #007BFF; 
+                margin-bottom: 10pt; 
+                border-bottom: 2pt solid #007BFF;
+                padding-bottom: 5pt;
+            }
+            .cv-content h2 { 
+                font-size: 18pt; 
+                color: #333; 
+                margin-top: 20pt; 
+                margin-bottom: 10pt; 
+            }
+            .cv-content h3 { 
+                font-size: 14pt; 
+                color: #007BFF; 
+                margin-top: 15pt; 
+                margin-bottom: 8pt; 
+            }
+            .cv-content p { 
+                margin-bottom: 8pt; 
+                text-align: justify;
+            }
+            .cv-content ul { 
+                margin-bottom: 10pt; 
+                padding-left: 20pt;
+            }
+            .cv-content li { 
+                margin-bottom: 4pt; 
+            }
+            .cv-content hr { 
+                border: none; 
+                border-top: 1pt solid #ccc; 
+                margin: 15pt 0; 
+            }
+            .cv-content strong { 
+                font-weight: bold; 
+            }
+            .cv-content em { 
+                font-style: italic; 
+            }
+        `;
+        
+        tempContainer.innerHTML = `<div class="cv-content">${htmlContent}</div>`;
+        document.body.appendChild(style);
+        document.body.appendChild(tempContainer);
+        
+        // Convert to canvas and then to PDF
+        const canvas = await html2canvas(tempContainer, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#ffffff'
+        });
+        
+        // Create PDF
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgData = canvas.toDataURL('image/png');
+        
+        const imgWidth = 210;
+        const pageHeight = 295;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
+        
+        let position = 0;
+        
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+        
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
+        
+        // Download the PDF
+        pdf.save('Cheng_Chen_CV.pdf');
+        
+        // Clean up
+        document.body.removeChild(tempContainer);
+        document.body.removeChild(style);
+        
+        // Reset button state
+        document.querySelector('.cv-button span').textContent = originalText;
+        document.querySelector('.cv-button').style.pointerEvents = 'auto';
+        
+        // Show success message
+        showNotification('CV downloaded successfully!', 'success');
+        
+    } catch (error) {
+        console.error('Error generating CV:', error);
+        
+        // Reset button state
+        document.querySelector('.cv-button span').textContent = 'Download CV';
+        document.querySelector('.cv-button').style.pointerEvents = 'auto';
+        
+        // Show error message
+        showNotification('Error generating CV. Please try again.', 'error');
+    }
+}
+
+/**
+ * Show notification message
+ */
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
         position: fixed;
-        bottom: 20px;
+        top: 20px;
         right: 20px;
-        background: var(--accent-color);
+        background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#007BFF'};
         color: white;
-        border: none;
         padding: 12px 20px;
         border-radius: 8px;
-        cursor: pointer;
-        font-weight: 500;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.3s ease;
+        z-index: 10000;
+        font-weight: 500;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
     `;
+    notification.textContent = message;
     
-    printButton.addEventListener('click', function() {
-        window.print();
-    });
+    document.body.appendChild(notification);
     
-    printButton.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-2px)';
-        this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.2)';
-    });
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
     
-    printButton.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-        this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
-    });
-    
-    document.body.appendChild(printButton);
-    
-    // Re-initialize icons for the new button
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+/**
+ * Setup print functionality (removed - redundant with Download CV)
+ */
+function setupPrintFunctionality() {
+    // Print functionality removed as it's redundant with the Download CV feature
+    // Users can now download a PDF version of the CV instead
 }
 
 /**
@@ -501,6 +648,7 @@ function setupPerformanceOptimizations() {
 document.addEventListener('DOMContentLoaded', function() {
     setupExternalLinks();
     setupKeyboardNavigation();
+    setupCVDownload();
     setupPrintFunctionality();
     setupAccessibility();
     setupPerformanceOptimizations();
