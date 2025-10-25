@@ -132,6 +132,11 @@ function showTargetSection(targetSection) {
         onComplete: () => {
             isAnimating = false;
             
+            // Re-initialize icons after content is shown
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
             // Trigger entrance animations for content
             animateContentEntrance(targetSection);
         }
@@ -156,7 +161,13 @@ function animateContentEntrance(section) {
             scale: 1,
             duration: 0.6,
             stagger: 0.1,
-            ease: "back.out(1.7)"
+            ease: "back.out(1.7)",
+            onComplete: () => {
+                // Ensure icons are properly rendered after animation
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            }
         });
     }
     
