@@ -50,12 +50,12 @@ We develop a multi-modal learning framework that combines visual and textual inf
 ## Projects & Competitions
 
 ### National Undergraduate Mathematical Contest in Modeling (CUMCM)
-**Provincial First Prize** (2024)
+**National First Prize** (2024)
 
 Developed mathematical models and optimization algorithms for complex real-world problems, focusing on data analysis and predictive modeling using Python and MATLAB.
 
 ### Global Campus AI Algorithm Elite Challenge (AICOMP)
-**Top 10%** (2024)
+**National First Prize** (2024)
 
 Competed in machine learning algorithm challenges, implementing advanced deep learning models for computer vision and natural language processing tasks.
 
