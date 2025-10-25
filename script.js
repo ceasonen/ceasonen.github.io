@@ -111,6 +111,11 @@ function navigateToSection(sectionId, updateHistory = true) {
     }
     
     currentSection = sectionId;
+    
+    // Force re-initialize icons immediately after navigation
+    setTimeout(() => {
+        forceReinitializeIcons();
+    }, 100);
 }
 
 /**
@@ -132,10 +137,8 @@ function showTargetSection(targetSection) {
         onComplete: () => {
             isAnimating = false;
             
-            // Re-initialize icons after content is shown
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
+            // Force re-initialize icons after content is shown
+            forceReinitializeIcons();
             
             // Trigger entrance animations for content
             animateContentEntrance(targetSection);
@@ -163,10 +166,8 @@ function animateContentEntrance(section) {
             stagger: 0.1,
             ease: "back.out(1.7)",
             onComplete: () => {
-                // Ensure icons are properly rendered after animation
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
+                // Force re-initialize icons after animation
+                forceReinitializeIcons();
             }
         });
     }
@@ -261,6 +262,24 @@ function handleResize() {
         navLinks.forEach(link => {
             link.style.whiteSpace = 'normal';
         });
+    }
+}
+
+/**
+ * Force re-initialize all icons
+ */
+function forceReinitializeIcons() {
+    if (typeof lucide !== 'undefined') {
+        // Remove all existing icons first
+        const existingIcons = document.querySelectorAll('[data-lucide]');
+        existingIcons.forEach(icon => {
+            icon.innerHTML = '';
+        });
+        
+        // Re-create all icons
+        lucide.createIcons();
+        
+        console.log('Icons re-initialized');
     }
 }
 
