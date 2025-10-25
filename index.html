@@ -3,36 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人主页</title>
-    <style>
-        /* 这是一点点"不那么粗糙"的CSS样式 */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5;
-            color: #333;
-        }
-        .container {
-            text-align: center;
-            padding: 40px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-        h1 {
-            color: #1a1a1a;
-        }
-    </style>
+    <title>交互式知识星云 - 个人主页</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>你好，世界！</h1>
-        <p>欢迎来到我的个人网站。</p>
-        <p>这里将记录我的学习和项目。</p>
+    <!-- Three.js 画布 -->
+    <canvas id="bg"></canvas>
+    
+    <!-- 加载界面 -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>正在初始化知识星云...</p>
+        </div>
     </div>
+    
+    <!-- 主界面覆盖层 -->
+    <div id="overlay" class="overlay">
+        <div class="title-section">
+            <h1 class="main-title">知识星云</h1>
+            <p class="subtitle">点击并拖拽探索我的知识宇宙</p>
+        </div>
+        
+        <!-- 导航提示 -->
+        <div class="navigation-hint">
+            <div class="hint-item">
+                <span class="hint-icon">🖱️</span>
+                <span>拖拽旋转视角</span>
+            </div>
+            <div class="hint-item">
+                <span class="hint-icon">🔍</span>
+                <span>滚轮缩放</span>
+            </div>
+            <div class="hint-item">
+                <span class="hint-icon">⭐</span>
+                <span>点击节点探索</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 内容面板 -->
+    <div id="content-panel" class="content-panel">
+        <div class="panel-header">
+            <h2 id="panel-title">内容标题</h2>
+            <button id="close-panel" class="close-btn">×</button>
+        </div>
+        <div class="panel-content" id="panel-content">
+            <!-- 动态内容将在这里显示 -->
+        </div>
+    </div>
+    
+    <!-- 工具提示 -->
+    <div id="tooltip" class="tooltip">
+        <div class="tooltip-content"></div>
+    </div>
+    
+    <!-- 内容模板 -->
+    <div id="templates" style="display: none;">
+        <!-- 关于我模板 -->
+        <template id="about-template">
+            <div class="content-section">
+                <h3>关于我</h3>
+                <p>我是一名充满热情的开发者，专注于创造优雅的数字体验。我的工作融合了技术深度和艺术美感，致力于构建既实用又美观的解决方案。</p>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h4>前端开发</h4>
+                        <p>React, Vue, Three.js, GSAP</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>3D图形</h4>
+                        <p>WebGL, 3D建模, 动画设计</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>用户体验</h4>
+                        <p>交互设计, 视觉设计, 原型制作</p>
+                    </div>
+                </div>
+            </div>
+        </template>
+        
+        <!-- 项目模板 -->
+        <template id="project-template">
+            <div class="content-section">
+                <h3>精选项目</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h4>3D交互式作品集</h4>
+                        <p>使用Three.js和GSAP构建的沉浸式作品集网站，展示了现代Web技术的可能性。</p>
+                        <div class="project-links">
+                            <a href="#" class="link-btn">查看演示</a>
+                            <a href="#" class="link-btn secondary">源代码</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h4>数据可视化平台</h4>
+                        <p>为企业构建的实时数据可视化平台，支持多种图表类型和交互操作。</p>
+                        <div class="project-links">
+                            <a href="#" class="link-btn">查看演示</a>
+                            <a href="#" class="link-btn secondary">源代码</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h4>AI辅助设计工具</h4>
+                        <p>结合机器学习和创意设计的智能工具，帮助设计师快速生成创意方案。</p>
+                        <div class="project-links">
+                            <a href="#" class="link-btn">查看演示</a>
+                            <a href="#" class="link-btn secondary">源代码</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        
+        <!-- 文章模板 -->
+        <template id="article-template">
+            <div class="content-section">
+                <h3>技术文章</h3>
+                <div class="article-list">
+                    <div class="article-item">
+                        <h4>WebGL性能优化最佳实践</h4>
+                        <p class="article-meta">2024年1月 • 技术分享</p>
+                        <p>深入探讨WebGL应用中的性能优化技巧，包括几何体优化、纹理管理和渲染管线优化。</p>
+                        <a href="#" class="read-more">阅读全文 →</a>
+                    </div>
+                    <div class="article-item">
+                        <h4>现代CSS动画与用户体验</h4>
+                        <p class="article-meta">2023年12月 • 设计思考</p>
+                        <p>探讨如何通过精心设计的CSS动画提升用户体验，创造流畅自然的交互效果。</p>
+                        <a href="#" class="read-more">阅读全文 →</a>
+                    </div>
+                    <div class="article-item">
+                        <h4>Three.js中的粒子系统设计</h4>
+                        <p class="article-meta">2023年11月 • 技术教程</p>
+                        <p>详细介绍如何在Three.js中创建高效的粒子系统，包括性能优化和视觉效果设计。</p>
+                        <a href="#" class="read-more">阅读全文 →</a>
+                    </div>
+                </div>
+            </div>
+        </template>
+        
+        <!-- 联系模板 -->
+        <template id="contact-template">
+            <div class="content-section">
+                <h3>联系我</h3>
+                <p>如果您对我的工作感兴趣，或者想要合作，欢迎随时联系我。</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <span>your.email@example.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💼</span>
+                        <span>LinkedIn: your-profile</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🐙</span>
+                        <span>GitHub: your-username</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🐦</span>
+                        <span>Twitter: @your-handle</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link">GitHub</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Email</a>
+                </div>
+            </div>
+        </template>
+    </div>
+    
+    <!-- 脚本文件 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
