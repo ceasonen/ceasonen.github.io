@@ -1,186 +1,329 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>交互式知识星云 - 个人主页</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Cheng Chen - AI Researcher | Tongji University</title>
+    <meta name="description" content="Cheng Chen - AI Researcher at Tongji University. Specialized in machine learning, wireless communications, and signal processing.">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Three.js 画布 -->
-    <canvas id="bg"></canvas>
-    
-    <!-- 加载界面 -->
-    <div id="loading" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <p>正在初始化知识星云...</p>
-        </div>
-    </div>
-    
-    <!-- 主界面覆盖层 -->
-    <div id="overlay" class="overlay">
-        <div class="title-section">
-            <h1 class="main-title">知识星云</h1>
-            <p class="subtitle">点击并拖拽探索我的知识宇宙</p>
-        </div>
-        
-        <!-- 导航提示 -->
-        <div class="navigation-hint">
-            <div class="hint-item">
-                <span class="hint-icon">🖱️</span>
-                <span>拖拽旋转视角</span>
-            </div>
-            <div class="hint-item">
-                <span class="hint-icon">🔍</span>
-                <span>滚轮缩放</span>
-            </div>
-            <div class="hint-item">
-                <span class="hint-icon">⭐</span>
-                <span>点击节点探索</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 内容面板 -->
-    <div id="content-panel" class="content-panel">
-        <div class="panel-header">
-            <h2 id="panel-title">内容标题</h2>
-            <button id="close-panel" class="close-btn">×</button>
-        </div>
-        <div class="panel-content" id="panel-content">
-            <!-- 动态内容将在这里显示 -->
-        </div>
-    </div>
-    
-    <!-- 工具提示 -->
-    <div id="tooltip" class="tooltip">
-        <div class="tooltip-content"></div>
-    </div>
-    
-    <!-- 内容模板 -->
-    <div id="templates" style="display: none;">
-        <!-- 关于我模板 -->
-        <template id="about-template">
-            <div class="content-section">
-                <h3>关于我</h3>
-                <p>我是一名充满热情的开发者，专注于创造优雅的数字体验。我的工作融合了技术深度和艺术美感，致力于构建既实用又美观的解决方案。</p>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <h4>前端开发</h4>
-                        <p>React, Vue, Three.js, GSAP</p>
-                    </div>
-                    <div class="skill-item">
-                        <h4>3D图形</h4>
-                        <p>WebGL, 3D建模, 动画设计</p>
-                    </div>
-                    <div class="skill-item">
-                        <h4>用户体验</h4>
-                        <p>交互设计, 视觉设计, 原型制作</p>
-                    </div>
+    <div class="container">
+        <!-- Left Column: Navigation Hub -->
+        <nav class="nav-hub">
+            <div class="nav-content">
+                <div class="nav-header">
+                    <h1 class="nav-title">Cheng Chen</h1>
+                    <p class="nav-subtitle">AI Researcher | Tongji University</p>
                 </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#about" class="nav-link active" data-section="about">
+                        <i data-lucide="user"></i>
+                        <span>About</span>
+                    </a></li>
+                    <li><a href="#research" class="nav-link" data-section="research">
+                        <i data-lucide="book-open"></i>
+                        <span>Research</span>
+                    </a></li>
+                    <li><a href="#projects" class="nav-link" data-section="projects">
+                        <i data-lucide="award"></i>
+                        <span>Projects</span>
+                    </a></li>
+                    <li><a href="#contact" class="nav-link" data-section="contact">
+                        <i data-lucide="mail"></i>
+                        <span>Contact</span>
+                    </a></li>
+                </ul>
             </div>
-        </template>
+        </nav>
         
-        <!-- 项目模板 -->
-        <template id="project-template">
-            <div class="content-section">
-                <h3>精选项目</h3>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <h4>3D交互式作品集</h4>
-                        <p>使用Three.js和GSAP构建的沉浸式作品集网站，展示了现代Web技术的可能性。</p>
-                        <div class="project-links">
-                            <a href="#" class="link-btn">查看演示</a>
-                            <a href="#" class="link-btn secondary">源代码</a>
+        <!-- Right Column: Content Pane -->
+        <main class="content-pane">
+            <!-- About Section -->
+            <section id="about" class="content-section active">
+                <div class="section-header">
+                    <h2 class="section-title">About Me</h2>
+                </div>
+                
+                <div class="about-content">
+                    <div class="bio">
+                        <p>I am a passionate researcher at Tongji University, specializing in the intersection of machine learning, wireless communications, and signal processing. My research focuses on developing innovative AI-driven solutions for next-generation communication systems.</p>
+                        
+                        <p>With a strong foundation in both theoretical understanding and practical implementation, I am committed to advancing the field through rigorous research and impactful publications. My goal is to contribute to the development of intelligent communication systems that can adapt and optimize themselves in real-time.</p>
+                    </div>
+                    
+                    <div class="education">
+                        <h3>Education</h3>
+                        <div class="education-item">
+                            <div class="education-degree">B.S. in Computer Science</div>
+                            <div class="education-school">Tongji University, Shanghai</div>
+                            <div class="education-period">2021 - Present</div>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <h4>数据可视化平台</h4>
-                        <p>为企业构建的实时数据可视化平台，支持多种图表类型和交互操作。</p>
-                        <div class="project-links">
-                            <a href="#" class="link-btn">查看演示</a>
-                            <a href="#" class="link-btn secondary">源代码</a>
+                    
+                    <div class="skills">
+                        <h3>Key Skills</h3>
+                        <div class="skills-container">
+                            <span class="skill-pill">Python</span>
+                            <span class="skill-pill">PyTorch</span>
+                            <span class="skill-pill">TensorFlow</span>
+                            <span class="skill-pill">C++</span>
+                            <span class="skill-pill">MATLAB</span>
+                            <span class="skill-pill">Simulation</span>
+                            <span class="skill-pill">Wireless Comms</span>
+                            <span class="skill-pill">Machine Learning</span>
+                            <span class="skill-pill">Deep Learning</span>
+                            <span class="skill-pill">Signal Processing</span>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <h4>AI辅助设计工具</h4>
-                        <p>结合机器学习和创意设计的智能工具，帮助设计师快速生成创意方案。</p>
-                        <div class="project-links">
-                            <a href="#" class="link-btn">查看演示</a>
-                            <a href="#" class="link-btn secondary">源代码</a>
+                    
+                    <div class="cv-download">
+                        <a href="#" class="cv-button">
+                            <i data-lucide="download"></i>
+                            <span>Download CV</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Research Section -->
+            <section id="research" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Research & Publications</h2>
+                </div>
+                
+                <div class="publications">
+                    <div class="publication-card">
+                        <div class="publication-image">
+                            <div class="placeholder-image">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                        </div>
+                        <div class="publication-content">
+                            <h3 class="publication-title">A Deep Learning Approach for Semantic-Aware Communications</h3>
+                            <p class="publication-authors"><strong>Cheng Chen</strong>, Dr. Li Wei, Prof. Zhang Ming</p>
+                            <p class="publication-venue"><em>IEEE Transactions on Wireless Communications (TWC), 2025</em></p>
+                            <p class="publication-abstract">This paper presents a novel deep learning framework for semantic-aware communication systems that can extract and transmit semantic information more efficiently than traditional approaches.</p>
+                            <div class="publication-links">
+                                <a href="#" class="publication-link">
+                                    <i data-lucide="file-text"></i>
+                                    <span>PDF</span>
+                                </a>
+                                <a href="#" class="publication-link">
+                                    <i data-lucide="github"></i>
+                                    <span>Code</span>
+                                </a>
+                                <a href="#" class="publication-link">
+                                    <i data-lucide="copy"></i>
+                                    <span>BibTeX</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="publication-card">
+                        <div class="publication-image">
+                            <div class="placeholder-image">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                        </div>
+                        <div class="publication-content">
+                            <h3 class="publication-title">Generative AI for 6G Channel Modeling</h3>
+                            <p class="publication-authors"><strong>Cheng Chen</strong>, Dr. Wang Lei</p>
+                            <p class="publication-venue"><em>In submission to ICC 2026 (Working Paper)</em></p>
+                            <p class="publication-abstract">We propose a generative AI framework for modeling 6G wireless channels that can capture complex propagation characteristics and enable more accurate system simulations.</p>
+                            <div class="publication-links">
+                                <a href="#" class="publication-link">
+                                    <i data-lucide="external-link"></i>
+                                    <span>arXiv</span>
+                                </a>
+                                <a href="#" class="publication-link">
+                                    <i data-lucide="github"></i>
+                                    <span>Code</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="publication-card">
+                        <div class="publication-image">
+                            <div class="placeholder-image">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                        </div>
+                        <div class="publication-content">
+                            <h3 class="publication-title">Federated Learning for Wireless Edge Computing</h3>
+                            <p class="publication-authors"><strong>Cheng Chen</strong>, Prof. Liu Xiaoming</p>
+                            <p class="publication-venue"><em>IEEE Communications Letters, 2024</em></p>
+                            <p class="publication-abstract">This work explores the application of federated learning in wireless edge computing environments, addressing privacy and efficiency challenges in distributed learning systems.</p>
+                            <div class="publication-links">
+                                <a href="#" class="publication-link">
+                                    <i data-lucide="file-text"></i>
+                                    <span>PDF</span>
+                                </a>
+                                <a href="#" class="publication-link">
+                                    <i data-lucide="github"></i>
+                                    <span>Code</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </template>
-        
-        <!-- 文章模板 -->
-        <template id="article-template">
-            <div class="content-section">
-                <h3>技术文章</h3>
-                <div class="article-list">
-                    <div class="article-item">
-                        <h4>WebGL性能优化最佳实践</h4>
-                        <p class="article-meta">2024年1月 • 技术分享</p>
-                        <p>深入探讨WebGL应用中的性能优化技巧，包括几何体优化、纹理管理和渲染管线优化。</p>
-                        <a href="#" class="read-more">阅读全文 →</a>
+            </section>
+            
+            <!-- Projects Section -->
+            <section id="projects" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Projects, Competitions & Honors</h2>
+                </div>
+                
+                <div class="projects-content">
+                    <div class="projects-section">
+                        <h3>Select Projects & Competitions</h3>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4 class="project-title">Kaggle RF Signal Classification</h4>
+                                <span class="project-award">1st Place / 500 Teams</span>
+                            </div>
+                            <p class="project-year">2024</p>
+                            <p class="project-description">Developed a deep learning model for radio frequency signal classification using convolutional neural networks and advanced signal processing techniques. Achieved 98.5% accuracy on the test set.</p>
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i data-lucide="github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4 class="project-title">AI-Powered Network Optimization</h4>
+                                <span class="project-award">Best Innovation Award</span>
+                            </div>
+                            <p class="project-year">2024</p>
+                            <p class="project-description">Designed and implemented an AI system for optimizing wireless network parameters in real-time, resulting in 30% improvement in network efficiency.</p>
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i data-lucide="github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4 class="project-title">5G Channel Prediction Model</h4>
+                                <span class="project-award">Research Excellence</span>
+                            </div>
+                            <p class="project-year">2023</p>
+                            <p class="project-description">Developed a machine learning model for predicting 5G channel conditions using historical data and environmental factors, enabling proactive network management.</p>
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i data-lucide="github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="article-item">
-                        <h4>现代CSS动画与用户体验</h4>
-                        <p class="article-meta">2023年12月 • 设计思考</p>
-                        <p>探讨如何通过精心设计的CSS动画提升用户体验，创造流畅自然的交互效果。</p>
-                        <a href="#" class="read-more">阅读全文 →</a>
-                    </div>
-                    <div class="article-item">
-                        <h4>Three.js中的粒子系统设计</h4>
-                        <p class="article-meta">2023年11月 • 技术教程</p>
-                        <p>详细介绍如何在Three.js中创建高效的粒子系统，包括性能优化和视觉效果设计。</p>
-                        <a href="#" class="read-more">阅读全文 →</a>
+                    
+                    <div class="honors-section">
+                        <h3>Honors & Awards</h3>
+                        <div class="honors-list">
+                            <div class="honor-item">
+                                <div class="honor-title">National Scholarship</div>
+                                <div class="honor-description">Top 1% of students nationwide</div>
+                                <div class="honor-year">2025</div>
+                            </div>
+                            <div class="honor-item">
+                                <div class="honor-title">Merit-Based Scholarship</div>
+                                <div class="honor-description">Tongji University</div>
+                                <div class="honor-year">2024</div>
+                            </div>
+                            <div class="honor-item">
+                                <div class="honor-title">Outstanding Research Award</div>
+                                <div class="honor-description">Computer Science Department</div>
+                                <div class="honor-year">2024</div>
+                            </div>
+                            <div class="honor-item">
+                                <div class="honor-title">Academic Excellence Award</div>
+                                <div class="honor-description">Tongji University</div>
+                                <div class="honor-year">2023</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </template>
-        
-        <!-- 联系模板 -->
-        <template id="contact-template">
-            <div class="content-section">
-                <h3>联系我</h3>
-                <p>如果您对我的工作感兴趣，或者想要合作，欢迎随时联系我。</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="contact-icon">📧</span>
-                        <span>your.email@example.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">💼</span>
-                        <span>LinkedIn: your-profile</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">🐙</span>
-                        <span>GitHub: your-username</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">🐦</span>
-                        <span>Twitter: @your-handle</span>
+            </section>
+            
+            <!-- Contact Section -->
+            <section id="contact" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Get in Touch</h2>
+                </div>
+                
+                <div class="contact-content">
+                    <p class="contact-intro">I'm always interested in discussing research opportunities, collaborations, and new ideas. Feel free to reach out!</p>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:cheng.chen@gmail.com" class="contact-link">
+                            <i data-lucide="mail"></i>
+                            <div class="contact-info">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">cheng.chen@gmail.com</span>
+                            </div>
+                        </a>
+                        
+                        <a href="mailto:cheng.chen@tongji.edu.cn" class="contact-link">
+                            <i data-lucide="building"></i>
+                            <div class="contact-info">
+                                <span class="contact-label">School Email</span>
+                                <span class="contact-value">cheng.chen@tongji.edu.cn</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://github.com/ceasonen" class="contact-link" target="_blank">
+                            <i data-lucide="github"></i>
+                            <div class="contact-info">
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-value">github.com/ceasonen</span>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="contact-link" target="_blank">
+                            <i data-lucide="graduation-cap"></i>
+                            <div class="contact-info">
+                                <span class="contact-label">Google Scholar</span>
+                                <span class="contact-value">View Profile</span>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="contact-link" target="_blank">
+                            <i data-lucide="linkedin"></i>
+                            <div class="contact-info">
+                                <span class="contact-label">LinkedIn</span>
+                                <span class="contact-value">Connect with me</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <div class="social-links">
-                    <a href="#" class="social-link">GitHub</a>
-                    <a href="#" class="social-link">LinkedIn</a>
-                    <a href="#" class="social-link">Twitter</a>
-                    <a href="#" class="social-link">Email</a>
-                </div>
-            </div>
-        </template>
+            </section>
+        </main>
     </div>
     
-    <!-- 脚本文件 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="main.js"></script>
+    <!-- Local JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
