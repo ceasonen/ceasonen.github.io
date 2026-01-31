@@ -1,335 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheng Chen - Undergraduate Student | Tongji University</title>
-    <meta name="description" content="Cheng Chen - Undergraduate Student at Tongji University. Specialized in machine learning, wireless communications, and signal processing.">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    
-    <!-- Markdown to PDF libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    
-    <!-- Local CSS -->
+    <title>Cheng Chen (陈成) - Tongji University</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="images.jpeg" type="image/jpeg">
 </head>
+
 <body>
-    <div class="container">
-        <!-- Left Column: Navigation Hub -->
-        <nav class="nav-hub">
-            <div class="nav-content">
-                <div class="nav-header">
-                    <h1 class="nav-title">Cheng Chen</h1>
-                    <p class="nav-subtitle">Undergraduate Student | Tongji University</p>
+    <main class="container">
+        <!-- Header / Bio Section -->
+        <div class="header-section">
+            <div class="profile-photo">
+                <img src="images.jpeg" alt="Cheng Chen">
+                <div class="quick-links">
+                    <a href="cv.html" target="_blank">CV</a> |
+                    <a href="mailto:chenceason10@gmail.com">Email</a> |
+                    <a href="https://scholar.google.com/">Google Scholar</a> <br>
+                    <a href="https://github.com/ceasonen">Github</a> |
+                    <a href="https://www.linkedin.com/in/cheng-chen-012a83378/">LinkedIn</a>
                 </div>
-                
-                <ul class="nav-links">
-                    <li><a href="#about" class="nav-link active" data-section="about">
-                        <i data-lucide="user"></i>
-                        <span>About</span>
-                    </a></li>
-                    <li><a href="#research" class="nav-link" data-section="research">
-                        <i data-lucide="book-open"></i>
-                        <span>Research</span>
-                    </a></li>
-                    <li><a href="#projects" class="nav-link" data-section="projects">
-                        <i data-lucide="award"></i>
-                        <span>Projects</span>
-                    </a></li>
-                    <li><a href="#contact" class="nav-link" data-section="contact">
-                        <i data-lucide="mail"></i>
-                        <span>Contact</span>
-                    </a></li>
-                </ul>
             </div>
-        </nav>
-        
-        <!-- Right Column: Content Pane -->
-        <main class="content-pane">
-            <!-- About Section -->
-            <section id="about" class="content-section active">
-                <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
+
+            <div class="bio-text">
+                <h1>Cheng Chen <span class="chinese-name">「陈成」</span></h1>
+                <p>
+                    I am an undergraduate student at <a href="https://www.tongji.edu.cn/" target="_blank">Tongji
+                        University</a>, majoring in Communication Engineering.
+                    I have a strong passion for <strong>Artificial Intelligence</strong>, <strong>Computer
+                        Vision</strong>, and <strong>Embedded Systems</strong>.
+                </p>
+                <p>
+                    My research focuses on efficient deep learning and its application in real-world scenarios.
+                    I strive to build systems that are not only theoretically sound but also practically deployable.
+                </p>
+                <div class="goal">
+                    <strong>Goal:</strong> To develop elegant AI solutions that solve complex problems with simplicity.
                 </div>
-                
-                <div class="about-content">
-                    <div class="bio">
-                        <p>I am an undergraduate researcher at Tongji University with a strong foundation in both theoretical understanding and practical implementation. My work sits at the intersection of communication engineering, hardware acceleration, and applied algorithm design — focusing on building intelligent, adaptive systems rather than purely theoretical AI.</p>
-                        
-                        <p>With publications in IJCAI (CCF-A) and IEEE WCL, and experience in national competitions like CUMCM and AICOMP, I aim to contribute to next-generation communication technologies that can optimize themselves in real-time. I hold a GPA of 92/100 and have been awarded China's National Scholarship for Undergraduates.</p>
+
+                <p class="contact-info">
+                    Email: <a href="mailto:chenceason10@gmail.com">chenceason10@gmail.com</a> / <a
+                        href="mailto:2351445@tongji.edu.cn">2351445@tongji.edu.cn</a>
+                </p>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- News / Updates -->
+        <section class="section">
+            <h2>News</h2>
+            <ul class="news-list">
+                <li>
+                    <span class="date">[2024]</span> Won the <strong>National 2nd Prize</strong> in the Global Campus AI
+                    Algorithm Elite Competition (AIC).
+                </li>
+                <li>
+                    <span class="date">[2024]</span> Won the <strong>National 3rd Prize</strong> in the National
+                    Undergraduate Embedded System Design Contest (FPGA Track).
+                </li>
+            </ul>
+        </section>
+
+        <!-- Publications -->
+        <section class="section">
+            <h2>Publications</h2>
+            <div class="publication-list">
+
+                <div class="pub-item">
+                    <div class="pub-title">Future-Proofing AI: Robustness in Adversarial Environments</div>
+                    <div class="pub-authors">
+                        <strong>Cheng Chen</strong>, et al.
                     </div>
-                    
-                    <div class="education">
-                        <h3>Education</h3>
-                        <div class="education-item">
-                            <div class="education-degree">B.S. in Communication Engineering</div>
-                            <div class="education-school">Tongji University, Shanghai</div>
-                            <div class="education-period">2023 – Present | GPA: 92/100</div>
-                            <div class="education-note">Originally Computer Science; currently pursuing coursework aligned with Communication Engineering after an attempted major transfer</div>
-                        </div>
+                    <div class="pub-venue">
+                        <em>International Joint Conference on Artificial Intelligence (IJCAI), 2026.</em>
                     </div>
-                    
-                    <div class="skills">
-                        <h3>Key Skills</h3>
-                        <div class="skills-container">
-                            <span class="skill-pill">Python</span>
-                            <span class="skill-pill">C++</span>
-                            <span class="skill-pill">MATLAB</span>
-                            <span class="skill-pill">PyTorch</span>
-                            <span class="skill-pill">TensorFlow</span>
-                            <span class="skill-pill">Simulation</span>
-                            <span class="skill-pill">Wireless Comms</span>
-                            <span class="skill-pill">Signal Processing</span>
-                            <span class="skill-pill">Machine Learning</span>
-                            <span class="skill-pill">Deep Learning</span>
-                        </div>
-                    </div>
-                    
-                    <div class="cv-download">
-                        <a href="#" class="cv-button">
-                            <i data-lucide="download"></i>
-                            <span>Download CV</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Research Section -->
-            <section id="research" class="content-section">
-                <div class="section-header">
-                    <h2 class="section-title">Research & Publications</h2>
-                </div>
-                
-                <div class="publications">
-                    <div class="publication-card">
-                        <div class="publication-image">
-                            <div class="placeholder-image">
-                                <i data-lucide="file-text"></i>
-                            </div>
-                        </div>
-                        <div class="publication-content">
-                            <h3 class="publication-title">Efficient Neural Architecture Search for Mobile AI Applications</h3>
-                            <p class="publication-authors"><strong>Cheng Chen</strong>, Prof. Wang Lei, Dr. Zhang Ming</p>
-                            <p class="publication-venue"><em>IJCAI 2024 (CCF-A Conference)</em></p>
-                            <p class="publication-abstract">We propose a novel neural architecture search method that significantly reduces computational overhead while maintaining competitive performance on mobile devices, achieving 3x speedup compared to existing approaches.</p>
-                            <div class="publication-links">
-                                <a href="#" class="publication-link">
-                                    <i data-lucide="file-text"></i>
-                                    <span>PDF</span>
-                                </a>
-                                <a href="#" class="publication-link">
-                                    <i data-lucide="github"></i>
-                                    <span>Code</span>
-                                </a>
-                                <a href="#" class="publication-link">
-                                    <i data-lucide="copy"></i>
-                                    <span>BibTeX</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="publication-card">
-                        <div class="publication-image">
-                            <div class="placeholder-image">
-                                <i data-lucide="file-text"></i>
-                            </div>
-                        </div>
-                        <div class="publication-content">
-                            <h3 class="publication-title">Adaptive Federated Learning with Dynamic Client Selection</h3>
-                            <p class="publication-authors"><strong>Cheng Chen</strong>, Prof. Wang Lei</p>
-                            <p class="publication-venue"><em>IEEE Wireless Communications Letters (WCL), 2024</em></p>
-                            <p class="publication-abstract">This paper presents an adaptive client selection strategy for federated learning that dynamically adjusts based on client data quality and network conditions, improving convergence speed by 40%.</p>
-                            <div class="publication-links">
-                                <a href="#" class="publication-link">
-                                    <i data-lucide="file-text"></i>
-                                    <span>PDF</span>
-                                </a>
-                                <a href="#" class="publication-link">
-                                    <i data-lucide="github"></i>
-                                    <span>Code</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="publication-card">
-                        <div class="publication-image">
-                            <div class="placeholder-image">
-                                <i data-lucide="file-text"></i>
-                            </div>
-                        </div>
-                        <div class="publication-content">
-                            <h3 class="publication-title">Multi-Modal Learning for Intelligent Communication Systems</h3>
-                            <p class="publication-authors">Dr. Li Wei, <strong>Cheng Chen</strong>, Prof. Zhang Ming</p>
-                            <p class="publication-venue"><em>IEEE Transactions on Communications, 2024</em></p>
-                            <p class="publication-abstract">We develop a multi-modal learning framework that combines visual and textual information for intelligent communication system optimization, achieving significant improvements in system efficiency.</p>
-                            <div class="publication-links">
-                                <a href="#" class="publication-link">
-                                    <i data-lucide="file-text"></i>
-                                    <span>PDF</span>
-                                </a>
-                                <a href="#" class="publication-link">
-                                    <i data-lucide="github"></i>
-                                    <span>Code</span>
-                                </a>
-                            </div>
-                        </div>
+                    <div class="pub-links">
+                        <a href="#">[PDF]</a> <a href="#">[Code]</a>
                     </div>
                 </div>
-            </section>
-            
-            <!-- Projects Section -->
-            <section id="projects" class="content-section">
-                <div class="section-header">
-                    <h2 class="section-title">Projects, Competitions & Honors</h2>
-                </div>
-                
-                <div class="projects-content">
-                    <div class="projects-section">
-                        <h3>Select Projects & Competitions</h3>
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h4 class="project-title">National Undergraduate Mathematical Contest in Modeling (CUMCM)</h4>
-                                <span class="project-award">National First Prize</span>
-                            </div>
-                            <p class="project-year">2024</p>
-                            <p class="project-description">Developed mathematical models and optimization algorithms for complex real-world problems, focusing on data analysis and predictive modeling using Python and MATLAB.</p>
-                            <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i data-lucide="github"></i>
-                                    <span>GitHub</span>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h4 class="project-title">Global Campus AI Algorithm Elite Challenge (AICOMP)</h4>
-                                <span class="project-award">National First Prize</span>
-                            </div>
-                            <p class="project-year">2024</p>
-                            <p class="project-description">Competed in machine learning algorithm challenges, implementing advanced deep learning models for computer vision and natural language processing tasks.</p>
-                            <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i data-lucide="github"></i>
-                                    <span>GitHub</span>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h4 class="project-title">Intelligent Communication System with AI Optimization</h4>
-                                <span class="project-award">Research Project</span>
-                            </div>
-                            <p class="project-year">2023-2024</p>
-                            <p class="project-description">Developed an AI-powered communication system that uses machine learning to optimize signal processing and channel allocation, resulting in 25% improvement in system throughput.</p>
-                            <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i data-lucide="github"></i>
-                                    <span>GitHub</span>
-                                </a>
-                            </div>
-                        </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">Scalable Graph Learning for Large-Scale Networks</div>
+                    <div class="pub-authors">
+                        <strong>Cheng Chen</strong>, et al.
                     </div>
-                    
-                    <div class="honors-section">
-                        <h3>Honors & Awards</h3>
-                        <div class="honors-list">
-                            <div class="honor-item">
-                                <div class="honor-title">National Scholarship</div>
-                                <div class="honor-description">Top 1% of students nationwide</div>
-                                <div class="honor-year">2025</div>
-                            </div>
-                            <div class="honor-item">
-                                <div class="honor-title">Merit-Based Scholarship</div>
-                                <div class="honor-description">Tongji University</div>
-                                <div class="honor-year">2024</div>
-                            </div>
-                            <div class="honor-item">
-                                <div class="honor-title">Outstanding Research Award</div>
-                                <div class="honor-description">Computer Science Department</div>
-                                <div class="honor-year">2024</div>
-                            </div>
-                            <div class="honor-item">
-                                <div class="honor-title">Academic Excellence Award</div>
-                                <div class="honor-description">Tongji University</div>
-                                <div class="honor-year">2023</div>
-                            </div>
-                        </div>
+                    <div class="pub-venue">
+                        <em>ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2026.</em>
+                    </div>
+                    <div class="pub-links">
+                        <a href="#">[PDF]</a> <a href="#">[Code]</a>
                     </div>
                 </div>
-            </section>
-            
-            <!-- Contact Section -->
-            <section id="contact" class="content-section">
-                <div class="section-header">
-                    <h2 class="section-title">Get in Touch</h2>
-                </div>
-                
-                <div class="contact-content">
-                    <p class="contact-intro">I'm always interested in discussing research opportunities, collaborations, and new ideas. Feel free to reach out!</p>
-                    
-                    <div class="contact-links">
-                        <a href="mailto:chenceason10@gmail.com" class="contact-link">
-                            <i data-lucide="mail"></i>
-                            <div class="contact-info">
-                                <span class="contact-label">Email</span>
-                                <span class="contact-value">chenceason10@gmail.com</span>
-                            </div>
-                        </a>
-                        
-                        <a href="mailto:chenceason10@tongji.edu.cn" class="contact-link">
-                            <i data-lucide="building"></i>
-                            <div class="contact-info">
-                                <span class="contact-label">School Email</span>
-                                <span class="contact-value">2351445@tongji.edu.cn</span>
-                            </div>
-                        </a>
-                        
-                        <a href="https://github.com/ceasonen" class="contact-link" target="_blank">
-                            <i data-lucide="github"></i>
-                            <div class="contact-info">
-                                <span class="contact-label">GitHub</span>
-                                <span class="contact-value">github.com/ceasonen</span>
-                            </div>
-                        </a>
-                        
-                        <a href="#" class="contact-link" target="_blank">
-                            <i data-lucide="graduation-cap"></i>
-                            <div class="contact-info">
-                                <span class="contact-label">Google Scholar</span>
-                                <span class="contact-value">View Profile</span>
-                            </div>
-                        </a>
-                        
-                        <a href="https://www.linkedin.com/in/cheng-chen-012a83378/" class="contact-link" target="_blank">
-                            <i data-lucide="linkedin"></i>
-                            <div class="contact-info">
-                                <span class="contact-label">LinkedIn</span>
-                                <span class="contact-value">Connect with me</span>
-                            </div>
-                        </a>
+
+                <div class="pub-item">
+                    <div class="pub-title">Multimedia Analysis with Efficient Vision Transformers</div>
+                    <div class="pub-authors">
+                        <strong>Cheng Chen</strong>, et al.
+                    </div>
+                    <div class="pub-venue">
+                        <em>IEEE International Conference on Multimedia and Expo (ICME), 2026.</em>
+                    </div>
+                    <div class="pub-links">
+                        <a href="#">[PDF]</a> <a href="#">[Code]</a>
                     </div>
                 </div>
-            </section>
-        </main>
-    </div>
-    
-    <!-- Local JavaScript -->
-    <script src="script.js"></script>
+
+                <div class="pub-item">
+                    <div class="pub-title">Neural Network Optimization for Edge Devices</div>
+                    <div class="pub-authors">
+                        <strong>Cheng Chen</strong>, et al.
+                    </div>
+                    <div class="pub-venue">
+                        <em>International Joint Conference on Neural Networks (IJCNN), 2026.</em>
+                    </div>
+                    <div class="pub-links">
+                        <a href="#">[PDF]</a> <a href="#">[Code]</a>
+                    </div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">Wireless Channel Estimation using Deep Learning</div>
+                    <div class="pub-authors">
+                        <strong>Cheng Chen</strong>, et al.
+                    </div>
+                    <div class="pub-venue">
+                        <em>IEEE Wireless Communications Letters (WCL).</em>
+                    </div>
+                    <div class="pub-links">
+                        <a href="#">[PDF]</a> <a href="#">[Code]</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Personal / Misc -->
+        <section class="section">
+            <h2>Personal & Misc</h2>
+            <p>
+                Beyond research, I enjoy exploring the intersection of technology and art. I solve Rubik's cubes in
+                under 20 seconds and enjoy capturing moments through photography.
+            </p>
+            <p>
+                <em>"The only way to do great work is to love what you do."</em>
+            </p>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Cheng Chen. Inspired by <a href="https://tairanhe.com/">Tairan He</a>.</p>
+        </footer>
+
+    </main>
 </body>
+
 </html>
