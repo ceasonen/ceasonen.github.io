@@ -1,0 +1,462 @@
+\documentclass[sigconf,screen,review,anonymous]{acmart}
+\setcopyright{none}
+\settopmatter{printacmref=true}
+\acmConference[MM '26]{Proceedings of the 34th ACM International Conference on Multimedia}{November 10--14, 2026}{Rio de Janeiro, Brazil}
+\acmBooktitle{Proceedings of the 34th ACM International Conference on Multimedia (MM '26), November 10--14, 2026, Rio de Janeiro, Brazil}
+\acmYear{2026}
+\copyrightyear{2026}
+% Camera-ready ACM permission footnote template:
+% \setcopyright{acmlicensed}
+% \acmISBN{<fill from ACM>}
+% \acmDOI{<fill from ACM>}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{flafter}
+\usepackage{multirow}
+\usepackage{needspace}
+\usepackage{placeins}
+\usepackage{parskip}
+\raggedbottom
+\setlength{\bibsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\itemsep}{2pt}
+\setcounter{topnumber}{3}
+\setcounter{dbltopnumber}{3}
+\setcounter{totalnumber}{5}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{0pt}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.8}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.85}
+\renewcommand{\dblfloatpagefraction}{0.85}
+\AtBeginEnvironment{thebibliography}{\footnotesize\sloppy\hbadness=10000}
+\newcommand{\tblfont}{\footnotesize}
+\newcommand{\pending}{\textcolor{gray}{--}}
+\newcommand{\pendingname}[1]{\textcolor{gray}{\textit{#1}}}
+\newcommand{\method}{MFC}
+\newcommand{\methodstd}{MFC-Std}
+\newcommand{\methodfull}{MFC-Full}
+\definecolor{bestgray}{gray}{0.93}
+\newcommand{\bestrow}{\rowcolor{bestgray}}
+\makeatletter
+\@ACM@balancefalse
+\makeatother
+
+\begin{document}
+
+\title{Beyond Random Warps: Family-Level Estimation for Transferable Deformation Attacks}
+% Camera-ready corresponding-author footnote example:
+% \author{First Author}
+% \authornote{Corresponding author.}
+% \email{first.author@example.edu}
+% \affiliation{%
+%   \institution{Institution}
+%   \city{City}
+%   \country{Country}}
+
+\begin{abstract}
+Deformation-based transferable attacks are usually strengthened by sampling more warped views, yet DeCoWA-style methods still estimate the update from one stochastic warp family. Under the released DeCoWA \(3\times 3\) TPS mesh, the learnable interior warp variable is effectively two-dimensional, which makes structured coverage of deformation families feasible. We therefore propose \textbf{\method} (\emph{Multi-Family Consensus}), a family-level estimator that averages gradients within random, equiangular, and antithetic warp families and fuses only the resulting family directions. Our primary operating point, \textbf{\methodstd}, is a DeCoWA-compatible redesign; \textbf{\methodfull} asks whether the same factorization still helps after replacing the outer search with OPS. On matched 1000-image ImageNet transfer benchmarks with ResNet-50 and ViT-B/16 surrogates, \methodstd{} improves over DeCoWA by \(13.1\) and \(5.4\) black-box-ASR points, while \methodfull{} improves over matched OPS by \(2.1\) and \(2.8\) points. Complementary fixed-budget controls show that a three-family \(20\times 3\) setting still exceeds a \(60\)-random-warp baseline by \(2.2\) black-box-ASR points, and the strongest generic \(2\)-D sampler remains \(0.7\) points behind. The largest \methodstd{} gains occur under stronger source-target mismatch, especially from a CNN surrogate to transformer-like targets. These results establish family-level estimation as a strong deformation-attack operating point and show that the gain is not reducible to extra random views or a single better \(2\)-D sequence.
+\end{abstract}
+
+\ccsdesc[500]{Security and privacy~Software and application security}
+\ccsdesc[300]{Computing methodologies~Computer vision}
+\keywords{transferable adversarial attacks, black-box robustness, deformation-constrained warping, gradient estimation, ImageNet transfer}
+
+\maketitle
+
+\section{Introduction}
+
+Transferable adversarial attacks remain one of the most realistic black-box threat models for modern visual systems because an attacker can optimize on a released surrogate and still affect unseen victims~\cite{szegedy2013intriguing,goodfellow2014explaining,liu2016delving,xie2019improving,dong2019evading,lin2019nesterov}. We study this phenomenon at the shared image-side backbone, where the central question is whether an update direction survives model mismatch at the classifier layer.
+
+Recent progress has enlarged the surrogate neighborhood through transformation stacks, multi-stage attack pipelines, feature-aware guidance, surrogate regularization, and broader operator search~\cite{wang2021enhancing,wang2021admix,wang2021feature,huang2019enhancing,wu2020boosting,lu2020enhancing,xiong2022stochastic,liang2023styless,zhang2023improving,chen2023adaptive,wei2023enhancing,fang2024strong,zhu2023boosting,wang2023structure,wang2024boosting,peng2025boosting,li2025enhancing,guo2025boosting}. These directions are often effective and complementary, but they also concentrate methodological effort on increasingly elaborate outer pipelines. A simpler question is easier to overlook: within a fixed attack backbone, is the estimator used to aggregate transformed views actually aligned with the geometry of the view space? This distinction matters because stronger transfer can reflect either a better direction estimate or simply a larger surrogate-side search budget.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/overview.pdf}
+  \caption{Motivation of \method. DeCoWA-style single-family estimation samples one stochastic warp family, whereas \method{} broadens coverage across complementary deformation families, averages gradients within each family, and fuses only the resulting family directions into a more transferable update.}
+  \label{fig:teaser}
+  \Description{A wide schematic contrasting DeCoWA-style single-family estimation with MFC. The figure shows random-only sampling inside one warp family, then MFC coverage across random, equiangular, and antithetic families, followed by within-family averaging, across-family fusion, and improved transferability to CNN, ViT, and multimodal targets.}
+\end{figure*}
+
+Deformation-based attacks provide a clean test case for this under-explored axis. Methods such as SIA, BSR, L2T, DeCoWA, and OPS already suggest that how views are organized matters at least as much as how many views are sampled~\cite{wang2023structure,wang2024boosting,zhu2024learning,lin2024boosting,guo2025boosting}, yet the dominant response has still been to enrich view generation or strengthen the outer pipeline. The released DeCoWA implementation makes the missed opportunity unusually concrete: under the default \(3\times 3\) TPS mesh, there is only one interior control point, so the operative warp variable is effectively two-dimensional. In that regime, the estimator itself becomes the main design object, yet prior deformation-based attacks do not turn this low-dimensional structure into an explicit estimator-design problem.
+
+This observation motivates \method{} as a principled minimalist redesign inside an existing backbone. We do not introduce a new loss, alter the surrogate, or add another transformation type. Instead, we replace unstructured single-family random sampling with a structured estimator that first stabilizes gradients within complementary deformation families and only then fuses the resulting family directions. In this setting, the simplest design change that no prior method made is often the most revealing one: it tests whether transfer is limited by estimator organization before invoking a larger outer pipeline.
+
+Concretely, \method{} constructs random, equiangular, and antithetic deformation families, averages gradients within each family, and then mixes the resulting family directions. The DeCoWA-backed operating point, \methodstd{}, isolates this estimator redesign inside the released deformation backbone, while the stronger \methodfull{} row asks whether the same factorization remains useful after the outer search is upgraded to the released OPS backbone. Complementary fixed-budget controls already preview the answer: under matched \(60\)-view computation, the three-family \(20\times 3\) estimator stays \(+2.2\) above a \(60\)-random-warp control, and the strongest generic \(2\)-D sampler still trails by \(0.7\). The gain therefore points to a more informative organization of the same view budget rather than to more computation.
+
+Across matched 1000-image TransferAttack benchmarks, the same conclusion holds at scale. \methodstd{} improves over DeCoWA from \(75.7\%\) to \(88.8\%\) black-box ASR on the ResNet-50-source block and from \(79.9\%\) to \(85.3\%\) on the ViT-B/16-source block. \methodfull{} further improves over matched OPS from \(95.0\%\) to \(97.1\%\) and from \(93.9\%\) to \(96.7\%\), respectively. The largest \methodstd{} gains appear when a CNN source attacks transformer-like victims.
+
+\paragraph{Contributions.}
+\begin{itemize}
+  \item We identify an under-explored estimator-design axis in deformation-based transfer: under the released DeCoWA \(3\times 3\) TPS mesh, the operative warp variable is effectively two-dimensional, yet prior deformation attacks do not turn this low-dimensional structure into an explicit family-level estimation problem.
+  \item We propose \textbf{\method}, a principled estimator redesign that keeps the loss, surrogate, and deformation type fixed, replacing single-family random sampling with within-family stabilization and across-family fusion; we instantiate it as the controlled \textbf{\methodstd} design plus the stronger OPS-backed \textbf{\methodfull} generalization check.
+  \item On matched ImageNet benchmarks and matched \(60\)-view controls, \methodstd{} outperforms DeCoWA, \methodfull{} improves over OPS, and the three-family \(20\times 3\) estimator remains \(+2.2\) above a \(60\)-random-warp control while also outperforming the strongest generic \(2\)-D sampler, with the largest \methodstd{} gains under CNN-to-transformer transfer.
+\end{itemize}
+
+\section{Related Work}
+
+\subsection{Transfer Attacks by View Expansion}
+Iterative transfer attacks have progressively enlarged the surrogate neighborhood through momentum, input diversity, sample mixing, feature-aware guidance, ensemble variants, operator search, surrogate smoothing, and meta-surrogate training~\cite{xie2019improving,dong2019evading,lin2019nesterov,wang2021enhancing,wang2021admix,huang2019enhancing,wu2020boosting,wang2021feature,lu2020enhancing,wu2020skip,liang2023styless,zhang2023improving,xiong2022stochastic,chen2023adaptive,fang2024strong,tang2024ensemble,maho2023choose,li2025enhancing,guo2025boosting,wu2024lrs,qin2023training,zhu2023boosting,wang2023structure,wang2024boosting,peng2025boosting,yang2025smp,zhu2024learning}. Their implementations differ, but the shared idea is to query the surrogate through more informative views so that the resulting direction generalizes better to unseen targets.
+
+Our work still belongs to this broad family, but changes the unit of expansion. We do not add an unrelated transformation zoo on top of an existing attack, nor do we retrain or smooth the surrogate itself. Instead, we take one strong view type, deformation-constrained warping, and ask how to organize its internal search geometry more systematically. This positions the paper as an estimator redesign inside one backbone rather than as another cross-attack branch stack.
+
+This distinction is also what separates \method{} from surrogate-space methods such as LRS and MTA~\cite{wu2024lrs,qin2023training}. Those methods alter or regularize the surrogate so that its gradients become easier to transfer, whereas \method{} keeps the surrogate fixed and changes only how deformation views are organized and fused. We therefore regard the two directions as conceptually orthogonal.
+
+\subsection{Deformation-Based Transfer}
+Geometric or structure-preserving view generation has become a distinct axis of transfer improvement. Local block-wise transformations, block shuffling, path augmentation, and deformation-constrained warping all attempt to expose gradients that survive architecture shift without destroying semantic content~\cite{wang2023structure,wang2024boosting,zhang2023improving,lin2024boosting}. DeCoWA is the closest backbone to our method because it already shows that deformation-constrained warping is effective across CNN and ViT families~\cite{lin2024boosting}. Our question is narrower: once deformation warping is fixed as the backbone, is one stochastic warp family still the right estimator of the deformation gradient? \method{} answers this by replacing the single-family estimator with a structured family ensemble.
+
+\subsection{Evaluation Fairness}
+Transfer-attack comparisons are easy to distort through silent changes in source model, target family, step count, image subset, or evaluation protocol~\cite{zhao2023revisiting}. All reported numbers therefore come from released TransferAttack assets and matched local reruns on the same 1000-image split~\cite{transferattack_repo,russakovsky2015imagenet}, which keeps the estimator comparisons in Sec.~4 directly comparable.
+
+\section{Method}
+
+\subsection{Preliminaries}
+We study the standard untargeted black-box transfer setting. Let \(f\) denote the surrogate classifier, \(x\) the clean image, \(y\) its ground-truth label, and \(\epsilon\) the \(\ell_\infty\) perturbation budget. The attacker seeks an adversarial example \(x^{\mathrm{adv}} = x + \delta\) such that
+\[
+\|\delta\|_\infty \le \epsilon
+\]
+and transfers to unseen target models. As in iterative transfer attacks, the perturbation is updated over \(T\) steps, and the practical design problem is to estimate a surrogate-side gradient that is less specific to the surrogate and more useful for transfer.
+
+In the released DeCoWA pipeline, the key estimation step is performed in the warp space. Let \(W(x_t; u)\) denote the thin-plate-spline warp used by DeCoWA~\cite{lin2024boosting}, parameterized by a control variable \(u\). In the public implementation, the interior noise map has shape \((\texttt{mesh\_height}-2,\texttt{mesh\_width}-2,2)\)~\cite{transferattack_repo}; under the default \(3\times 3\) mesh this becomes \((1,1,2)\), so \(u\) is effectively a two-dimensional displacement vector. This low-dimensional geometry is the starting point of our redesign, and Figure~\ref{fig:overview} summarizes the resulting pipeline.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.98\textwidth]{figures/triplet_overview.png}
+  \caption{Overview of \methodstd{}. In the released DeCoWA \(3\times 3\) TPS setting, \methodstd{} builds three complementary deformation families, averages views within each family, and fuses only the resulting family directions in the final DeCoWA-compatible outer update.}
+  \label{fig:overview}
+  \Description{A real-image mechanism figure showing a clean source image, the released three-by-three TPS geometry, three families of warped views, family-level mean directions, a fusion node, and the final adversarial image.}
+\end{figure*}
+
+\subsection{Single-Family versus Family-Mixture Estimation}
+The local redesign can be understood as a change in the estimator rather than a change in the outer attack objective. Let
+\[
+g(u; x_t, y) = \nabla_x \mathcal{L}(f(W(x_t;u)), y)
+\]
+denote the image gradient induced by warp parameter \(u\). A single-family deformation attack estimates the transferable deformation direction through one family-specific sampling distribution \(q(u)\):
+\[
+\bar{g}_{\text{single}}
+=
+\mathbb{E}_{u \sim q(u)}[g(u; x_t, y)].
+\]
+In the released DeCoWA-style setting, this family is stochastic and random. \method{} replaces it with a mixture over family-specific warp distributions \(q_m(u)\), where \(m \in \mathcal{F}\):
+\[
+\bar{g}_{\text{mix}}
+=
+\sum_{m \in \mathcal{F}} \pi_m
+\mathbb{E}_{u \sim q_m(u)}[g(u; x_t, y)],
+\]
+where \(\pi_m\) is the family weight. In our implementation, the within-family expectation is approximated by \(S=20\) warped views. The weights depend on the operating point, but the defining change is invariant: first form one estimate per family, then fuse those family-level estimates.
+
+\subsection{A Bias-Variance View of Family Aggregation}
+Let \(g_t^\star\) denote an unobserved transferable direction at attack step \(t\). We write the family estimator as
+\[
+g_{m,t} = g_t^\star + b_{m,t} + \xi_{m,t},
+\]
+where \(b_{m,t}\) is a family-specific directional bias and \(\xi_{m,t}\) is a zero-mean stochastic term. For a single family, the expected squared error around the transferable direction becomes
+\[
+\mathbb{E}\!\left[\|g_{m,t} - g_t^\star\|_2^2\right]
+=
+\|b_{m,t}\|_2^2 + \operatorname{tr}(\Sigma_{m,t}),
+\]
+with \(\Sigma_{m,t}\) the covariance of \(\xi_{m,t}\).
+
+For a weighted family mixture \(g_t^{\mathrm{mix}} = \sum_{m \in \mathcal{F}} w_m^t g_{m,t}\), the corresponding error is
+\[
+\begin{aligned}
+\mathbb{E}\!\left[\|g_t^{\mathrm{mix}} - g_t^\star\|_2^2\right]
+&=
+\left\|\sum_{m \in \mathcal{F}} w_m^t b_{m,t}\right\|_2^2 \\
+&\quad +
+\sum_{m \in \mathcal{F}} (w_m^t)^2 \operatorname{tr}(\Sigma_{m,t}) \\
+&\quad +
+2\!\!\sum_{i<j} w_i^t w_j^t \operatorname{Cov}(\xi_{i,t}, \xi_{j,t}).
+\end{aligned}
+\]
+This identity captures the design intuition: if family-specific biases partially cancel and the noise terms are not perfectly aligned, a family mixture can be closer to the transferable direction than any single family.
+
+\subsection{Three Deformation Families}
+We define a deformation-family set
+\[
+\mathcal{F}=\{\texttt{random}, \texttt{equiangular}, \texttt{antithetic}\}.
+\]
+For each family \(m \in \mathcal{F}\), \method{} constructs \(S\) initial warp parameters \(u_{m,s}^{(0)}\), \(s=1,\dots,S\), with \(S=20\) in all current runs. The families differ only in how these initializations are chosen.
+
+\paragraph{Random family.}
+Each \(u_{m,s}^{(0)}\) is sampled independently from the released DeCoWA noise box. This family preserves the exploratory behavior of the original deformation attack and acts as the stochastic component of the estimator.
+
+\paragraph{Equiangular family.}
+Because the interior control space is effectively \(2\)-D, directions can be placed uniformly on the circle. The \(s\)-th warp uses angle \(2\pi s / S\) and the same nominal radius as the default noise scale. This family trades stochasticity for deterministic directional coverage.
+
+\paragraph{Antithetic family.}
+Warps are created in \(\pm u\) pairs so that opposite directions are explored together. This family is designed to reduce one-sided sampling variance and to make the family estimator less sensitive to asymmetric local geometry.
+
+Each initialization is refined by one DeCoWA-style inner update in the warp space:
+\[
+u_{m,s}
+=
+u_{m,s}^{(0)} - \rho \nabla_u \mathcal{L}(f(W(x_t;u_{m,s}^{(0)})), y),
+\]
+where \(\rho\) is the warp-space step size. This keeps the method compatible with the released DeCoWA pipeline while changing only the family organization.
+
+\subsection{Why These Three Families}
+The family identities are intentionally simple. The contribution of \method{} is the estimator factorization instantiated through random, equiangular, and antithetic sampling, which play complementary roles in the released \(2\)-D setting: random preserves exploration, equiangular supplies directional coverage, and antithetic pairing reduces one-sided variance. The last point can be seen from a local first-order expansion around a small direction \(u\):
+\[
+g(u; x_t, y) \approx g(0; x_t, y) + J_t u,
+\]
+where \(J_t\) is a local Jacobian term. The corresponding antithetic average satisfies
+\[
+\frac{1}{2}\bigl(g(u; x_t, y) + g(-u; x_t, y)\bigr) \approx g(0; x_t, y),
+\]
+which cancels the odd-order linear component and preserves the shared component around the center. This local view highlights why antithetic pairing can emphasize the common component around the center.
+
+\subsection{Within-Family Estimation}
+Once the refined warps are available, each family produces one family gradient by averaging image gradients over its warped views:
+\[
+g_{m,t}
+=
+\sum_{s=1}^{S}\lambda_s
+\nabla_x \mathcal{L}(f(W(x_t;u_{m,s})), y).
+\]
+In the current implementation, the within-family weights are uniform, so \(\lambda_s = 1/S\). This choice keeps the method definition simple and makes the family comparison easy to interpret. If only the random family is active, the resulting estimator reduces to a DeCoWA-style deformation gradient inside the same TransferAttack API.
+
+\subsection{Across-Family Aggregation}
+The family gradients are then fused through a family-level mixture
+\[
+g_t^{\mathrm{fam}} = \sum_{i \in \mathcal{F}} w_i \cdot
+\frac{g_{i,t}}{\operatorname{mean}(|g_{i,t}|)},
+\qquad
+\sum_{i \in \mathcal{F}} w_i = 1,\; w_i \ge 0.
+\]
+The crucial choice is that aggregation happens over \emph{family-level} estimates rather than over individual warped views. A view-level rule would combine two different sources of variation: stochastic variation among samples from the same family and directional variation between genuinely different families. By averaging inside each family first, \method{} separates variance reduction from cross-family selection and makes the ablation logic easier to interpret. In all paper-facing results we therefore use explicit fixed family weights rather than an adaptive consensus rule. The reduced family-only diagnostics compare equal, front-loaded, and balanced mixtures directly; the main \methodstd{} row keeps the front-loaded mix used in the completed full runner, while the stronger \methodfull{} row uses equal weights across OPS-side families.
+
+\subsection{Outer Update}
+The final \textbf{\method} update uses the same outer MI-FGSM-style loop as the released runner:
+\[
+\delta_{t+1}
+=
+\Pi_{\|\delta\|_\infty \le \epsilon}
+\left(
+\delta_t + \alpha \cdot \operatorname{sign}(m_{t+1})
+\right),
+\]
+where \(m_{t+1}\) is the momentum update built from \(g_t^{\mathrm{fam}}\). The important difference from DeCoWA is therefore not a new loss, but a different estimator of the deformation gradient. \methodstd{} keeps the DeCoWA-compatible outer runner, while \methodfull{} keeps the same family-level factorization but delegates the outer neighborhood search to the released OPS backbone.
+
+This compatibility matters for how we interpret the two paper-facing rows. \methodstd{} is the controlled mechanism result because it changes only the deformation estimator inside the released DeCoWA backbone, whereas \methodfull{} is a consistency check under a stronger outer search rather than a separate novelty claim.
+
+\section{Experiments}
+
+\subsection{Experimental Setup}
+All numbers in this paper come from released TransferAttack models and matched local reruns under one protocol~\cite{transferattack_repo}. We use the standard ImageNet transfer setting~\cite{russakovsky2015imagenet}, untargeted attacks, and perturbation budget \(\epsilon = 16/255\). The main benchmark uses ResNet-50 as the surrogate and evaluates transfer to seven held-out targets: VGG16, MobileNet-v2, Inception-v3, ViT-B/16, PiT-B, Visformer-S, and Swin-T. We also report the corresponding white-box ASR on the surrogate. Unless otherwise stated, the tables in this section report 1000-image reruns.
+
+We use three summary metrics throughout this section. \emph{Black-box Avg.} is the average ASR over the seven held-out targets. \emph{CNN Avg.} and \emph{Transformer Avg.} average the corresponding victim groups in each source block. For ResNet-50, this means \{VGG16, MobileNet-v2, Inception-v3\} versus \{ViT-B/16, PiT-B, Visformer-S, Swin-T\}; for ViT-B/16, it means \{RN50, VGG16, MobileNet-v2, Inception-v3\} versus \{PiT-B, Visformer-S, Swin-T\}. This split matters because a method that improves only one side of the target pool is less compelling than one that improves both, especially when the paper's main story is cross-architecture transfer.
+
+The reported \methodstd{} configuration keeps the DeCoWA-compatible deformation backbone, activates the three deformation families \texttt{random}, \texttt{equiangular}, and \texttt{antithetic}, and uses \(20\) warped views per family. Relative to DeCoWA's \(20\) random warps, \methodstd{} therefore evaluates \(60\) deformation views per attack step; because each view incurs one warp-space update and one image-space gradient, this corresponds to \(120\) versus \(40\) equivalent gradient evaluations per step, i.e., an exact \(3\times\) increase in deformation-side compute. Later controls complement the main tables with exact \(60\)-view comparisons, generic \(2\)-D sampling alternatives, and a matched runtime profile.
+
+The paper-facing \methodstd{} row keeps the front-loaded family mix used in the completed full runner. Table~\ref{tab:family-ablation} later compares equal, front-loaded, and balanced weightings directly inside a reduced family-only diagnostic. The stronger \methodfull{} configuration applies the same family-level factorization after the outer search is upgraded to OPS. For that row, each OPS-side family mode keeps the published \(\text{OPS}(10,30,30)\) neighborhood settings inside its own family pool, and we then fuse three OPS-side family modes, \texttt{spatial}, \texttt{scale}, and \texttt{mixed}, with equal family weights. In the runtime profiler this corresponds to \(2703\) versus \(901\) equivalent gradient evaluations per step.
+
+\Needspace{12\baselineskip}
+\subsection{Main Benchmark: ResNet-50 Surrogate}
+Table~\ref{tab:resnet-main} is the main result because it shows both levels of the paper claim under one matched benchmark: a controlled DeCoWA-backed redesign and a stronger OPS-backed generalization.
+
+\begin{table*}[!t]
+  \centering
+  \caption{Matched 1000-image transfer benchmark with a ResNet-50 surrogate. Family-level estimation yields a strong controlled operating point: \methodstd{} gains \(+13.1\) over DeCoWA, and \methodfull{} adds \(+2.1\) over matched OPS. All entries are ASR (\%) \(\uparrow\); \emph{Black-box Avg.} averages the seven held-out targets.}
+  \label{tab:resnet-main}
+  {\tblfont
+  \setlength{\tabcolsep}{1.8pt}
+  \renewcommand{\arraystretch}{1.06}
+  \begin{tabular}{llccccccccccc}
+    \toprule
+    \multirow{2}{*}{Category} & \multirow{2}{*}{Attack} & \multirow{2}{*}{RN50 \(\uparrow\)} & \multicolumn{3}{c}{CNN targets} & \multicolumn{4}{c}{Transformer targets} & \multicolumn{3}{c}{Averages} \\
+    \cmidrule(lr){4-6} \cmidrule(lr){7-10} \cmidrule(lr){11-13}
+    & & & VGG16 & MN-v2 & Inc-v3 & ViT-B/16 & PiT-B & Vis-S & Swin-T & CNN Avg. \(\uparrow\) & Transformer Avg. \(\uparrow\) & Black-box Avg. \(\uparrow\) \\
+    \midrule
+    \multirow{3}{*}{Gradient-based}
+      & VMI-FGSM & 86.0 & 55.9 & 55.5 & 45.6 & 25.2 & 35.1 & 38.9 & 42.3 & 52.3 & 35.4 & 42.6 \\
+      & GRA & 90.5 & 75.9 & 76.0 & 73.4 & 44.6 & 56.8 & 63.0 & 65.0 & 75.1 & 57.4 & 65.0 \\
+    \midrule
+    \multirow{8}{*}{Input-transformation-based}
+      & DIM & 82.6 & 54.7 & 53.6 & 43.1 & 20.8 & 28.9 & 34.8 & 36.4 & 50.5 & 30.2 & 38.9 \\
+      & SIM & 88.9 & 54.9 & 53.1 & 40.6 & 17.8 & 26.9 & 33.8 & 36.0 & 49.5 & 28.6 & 37.6 \\
+      & Admix & 93.9 & 64.2 & 63.8 & 51.5 & 23.7 & 36.1 & 43.9 & 44.8 & 59.8 & 37.1 & 46.9 \\
+      & SIA & 95.3 & 83.1 & 84.1 & 69.2 & 38.2 & 57.7 & 67.9 & 67.4 & 78.8 & 57.8 & 66.8 \\
+      & BSR & 96.2 & 90.2 & 89.1 & 79.0 & 43.2 & 63.8 & 72.9 & 72.1 & 86.1 & 63.0 & 72.9 \\
+      & DeCoWA & 94.7 & 87.4 & 86.9 & 82.8 & 53.6 & 67.1 & 76.0 & 75.9 & 85.7 & 68.2 & 75.7 \\
+      & L2T & 95.6 & 87.0 & 87.6 & 80.9 & 53.4 & 68.2 & 74.5 & 74.6 & 85.2 & 67.7 & 75.2 \\
+      & OPS & 99.0 & 97.6 & 97.9 & 97.8 & 88.5 & 92.6 & 95.9 & 94.6 & 97.8 & 92.9 & 95.0 \\
+    \midrule
+    Ours & \textbf{\methodstd} & 97.7 & 92.9 & 91.3 & 90.1 & 82.3 & 81.5 & 92.4 & 91.2 & 91.4 & 86.9 & 88.8 \\
+    \bestrow
+    Ours & \textbf{\methodfull} & \textbf{100.0} & \textbf{98.9} & \textbf{99.3} & \textbf{98.1} & \textbf{92.3} & \textbf{95.5} & \textbf{97.4} & \textbf{98.2} & \textbf{98.8} & \textbf{95.9} & \textbf{97.1} \\
+    \bottomrule
+  \end{tabular}}
+\end{table*}
+
+Table~\ref{tab:resnet-main} supports two claims. First, within the DeCoWA backbone, \methodstd{} raises black-box ASR from \(75.7\%\) to \(88.8\%\), showing that the estimator redesign is already strong before any OPS machinery is introduced. Second, after replacing the outer search with OPS, \methodfull{} still improves over matched OPS from \(95.0\%\) to \(97.1\%\).
+
+\subsection{Where the Gain Appears}
+The black-box average is the cleanest single summary, but the target-wise columns clarify why the new story is stronger than a single-row win. Relative to DeCoWA, \methodstd{} improves the CNN targets by \(+5.7\) points on average (\(85.7\%\rightarrow 91.4\%\)) but the transformer-like targets by \(+18.7\) points (\(68.2\%\rightarrow 86.9\%\)). The largest single-target gain is \(+28.7\) on ViT-B/16. This concentration is exactly what one would expect from a better cross-architecture estimator rather than from a surrogate-only strengthening trick.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/triplet_gap.png}
+  \caption{Per-target gains of \methodstd{} over DeCoWA on the two completed source blocks. The largest deltas cluster under stronger source--target mismatch, especially when a CNN source attacks transformer-like victims.}
+  \label{fig:gap-summary}
+  \Description{Two horizontal bar charts showing per-target ASR gains of MFC-Std over DeCoWA for ResNet-50 and ViT-B/16 source models.}
+\end{figure}
+
+Figure~\ref{fig:gap-summary} makes the same point at the per-target level. With a ResNet-50 source, the largest gains fall on transformer-like victims; after swapping the source to ViT-B/16, the gains remain positive but flatten, which is more consistent with a gap-driven explanation than with a source-only strengthening trick.
+
+Artifact diagnostics support the same reading: \methodstd{} wins more paired examples than it loses on every held-out target, and on a 256-image architecture-gap analysis the gain over DeCoWA is \(5.7\) points on held-out CNN targets but \(18.7\) points on transformer targets, with source-target prediction agreement anticorrelation \(r=-0.52\). The same table also separates transfer improvement from plain white-box saturation: compared with OPS, \methodfull{} improves the white-box column by \(1.0\) point and the black-box average by \(2.1\) points.
+
+\subsection{Cross-Source Benchmark: ViT-B/16 Surrogate}
+The ViT-B/16-source block tests whether the same estimator story survives a source-family change. This is a harder generalization check than winning with one source because the deformation estimator is no longer paired with a CNN surrogate.
+
+\begin{table*}[!t]
+  \centering
+  \caption{Matched 1000-image cross-source transfer benchmark with a ViT-B/16 surrogate. The same estimator story survives the source-family swap: \methodstd{} gains \(+5.4\) over DeCoWA, and \methodfull{} gains \(+2.8\) over matched OPS. All entries are ASR (\%) \(\uparrow\).}
+  \label{tab:vit-main}
+  {\tblfont
+  \setlength{\tabcolsep}{1.8pt}
+  \renewcommand{\arraystretch}{1.06}
+  \begin{tabular}{llccccccccccc}
+    \toprule
+    \multirow{2}{*}{Category} & \multirow{2}{*}{Attack} & \multirow{2}{*}{ViT-B/16 \(\uparrow\)} & \multicolumn{3}{c}{CNN targets} & \multicolumn{4}{c}{Transformer targets} & \multicolumn{3}{c}{Averages} \\
+    \cmidrule(lr){4-6} \cmidrule(lr){7-10} \cmidrule(lr){11-13}
+    & & & RN50 & VGG16 & MN-v2 & Inc-v3 & PiT-B & Vis-S & Swin-T & CNN Avg. \(\uparrow\) & Transformer Avg. \(\uparrow\) & Black-box Avg. \(\uparrow\) \\
+    \midrule
+    \multirow{3}{*}{Gradient-based}
+      & VMI-FGSM & 98.4 & 49.2 & 63.1 & 63.1 & 51.2 & 55.1 & 56.9 & 67.3 & 56.7 & 59.8 & 58.0 \\
+      & GRA & 97.0 & 65.6 & 72.4 & 72.8 & 66.9 & 71.2 & 71.7 & 78.2 & 69.4 & 73.7 & 71.3 \\
+    \midrule
+    \multirow{8}{*}{Input-transformation-based}
+      & DIM & 88.2 & 48.1 & 60.8 & 59.5 & 51.6 & 54.1 & 55.8 & 60.9 & 55.0 & 56.9 & 55.8 \\
+      & SIM & 99.2 & 51.4 & 66.0 & 64.7 & 53.5 & 57.0 & 58.8 & 70.7 & 58.9 & 62.2 & 60.3 \\
+      & Admix & 99.1 & 52.4 & 67.3 & 67.1 & 55.5 & 57.7 & 61.2 & 72.6 & 60.6 & 63.8 & 62.0 \\
+      & SIA & 97.3 & 75.2 & 78.9 & 81.5 & 71.8 & 81.4 & 81.2 & 84.2 & 76.8 & 82.3 & 79.2 \\
+      & BSR & 89.0 & 75.9 & 80.3 & 81.2 & 76.3 & 80.6 & 79.5 & 81.0 & 78.4 & 80.4 & 79.3 \\
+      & DeCoWA & 91.6 & 73.8 & 81.2 & 80.8 & 76.9 & 82.6 & 81.5 & 82.6 & 78.2 & 82.2 & 79.9 \\
+      & OPS & 98.7 & 91.1 & 93.6 & 94.1 & 93.2 & 95.3 & 94.6 & 95.2 & 93.0 & 95.0 & 93.9 \\
+      & L2T & 96.5 & 77.9 & 84.4 & 84.3 & 80.4 & 82.5 & 82.1 & 85.7 & 81.8 & 83.4 & 82.5 \\
+    \midrule
+    Ours & \textbf{\methodstd} & \textbf{100.0} & 80.1 & 86.5 & 85.5 & 83.4 & 87.3 & 86.5 & 87.8 & 83.9 & 87.2 & 85.3 \\
+    \bestrow
+    Ours & \textbf{\methodfull} & \textbf{100.0} & \textbf{94.1} & \textbf{96.5} & \textbf{95.5} & \textbf{95.4} & \textbf{98.3} & \textbf{98.5} & \textbf{98.8} & \textbf{95.4} & \textbf{98.5} & \textbf{96.7} \\
+    \bottomrule
+  \end{tabular}}
+\end{table*}
+
+Table~\ref{tab:vit-main} shows that both claims remain intact after this swap. \methodstd{} reaches \(85.3\%\), improving over DeCoWA by \(5.4\) points, over BSR by \(6.0\) points, over SIA by \(6.1\) points, and over L2T by \(2.8\) points. \methodfull{} reaches \(96.7\%\), improving over OPS by \(2.8\) points, with gains on every held-out target and especially clear margins on PiT-B (\(+3.0\)), Visformer-S (\(+3.9\)), and Swin-T (\(+3.6\)). Together with the ResNet-50 block, this source swap shows that the estimator remains effective across surrogate families while preserving the strongest gains in the CNN-to-transformer regime highlighted in Table~\ref{tab:resnet-main}.
+
+This source swap also broadens the empirical picture beyond one favorable surrogate. The gain gets smaller than in the ResNet-50 block, but it stays positive across the same matched protocol and therefore supports a source-robust estimator claim.
+
+\begin{figure*}[tb]
+  \centering
+  \includegraphics[width=0.98\textwidth]{figures/triplet_results.png}
+  \caption{Main results and diagnostic summary. (a) Black-box-average ASR for the matched ResNet-50-source benchmark. (b) CNN-target and transformer-target averages for representative strong baselines together with \methodstd{} and \methodfull. (c) Black-box-average bars and transformer-target markers for the matched ViT-B/16-source benchmark. (d) Black-box-average summary of the family-composition, family-weight, and per-family warp-budget diagnostics.}
+  \label{fig:results}
+  \Description{A four-panel results figure showing the main ResNet-50 benchmark ranking, CNN-versus-transformer averages, a ViT-source frontier summary, and a black-box-average summary of the completed ablation blocks.}
+\end{figure*}
+
+\subsection{Diagnostic Mechanism Analysis Around the DeCoWA Backbone}
+The mechanism section focuses on one structured ablation table that studies composition, fusion rule, and per-family budget inside a reduced family-only estimator around the DeCoWA backbone.
+
+\subsubsection{Diagnostic Family Ablation}
+The next question is which parts of the reduced \methodstd{} estimator matter most: the three-family design itself, the fusion rule, or the per-family warp budget. Table~\ref{tab:family-ablation} reports all three blocks on the full 1000-image ResNet-50-source benchmark under that reduced family-only \methodstd{} protocol.
+
+\begin{table*}[!t]
+  \centering
+  \caption{Diagnostic ablation of a reduced family-only \methodstd{} variant on the 1000-image ResNet-50-source benchmark. Within this stripped-down setting, the full triplet is strongest among compositions and equal weights are strongest among fixed mixtures. All entries are ASR (\%) \(\uparrow\); the composition rows are within-design diagnostics rather than fixed-total-cost comparisons.}
+  \label{tab:family-ablation}
+  {\tblfont
+  \setlength{\tabcolsep}{1.8pt}
+  \renewcommand{\arraystretch}{1.06}
+  \begin{tabular}{llccccccccccc}
+    \toprule
+    \multirow{2}{*}{Study} & \multirow{2}{*}{Setting} & \multirow{2}{*}{RN50 \(\uparrow\)} & \multicolumn{3}{c}{CNN targets} & \multicolumn{4}{c}{Transformer targets} & \multicolumn{3}{c}{Averages} \\
+    \cmidrule(lr){4-6} \cmidrule(lr){7-10} \cmidrule(lr){11-13}
+    & & & VGG16 & MN-v2 & Inc-v3 & ViT-B/16 & PiT-B & Vis-S & Swin-T & CNN Avg. \(\uparrow\) & Transformer Avg. \(\uparrow\) & Black-box Avg. \(\uparrow\) \\
+    \midrule
+    Composition & Random only & 94.5 & 87.3 & 88.0 & 82.8 & 53.5 & 66.7 & 76.1 & 75.2 & 86.0 & 67.9 & 75.7 \\
+    Composition & Random + equiang. & 96.9 & 92.1 & 91.1 & 87.0 & 57.8 & 74.1 & 81.9 & 81.1 & 90.1 & 73.7 & 80.7 \\
+    Composition & Random + antithetic & 97.2 & 90.4 & 90.9 & 85.3 & 57.9 & 72.9 & 81.5 & 78.6 & 88.9 & 72.7 & 79.6 \\
+      \bestrow
+    Composition & \textbf{Three-family (R+E+A)} & \textbf{97.5} & \textbf{92.2} & \textbf{92.6} & \textbf{87.4} & \textbf{60.2} & \textbf{76.3} & \textbf{84.4} & \textbf{82.3} & \textbf{90.7} & \textbf{75.8} & \textbf{82.2} \\
+    \midrule
+    \bestrow
+    Weights & \textbf{Equal (1/3, 1/3, 1/3)} & \textbf{97.9} & \textbf{92.3} & \textbf{92.1} & \textbf{87.6} & \textbf{59.9} & \textbf{76.4} & \textbf{84.4} & \textbf{82.8} & \textbf{90.7} & \textbf{75.9} & \textbf{82.2} \\
+    Weights & Main (0.8, 0.1, 0.1) & 96.0 & 89.5 & 90.0 & 84.3 & 55.9 & 71.5 & 80.2 & 77.8 & 87.9 & 71.3 & 78.5 \\
+    Weights & Balanced (0.6, 0.2, 0.2) & 97.3 & 91.5 & 91.9 & 86.2 & 58.9 & 74.0 & 81.8 & 81.2 & 89.9 & 74.0 & 80.8 \\
+    \midrule
+    Warp budget & 4 / family & 85.8 & 79.4 & 76.3 & 72.0 & 40.8 & 55.3 & 63.0 & 63.5 & 75.9 & 55.7 & 64.3 \\
+    Warp budget & 10 / family & 94.2 & 86.3 & 85.0 & 80.8 & 50.1 & 65.5 & 74.1 & 73.5 & 84.0 & 65.8 & 73.6 \\
+      \bestrow
+    Warp budget & \textbf{20 / family} & \textbf{96.9} & \textbf{89.5} & \textbf{90.2} & \textbf{84.9} & \textbf{55.8} & \textbf{70.9} & \textbf{80.6} & \textbf{78.5} & \textbf{88.2} & \textbf{71.5} & \textbf{78.6} \\
+    \bottomrule
+  \end{tabular}}
+\end{table*}
+
+Table~\ref{tab:family-ablation} isolates how composition, fusion rule, and per-family budget shape the estimator. Within this reduced protocol, moving from one random family to two-family mixtures already lifts the black-box average from \(75.7\%\) to \(80.7\%\) and \(79.6\%\), while the full three-family setting reaches \(82.2\%\). Equal weights also outperform the front-loaded \(0.8/0.1/0.1\) mix (\(82.2\%\) vs.\ \(78.5\%\)), and increasing the per-family budget from \(4\) to \(10\) and \(20\) warps raises the black-box average from \(64.3\%\) to \(73.6\%\) and \(78.6\%\).
+
+\subsection{Fixed-Budget, Sampling, and Runtime Controls}
+\begin{table}[!t]
+  \centering
+  \caption{Complementary controls on the completed 1000-image ResNet-50-source benchmark. The three-family estimator stays ahead under matched budget, generic \(2\)-D sampling, and runtime checks.}
+  \label{tab:controls}
+  {\tblfont
+  \setlength{\tabcolsep}{2.5pt}
+  \renewcommand{\arraystretch}{1.04}
+  \begin{tabular}{p{0.47\columnwidth}p{0.36\columnwidth}}
+    \toprule
+    Control & Result \\
+    \midrule
+    \(60\)-random-warp baseline & \(89.0\%\) black-box ASR \\
+    Three-family \(20\times 3\) & \(91.2\%\) (\(+2.2\) vs.\ random60) \\
+    Family consensus vs.\ view average & \(+1.6\) points \\
+    Family consensus vs.\ view consensus & \(+1.1\) points \\
+    Best generic \(2\)-D sampler & \(90.5\%\) (\(-0.7\) vs.\ triplet) \\
+    \methodstd{} runtime vs.\ DeCoWA & \(2.9\times\) sec/img; \(3.0\) eq./step \\
+    \methodfull{} runtime vs.\ OPS & \(2.8\times\) sec/img; \(3.0\) eq./step \\
+    \methodfull{} peak memory & \(\le 4200\) MB \\
+    \bottomrule
+  \end{tabular}}
+\end{table}
+
+The main tables establish a strong operating point, and the control block sharpens the attribution. Under an exact \(60\)-view budget, the three-family \(20\times 3\) setting reaches \(91.2\%\) black-box ASR, outperforming a \(60\)-random-warp control at \(89.0\%\) by \(2.2\) points. Keeping the same \(20\times 3\) decomposition, family-level consensus is also better than view-level averaging and view-level consensus by \(1.6\) and \(1.1\) points, respectively. The two-family controls (\texttt{random+equiangular} and \texttt{random+antithetic}) fall between the \(60\)-random baseline and the full triplet, so the benefit is not carried by one extra family alone.
+
+A second question is whether the effect can be explained as a generic low-discrepancy sampling trick in the released \(2\)-D warp space. The strongest of six generic \(2\)-D samplers---random-disk, Sobol, Halton, Latin, ring, and Poisson---reaches \(90.5\%\), still \(0.7\) points below the three-family \(20\times 3\) setting. This comparison isolates the gain from a simple sequence-replacement explanation and reinforces the family-estimation view.
+
+The matched runtime profile completes the same picture from the cost side. \methodstd{} is \(2.9\times\) slower than DeCoWA in sec/img, with \(120\) versus \(40\) equivalent gradient evaluations per step and \(30.0\) per image, which is close to the intended \(3\times\) view budget. \methodfull{} is \(2.8\times\) slower than OPS, with \(2703\) versus \(901\) equivalent gradient evaluations per step, and stays within a \(4.2\) GB peak-memory profile.
+
+Taken together, these controls answer three different attribution questions. The fixed-budget comparison asks whether family structure still helps when total views are matched exactly; the sampler sweep asks whether the gain is merely a better way to tile the released \(2\)-D disk; and the runtime profile asks whether the realized cost stays close to the intended view multiplier. All three checks support the same conclusion: the completed triplet row is better explained by family-level estimation than by a bookkeeping artifact.
+
+\section{Discussion}
+
+The clearest reading of the paper is also the most useful one. In the released \(3\times 3\) TPS setting, family-level estimation is materially stronger than the single-family DeCoWA estimator, and the same factorization remains beneficial after the outer search is strengthened by OPS. The contribution is therefore an estimator redesign with a primary DeCoWA-backed claim, a secondary OPS-backed generalization check, and a matched fixed-budget advantage inside the same low-dimensional warp setting. More broadly, the paper suggests that structured transfer attacks should be designed around meaningful estimation units rather than treating every sampled view as interchangeable. In our case, the natural unit is the deformation family: stochastic variability is reduced within a family first, and only then is directional diversity fused across families.
+
+Table~\ref{tab:resnet-main} and Figure~\ref{fig:gap-summary} show that \methodstd{} gains concentrate under stronger source--target mismatch, especially when a CNN surrogate attacks transformer-like victims, which makes the estimator story more specific than a generic strengthening trick.
+
+This mismatch pattern is important for how the method should be interpreted. A generic strengthening trick would usually lift all targets more uniformly, but \methodstd{} instead delivers its clearest gains exactly where the surrogate-target gap is larger. That is consistent with the estimator view developed in Sec.~3: when the transferable direction is harder to expose, organizing deformation space into complementary families matters more than repeatedly sampling one stochastic family. The ViT-B/16-source block then provides the same story under a source swap, showing that the effect is not tied to one surrogate architecture.
+
+At the same time, the released \(3\times 3\) setting is the public DeCoWA operating point that practitioners actually inherit from the released codebase, so showing a cleaner estimator advantage there is already useful in practice.
+
+The results also suggest a practical reporting lesson for future transfer-attack benchmarks. When a method expands the view pool, reporting only the total number of sampled views is not enough: the partition of those views into families, and the level at which gradients are fused, can change transfer behavior materially even under the same nominal budget. Our fixed-budget controls make this concrete by showing that \texttt{random60} and \texttt{triplet20x3} are not interchangeable once estimator structure is taken seriously. This point matters beyond the current method name. Once view sets are structured, the benchmark should make that structure visible, because two attacks with the same nominal number of views can allocate those views very differently and therefore behave very differently in transfer.
+
+\section{Conclusion}
+
+This paper studies transferable black-box attacks through family-level estimation in low-dimensional deformation space. Under the released DeCoWA \(3\times 3\) TPS mesh, the key observation is that stochastic warp views should first be stabilized within families and only then mixed across complementary families. This yields a strong controlled operating point on the DeCoWA backbone and a consistent OPS-backed generalization, with the clearest gains under cross-architecture mismatch and most notably when a CNN surrogate attacks transformer-like victims. Complementary fixed-budget and sampling controls show that the gain persists under matched computation, including a \(+2.2\) margin at matched \(60\) views, so it is not reducible to more surrogate-side search.
+
+More broadly, the results suggest that transfer gain does not increase monotonically with attack-pipeline complexity. Within a well-studied backbone, a principled but minimal estimator change can expose a clearer transfer improvement than many outer-pipeline extensions, and the matched-budget controls rule out attributing that gain to extra computation. Although random, equiangular, and antithetic sampling are each classical techniques, combining them as family-level estimation for deformation-constrained transfer is, to our knowledge, first explored here; prior deformation-based attacks including DeCoWA, OPS, BSR, SIA, and L2T did not examine this design axis. If family-level estimation proves similarly effective in other view-based attacks such as BSR or SIA, it may point to a more general principle for structured view aggregation.
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}

@@ -1,4 +1,1 @@
-Static homepage route placeholder.
-Current public-facing profile: /
-Publications: /publications/
-Current work: /current-work/
+Public homepage route.

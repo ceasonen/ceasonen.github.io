@@ -1,2 +1,1 @@
-Static publications route placeholder.
-Current public-facing publications: /publications/
+Publications route.
