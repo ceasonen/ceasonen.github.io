@@ -30,16 +30,15 @@
 - Check 2: repeated `rg` searches confirmed there are no remaining awards/CV nav entries, no old KR/WCL-specific manuscript wording, and no stale `chen2026arg` / old BibTeX residue in the exported files.
 - Check 3: `git diff --stat -- index.html index.txt publications/index.html publications/index.txt` confirms the final delta is limited to text substitutions, with no broad structural rewrite.
 
-## 2026-04-19 Restore-And-Add MM NeurIPS
+## 2026-04-19 Full Git Restore To Previous Version
 
-- Restored the broken exported homepage/publications files back to the previous good git state from commit `9610fc9` before making any new edits.
-- Then added exactly two under-review entries on that clean baseline: one ACM Multimedia paper (the orthogonal distillation paper) and one NeurIPS paper.
-- Kept the scope at the export/text layer only: `index.html`, `index.txt`, `publications/index.html`, and `publications/index.txt`.
-- Did not edit `_next/static/css`, `_next/static/chunks`, `404`, `awards`, `cv`, images, or any other visual asset.
-- Removed the temporary local repair script after the data injection was verified.
+- Restored the site files directly from git commit `9610fc9` instead of doing any manual patching on the exported HTML.
+- This restore covered `index.html`, `index.txt`, `publications/index.html`, and `publications/index.txt`, which are the only tracked site files that differed from `9610fc9`.
+- No CSS, JS chunk, layout asset, route page, or image file was edited during this restore.
+- This action was done first to recover the previous working site state before any further publication edits.
 
-## 2026-04-19 Verification For Restore-And-Add
+## 2026-04-19 Verification For Full Git Restore
 
-- Check 1: `git diff --name-only` stays limited to the four exported text files after restoring the good baseline and inserting the two new entries.
-- Check 2: repeated `rg` searches confirmed both new titles and both under-review venue strings appear in homepage and publications exports.
-- Check 3: JavaScript syntax validation of inline scripts in `index.html` and `publications/index.html` passes after the repair, which guards against the blank-page failure caused by malformed embedded payload strings.
+- Check 1: `git diff --name-status 9610fc9..HEAD` was reviewed before restore and showed only the five expected files differed.
+- Check 2: after checkout from `9610fc9`, the site content files match the previous git version again, with only `conclusion.md` carrying the new action log.
+- Check 3: the restore was performed from git directly, not by reconstructing or hand-editing the page structure.
