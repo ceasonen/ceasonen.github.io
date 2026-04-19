@@ -1,0 +1,355 @@
+\documentclass[journal]{IEEEtran} 
+\usepackage{amsmath,amsfonts} 
+\usepackage{amsthm}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array} 
+\usepackage{textcomp} 
+\usepackage{stfloats} 
+\usepackage{url} 
+\usepackage{verbatim} 
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{bm}
+\usepackage{xcolor}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+
+\begin{document}
+
+\title{Learning-Aided Privacy Beamforming for ISAC}
+
+\author{Cheng~Chen,~\IEEEmembership{Student Member,~IEEE,}
+    and Fan~Xu,~\IEEEmembership{Graduate Student Member,~IEEE}%
+\thanks{The authors are with the College of Electronic and Information Engineering, Tongji University, Shanghai 201804, China (e-mails: 2351445@tongji.edu.cn; xxiaof999@tongji.edu.cn). }%
+\thanks{Corresponding author: Fan Xu.}}
+\markboth{IEEE WIRELESS COMMUNICATIONS LETTERS,~Vol.~XX, No.~XX, Month~2026}{Chen \MakeLowercase{\textit{et al.}}: Learning-Aided Privacy Beamforming for ISAC}
+
+\maketitle
+
+\begin{abstract}
+We study echo-leakage suppression for location privacy in ISAC, where a passive eavesdropper infers UE bearing from downlink echoes created by single-AP transmission. Unlike secrecy-rate design against decoding attackers, the goal here is to degrade a UE-dependent echo-leakage proxy while preserving UE communication QoS. Under the adopted single-bounce model, the rank-one echo structure reduces Eve's effective SNR to a scalar ratio independent of the UE$\rightarrow$Eve angle, so the privacy-relevant channel uncertainty is captured by a composite AP-side echo vector. A norm-bounded uncertainty set on this vector yields a fixed-level semi-infinite quadratic constraint, which is reformulated losslessly through the S-procedure. We further prove that the lifted beamforming SDP is tight, yielding a bisection-based exact solver up to the prescribed tolerance. For online deployment, we restrict transmission to a one-parameter rank-one family and fit a lightweight one-shot mapper on offline structural labels, followed by deterministic QoS repair. Simulations show substantial leakage reduction relative to generic AN baselines, a smaller gain over a strong No-AN cancellation baseline, and sub-millisecond online inference.
+\end{abstract}
+
+\begin{IEEEkeywords}
+ISAC, location privacy, robust beamforming, artificial noise, S-procedure, learning-aided optimization.
+\end{IEEEkeywords}
+
+\section{Introduction}
+\IEEEPARstart{I}{ntegrated} sensing and communication (ISAC) unifies communication and sensing in shared hardware and spectrum \cite{liu2023integrated,giordani2020toward}. A multi-antenna AP can exploit the same waveform for downlink service and environment interaction, which makes ISAC attractive for beyond-5G and 6G deployments.
+
+The same downlink transmission also creates a privacy risk. Wireless-sensing studies show that RF observations can leak user location and behavior without payload decoding, turning Eve from a conventional communication eavesdropper into an unauthorized sensor \cite{zhu2018adversarial}. In the present setting, UE-related echoes along the AP$\rightarrow$UE$\rightarrow$Eve path enable passive bearing inference and privacy leakage in ISAC deployments \cite{zhou2022aoa,da2023multi,ren2024secure}. Under the adopted single-bounce model, the echo channel is rank one, so the privacy-relevant uncertainty reduces to an effective transmit-side vector~$\bar{\mathbf{a}}$. Since the transmitter only has coarse echo knowledge, privacy protection must tolerate vector mismatch rather than a single nominal geometry.
+
+Structured transmit control, including targeted AN when beneficial, is therefore needed to degrade Eve's echo observation while preserving UE communication quality. Unlike secrecy-rate formulations for active decoding eavesdroppers \cite{khisti2010secure,goel2008guaranteeing}, our objective is to suppress the echo-SNR proxy of a purely sensing-oriented Eve. Directly parameterizing angular mismatch would obscure the underlying low-dimensional echo structure, while solving the resulting uncertainty-aware design online is still too costly for slot-level control, which motivates an exact offline oracle and a learned online mapper.
+
+The main challenge is therefore structural as well as computational. Starting directly from the matrix-valued echo channel would suggest a high-dimensional design over geometry-dependent parameters. The key idea here is to first expose the rank-one echo structure and identify the true privacy-relevant quantity, namely the effective transmit-side vector~$\bar{\mathbf{a}}$, before constructing an exact offline solver and a structured online rule.
+
+\textit{Related work:} Most ISAC beamforming studies optimize sensing quality rather than suppress it \cite{liu2021cramer,song2023intelligent,xing2023joint}. Wireless-sensing literature has documented unauthorized RF sensing and CSI-obfuscation defenses \cite{zhu2018adversarial,cominelli2022antisense}. Closer to the present privacy setting, recent ISAC works study sensing eavesdroppers, privacy assessment in multi-static or cell-free deployments, sensing-resistant beamforming, and radar stealth against unauthorized sensing \cite{da2023multi,ren2024secure,ma2024sensing,xu2025intelligent,zheng2024intelligent}. Learning-based beamforming methods mainly accelerate generic wireless optimization rather than privacy-structured design \cite{balatsoukas2019deep,hu2020iterative,chen2023graph,wang2024heterogeneous}. These works clarify the threat of illicit sensing, but they do not exploit the adopted single-bounce echo structure to reduce privacy design to a composite transmit-side uncertainty model and a one-parameter online rule.
+
+\textit{Contributions:} (i)~We show that the adopted rank-one echo structure reduces Eve's leakage SNR to a scalar ratio that is independent of the receive-side echo angle, revealing that the effective transmit-side vector~$\bar{\mathbf{a}}$ is the sole channel parameter governing the adopted privacy proxy. (ii)~We model the residual uncertainty on~$\bar{\mathbf{a}}$ via a norm-bounded set, apply a lossless S-procedure reformulation for each fixed leakage level, and prove that the resulting semidefinite lift is tight, yielding a bisection-based exact SDP solver (Algorithm~\ref{alg:robust}). (iii)~We compress online deployment to a one-parameter rank-one beam/AN family and fit a lightweight one-shot mapper from offline structural labels; deterministic power repair then enforces QoS online without invoking the oracle variable~$t$.
+
+\textit{Notation:} Boldface lowercase and uppercase letters denote vectors and matrices, respectively. $(\cdot)^H$, $\|\cdot\|$, and $\mathrm{Tr}(\cdot)$ denote conjugate transpose, Euclidean norm, and trace. $\mathbf{A}\succeq 0$ means $\mathbf{A}$ is positive semidefinite. $\mathbb{C}^n$ denotes the $n$-dimensional complex vector space.
+
+
+
+
+\section{System Model}
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.45in]{fig1_system_model.pdf}
+\caption{ISAC privacy system model. The UE-related echo path (AP$\rightarrow$UE$\rightarrow$Eve) is governed by the effective composite vector~$\bar{\mathbf{a}}$.}
+\label{fig_system_model}
+\end{figure}
+
+Consider an integrated sensing and communication (ISAC) system consisting of a single access point (AP) and a single user equipment (UE). The AP is equipped with $N_t$ transmit antennas, while the UE is configured with $N_r$ receive antennas. Additionally, an eavesdropper (Eve) with $M_e$ receive antennas attempts to infer the UE's location information via its echo signal, as the direct AP-Eve channel is blocked by obstacles since Eve intends to remain hidden from the AP's line of sight. 
+
+The channel between the AP and the UE is denoted as $\mathbf{H}_u \in \mathbb{C}^{N_r \times N_t}$, while the channel between UE and Eve is given by
+\begin{align}
+\mathbf{H}_{e} = \alpha\sqrt{\beta}\mathbf{a}_e(\psi_e) \mathbf{a}_{u}^H(\phi_{u}) \in \mathbb{C}^{M_e \times N_r} \label{eqn H_e}
+\end{align}
+which is assumed to be line-of-sight (LoS), where $\alpha$ denotes the antenna gain, $\beta$ represents the path-loss factor for the channel between UE and Eve, and $\psi_e$ and $\phi_{u}$ denote the angle of arrival (AoA) and angle of departure (AoD) from the UE to Eve, respectively. In \eqref{eqn H_e}, $\mathbf{a}_e(\psi_e)$ and $\mathbf{a}_{u}(\phi_{u})$ represent the receive and transmit steering vectors at Eve and UE, respectively, which are given by
+\begin{align}
+&\mathbf{a}_e(\psi_e) = \frac{1}{\sqrt{M_e}}\!\left[1, e^{j\frac{2\pi d_e}{\lambda}\sin\psi_e}, \dots, e^{j\frac{2\pi d_e}{\lambda}(M_e-1)\sin\psi_e}\right]^T,\notag\\
+&\mathbf{a}_{u}(\phi_u) = \frac{1}{\sqrt{N_r}}\!\left[1, e^{j\frac{2\pi d_u}{\lambda}\sin\phi_{u}}, \dots, e^{j\frac{2\pi d_u}{\lambda}(N_r-1)\sin\phi_{u}}\right]^T,\notag
+\end{align}
+where $d_e$ and $d_u$ denote the adjacent antenna spacing at Eve and UE, respectively.
+
+Owing to the uncertainty in Eve’s location and antenna gain, we assume that $\mathbf{a}_e(\psi_e)$ and $\alpha^*\sqrt{\beta}\mathbf{a}_u(\phi_u)$ lie within spherical uncertainty sets defined as
+\begin{subequations}\label{eq:uncertainty_set}
+\begin{align}
+\mathcal{U}_e &\triangleq \left\{\mathbf{a}_e(\psi_e) : \left\|\mathbf{a}_e(\psi_e) - \hat{\mathbf{a}}_e\right\|^2 \leq \eta\right\}, \label{eq:uncertainty_set 1}\\
+\mathcal{U}_u &\triangleq \left\{\alpha^*\sqrt{\beta}\mathbf{a}_u(\phi_u) : \left\|\alpha^*\sqrt{\beta}\mathbf{a}_u(\phi_u) - \hat{\alpha}^*\sqrt{\hat{\beta}}\hat{\mathbf{a}}_u\right\|^2 \leq \epsilon\right\}, \label{eq:uncertainty_set 2}
+\end{align}
+\end{subequations}
+respectively. Here, $\hat{\mathbf{a}}_e$ and $\hat{\alpha}^*\sqrt{\hat{\beta}}\hat{\mathbf{a}}_u$ denote the centers of $\mathcal{U}_e$ and $\mathcal{U}_u$, while $\eta$ and $\epsilon$ represent the radius of the respective uncertainty balls. Combining the AP-UE channel $\mathbf{H}_u$ and UE-Eve channel $\mathbf{H}_e$, the cascaded channel between the AP and Eve is given by
+\begin{align}
+\mathbf{H}_e \mathbf{H}_u = \alpha\sqrt{\beta} \mathbf{a}_e(\psi_e) \mathbf{a}_u^H(\phi_u) \mathbf{H}_u. \label{eqn H_ae}
+\end{align}
+Combining \eqref{eqn H_ae} and \eqref{eq:uncertainty_set 2}, we obtain
+\begin{align}
+\left\|{\alpha}\sqrt{\beta}\mathbf{a}_u^H(\phi_u) \mathbf{H}_u - \hat{\alpha}\sqrt{\hat{\beta}}\hat{\mathbf{a}}_u^H \mathbf{H}_u\right\|^2
+\leq \epsilon \lambda_u,\label{eqn bar{a} region}
+\end{align}
+which characterizes the feasible region of $\alpha\sqrt{\beta}\mathbf{a}_u^H(\phi_u) \mathbf{H}_u$, where $\lambda_u$ denotes the maximum eigenvalue of $\mathbf{H}_u\mathbf{H}_u^H$.
+
+
+The UE is assumed to request a single data stream, denoted by $s$ with $\mathbb{E}[|s|^2] = 1$, from the AP. To prevent information leakage, the AP transmits the information symbol $s$ to the UE along with artificial noise. The aggregated transmit signal is given by
+\begin{equation}
+\mathbf{x} = \mathbf{w}\, s + \mathbf{n}_{\mathrm{AN}}, \label{eq:tx_signal}
+\end{equation}
+where $\mathbf{w} \in \mathbb{C}^{N_t}$ is the transmit beamforming vector, and $\mathbf{n}_{\mathrm{AN}} \sim \mathcal{CN}(\mathbf{0}, \mathbf{Z})$ denotes the artificial noise following a circularly symmetric complex Gaussian distribution with covariance matrix $\mathbf{Z} \succeq 0$ to be designed. The beamforming vector and the artificial noise should satisfy the power constraint $\mathbf{w}^H\mathbf{w}+\mathrm{Tr}(\mathbf{Z})\le P_{\mathrm{tot}}$. The received signals of the UE and the Eve are given by
+\begin{subequations}\begin{align}
+&\textrm{UE: }\mathbf{y}_u = \mathbf{H}_{u} ( \mathbf{w} s + \mathbf{n}_{\mathrm{AN}} ) + \mathbf{n}_u,\label{eq:UE_obs}\\
+&\textrm{Eve: } \mathbf{y}_e = \mathbf{H}_e \mathbf{H}_u (\mathbf{w} s + \mathbf{n}_{\mathrm{AN}} ) + \mathbf{n}_e, \label{eq:eve_obs}
+\end{align}\end{subequations}
+respectively, where $\mathbf{n}_u$ and $\mathbf{n}_e$ are the additive white Gaussian noise satisfying $\mathbf{n}_u\sim \mathcal{CN}(0,\sigma_u^2\mathbf{I})$ and $\mathbf{n}_e\sim \mathcal{CN}(0,\sigma_e^2\mathbf{I})$.
+
+We assume that the UE employs the maximum ratio combiner (MRC) for message decoding, where the combining vector is selected as the dominant left singular vector of $\mathbf{H}_u$, denoted by $\mathbf{v}_u$. Accordingly, we define the effective channel after MRC processing as $\hat{\mathbf{h}}_u = \mathbf{H}_u^H \mathbf{v}_u$. The resulting signal-to-noise ratio (SNR) at the UE is given by
+\begin{equation}
+\mathrm{SNR}_u = \frac{|\hat{\mathbf{h}}_u^H \mathbf{w}|^2}{\hat{\mathbf{h}}_u^H \mathbf{Z} \hat{\mathbf{h}}_u + \sigma_u^2}. \label{eq:snr_u}
+\end{equation}
+The SNR at the Eve is given by
+\begin{align}
+\mathrm{SNR}_e =& \frac{ \mathbf{w}^H (\mathbf{H}_e \mathbf{H}_u)^H\mathbf{H}_e \mathbf{H}_u \mathbf{w}}{\mathrm{Tr}(\mathbf{H}_e \mathbf{H}_u \mathbf{Z} (\mathbf{H}_e \mathbf{H}_u)^H + \sigma_e^2\mathbf{I})}\notag\\
+=& \frac{ \mathbf{w}^H \bar{\mathbf{a}} \mathbf{a}_e(\psi_e)^H \mathbf{a}_e(\psi_e)\bar{\mathbf{a}}^H \mathbf{w}}{\mathrm{Tr}(\mathbf{a}_e(\psi_e)\bar{\mathbf{a}}^H \mathbf{Z} \bar{\mathbf{a}} \mathbf{a}_e(\psi_e)^H) + M_e \sigma_e^2}\notag\\
+=& \frac{|\bar{\mathbf{a}}^H \mathbf{w}|^2}{\bar{\mathbf{a}}^H \mathbf{Z} \bar{\mathbf{a}} + M_e \sigma_e^2}.\notag
+\end{align}
+where $\bar{\mathbf{a}}\triangleq {\alpha}^*\sqrt{\beta} \mathbf{H}_u^H \mathbf{a}_u(\phi_u)$ whose feasible region is given by \eqref{eqn bar{a} region}.
+
+To ensure secure transmission for the UE, our objective is to minimize the maximum achievable SNR at Eve within the spherical uncertainty set in \eqref{eqn bar{a} region}, while guaranteeing the target received SNR at the UE. The problem is formulated as
+\begin{subequations}\label{eq:P0}
+\begin{align}
+\min_{\mathbf{w}, \mathbf{Z}} \; & \max_{\bar{\mathbf{a}}\in\mathcal{U}_a} 
+\frac{|\bar{\mathbf{a}}^H \mathbf{w}|^2}{\bar{\mathbf{a}}^H \mathbf{Z} \bar{\mathbf{a}} + M_e \sigma_e^2} \label{eq:p0_obj}\\ 
+\mathrm{s.t.} \; 
+& \frac{|\hat{\mathbf{h}}_u^H \mathbf{w}|^2}{\hat{\mathbf{h}}_u^H \mathbf{Z} \hat{\mathbf{h}}_u + \sigma_u^2} \geq \gamma_{\mathrm{th}}, \label{eq:p0_qos}\\
+& \|\mathbf{w}\|^2 + \mathrm{Tr}(\mathbf{Z}) \leq P_{\mathrm{tot}}, \label{eq:p0_power}\\
+& \mathbf{Z} \succeq 0, \label{eq:SD}
+\end{align}
+\end{subequations}
+where $\gamma_{\mathrm{th}}$ denotes the target SNR threshold for the UE and 
+\begin{align}
+\mathcal{U}_a \triangleq \left\{\bar{\mathbf{a}} : \left\|\bar{\mathbf{a}} - \hat{\alpha}\sqrt{\hat{\beta}}\hat{\mathbf{a}}_u^H \mathbf{H}_u \right\|^2 \leq \epsilon\lambda_u\right\}.\notag
+\end{align}
+
+Problem~\eqref{eq:P0} is a non-convex fractional programming problem under composite-vector uncertainty. To solve this problem, the next section first reformulates the fixed-level semi-infinite constraint losslessly via the S-procedure, and then lifts the beamforming covariance into an SDP feasibility test whose tightness is proved in closed form. Section~\ref{section learning design} then develops a lightweight learning-based deployment rule built on the exact offline solver.
+
+
+\section{Bisection-Based Optimal Solution}\label{section Exact SDP Solver}
+The primary challenge in solving Problem~\eqref{eq:P0} lies in the fact that the inner maximization over $\bar{\mathbf{a}} \in \mathcal{U}_a$ in \eqref{eq:p0_obj} involves an infinite set of quadratic terms. To address this challenge, we first adopt the S-procedure approach to convert this semi-infinite optimization problem into a finite-dimensional linear matrix inequality (LMI). We then solve the reformulated problem via a bisection-based semidefinite programming (SDP) method, which yields an exact solution up to the prescribed tolerance.
+
+\subsection{S-Procedure}
+Introducing an epigraph variable~$t\ge 0$, the inner maximization in~\eqref{eq:P0} is equivalent to requiring
+\begin{equation}
+|\bar{\mathbf{a}}^H\mathbf{w}|^2 \leq t\!\left(\bar{\mathbf{a}}^H\mathbf{Z}\bar{\mathbf{a}}+M_e\sigma_e^2\right), \quad \forall\,\bar{\mathbf{a}}\in\mathcal{U}_a.
+\label{eq:fixed_t}
+\end{equation}
+Define two quadratic functions for $\bar{\mathbf{a}}$:
+\begin{subequations}\label{eq:f1 f2}\begin{align}
+f_1(\bar{\mathbf{a}})&\triangleq\epsilon^2\lambda_u^2-\|\bar{\mathbf{a}}-\hat{\bar{\mathbf{a}}}\|^2 \geq 0, \label{eq:f1}\\
+f_2(\bar{\mathbf{a}})&\triangleq t\!\left(\bar{\mathbf{a}}^H\mathbf{Z}\bar{\mathbf{a}}+M_e\sigma_e^2\right)-\bar{\mathbf{a}}^H\mathbf{w}\mathbf{w}^H\bar{\mathbf{a}} \geq 0, \label{eq:f2}
+\end{align}\end{subequations}
+where $\hat{\bar{\mathbf{a}}}\triangleq \hat{\alpha}^*\sqrt{\hat{\beta}} \mathbf{H}_u^H \hat{\mathbf{a}}_u$. Constraint \eqref{eq:fixed_t} is equivalent to the implication $f_1 \ge 0 \implies f_2 \ge 0$. Since $f_1(\hat{\bar{\mathbf{a}}}) = \epsilon^2\lambda_u^2 > 0$, the S-procedure can be applied \cite{boyd2004convex}, i.e., the implication $f_1 \ge 0 \implies f_2 \ge 0$ holds if and only if there exists a scalar $\lambda \ge 0$ such that $f_2(\bar{\mathbf{a}}) - \lambda f_1(\bar{\mathbf{a}}) \ge 0$ for all $\bar{\mathbf{a}}$. By introducing an augmented vector $\tilde{\mathbf{a}}=[\bar{\mathbf{a}}^T,1]^T$, this constraint is equivalent to the following linear matrix inequality (LMI)
+\begin{equation}
+\mathbf{F}\!\triangleq\!\begin{bmatrix}
+t\mathbf{Z}\!-\!\mathbf{w}\mathbf{w}^H\!+\!\lambda\mathbf{I} & -\lambda\hat{\bar{\mathbf{a}}}\\
+-\lambda\hat{\bar{\mathbf{a}}}^H & tM_e\sigma_e^2+\lambda(\|\hat{\bar{\mathbf{a}}}\|^2\!-\!\epsilon^2)
+\end{bmatrix}\!\succeq \mathbf{0}.
+\label{eq:lmi}
+\end{equation}
+By converting the inner maximization in \eqref{eq:P0} into the LMI constraint \eqref{eq:lmi}, our objective becomes finding the minimal $t\ge 0$ such that constraints \eqref{eq:p0_qos}–\eqref{eq:SD} and \eqref{eq:lmi} are satisfied.
+
+\subsection{Bisection SDP}
+We employ a bisection method to minimize $t$. For any fixed $t$, we introduce the rank-one matrix $\mathbf{W} = \mathbf{w}\mathbf{w}^H$ and formulate the following feasibility SDP problem:
+\begin{subequations}\label{eq:sdp}
+\begin{align}
+\text{find}\;\;& (\mathbf{W},\mathbf{Z},\lambda) \nonumber\\
+\mathrm{s.t.}\;\;& \begin{bmatrix}
+t\mathbf{Z}-\mathbf{W}+\lambda\mathbf{I} & -\lambda\hat{\bar{\mathbf{a}}}\\
+-\lambda\hat{\bar{\mathbf{a}}}^H & tM_e\sigma_e^2+\lambda(\|\hat{\bar{\mathbf{a}}}\|^2-\epsilon^2)
+\end{bmatrix} \succeq \mathbf{0}, \label{eq:sdp_lmi}\\
+& \hat{\mathbf{h}}_u^H\mathbf{W}\hat{\mathbf{h}}_u \geq \gamma_{\mathrm{th}}\!\left(\hat{\mathbf{h}}_u^H\mathbf{Z}\hat{\mathbf{h}}_u+\sigma_u^2\right), \label{eq:sdp_qos}\\
+& \mathrm{Tr}(\mathbf{W})+\mathrm{Tr}(\mathbf{Z})\leq P_{\mathrm{tot}},\label{eq:sdp_psd}\\
+& \mathbf{W}\succeq \mathbf{0},\;\mathbf{Z}\succeq \mathbf{0},\;\lambda\geq \mathbf{0}.
+\end{align}
+\end{subequations}
+
+It is worth noting that Problem~\eqref{eq:sdp} is a convex feasibility problem, which can be efficiently solved using standard convex optimization toolboxes such as CVX. Although the rank-one constraint on $\mathbf{W}$ is relaxed in Problem~\eqref{eq:sdp}, the following proposition establishes that, for any feasible solution $(\mathbf{W},\mathbf{Z},\lambda)$ to Problem~\eqref{eq:sdp}, there always exists a corresponding beamforming vector $\mathbf{w}$ such that $(\mathbf{w}\mathbf{w}^H,\mathbf{Z},\lambda)$ remains feasible.
+
+\begin{proposition}\label{prop:tight}
+For any given $t$, if $(\mathbf{W}^\star,\mathbf{Z}^\star,\lambda^\star)$ is feasible for Problem~\eqref{eq:sdp}, then $(\mathbf{w}^\star(\mathbf{w}^\star)^H,\mathbf{Z}^\star,\lambda^\star)$ remains feasible, where
+\begin{equation}
+\mathbf{w}^\star = \frac{\mathbf{W}^\star\hat{\mathbf{h}}_u}{\sqrt{\hat{\mathbf{h}}_u^H\mathbf{W}^\star\hat{\mathbf{h}}_u}}.
+\label{eq:rank1_recovery}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Since $\mathbf{W}^\star \succeq \mathbf{0}$, we define $\mathbf{p} = {(\mathbf{W}^\star)^{1/2}\hat{\mathbf{h}}_u}/{\sqrt{\hat{\mathbf{h}}_u^H\mathbf{W}^\star\hat{\mathbf{h}}_u}}$ which satisfies $\|\mathbf{p}\| = 1$ and $\mathbf{w}^\star(\mathbf{w}^\star)^H = (\mathbf{W}^\star)^{1/2}\mathbf{p}\mathbf{p}^H(\mathbf{W}^\star)^{1/2}$.
+We then obtain
+\begin{align}
+&\hat{\mathbf{h}}_u^H \mathbf{w}^\star(\mathbf{w}^\star)^H \hat{\mathbf{h}}_u = \hat{\mathbf{h}}_u^H \mathbf{W}^\star \hat{\mathbf{h}}_u, \notag\\
+&\mathbf{W}^\star - \mathbf{w}^\star(\mathbf{w}^\star)^H = (\mathbf{W}^\star)^{1/2}(\mathbf{I} - \mathbf{p}\mathbf{p}^H)(\mathbf{W}^\star)^{1/2} \succeq\mathbf{0}, \notag
+\end{align}
+which implies that constraints \eqref{eq:sdp_qos} and \eqref{eq:sdp_psd} are satisfied. Furthermore, it holds that
+\[
+\mathbf{F}\!\big(\mathbf{w}^\star(\mathbf{w}^\star)^H,\mathbf{Z},\lambda\big)
+= \mathbf{F}\!\big(\mathbf{W}^\star,\mathbf{Z},\lambda\big)
++ \operatorname{diag}\!\big(\mathbf{W}^\star-\mathbf{w}^\star(\mathbf{w}^\star)^H, 0\big)
+\succeq 0, \notag
+\]
+which ensures that constraint \eqref{eq:sdp_lmi} is satisfied.
+This completes the proof of Proposition~\ref{prop:tight}.
+\end{proof}
+
+To summarize, we perform a bisection search on $t$ over the initial interval $[0, t_{\mathrm{ub}}]$ and solve Problem~\eqref{eq:sdp} for each candidate $t$ to determine the global optimal value $t^\star$ of Problem~\eqref{eq:P0} up to the prescribed tolerance $\delta$. Subsequently, the optimal beamforming vector $\mathbf{w}^\star$ is recovered in closed form via Proposition~\ref{prop:tight}. Algorithm~\ref{alg:robust} summarizes our proposed approach. Note that the resulting $t^\star$ serves solely as the oracle objective value, whereas the subsequent learning stage utilizes $(\mathbf{w}^\star, \mathbf{Z}^\star)$ as training data instead of $t^\star$.
+
+\begin{algorithm}[t]
+\caption{Bisection-Based Optimal Solution}
+\label{alg:robust}
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\REQUIRE $\hat{\mathbf{h}}_u$, $\hat{\bar{\mathbf{a}}}$, $\epsilon$, $\gamma_{\mathrm{th}}$, $P_{\mathrm{tot}}$, $\sigma_u^2$, $\sigma_e^2$, tolerance $\delta$
+\ENSURE $\mathbf{w}^\star$, $\mathbf{Z}^\star$, $t^\star$
+\STATE Set $t_{\mathrm{lb}}\!\leftarrow\!0$,\; \textcolor{blue}{$t_{\mathrm{ub}}\!\leftarrow (\|\hat{\bar{\mathbf{a}}}\|\!+\!\epsilon)^2 P_{\mathrm{tot}}/(M_e\sigma_e^2)$}
+\STATE Solve the fixed-level feasibility SDP~\eqref{eq:sdp} at $t_{\mathrm{ub}}$
+\STATE \textcolor{blue}{\textbf{if} infeasible \textbf{then return} outage}
+\STATE Store the feasible initialization $(\mathbf{W}^\star,\mathbf{Z}^\star,\lambda^\star)$
+\WHILE{$t_{\mathrm{ub}}-t_{\mathrm{lb}}>\delta$}
+\STATE $t\leftarrow (t_{\mathrm{lb}}+t_{\mathrm{ub}})/2$
+\STATE Solve the fixed-level feasibility SDP~\eqref{eq:sdp} at level~$t$
+\IF{feasible}
+\STATE $t_{\mathrm{ub}}\leftarrow t$;\; store the feasible SDP solution
+\ELSE
+\STATE $t_{\mathrm{lb}}\leftarrow t$
+\ENDIF
+\ENDWHILE
+\STATE Recover $\mathbf{w}^\star\leftarrow \mathbf{W}^\star\hat{\mathbf{h}}_u/\sqrt{\hat{\mathbf{h}}_u^H\mathbf{W}^\star\hat{\mathbf{h}}_u}$
+\RETURN $\mathbf{w}^\star$, $\mathbf{Z}^\star$, $t^\star\!\leftarrow\! t_{\mathrm{ub}}$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{remark}(Complexity)
+Each fixed-$t$ step in Algorithm~\ref{alg:robust} solves one feasibility SDP with two $N_t\times N_t$ Hermitian matrix variables and one scalar variable, i.e., $2N_t^2+1$ real decision variables in total. Since the problem contains one $(N_t\!+\!1)$-dimensional LMI together with the semidefinite constraints on $\mathbf{W}$ and $\mathbf{Z}$, a standard interior-point implementation requires $\mathcal{O}(N_t^{6.5})$ complexity per fixed-$t$ solve. Hence the overall complexity is $\mathcal{O}\!\big(N_t^{6.5}\log_2((t_{\mathrm{ub}}-t_{\mathrm{lb}})/\delta)\big)$. When $\epsilon=0$, the uncertainty collapses to the nominal~$\hat{\bar{\mathbf{a}}}$ and the problem reduces to the deterministic non-robust counterpart.
+\end{remark}
+
+
+\section{One-shot Solution}\label{section learning design}
+Although Algorithm~\ref{alg:robust} yields an optimal offline oracle, it relies on iterative optimization with high computational complexity. To alleviate the computational burden, we propose a one-shot design rule for constructing the beamforming vector $\mathbf{w}$ and the AN covariance matrix $\mathbf{Z}$. Notably, the online deployment phase no longer involves the oracle-level variable $t$. By simplifying the structures of $\mathbf{w}$ and $\mathbf{Z}$ and reducing the number of optimization variables, the proposed design achieves a substantial reduction in computational complexity.
+
+\subsection{Variable Reduction}
+We focus on the two key vectors $\hat{\mathbf{h}}_u$ and $\hat{\bar{\mathbf{a}}}$ in Problem~\eqref{eq:P0} for designing the beamforming vector $\mathbf{w}$ and the AN covariance matrix $\mathbf{Z}$. Recall that $\hat{\mathbf{h}}_u$ denotes the effective channel between the UE and the AP after MRC processing, while $\hat{\bar{\mathbf{a}}}$ is the center of the feasible region $\mathcal{U}_a$ for $\bar{\mathbf{a}}$.
+
+From the perspective of beamforming design, it is intuitive from \eqref{eq:p0_obj} and \eqref{eq:p0_qos} that $\mathbf{w}$ should be selected to maximize its inner product with $\hat{\mathbf{h}}_u$ while minimizing its inner product with $\hat{\bar{\mathbf{a}}}$. We introduce two auxiliary vector: maximum ratio transmitter (MRT) $\mathbf{u}\triangleq\hat{\mathbf{h}}_u/\|\hat{\mathbf{h}}_u\|$ and $\mathbf{a}_\perp\triangleq(\mathbf{I}-\mathbf{u}\mathbf{u}^H)\hat{\bar{\mathbf{a}}}$, where $\mathbf{a}_\perp$ captures the pure Eve-related channel component in $\bar{\mathbf{a}}$ by projecting out the part aligned with $\mathbf{u}$. We then construct the beamforming vector ${\mathbf{w}}$ in the form
+\begin{equation}
+{\mathbf{w}} =\sqrt{p_w}
+\frac{\mathbf{u}-e^{-j\angle(\mathbf{u}^H\hat{\bar{\mathbf{a}}})}\kappa\mathbf{v}}
+{\left\|\mathbf{u}-e^{-j\angle(\mathbf{u}^H\hat{\bar{\mathbf{a}}})}\kappa\mathbf{v}\right\|},
+\label{eq:kappa_family}
+\end{equation}
+to balance the received signal power at the UE and the Eve, where $\mathbf{v}=\mathbf{a}_\perp/\|\mathbf{a}_\perp\|$, $p_w>0$ denotes the transmit power variable, and $\kappa>0$ denotes the weighting parameter between $\mathbf{u}$ and $\mathbf{v}$. Specifically, we have
+\begin{align}
+|\hat{\bar{\mathbf{a}}}^H \hat{\mathbf{w}}|=\big| \hat{\bar{\mathbf{a}}}^H\mathbf{u}-\kappa \|\mathbf{a}_\perp\| \big|,
+\notag
+\end{align}
+which indicates that the term $e^{-j\angle(\mathbf{u}^H\hat{\bar{\mathbf{a}}})}\kappa\mathbf{v}$ in the numerator of \eqref{eq:kappa_family} is intended to suppress the received power at Eve caused by $\mathbf{u}$, while $\mathbf{u}$ itself is designed to enhance the received signal power at the UE.
+
+To boost the AN power received at the Eve, we constrain the AN covariance matrix to the rank-one form $\mathbf{Z}=p_z\mathbf{v}\mathbf{v}^H$, where $p_z$ denotes the AN transmit power. The powers of the information-bearing signal and AN satisfy $p_w+p_z\le P_{\mathrm{tot}}$.
+
+By adopting the rank-one structure for $\mathbf{Z}$ and the affine parameterization for $\mathbf{w}$, the number of optimization variables is reduced to three, i.e., $\{\kappa,p_w,p_z\}$, which significantly lowers the computational complexity. In the following subsection, we first adopt a heuristic approach to determine the power variables $p_w$ and $p_z$, and introduce a dedicated prediction framework for $\kappa$ to further reduce the computational cost.
+
+\subsection{Parameter Design}
+We heuristically determine the power variables $p_w$ and $p_z$ by enforcing the two constraints \eqref{eq:p0_qos} and \eqref{eq:p0_power} in Problem~\eqref{eq:P0} to hold with equality. This is motivated by fully utilizing the available transmit power and minimizing signal leakage from the UE to the Eve. Accordingly, the power variables can be readily computed as
+\begin{align}
+\left\{
+\begin{array}{ll}
+p_w =\displaystyle\frac{\gamma_{\mathrm{th}}(P_{\mathrm{tot}}|\hat{\mathbf{h}}_u^H\mathbf{v}|^2+\sigma_u^2)}{|\hat{\mathbf{h}}_u^H\hat{\mathbf{w}}|^2+\gamma_{\mathrm{th}}|\hat{\mathbf{h}}_u^H\mathbf{v}|^2},\quad
+p_z = P_{\mathrm{tot}}-p_w,
+& \text{if } p_w \le P_{\mathrm{tot}}, \\[4pt]
+p_w = P_{\mathrm{tot}},\quad  p_z = 0,
+& \text{if } p_w > P_{\mathrm{tot}}
+\end{array}\right.
+\label{eq:power_repair}
+\end{align}
+
+For the weighting parameter $\kappa$, we adopt supervised learning to learn a mapping from the channel pair $(\hat{\mathbf{h}}_u,\hat{\bar{\mathbf{a}}})$ to $\kappa$. Specifically, we evaluate the beamforming vector $\mathbf{w}$ in \eqref{eq:kappa_family} for a grid of $\kappa$ values and select the optimal label $\kappa^\star$ that minimizes the worst-case signal leakage across multiple perturbations sampled from $\mathcal{U}_a$. After constructing training data pairs $(\hat{\mathbf{h}}_u,\hat{\bar{\mathbf{a}}}, \kappa^\star)$, we train a neural network to learn the mapping from the channel pair to $\kappa$. We employ fully connected neural networks (FCNs) for this task. To fully exploit wireless channel information, the network input is designed as:
+\begin{equation}
+\left[\|\hat{\mathbf{h}}_u\|, |\mathbf{u}^H\hat{\bar{\mathbf{a}}}|, \|\mathbf{a}_\perp\|, \frac{|\mathbf{u}^H\hat{\bar{\mathbf{a}}}|}{\|\mathbf{a}_\perp\|}, \frac{\|\mathbf{a}_\perp\|}{|\mathbf{u}^H\hat{\bar{\mathbf{a}}}|}, \|\hat{\bar{\mathbf{a}}}\|\right]^T.
+\notag
+\end{equation}
+
+\section{Simulation Results}
+We assume that the AP, UE, and Eve are uniformly distributed in a \(100\,\text{m} \times 100\,\text{m}\) area with a minimum inter-node distance of 8\,m. The AP–UE channel follows Rician fading with factor $K_{\mathrm{R}}=10$~dB. For the UE–Eve channel, the antenna gain and path-loss coefficient are given by \(\alpha = 1\) and \(\beta = \frac{100}{d^2}\), respectively, where \(d\) denotes the distance between the UE and Eve, with a reference distance of 10\,m. The carrier wavelength and adjacent antenna spacings are set as $N_t=16$, $M_e=16$, \(\lambda = 1\), \(d_e = 0.5\), and \(d_u = 0.5\). Unless otherwise stated, the remaining system parameters are configured as \(P_{\mathrm{tot}} = 1\)~W, $\gamma_{\mathrm{th}}=10$~dB, \(\sigma_u^2 = \sigma_e^2 = 0.1\), and \(\epsilon = 0.1\|\hat{\bar{\mathbf{a}}}\|\). For the proposed one-shot method, 5000 samples are used to train the neural network, which comprises \(3\) layers with \(\mathrm{GELU}\) as the activation function. The affine parameter $\kappa$ is chosen from $\{0,0.05,\ldots,2\}$ to train the network, and we use 2000 perturbations drawn from $\mathcal{U}_a$ to compute the objective \eqref{eq:p0_obj}. For the bisection-based method (Algorithm 1), the tolerance parameter is set as $\delta=5\times 10^{-3}$. The performance of all considered methods is evaluated over 2000 independent test scenarios.
+
+We consider 6 baseline methods where all AN-based methods allocate minimum power to meet the SNR threshold \eqref{eq:p0_power} and direct the remainder to AN.
+\begin{enumerate}
+    \item \textcolor{blue}{ZF-AN: MRT beamformer for the UE, plus one AN beam in $\mathrm{null}(\hat{\mathbf{h}}_u)$ toward $\hat{\bar{\mathbf{a}}}$, so the AN does not affect the UE};
+    \item \textcolor{blue}{NS-AN~\cite{goel2008guaranteeing}: MRT beamformer for the UE, plus isotropic AN in $\mathrm{null}(\hat{\mathbf{h}}_u)$, so the AN does not affect the UE};
+    \item AN-only: MRT beamformer with isotropic AN $\mathbf{Z}\!=\!(p_z/N_t)\mathbf{I}$;
+    \item PGD: 50-step projected gradient descent initialized from ZF-AN;
+    \item \textcolor{blue}{No-AN: leakage-aware beamformer with $\mathbf{Z}\!=\!\mathbf{0}$, where the beam phases are adjusted to cancel leakage toward $\hat{\bar{\mathbf{a}}}$};
+    \item MRT: $\mathbf{w}\!=\!\sqrt{P_{\mathrm{tot}}}\hat{\mathbf{h}}_u/\|\hat{\mathbf{h}}_u\|$ and $\mathbf{Z}=0$.
+\end{enumerate}
+
+
+\begin{table}[!t]
+\centering
+\caption{Achievable SNR and Computation Time of Different Methods.}
+\label{tab:results}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Method & Eve SNR (dB) & User SINR (dB) & Latency \\
+\midrule
+Bisection-Based & $-$19.2 $\pm$ 10.5 & 10.0 $\pm$ 0.0 & 7.30 s \\
+One-shot & $-$16.5 $\pm$ 10.0 & 10.2 $\pm$ 0.6 & 0.36 ms \\
+\midrule
+ZF-AN & $-$9.7 $\pm$ 6.4 & 10.0 $\pm$ 0.0 & 16 $\mu$s \\
+NS-AN & $-$9.2 $\pm$ 6.7 & 10.0 $\pm$ 0.0 & 14 $\mu$s \\
+AN-only & $-$8.5 $\pm$ 6.6 & 10.0 $\pm$ 0.0 & 10 $\mu$s \\
+PGD & $-$9.0 $\pm$ 6.9 & 10.0 $\pm$ 0.1 & 14.2 ms \\
+No-AN & $-$14.5 $\pm$ 7.7 & 10.0 $\pm$ 0.0 & 14 $\mu$s \\
+MRT & $-$7.6 $\pm$ 6.6 & 11.6 $\pm$ 1.2 & 4 $\mu$s \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:results} compares the user SNR, Eve SNR, and computational latency of different schemes. All considered methods satisfy the prescribed user SNR threshold. The bisection-based approach achieves the lowest Eve SNR, as its optimality is guaranteed by Proposition~\ref{prop:tight}. However, it incurs high computational latency due to the iterative bisection search. To overcome this limitation, the one-shot method reduces the computational time by more than 20,000 times, with an Eve SNR increment of less than 3 dB. The PGD method entails significantly higher computational latency than the one-shot scheme, yet yields a larger Eve SNR, which demonstrates the limited efficacy of gradient-based optimization for the formulated problem. Although ZF-AN, NS-AN, AN-only, and MRT require drastically lower runtime, their corresponding Eve SNRs are substantially higher than those of the proposed methods. The No-AN scheme achieves far lower computational latency than the one-shot method, with only a 2 dB increase in Eve SNR. This is attributed to the small number of AP antennas. Specifically, additional numerical simulations demonstrate that this Eve SNR gap grows as the number of AP antennas increases.
+
+\begin{figure}[!t]
+\centering
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[width=\linewidth]{fig3_gamma.pdf}\\[-1mm]
+\footnotesize (a) Varying UE QoS target $\gamma_{\mathrm{th}}$.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[width=\linewidth]{fig3_nt.pdf}\\[-1mm]
+\footnotesize (b) Varying AP antenna number $N_t$.
+\end{minipage}
+\caption{Worst-case Eve SNR under different UE QoS targets and AP antenna numbers.}
+\label{fig_sensitivity}
+\end{figure}
+
+Fig.~\ref{fig_sensitivity}(a) illustrates the worst-case Eve SNR as a function of the UE SNR threshold $\gamma_{\mathrm{th}}$. When $\gamma_{\mathrm{th}}$ is small, the proposed bisection-based and one-shot methods both achieve significantly lower Eve SNR than the benchmark schemes, while the bisection-based method remains the best and the one-shot method closely tracks it. These findings align with the results in Table~\ref{tab:results}. As $\gamma_{\mathrm{th}}$ increases, the gap in Eve SNR between the proposed methods and the benchmarks shrinks, since the feasible region for $\mathbf{w}$ and $\mathbf{Z}$ constricts.
+
+Fig.~\ref{fig_sensitivity}(b) presents the worst-case Eve SNR as a function of the number of AP transmit antennas $N_t$. The Eve SNR of all methods decreases as $N_t$ increases, since a larger antenna array provides additional degrees of freedom for beamforming design, which enables more effective suppression of Eve’s received signal power. For large $N_t$, the gap in Eve SNR between the proposed methods and the benchmarks becomes significant, demonstrating the effectiveness of the proposed approaches in fully leveraging the AP’s spatial degrees of freedom.
+
+% the deployment family~\eqref{eq:kappa_family} over a fixed grid $\kappa\in\{0,0.05,\ldots,2.0\}$ and select the label $\kappa^\star$ whose repaired transmit pair minimizes the sampled worst-case leakage over 64 perturbations from~$\mathcal{U}_a$.
+
+\newpage
+\section{Conclusion}
+We addressed echo-leakage suppression for location privacy in ISAC against passive eavesdroppers exploiting coherent downlink echoes. Under the adopted single-bounce model, Eve's leakage SNR reduces to a scalar ratio governed by the composite AP-side vector~$\bar{\mathbf{a}}$, and the residual uncertainty on~$\bar{\mathbf{a}}$ is handled by a lossless S-procedure reformulation with a tight lifted SDP. A lightweight one-shot mapper fitted on structural deployment labels then completes online deployment with deterministic QoS repair, substantially outperforms generic AN baselines, and stays close to the SDP export reference while keeping the reported user SINR near the target threshold. Extension to multipath UE$\rightarrow$Eve propagation, which breaks the rank-one structure and restores angle dependence, is left for future work.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
