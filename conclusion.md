@@ -60,3 +60,28 @@
 - Check 2: repeated keyword and route searches confirmed the new navigation labels are present, the `news` route payload is correct, and the two under-review papers appear in homepage/publications/CV text outputs.
 - Check 3: `git status --short` and `git diff --name-only` confirm the final site delta is restricted to exported text files:
   `index.html`, `index.txt`, `publications/index.html`, `publications/index.txt`, `cv/index.html`, `cv/index.txt`, `awards/index.html`, `awards/index.txt`, `news/index.html`, and `news/index.txt`.
+
+## 2026-04-19 CV Route And Manuscript Metadata Fix
+
+- Repaired the `cv` client-route payload by fixing the broken `zh -> en` boundary in `cv/index.txt`; this was the text-layer route issue affecting the `CV` page load path.
+- Updated the `News` page text so it no longer claims both submissions are first-author papers; it now states that the ACM MM submission is co-first and second-listed, while the NeurIPS submission is first-author.
+- Updated `CV` text in both exported route data and visible HTML to state the authorship roles for the two under-review papers, explicitly naming Yi Xu and Wenzhuo Lei.
+- Kept all edits within exported text files only; no CSS, JS chunk, layout component, or visual styling asset was modified.
+
+## 2026-04-19 Verification For CV Route And Manuscript Metadata Fix
+
+- Check 1: targeted string searches confirmed the site files no longer contain the stale `First-Author Manuscripts Under Review`, `Two first-author manuscripts...`, `一作稿件在投`, or `目前两篇一作稿件...` wording.
+- Check 2: `conda run --no-capture-output -n ai node` validation reported `RSC_OK` for `index.html`, `publications/index.html`, `news/index.html`, and `cv/index.html`, confirming the hidden payload scripts still parse.
+- Check 3: a direct boundary check on `cv/index.txt` now passes for the repaired `"},"en":{"type":"text"...` transition, and final content checks confirm the MM / NeurIPS roles plus Yi Xu / Wenzhuo Lei appear where intended.
+
+## 2026-04-20 Push And Release Verification
+
+- Performed a final release check on the exported site files before pushing.
+- Confirmed the text-only manuscript updates remain consistent across homepage, publications, news, and CV outputs.
+- Prepared the staged site changes for commit and push on `main`.
+
+## 2026-04-20 Verification For Push And Release
+
+- Check 1: keyword scans confirmed the stale `First-Author Manuscripts Under Review` / `一作稿件在投` wording is absent from the site files, while the new MM and NeurIPS authorship-role text is present.
+- Check 2: hidden payload parsing passed again with `RSC_OK` on `index.html`, `publications/index.html`, `news/index.html`, and `cv/index.html`; the repaired `cv/index.txt` boundary check also passed.
+- Check 3: final role-specific checks passed for the ACM MM co-first-second-listed wording and the NeurIPS first-author wording in both `news` and `cv` exports before push.
