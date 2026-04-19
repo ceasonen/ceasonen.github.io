@@ -42,3 +42,21 @@
 - Check 1: `git diff --name-status 9610fc9..HEAD` was reviewed before restore and showed only the five expected files differed.
 - Check 2: after checkout from `9610fc9`, the site content files match the previous git version again, with only `conclusion.md` carrying the new action log.
 - Check 3: the restore was performed from git directly, not by reconstructing or hand-editing the page structure.
+
+## 2026-04-19 Text-Only Navigation And Content Expansion
+
+- Kept the restored PRISM visual style unchanged and modified only exported text/content files.
+- Expanded the site navigation to `About`, `Publications`, `News`, `Highlights`, and `CV` in the existing template structure.
+- Added a new `news/` page by reusing the existing exported page template and replacing only route/content text.
+- Rewrote homepage, publications, CV, and highlights copy to be more professional and research-focused.
+- Added the two requested under-review first-author manuscripts:
+  `If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization` and
+  `Auditable Algorithmic Reasoning via Contract-Grounded Traces`.
+- Updated hidden RSC payload text so navigation labels, metadata, routes, and page content match the visible HTML, while leaving CSS and JS assets untouched.
+
+## 2026-04-19 Verification For Text-Only Navigation And Content Expansion
+
+- Check 1: inline script syntax was validated for `index.html`, `publications/index.html`, `cv/index.html`, `awards/index.html`, and `news/index.html`; all passed after fixing the `cv/index.html` payload chunk.
+- Check 2: repeated keyword and route searches confirmed the new navigation labels are present, the `news` route payload is correct, and the two under-review papers appear in homepage/publications/CV text outputs.
+- Check 3: `git status --short` and `git diff --name-only` confirm the final site delta is restricted to exported text files:
+  `index.html`, `index.txt`, `publications/index.html`, `publications/index.txt`, `cv/index.html`, `cv/index.txt`, `awards/index.html`, `awards/index.txt`, `news/index.html`, and `news/index.txt`.
