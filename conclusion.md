@@ -29,3 +29,18 @@
 - Check 1: `git diff --name-only` shows only `index.html`, `index.txt`, `publications/index.html`, and `publications/index.txt` as modified site outputs before commit.
 - Check 2: repeated `rg` searches confirmed there are no remaining awards/CV nav entries, no old KR/WCL-specific manuscript wording, and no stale `chen2026arg` / old BibTeX residue in the exported files.
 - Check 3: `git diff --stat -- index.html index.txt publications/index.html publications/index.txt` confirms the final delta is limited to text substitutions, with no broad structural rewrite.
+
+## 2026-04-19 MM And NeurIPS Text Update
+
+- Added one ACM Multimedia under-review entry and one NeurIPS under-review entry to the homepage selected papers section and the publications page.
+- The ACM Multimedia entry is the orthogonal distillation paper requested by the user.
+- Kept the change at the text/export layer only: `index.html`, `index.txt`, `publications/index.html`, and `publications/index.txt`.
+- Did not touch `_next/static/css`, `_next/static/chunks`, `404`, `awards`, `cv`, or any other visual/layout asset.
+- During validation, one malformed embedded payload segment appeared in the static exports; it was repaired by rebuilding the affected HTML payloads from the matching `.txt` data so the visible cards and embedded data stay consistent.
+- Removed all temporary local repair scripts after verification.
+
+## 2026-04-19 Verification For MM And NeurIPS Update
+
+- Check 1: searched the four exported text files and confirmed both new titles and both under-review venue strings appear where expected.
+- Check 2: searched for the previously broken payload boundary patterns and confirmed they no longer exist.
+- Check 3: `git diff --name-only` remains limited to `index.html`, `index.txt`, `publications/index.html`, and `publications/index.txt`.
