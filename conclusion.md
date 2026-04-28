@@ -85,3 +85,17 @@
 - Check 1: keyword scans confirmed the stale `First-Author Manuscripts Under Review` / `一作稿件在投` wording is absent from the site files, while the new MM and NeurIPS authorship-role text is present.
 - Check 2: hidden payload parsing passed again with `RSC_OK` on `index.html`, `publications/index.html`, `news/index.html`, and `cv/index.html`; the repaired `cv/index.txt` boundary check also passed.
 - Check 3: final role-specific checks passed for the ACM MM co-first-second-listed wording and the NeurIPS first-author wording in both `news` and `cv` exports before push.
+
+## 2026-04-28 IJCAI Publication Reordering
+
+- Updated the personal website publication order so the IJCAI paper `OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment` appears first.
+- Moved the IJCNN corresponding-author paper `Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions` to second.
+- Shifted the remaining papers after those two while preserving their existing relative order: WCL, ACM MM under review, and NeurIPS under review.
+- Applied the order consistently across homepage selected papers, the publications page, and the CV publication list.
+- Updated the site footer last-updated date from April 19, 2026 to April 28, 2026 in the touched exports.
+
+## 2026-04-28 Verification For IJCAI Reordering
+
+- Check 1: order scans passed for `index.txt`, `index.html`, `publications/index.txt`, `publications/index.html`, `cv/index.txt`, and `cv/index.html`, confirming IJCAI first and IJCNN second.
+- Check 2: publication-id scans passed for `index.txt` and `publications/index.txt`, confirming the hidden exported data order is `xu2026orthkd`, `lei2026symbolic`, `chen2026privacy`, `chen2026ovorthkd`, `chen2026argtrace`.
+- Check 3: script parsing passed for `index.html`, `publications/index.html`, and `cv/index.html`, confirming the edited RSC payload scripts remain syntactically valid.
