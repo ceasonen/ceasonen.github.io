@@ -118,3 +118,15 @@
 - Check 1: pdfLaTeX compilation completed successfully and produced a one-page PDF.
 - Check 2: Ghostscript rendered the final PDF and confirmed it contains exactly one page.
 - Check 3: The rendered preview was checked for obvious clipping, overlap, ordering errors, and missing requested authorship labels.
+
+## 2026-04-29 Website CV PDF Routing
+
+- Replaced the exported `cv/` page with a lightweight PDF redirect and embedded-object fallback pointing to `/output/pdf/cheng-chen-cv.pdf`.
+- Updated exported navigation links across the homepage, publications, news, highlights, and 404 pages so the CV tab points directly to the PDF file instead of the old generated CV HTML route.
+- Left the generated PDF itself unchanged.
+
+## 2026-04-29 Verification For Website CV PDF Routing
+
+- Check 1: searched all exported HTML and RSC text files for old `/cv` navigation hrefs; no stale CV page links remain.
+- Check 2: confirmed the final PDF exists at `output/pdf/cheng-chen-cv.pdf`.
+- Check 3: parsed inline scripts in the touched HTML files with Node and ran `git diff --check`; both passed.
