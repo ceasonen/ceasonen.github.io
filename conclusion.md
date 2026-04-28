@@ -94,6 +94,8 @@
 - Applied the order consistently across homepage selected papers, the publications page, and the CV publication list.
 - Updated the site footer last-updated date from April 19, 2026 to April 28, 2026 in the touched exports.
 
+- Marked the IJCAI OrthKD paper authors `Yi Xu*` and `Cheng Chen*` as co-first authors across homepage/publications author lists, and added explicit co-first wording in CV exports.
+
 ## 2026-04-28 Verification For IJCAI Reordering
 
 - Check 1: order scans passed for `index.txt`, `index.html`, `publications/index.txt`, `publications/index.html`, `cv/index.txt`, and `cv/index.html`, confirming IJCAI first and IJCNN second.
