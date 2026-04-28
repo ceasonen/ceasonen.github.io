@@ -101,3 +101,20 @@
 - Check 1: order scans passed for `index.txt`, `index.html`, `publications/index.txt`, `publications/index.html`, `cv/index.txt`, and `cv/index.html`, confirming IJCAI first and IJCNN second.
 - Check 2: publication-id scans passed for `index.txt` and `publications/index.txt`, confirming the hidden exported data order is `xu2026orthkd`, `lei2026symbolic`, `chen2026privacy`, `chen2026ovorthkd`, `chen2026argtrace`.
 - Check 3: script parsing passed for `index.html`, `publications/index.html`, and `cv/index.html`, confirming the edited RSC payload scripts remain syntactically valid.
+
+## 2026-04-29 CV PDF Rendering
+
+- Replaced the edited `cv/` LaTeX template placeholder content with Cheng Chen's current website/profile content.
+- Added Tongji University education, technical skills, and a compact research publication list.
+- Removed the low-value research profile and selected highlights sections to keep the CV to one page.
+- Replaced automatic bibliography printing with a manual publication list so the requested order is fixed.
+- Put the IJCAI 2026 accepted OrthKD paper first and marked Yi Xu and Cheng Chen as co-first authors.
+- Put the IJCNN 2026 paper second and marked Cheng Chen as corresponding author.
+- Built the final PDF at `output/pdf/cheng-chen-cv.pdf`.
+- Used pdfLaTeX for the final render because the template's XeLaTeX font dependency `Cochineal-Roman` was unavailable locally.
+
+## 2026-04-29 Verification For CV PDF Rendering
+
+- Check 1: pdfLaTeX compilation completed successfully and produced a one-page PDF.
+- Check 2: Ghostscript rendered the final PDF and confirmed it contains exactly one page.
+- Check 3: The rendered preview was checked for obvious clipping, overlap, ordering errors, and missing requested authorship labels.
