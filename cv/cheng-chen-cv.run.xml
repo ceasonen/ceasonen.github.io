@@ -44,10 +44,10 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>cv-llt.bcf</file>
+      <file>cheng-chen-cv.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>cv-llt.bbl</file>
+      <file>cheng-chen-cv.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -67,19 +67,19 @@
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>cv-llt</infile>
+      <infile>cheng-chen-cv</infile>
     </cmdline>
     <input>
-      <file>cv-llt.bcf</file>
+      <file>cheng-chen-cv.bcf</file>
     </input>
     <output>
-      <file>cv-llt.bbl</file>
+      <file>cheng-chen-cv.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>cv-llt.bbl</file>
+      <file>cheng-chen-cv.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>cv-llt.bcf</file>
+      <file>cheng-chen-cv.bcf</file>
     </requires>
   </external>
 </requests>
