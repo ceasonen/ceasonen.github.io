@@ -49,9 +49,9 @@
 - Expanded the site navigation to `About`, `Publications`, `News`, `Highlights`, and `CV` in the existing template structure.
 - Added a new `news/` page by reusing the existing exported page template and replacing only route/content text.
 - Rewrote homepage, publications, CV, and highlights copy to be more professional and research-focused.
-- Added the two requested under-review first-author manuscripts:
-  `If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization` and
-  `Auditable Algorithmic Reasoning via Contract-Grounded Traces`.
+- Added two requested under-review manuscripts:
+  `OV-OrthKD: Reliability-Asymmetric Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization` and
+  `AUD: Allocation Uncertainty Decomposition for Single-Pass Risk Assessment in Neural Operators`.
 - Updated hidden RSC payload text so navigation labels, metadata, routes, and page content match the visible HTML, while leaving CSS and JS assets untouched.
 
 ## 2026-04-19 Verification For Text-Only Navigation And Content Expansion
@@ -99,7 +99,7 @@
 ## 2026-04-28 Verification For IJCAI Reordering
 
 - Check 1: order scans passed for `index.txt`, `index.html`, `publications/index.txt`, `publications/index.html`, `cv/index.txt`, and `cv/index.html`, confirming IJCAI first and IJCNN second.
-- Check 2: publication-id scans passed for `index.txt` and `publications/index.txt`, confirming the hidden exported data order is `xu2026orthkd`, `lei2026symbolic`, `chen2026privacy`, `chen2026ovorthkd`, `chen2026argtrace`.
+- Check 2: publication-id scans passed for `index.txt` and `publications/index.txt`, confirming the hidden exported data order is `xu2026orthkd`, `lei2026symbolic`, `chen2026privacy`, `chen2026ovorthkd`, `chen2026aud`.
 - Check 3: script parsing passed for `index.html`, `publications/index.html`, and `cv/index.html`, confirming the edited RSC payload scripts remain syntactically valid.
 
 ## 2026-04-29 CV PDF Rendering
@@ -127,6 +127,6 @@
 
 ## 2026-04-29 Verification For Website CV PDF Routing
 
-- Check 1: searched all exported HTML and RSC text files for old `/cv` navigation hrefs; no stale CV page links remain.
+- Check 1: searched all exported HTML and RSC text files for old CV-route navigation hrefs; no stale CV page links remain.
 - Check 2: confirmed the final PDF exists at `output/pdf/cheng-chen-cv.pdf`.
 - Check 3: parsed inline scripts in the touched HTML files with Node and ran `git diff --check`; both passed.

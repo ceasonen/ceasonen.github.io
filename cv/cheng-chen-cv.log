@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  30 APR 2026 18:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  26 MAY 2026 16:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1258,7 +1258,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 94.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 94.
-<me.png, id=36, 1090.0725pt x 1453.43pt>
+<me.png, id=35, 1090.0725pt x 1453.43pt>
 File: me.png Graphic file (type png)
 <use me.png>
 Package pdftex.def Info: me.png  used on input line 94.
@@ -1268,12 +1268,7 @@ Package pdftex.def Info: me.png  used on input line 94.
 )) (./education.tex) (./education.tex) (./education.tex) (./publications.tex)
 (./publications.tex) (./publications.tex) (./publications.tex) (./awards.tex)
 (./awards.tex) (./awards.tex) (./awards.tex) (./skills.tex) (./skills.tex)
-(./skills.tex) (./skills.tex
-Overfull \hbox (3.24274pt too wide) in paragraph at lines 5--5
- []|\T1/Cochineal-OsF/m/n/10.95 Programming|
- []
-
-)
+(./skills.tex) (./skills.tex)
 
 [1
 
@@ -1297,9 +1292,9 @@ Package logreq Info: Writing requests to 'cheng-chen-cv.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39451 strings out of 473190
- 798096 string characters out of 5715801
- 1599370 words of memory out of 5000000
+ 39450 strings out of 473190
+ 798083 string characters out of 5715801
+ 1600365 words of memory out of 5000000
  62074 multiletter control sequences out of 15000+600000
  731649 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1312,10 +1307,10 @@ al-Roman.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome
 1/public/fontawesome5/FontAwesome5Free-Regular.pfb></usr/local/texlive/2025/tex
 mf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Solid.pfb></usr/local/
 texlive/2025/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb>
-Output written on cheng-chen-cv.pdf (1 page, 1984485 bytes).
+Output written on cheng-chen-cv.pdf (1 page, 1983250 bytes).
 PDF statistics:
- 106 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
+ 105 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
  6 named destinations out of 1000 (max. 500000)
  120 words of extra memory for PDF output out of 10000 (max. 10000000)
 
