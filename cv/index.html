@@ -41,12 +41,18 @@
     window.location.replace('/output/pdf/cheng-chen-cv.pdf');
   </script>
 
-
-
-
-
-
-
+<style id="cheng-site-polish">
+  :root { --cheng-ink: #172033; --cheng-accent: #7a2438; --cheng-soft: #f7f5f2; }
+  body { font-feature-settings: "liga" 1, "kern" 1; }
+  .font-serif { font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, "Times New Roman", serif !important; }
+  .text-primary { color: var(--cheng-ink) !important; }
+  .text-accent { color: var(--cheng-accent) !important; }
+  a.text-accent:hover { color: #531827 !important; }
+  .bg-neutral-100 { background-color: var(--cheng-soft) !important; }
+  .rounded-2xl { border-radius: 1rem !important; }
+  h1, h2, h3 { letter-spacing: 0 !important; }
+  .cheng-note-label { font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", "Trebuchet MS", cursive; letter-spacing: 0 !important; }
+</style>
 
 <style id="cheng-site-polish">
   :root { --cheng-ink: #172033; --cheng-accent: #7a2438; --cheng-soft: #f7f5f2; }
@@ -60,81 +66,8 @@
   h1, h2, h3 { letter-spacing: 0 !important; }
   .cheng-note-label,
   .flex.items-start.space-x-3 > .text-xs.text-neutral-500,
-  .text-sm.text-neutral-500.font-medium.bg-neutral-100 {
-    font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", "Trebuchet MS", cursive;
-    letter-spacing: 0 !important;
-  }
+  .text-sm.text-neutral-500.font-medium.bg-neutral-100 { font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", "Trebuchet MS", cursive; letter-spacing: 0 !important; }
 </style>
-
-<script id="cheng-route-cache-bust">
-(() => {
-  const version = "20260530-b53a352";
-  const routePaths = new Set(["/publications/", "/news/", "/awards/"]);
-  const versionedHref = (href) => {
-    try {
-      const url = new URL(href, window.location.href);
-      if (!routePaths.has(url.pathname)) return null;
-      url.searchParams.set("v", version);
-      return url.pathname + url.search + url.hash;
-    } catch (error) {
-      return null;
-    }
-  };
-
-  const refreshNavLinks = () => {
-    document.querySelectorAll('a[href]').forEach((anchor) => {
-      const next = versionedHref(anchor.getAttribute("href"));
-      if (next) anchor.setAttribute("href", next);
-    });
-  };
-
-  document.addEventListener("DOMContentLoaded", refreshNavLinks);
-  document.addEventListener("click", (event) => {
-    const anchor = event.target && event.target.closest ? event.target.closest("a[href]") : null;
-    if (!anchor) return;
-    const next = versionedHref(anchor.href);
-    if (!next) return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    window.location.assign(next);
-  }, true);
-})();
-</script>
-
-<script id="cheng-footer-fix">
-(() => {
-  const legacyName = "PRI" + "SM";
-  const legacyEn = ["Built", "with", legacyName].join(" ");
-  const legacyZh = "由 " + legacyName + " 构建";
-  const legacyRepo = new RegExp("github\\.com\\/xyjoey\\/" + legacyName, "i");
-  const legacyEnPattern = new RegExp(["Built", "with", legacyName].join("\\s+"), "g");
-  const legacyZhPattern = new RegExp("由\\s+" + legacyName + "\\s+构建", "g");
-  const fixFooter = () => {
-    document.querySelectorAll("footer a, footer span, footer p").forEach((node) => {
-      const text = (node.textContent || "").trim();
-      if (text === legacyEn || text === legacyZh) {
-        node.textContent = "Built by Cheng Chen";
-      }
-      if (node.tagName === "A" && legacyRepo.test(node.getAttribute("href") || "")) {
-        const span = document.createElement("span");
-        span.textContent = "Built by Cheng Chen";
-        node.replaceWith(span);
-      }
-    });
-    document.querySelectorAll("footer").forEach((footer) => {
-      footer.innerHTML = footer.innerHTML
-        .replace(legacyEnPattern, "Built by Cheng Chen")
-        .replace(legacyZhPattern, "Built by Cheng Chen")
-        .replace(/\s*🚀\s*/g, "");
-    });
-  };
-  document.addEventListener("DOMContentLoaded", () => {
-    fixFooter();
-    new MutationObserver(fixFooter).observe(document.body, { childList: true, subtree: true, characterData: true });
-  });
-  fixFooter();
-})();
-</script>
 </head>
 <body>
   <object data="/output/pdf/cheng-chen-cv.pdf" type="application/pdf">
