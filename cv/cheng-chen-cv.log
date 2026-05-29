@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  29 MAY 2026 20:48
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  30 MAY 2026 01:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1357,8 +1357,9 @@ File: me.png Graphic file (type bmp)
 
 (./education.tex) (./education.tex) (./education.tex) (./education.tex)
 (./publications.tex) (./publications.tex) (./publications.tex)
-(./publications.tex) (./awards.tex) (./awards.tex) (./awards.tex) (./awards.tex
-) (./skills.tex) (./skills.tex) (./skills.tex) (./skills.tex)
+(./publications.tex) (./research.tex) (./research.tex) (./research.tex)
+(./research.tex) (./awards.tex) (./awards.tex) (./awards.tex) (./awards.tex)
+(./skills.tex) (./skills.tex) (./skills.tex) (./skills.tex)
 
 [1
 
@@ -1374,12 +1375,12 @@ Package logreq Info: Writing requests to 'cheng-chen-cv.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38472 strings out of 473832
- 810425 string characters out of 5729482
- 1705117 words of memory out of 5000000
- 60946 multiletter control sequences out of 15000+600000
+ 38487 strings out of 473832
+ 810638 string characters out of 5729482
+ 1711166 words of memory out of 5000000
+ 60952 multiletter control sequences out of 15000+600000
  559485 words of font info for 73 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  100i,10n,120p,1206b,3916s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on cheng-chen-cv.xdv (1 page, 37252 bytes).
+Output written on cheng-chen-cv.xdv (1 page, 43056 bytes).
