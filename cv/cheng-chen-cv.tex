@@ -6,7 +6,7 @@
 % LianTze Lim (liantze@gmail.com)
 % 23 Oct, 2022
 % 24 Aug, 2024 -- Updated X (Twitter) icon
-\documentclass[a4paper,skipsamekey,11pt,english]{curve}
+\documentclass[a4paper,skipsamekey,10pt,english]{curve}
 
 % Uncomment to enable Chinese; needs XeLaTeX
 % \usepackage{ctex}
@@ -35,10 +35,23 @@
 % Change the fonts if you want
 \ifxetexorluatex % If you're using XeLaTeX or LuaLaTeX
   \usepackage{fontspec} 
-  %% You can use \setmainfont etc; I'm just using these font packages here because they provide OpenType fonts for use by XeLaTeX/LuaLaTeX anyway
-  \usepackage[p,osf,swashQ]{cochineal}
-  \usepackage[medium,bold]{cabin}
-  \usepackage[varqu,varl,scale=0.9]{zi4}
+  \setmainfont[
+    Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/tex-gyre/,
+    BoldFont=texgyrepagella-bold.otf,
+    ItalicFont=texgyrepagella-italic.otf,
+    BoldItalicFont=texgyrepagella-bolditalic.otf
+  ]{texgyrepagella-regular.otf}
+  \setsansfont[
+    Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/tex-gyre/,
+    BoldFont=texgyreheros-bold.otf,
+    ItalicFont=texgyreheros-italic.otf,
+    BoldItalicFont=texgyreheros-bolditalic.otf
+  ]{texgyreheros-regular.otf}
+  \setmonofont[
+    Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/inconsolata/,
+    BoldFont=Inconsolatazi4-Bold.otf,
+    Scale=0.9
+  ]{Inconsolatazi4-Regular.otf}
 \else % If you're using pdfLaTeX or latex
   \usepackage[T1]{fontenc}
   \usepackage[p,osf,swashQ]{cochineal}
@@ -60,6 +73,11 @@
 \includecomment{fullonly}
 % \excludecomment{fullonly}
 
+\newcommand{\contactfield}[2]{%
+  \makebox[1.35em][c]{\color{MarkerColour!80!black}#1}%
+  \hspace{0.35em}#2%
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -67,25 +85,23 @@
 \leftheader{%
   {\LARGE\bfseries\sffamily Cheng Chen}
 
-  {\large Undergraduate Researcher in Deployable Trustworthy AI and Multimodal Intelligence}\\
+  {\normalsize Undergraduate Researcher | Deployable Trustworthy AI \& Multimodal Intelligence}\\
   {\normalsize Tongji University, Shanghai, China\par}
-  \vspace{0.35em}
+  \vspace{0.3em}
 
-  \makefield{\faEnvelope[regular]}{\href{mailto:2351445@tongji.edu.cn}{\texttt{2351445@tongji.edu.cn}}}\\
-  \makefield{\faLinkedin}
-  {\href{https://www.linkedin.com/in/cheng-chen-012a83378/}{\texttt{cheng-chen-012a83378}}}
-
-  %% Next line
-  \makefield{\faGithub}{\href{https://github.com/ceasonen}{\texttt{github.com/ceasonen}}}
-
-  \makefield{\faGlobe}{\href{https://ceasonen.github.io}{\texttt{ceasonen.github.io}}}
-  % You can use a tabular here if you want to line up the fields.
+  {\renewcommand{\arraystretch}{1.18}%
+  \begin{tabular}{@{}l@{\hspace{3.1em}}l@{}}
+    \contactfield{\faEnvelope[regular]}{\href{mailto:2351445@tongji.edu.cn}{\texttt{2351445@tongji.edu.cn}}} &
+    \contactfield{\faGlobe}{\href{https://ceasonen.github.io}{\texttt{ceasonen.github.io}}} \\
+    \contactfield{\faGithub}{\href{https://github.com/ceasonen}{\texttt{github.com/ceasonen}}} &
+    \contactfield{\faLinkedin}{\href{https://www.linkedin.com/in/cheng-chen-012a83378/}{\texttt{cheng-chen-012a83378}}}
+  \end{tabular}}
 }
 
 \rightheader{~}
 \begin{fullonly}
 \photo[r]{me.png}
-\photoscale{0.13}
+\photoscale{0.105}
 \end{fullonly}
 
 \title{Curriculum Vitae}
@@ -98,6 +114,8 @@
 % If you're not a researcher nor an academic, you probably don't have any publications; delete this line.
 %% Sometimes when a section can't be nicely modelled with the \entry[]... mechanism; hack our own and use \input NOT \makerubric
 \makerubric{publications}
+
+\makerubric{research}
 
 \makerubric{awards}
 

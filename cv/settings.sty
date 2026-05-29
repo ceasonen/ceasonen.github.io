@@ -33,15 +33,15 @@
 
 \newcommand{\smallcaps}[1]{\textsc{\lowercase{#1}}}
 
-\RequirePackage[a4paper,nohead,nofoot,hmargin=2.25cm,vmargin=2cm]{geometry}
+\RequirePackage[a4paper,nohead,nofoot,hmargin=1.35cm,vmargin=0.95cm]{geometry}
 \RequirePackage{relsize}
 \RequirePackage[dvipsnames,svgnames]{xcolor}
 \RequirePackage{tikz}
 \usetikzlibrary{shapes,shadows}
 
 \RequirePackage{comment}
-\definecolor{SwishLineColour}{HTML}{88AC0B}
-\definecolor{MarkerColour}{HTML}{B6073F}
+\definecolor{SwishLineColour}{HTML}{6EA4BF}
+\definecolor{MarkerColour}{HTML}{1A5276}
 
 % If you're not a researcher nor an academic, you probably don't need biblatex; delete this line.
 \RequirePackage{biblatex}
@@ -77,12 +77,12 @@
 
 \headerscale{1}
 %\setlength{\headerspace}{6pt}
-\rubricfont{\Large\bfseries\sffamily}
-\setlength{\rubricspace}{2pt}
+\rubricfont{\large\bfseries\sffamily}
+\setlength{\rubricspace}{1pt}
 %\setlength{\rubricafterspace}{-9pt}
-\setlength{\rubricafterspace}{-3pt}
-\setlength{\subrubricspace}{3pt}
-\setlength{\subrubricbeforespace}{4pt}
+\setlength{\rubricafterspace}{-7pt}
+\setlength{\subrubricspace}{1pt}
+\setlength{\subrubricbeforespace}{2pt}
 \def\@@rubrichead#1{%
   \begin{tikzpicture}[baseline]%\
   \shade[left color=SwishLineColour!60!white, right color=white] rectangle (\@almosttextwidth,2.5pt);
@@ -94,21 +94,21 @@
 \subrubricfont{\large\bfseries\sffamily}
 \subrubricalignment{l}
 
-\newcommand{\makefield}[2]{\makebox[1.5em]{\color{MarkerColour!80!black}#1} #2\hspace{2em}}
+\newcommand{\makefield}[2]{\makebox[1.4em]{\color{MarkerColour!80!black}#1} #2\hspace{1.75em}}
 
 \keyalignment{r}
-\newcolumntype{k}{>{\raggedleft\arraybackslash}p{2.0cm}}
+\newcolumntype{k}{>{\raggedleft\arraybackslash}p{2.18cm}}
 \rubricalignment{l}
-\renewcommand{\arraystretch}{1.25}
+\renewcommand{\arraystretch}{1.18}
 \urlstyle{tt}
 
 \newcommand{\prefixmarker}[1]{\def\@prefixmarker{#1}}
-\def\@prefixmarker{\relscale{.9}\faBookmark}
+\def\@prefixmarker{\raisebox{0.25ex}{\scriptsize\faCircle}}
 
 \prefix{%
   \hspace*{-1ex}
   \color{MarkerColour!80!black}\@prefixmarker%
-  \hspace*{1ex}%
+  \hspace*{1.15ex}%
 }
 
 \newcommand{\makerubrichead}[1]{\vskip\baselineskip\@@rubrichead{#1}}
@@ -146,4 +146,3 @@
 
 
 \RequirePackage[colorlinks=true,allcolors=black,breaklinks=true]{hyperref}
-
