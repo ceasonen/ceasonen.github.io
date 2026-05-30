@@ -36,22 +36,27 @@
 \ifxetexorluatex % If you're using XeLaTeX or LuaLaTeX
   \usepackage{fontspec} 
   \setmainfont[
-    Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/tex-gyre/,
-    BoldFont=texgyrepagella-bold.otf,
-    ItalicFont=texgyrepagella-italic.otf,
-    BoldItalicFont=texgyrepagella-bolditalic.otf
-  ]{texgyrepagella-regular.otf}
+    Path=/System/Library/Fonts/Supplemental/,
+    UprightFont={Times New Roman.ttf},
+    BoldFont={Times New Roman Bold.ttf},
+    ItalicFont={Times New Roman Italic.ttf},
+    BoldItalicFont={Times New Roman Bold Italic.ttf}
+  ]{Times New Roman.ttf}
   \setsansfont[
-    Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/tex-gyre/,
-    BoldFont=texgyreheros-bold.otf,
-    ItalicFont=texgyreheros-italic.otf,
-    BoldItalicFont=texgyreheros-bolditalic.otf
-  ]{texgyreheros-regular.otf}
+    Path=/System/Library/Fonts/Supplemental/,
+    UprightFont={Times New Roman.ttf},
+    BoldFont={Times New Roman Bold.ttf},
+    ItalicFont={Times New Roman Italic.ttf},
+    BoldItalicFont={Times New Roman Bold Italic.ttf}
+  ]{Times New Roman.ttf}
   \setmonofont[
-    Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/inconsolata/,
-    BoldFont=Inconsolatazi4-Bold.otf,
-    Scale=0.9
-  ]{Inconsolatazi4-Regular.otf}
+    Path=/System/Library/Fonts/Supplemental/,
+    UprightFont={Times New Roman.ttf},
+    BoldFont={Times New Roman Bold.ttf},
+    ItalicFont={Times New Roman Italic.ttf},
+    BoldItalicFont={Times New Roman Bold Italic.ttf},
+    Scale=0.96
+  ]{Times New Roman.ttf}
 \else % If you're using pdfLaTeX or latex
   \usepackage[T1]{fontenc}
   \usepackage[p,osf,swashQ]{cochineal}
