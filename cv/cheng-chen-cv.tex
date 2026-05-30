@@ -1,132 +1,140 @@
 %%%%%%%%%%%%%%%
-% This CV example/template is based on my own
-% CV which I (lamely attempted) to clean up, so that
-% it's less of an eyesore and easier for others to use.
-%
-% LianTze Lim (liantze@gmail.com)
-% 23 Oct, 2022
-% 24 Aug, 2024 -- Updated X (Twitter) icon
-\documentclass[a4paper,skipsamekey,10pt,english]{curve}
+% PhD/Master application CV
+% Compile with XeLaTeX
+\documentclass[a4paper,10pt]{article}
 
-% Uncomment to enable Chinese; needs XeLaTeX
-% \usepackage{ctex}
+\usepackage[a4paper,left=1.18cm,right=1.18cm,top=0.68cm,bottom=0.72cm]{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage[fixed]{fontawesome5}
 
+\setmainfont[
+  Path=/System/Library/Fonts/Supplemental/,
+  UprightFont={Times New Roman.ttf},
+  BoldFont={Times New Roman Bold.ttf},
+  ItalicFont={Times New Roman Italic.ttf},
+  BoldItalicFont={Times New Roman Bold Italic.ttf}
+]{Times New Roman.ttf}
+\setsansfont[
+  Path=/System/Library/Fonts/Supplemental/,
+  UprightFont={Times New Roman.ttf},
+  BoldFont={Times New Roman Bold.ttf},
+  ItalicFont={Times New Roman Italic.ttf},
+  BoldItalicFont={Times New Roman Bold Italic.ttf}
+]{Times New Roman.ttf}
+\setmonofont[
+  Path=/System/Library/Fonts/Supplemental/,
+  UprightFont={Times New Roman.ttf},
+  BoldFont={Times New Roman Bold.ttf},
+  ItalicFont={Times New Roman Italic.ttf},
+  BoldItalicFont={Times New Roman Bold Italic.ttf},
+  Scale=0.96
+]{Times New Roman.ttf}
 
-% Default biblatex style used for the publication list is APA6. If you wish to use a different style or pass other options to biblatex you can change them here. 
-\PassOptionsToPackage{style=ieee,sorting=ydnt,uniquename=init,defernumbers=true}{biblatex}
+\definecolor{linegreen}{HTML}{88AC0B}
+\definecolor{markerred}{HTML}{B6073F}
+\definecolor{textgray}{HTML}{333333}
 
-% Most commands and style definitions are in settings.sty.
-\usepackage{settings}
+\setstretch{1.05}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.0pt}
+\setlist[itemize]{leftmargin=1.15em,itemsep=0.7pt,topsep=0.7pt,parsep=0pt}
+\hypersetup{hidelinks,colorlinks=false}
+\pagestyle{empty}
 
-% If you need to further customise your biblatex setup e.g. with \DeclareFieldFormat etc please add them here AFTER loading settings.sty. For example, to remove the default "[Online] Available:" prefix before URLs when using the IEEE style:
-\DefineBibliographyStrings{english}{url={\textsc{url}}}
-
-%% Publication entries are written manually in publications.tex for strict ordering.
-% \addbibresource{own-bib.bib}
-
-%% Specify your last name(s) and first name(s) (as given in the .bib) to automatically bold your own name in the publications list. 
-%% One caveat: You need to write \bibnamedelima where there's a space in your name for this to work properly; or write \bibnamedelimi if you use initials in the .bib
-% \mynames{Lim/Lian\bibnamedelima Tze}
-
-%% You can specify multiple names like this, especially if you have changed your name or if you need to highlight multiple authors. See items 6–9 in the example "Journal Articles" output.
-\mynames{Chen/Cheng}
-%% MAKE SURE THERE IS NO SPACE AFTER THE FINAL NAME IN YOUR \mynames LIST
-
-% Change the fonts if you want
-\ifxetexorluatex % If you're using XeLaTeX or LuaLaTeX
-  \usepackage{fontspec} 
-  \setmainfont[
-    Path=/System/Library/Fonts/Supplemental/,
-    UprightFont={Times New Roman.ttf},
-    BoldFont={Times New Roman Bold.ttf},
-    ItalicFont={Times New Roman Italic.ttf},
-    BoldItalicFont={Times New Roman Bold Italic.ttf}
-  ]{Times New Roman.ttf}
-  \setsansfont[
-    Path=/System/Library/Fonts/Supplemental/,
-    UprightFont={Times New Roman.ttf},
-    BoldFont={Times New Roman Bold.ttf},
-    ItalicFont={Times New Roman Italic.ttf},
-    BoldItalicFont={Times New Roman Bold Italic.ttf}
-  ]{Times New Roman.ttf}
-  \setmonofont[
-    Path=/System/Library/Fonts/Supplemental/,
-    UprightFont={Times New Roman.ttf},
-    BoldFont={Times New Roman Bold.ttf},
-    ItalicFont={Times New Roman Italic.ttf},
-    BoldItalicFont={Times New Roman Bold Italic.ttf},
-    Scale=0.96
-  ]{Times New Roman.ttf}
-\else % If you're using pdfLaTeX or latex
-  \usepackage[T1]{fontenc}
-  \usepackage[p,osf,swashQ]{cochineal}
-  \usepackage{cabin}
-  \usepackage[varqu,varl,scale=0.9]{zi4}
-\fi
-
-% Change the page margins if you want
-% \geometry{left=1cm,right=1cm,top=1.5cm,bottom=1.5cm}
-
-% Change the colours if you want
-% \definecolor{SwishLineColour}{HTML}{00FFFF}
-% \definecolor{MarkerColour}{HTML}{0000CC}
-
-% Change the item prefix marker if you want
-% \prefixmarker{$\diamond$}
-
-%% Photo is only shown if "fullonly" is included
-\includecomment{fullonly}
-% \excludecomment{fullonly}
-
-\newcommand{\contactfield}[2]{%
-  \makebox[1.35em][c]{\color{MarkerColour!80!black}#1}%
-  \hspace{0.35em}#2%
+\newcommand{\sectionhead}[1]{%
+  \vspace{5pt}%
+  \noindent{\large\sffamily\bfseries #1}\par\vspace{-2pt}%
+  {\color{linegreen!72!white}\rule{\textwidth}{1.25pt}}%
+  \vspace{1.8pt}%
 }
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\leftheader{%
-  {\LARGE\bfseries\sffamily Cheng Chen}
-
-  {\normalsize Undergraduate Researcher | Deployable Trustworthy AI \& Multimodal Intelligence}\\
-  {\normalsize Tongji University, Shanghai, China\par}
-  \vspace{0.3em}
-
-  {\renewcommand{\arraystretch}{1.18}%
-  \begin{tabular}{@{}l@{\hspace{3.1em}}l@{}}
-    \contactfield{\faEnvelope[regular]}{\href{mailto:2351445@tongji.edu.cn}{\texttt{2351445@tongji.edu.cn}}} &
-    \contactfield{\faGlobe}{\href{https://ceasonen.github.io}{\texttt{ceasonen.github.io}}} \\
-    \contactfield{\faGithub}{\href{https://github.com/ceasonen}{\texttt{github.com/ceasonen}}} &
-    \contactfield{\faLinkedin}{\href{https://www.linkedin.com/in/cheng-chen-012a83378/}{\texttt{cheng-chen-012a83378}}}
-  \end{tabular}}
+\newcommand{\role}[1]{\textbf{\textcolor{textgray}{#1}}}
+\newcommand{\dateright}[1]{\hfill{\footnotesize\textcolor{textgray}{#1}}}
+\newcommand{\paperitem}[4]{%
+  \noindent\makebox[1.0em][l]{\textcolor{markerred}{\footnotesize\faBookmark}}%
+  \begin{minipage}[t]{\dimexpr\textwidth-8.0em\relax}\raggedright\textbf{#1}\end{minipage}%
+  \makebox[7.0em][r]{\footnotesize\textcolor{textgray}{#2}}\par\vspace{-2pt}
+  \hspace*{1.0em}\begin{minipage}[t]{\dimexpr\textwidth-1.0em\relax}
+    #3\\[-1pt]
+    {\small #4}
+  \end{minipage}\par\vspace{2pt}
 }
-
-\rightheader{~}
-\begin{fullonly}
-\photo[r]{me.png}
-\photoscale{0.105}
-\end{fullonly}
-
-\title{Curriculum Vitae}
 
 \begin{document}
-\makeheaders[c]
 
-\makerubric{education}
+\sectionhead{Basic Information}
+\begin{minipage}[t]{0.74\textwidth}
+  {\LARGE\bfseries Cheng Chen}\\[-1pt]
+  {\bfseries Prospective PhD/Master Applicant \quad Multimodal Intelligence | Trustworthy AI | Wireless Intelligence}\\[2pt]
+  {\small
+  \begin{tabular}{@{}l@{\hspace{1.2em}}l@{}}
+    \faEnvelope\hspace{0.28em}\href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn} &
+    \faEnvelope\hspace{0.28em}\href{mailto:chenceason10@gmail.com}{chenceason10@gmail.com} \\
+    \faGlobe\hspace{0.28em}\href{https://ceasonen.github.io}{ceasonen.github.io} &
+    \faGithub\hspace{0.28em}\href{https://github.com/ceasonen}{github.com/ceasonen} \\
+    \faMapMarker\hspace{0.28em}Shanghai, China &
+    \faUniversity\hspace{0.28em}Tongji University
+  \end{tabular}}
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.20\textwidth}
+  \raggedleft
+  \vspace{-0.18cm}
+  \includegraphics[width=2.25cm]{me.png}
+\end{minipage}
 
-% If you're not a researcher nor an academic, you probably don't have any publications; delete this line.
-%% Sometimes when a section can't be nicely modelled with the \entry[]... mechanism; hack our own and use \input NOT \makerubric
-\makerubric{publications}
+\sectionhead{Application Strengths}
+\begin{itemize}
+  \item Tongji University undergraduate in Communication Engineering, GPA \textbf{4.66/5.00}, major rank \textbf{3/87}, with a consistent research line in multimodal intelligence, trustworthy reasoning, deployable AI, and wireless intelligence.
+  \item Research record follows a clear top-venue pipeline: \textbf{IJCAI 2026} accepted co-first work; two double-blind \textbf{ACM MM 2026} submissions with initial scores \textbf{4/4/4/4/3} and \textbf{4/4/3/2}; accepted corresponding-author papers at \textbf{IJCNN 2026} and \textbf{ICANN 2026}; first-author \textbf{NeurIPS 2026} and \textbf{IEEE WCL} submissions under review.
+  \item Prepared for PhD/Master research in audio-visual multimodal understanding, open-vocabulary perception, reliable reasoning, risk-aware deployment, and learning-assisted wireless systems.
+\end{itemize}
 
-\makerubric{research}
+\sectionhead{Education}
+\textbf{B.Eng. in Communication Engineering, Tongji University}, Shanghai, China \dateright{2023.09 -- Present}\\[-1pt]
+GPA: \textbf{4.66/5.00}; major rank: \textbf{3/87}; CET-6: \textbf{519}.\\[-1pt]
+\role{Selected coursework:} Data Structures and Algorithms, Digital Signal Processing, Probability and Statistics, Signals and Systems, Digital Electronics, Information Theory, Computer Networks, Embedded Systems.
 
-\makerubric{awards}
+\sectionhead{Research Outputs}
+\paperitem{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment}{IJCAI 2026}
+{\textbf{C. Chen}*, Y. Xu*, and M. Cao. \role{Accepted; co-first author.}}
+{Proposed orthogonal knowledge distillation for heterogeneous clinical teachers and lightweight deployment.}
 
-\makerubric{skills}
+\paperitem{Anonymous ACM MM 2026 Submissions A / B (double-blind review)}{ACM MM 2026}
+{\role{Co-first author / first author; initial scores: 4/4/4/4/3 (approx. top 5\%) and 4/4/3/2 (approx. top 20--30\%).}}
+{Topics cover open-vocabulary audio-visual event localization and transferable deformation attacks for visual security.}
 
-% \makerubric{referee}
-% \input{referee-full}
+\paperitem{Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions}{IJCNN 2026}
+{W. Lei, M. Cao, C. Ye, Y. Xu, and \textbf{C. Chen}. \role{Accepted; corresponding author.}}
+{Encoded visual scenes as structured symbolic descriptions to support visual reasoning by text-only LLMs.}
+
+\paperitem{Beyond Relevance: Counter-Evidence Planning in a Controlled Budgeted RAG Testbed}{ICANN 2026}
+{Y. Cai, Y. Xu, and \textbf{C. Chen}. \role{Accepted; corresponding author.}}
+{Studied counter-evidence planning for fixed-budget RAG and reliability-oriented retrieval decisions.}
+
+\paperitem{Anonymous neural-operator risk assessment project}{NeurIPS 2026}
+{\role{Under review; first author.}}
+{Researches single-pass risk triage and deployable risk assessment for neural operators.}
+
+\paperitem{Learning-Aided Privacy Beamforming for ISAC}{IEEE WCL 2026}
+{\role{IEEE Wireless Communications Letters under review; first author.}}
+{Studies privacy-aware beamforming under eavesdropper location uncertainty.}
+
+\sectionhead{Competitions \& Awards}
+\begin{tabularx}{\textwidth}{@{}Xr@{}}
+  National Second Prize, Global Campus Artificial Intelligence Algorithm Elite Competition & 2025 \\
+  National Third Prize, National College Students' Embedded Systems Competition & 2025 \\
+\end{tabularx}
+
+\sectionhead{Research Skills}
+\begin{itemize}
+  \item \role{Method design:} knowledge distillation, multimodal learning, symbolic visual reasoning, RAG planning, risk triage, robustness evaluation, and privacy-aware ISAC.
+  \item \role{Research execution:} PyTorch-based modeling, ablation and benchmark design, error analysis, reproducible experiments, technical writing, and LaTeX manuscript preparation.
+\end{itemize}
 
 \end{document}
