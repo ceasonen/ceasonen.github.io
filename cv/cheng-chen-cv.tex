@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%
-% PhD/Master application CV
+% English application CV
 % Compile with XeLaTeX
 \documentclass[a4paper,10pt]{article}
 
@@ -36,8 +36,10 @@
   Scale=0.96
 ]{Times New Roman.ttf}
 
-\definecolor{linegreen}{HTML}{88AC0B}
-\definecolor{markerred}{HTML}{B6073F}
+\definecolor{rulegray}{HTML}{D8D2C8}
+\definecolor{markerred}{HTML}{8A1538}
+\definecolor{deepred}{HTML}{8A1538}
+\definecolor{softgray}{HTML}{E6E0D6}
 \definecolor{textgray}{HTML}{333333}
 
 \setstretch{1.05}
@@ -48,11 +50,11 @@
 \pagestyle{empty}
 
 \newcommand{\sectionhead}[1]{%
-  \vspace{5pt}%
-  \noindent{\large\sffamily\bfseries #1}\par\vspace{-2pt}%
-  {\color{linegreen!72!white}\rule{\textwidth}{1.25pt}}%
-  \vspace{1.8pt}%
+  \vspace{5.2pt}%
+  \noindent{\fontsize{13.1}{14.1}\selectfont\bfseries #1}\par\vspace{0pt}%
+  {\color{deepred}\rule{2.4em}{0.7pt}}{\color{rulegray}\rule{\dimexpr\textwidth-2.4em\relax}{0.45pt}}\par\vspace{2.0pt}%
 }
+\newcommand{\contacticon}[1]{\textcolor{deepred}{#1}\hspace{0.34em}}
 \newcommand{\role}[1]{\textbf{\textcolor{textgray}{#1}}}
 \newcommand{\dateright}[1]{\hfill{\footnotesize\textcolor{textgray}{#1}}}
 \newcommand{\paperitem}[4]{%
@@ -67,31 +69,32 @@
 
 \begin{document}
 
-\sectionhead{PhD/Master Applicant}
-\begin{minipage}[t]{0.72\textwidth}
-  {\Huge\bfseries Cheng Chen}\\[-1pt]
-  {\large\bfseries Tongji University · Communication Engineering}\\[3pt]
-  {\normalsize
+\noindent\begin{minipage}[t]{0.775\textwidth}
+  {\fontsize{17.2}{19.0}\selectfont\bfseries Cheng Chen}\\[0.2pt]
+  {\fontsize{10.0}{11.5}\selectfont\textcolor{deepred}{Prospective PhD/Master Applicant}}\\[0.2pt]
+  {\fontsize{11.2}{12.8}\selectfont\bfseries Tongji University · Communication Engineering}\\[3pt]
+  {\fontsize{10.5}{12.0}\selectfont
   \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
-    \faUniversity\hspace{0.32em}GPA 4.66/5.00, rank 3/87 &
-    \faMapMarker\hspace{0.32em}Shanghai, China \\
-    \faEnvelope\hspace{0.32em}\href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn} &
-    \faEnvelope\hspace{0.32em}\href{mailto:chenceason10@gmail.com}{chenceason10@gmail.com} \\
-    \faGlobe\hspace{0.32em}\href{https://ceasonen.github.io}{ceasonen.github.io} &
-    \faGithub\hspace{0.32em}\href{https://github.com/ceasonen}{github.com/ceasonen}
+    \contacticon{\faEnvelope}\href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn} &
+    \contacticon{\faEnvelope}\href{mailto:chenceason10@gmail.com}{chenceason10@gmail.com} \\
+    \contacticon{\faGlobe}\href{https://ceasonen.github.io}{ceasonen.github.io} &
+    \contacticon{\faGithub}\href{https://github.com/ceasonen}{github.com/ceasonen} \\
+    \contacticon{\faUniversity}GPA 4.66/5.00, rank 3/87 &
+    \contacticon{\faMapMarker}Shanghai, China
   \end{tabularx}}
 \end{minipage}%
 \hfill%
-\begin{minipage}[t]{0.22\textwidth}
+\begin{minipage}[t]{0.16\textwidth}
   \raggedleft
-  \vspace{-0.28cm}
-  \includegraphics[width=2.55cm]{me.png}
-\end{minipage}
+  \vspace{0.00cm}
+  \setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.35pt}%
+  \fcolorbox{softgray}{white}{\includegraphics[width=2.18cm]{me.png}}
+\end{minipage}\par\vspace{2pt}
 
 \sectionhead{Application Strengths}
 \begin{itemize}
   \item Tongji University undergraduate in Communication Engineering, GPA \textbf{4.66/5.00}, major rank \textbf{3/87}, with a consistent research line in multimodal intelligence, trustworthy reasoning, deployable AI, and wireless intelligence.
-  \item Research record follows a clear top-venue pipeline: \textbf{IJCAI 2026} accepted co-first work; two double-blind \textbf{ACM MM 2026} submissions with initial scores \textbf{4/4/4/4/3} and \textbf{4/4/3/2}; accepted corresponding-author papers at \textbf{IJCNN 2026} and \textbf{ICANN 2026}; first-author \textbf{NeurIPS 2026} and \textbf{IEEE WCL} submissions under review.
+  \item Research record follows a clear top-venue pipeline: \textbf{IJCAI 2026} accepted co-first work; two double-blind \textbf{ACM MM 2026} submissions with initial scores \textbf{4/4/4/4/3} and \textbf{4/4/3/2}; accepted corresponding-author papers at \textbf{IJCNN 2026} and \textbf{ICANN 2026}; first-author submissions under review at \textbf{NeurIPS 2026} and \textbf{IEEE Wireless Communications Letters}.
   \item Prepared for PhD/Master research in audio-visual multimodal understanding, open-vocabulary perception, reliable reasoning, risk-aware deployment, and learning-assisted wireless systems.
 \end{itemize}
 
@@ -105,8 +108,8 @@ GPA: \textbf{4.66/5.00}; major rank: \textbf{3/87}; CET-6: \textbf{519}.\\[-1pt]
 {\textbf{C. Chen}*, Y. Xu*, and M. Cao. \role{Accepted; co-first author.}}
 {Proposed orthogonal knowledge distillation for heterogeneous clinical teachers and lightweight deployment.}
 
-\paperitem{Anonymous ACM MM 2026 Submissions A / B (double-blind review)}{ACM MM 2026}
-{\role{Co-first author / first author; initial scores: 4/4/4/4/3 (approx. top 5\%) and 4/4/3/2 (approx. top 20--30\%).}}
+\paperitem{Open-Vocabulary Audio-Visual Event Localization / Transferable Visual Attack Studies}{ACM MM 2026}
+{\role{Double-blind review; co-first author / first author; initial scores: 4/4/4/4/3 (approx. top 5\%) and 4/4/3/2 (approx. top 15--20\%).}}
 {Topics cover open-vocabulary audio-visual event localization and transferable deformation attacks for visual security.}
 
 \paperitem{Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions}{IJCNN 2026}
@@ -117,12 +120,12 @@ GPA: \textbf{4.66/5.00}; major rank: \textbf{3/87}; CET-6: \textbf{519}.\\[-1pt]
 {Y. Cai, Y. Xu, and \textbf{C. Chen}. \role{Accepted; corresponding author.}}
 {Studied counter-evidence planning for fixed-budget RAG and reliability-oriented retrieval decisions.}
 
-\paperitem{Anonymous neural-operator risk assessment project}{NeurIPS 2026}
-{\role{Under review; first author.}}
+\paperitem{Neural-Operator Risk Assessment for Deployable Risk Triage}{NeurIPS 2026}
+{\role{Under review at NeurIPS 2026; first author.}}
 {Researches single-pass risk triage and deployable risk assessment for neural operators.}
 
-\paperitem{Learning-Aided Privacy Beamforming for ISAC}{IEEE WCL 2026}
-{\role{IEEE Wireless Communications Letters under review; first author.}}
+\paperitem{Learning-Aided Privacy Beamforming for ISAC}{IEEE WCL}
+{\role{Under review at IEEE Wireless Communications Letters; first author.}}
 {Studies privacy-aware beamforming under eavesdropper location uncertainty.}
 
 \sectionhead{Competitions \& Awards}
