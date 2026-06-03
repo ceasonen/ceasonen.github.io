@@ -1,88 +1,310 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" as="image" href="/bio.jpg?v=20260419"/><link rel="stylesheet" href="/_next/static/css/d154649751ecde4e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-679b75d1c4c2027c.js"/><script src="/_next/static/chunks/4bd1b696-70b6d399998de86a.js" async=""></script><script src="/_next/static/chunks/684-5aaa8290a129f299.js" async=""></script><script src="/_next/static/chunks/main-app-ee3f211432781d9e.js" async=""></script><script src="/_next/static/chunks/461-a9a5d7b05a71d978.js" async=""></script><script src="/_next/static/chunks/874-6cc630662f3664af.js" async=""></script><script src="/_next/static/chunks/291-e39730cc9327e39b.js" async=""></script><script src="/_next/static/chunks/app/layout-909de2fb2b0f00cb.js" async=""></script><script src="/_next/static/chunks/178-595a94b9af1e67b5.js" async=""></script><script src="/_next/static/chunks/748-abdcac66b902b175.js" async=""></script><script src="/_next/static/chunks/app/page-25dbe81326e3c1c7.js" async=""></script><link rel="icon" href="/favicon.svg" type="image/svg+xml"/><script>
-              try {
-                const theme = localStorage.getItem('theme-storage');
-                const parsed = theme ? JSON.parse(theme) : null;
-                const setting = parsed?.state?.theme || 'system';
-                const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                const effective = setting === 'dark' ? 'dark' : (setting === 'light' ? 'light' : (prefersDark ? 'dark' : 'light'));
-                var root = document.documentElement;
-                root.classList.add(effective);
-                root.setAttribute('data-theme', effective);
-              } catch (e) {
-                var root = document.documentElement;
-                root.classList.add('light');
-                root.setAttribute('data-theme', 'light');
-              }
-            </script><script>
-    try {
-      const cfg = {"enabled":true,"locales":["zh","en"],"defaultLocale":"en","mode":"auto","fixedLocale":"en","persist":true,"switcher":true,"labels":{"zh":"中文","en":"English"}};
-      const storageKey = 'locale-storage';
-      const normalize = (value) => typeof value === 'string' ? value.trim().replace('_', '-').toLowerCase() : '';
-      const matchLocale = (candidate) => {
-        const normalized = normalize(candidate);
-        if (!normalized) return null;
-        if (cfg.locales.includes(normalized)) return normalized;
-        const language = normalized.split('-')[0];
-        if (cfg.locales.includes(language)) return language;
-        return null;
-      };
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheng Chen</title>
+  <meta name="description" content="Personal website of Cheng Chen, an undergraduate researcher working on deployable trustworthy AI, multimodal intelligence, and wireless learning systems.">
+  <meta name="author" content="Cheng Chen">
+  <meta name="keywords" content="Cheng Chen, Tongji University, Trustworthy AI, Multimodal Learning, Wireless Intelligence">
+  <meta property="og:title" content="Cheng Chen">
+  <meta property="og:description" content="Homepage of Cheng Chen, an undergraduate researcher and prospective PhD applicant.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cheng Chen Homepage">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cheng Chen">
+  <meta name="twitter:description" content="Personal website of Cheng Chen, an undergraduate researcher working on deployable trustworthy AI, multimodal intelligence, and wireless learning systems.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="/cv/me.png">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/homepage-refresh.css?v=20260603">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top">Cheng Chen</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#about">Homepage</a>
+        <a href="#research">Research</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#honors">Honors</a>
+        <a href="#contact">Contact</a>
+        <a href="/output/pdf/cheng-chen-cv.pdf?v=20260530-cv-rankonly" target="_blank" rel="noopener noreferrer">CV</a>
+      </nav>
+    </div>
+  </header>
 
-      let resolved = null;
+  <main id="top" class="shell layout">
+    <aside class="profile-panel">
+      <div class="portrait-frame">
+        <img src="/cv/me.png" alt="Portrait of Cheng Chen" width="768" height="1024" loading="eager">
+      </div>
+      <div class="profile-copy">
+        <p class="sidebar-label">Cheng Chen</p>
+        <h1>Cheng Chen</h1>
+        <p class="profile-title">Undergraduate Researcher</p>
+        <p class="profile-status">Prospective PhD Applicant</p>
+        <p class="profile-affiliation">Tongji University<br>Communication Engineering</p>
+      </div>
 
-      if (cfg.persist) {
-        resolved = matchLocale(localStorage.getItem(storageKey));
-      }
+      <div class="sidebar-block">
+        <h2>Profile</h2>
+        <ul class="sidebar-list">
+          <li>Shanghai, China</li>
+          <li>Major rank 3/87</li>
+          <li>CET-6: 519</li>
+          <li>Research line: deployable trustworthy AI, multimodal intelligence, and wireless learning systems</li>
+        </ul>
+      </div>
 
-      if (!resolved) {
-        if (cfg.mode === 'fixed') {
-          resolved = cfg.fixedLocale;
-        } else {
-          resolved = matchLocale(navigator.language);
-        }
-      }
+      <div class="sidebar-block">
+        <h2>Links</h2>
+        <ul class="link-list">
+          <li><a href="mailto:2351445@tongji.edu.cn">Email</a></li>
+          <li><a href="https://www.tongji.edu.cn/" target="_blank" rel="noopener noreferrer">Tongji University</a></li>
+          <li><a href="https://github.com/ceasonen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/cheng-chen-012a83378/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="/output/pdf/cheng-chen-cv.pdf?v=20260530-cv-rankonly" target="_blank" rel="noopener noreferrer">Curriculum Vitae</a></li>
+        </ul>
+      </div>
 
-      if (!resolved) {
-        resolved = cfg.defaultLocale;
-      }
+      <div class="sidebar-block interests-block">
+        <h2>Interests</h2>
+        <div class="interest-tags">
+          <span>Trustworthy AI</span>
+          <span>Multimodal Learning</span>
+          <span>Medical AI</span>
+          <span>Audio-Visual Reasoning</span>
+          <span>Wireless Intelligence</span>
+        </div>
+      </div>
+    </aside>
 
-      const root = document.documentElement;
-      root.lang = resolved;
-      root.setAttribute('data-locale', resolved);
+    <div class="main-column">
+      <section id="about" class="section intro-section">
+        <p class="section-kicker">Homepage</p>
+        <h2>Deployable trustworthy AI with multimodal and wireless perspectives.</h2>
+        <p class="intro-lead">
+          I am an undergraduate researcher at <a href="https://www.tongji.edu.cn/" target="_blank" rel="noopener noreferrer">Tongji University</a> in Communication Engineering. My recent work spans clinical knowledge distillation, symbolic visual reasoning, controlled budgeted RAG, neural-operator risk triage, and privacy-aware wireless learning.
+        </p>
+        <p>
+          I care about research that still holds after the benchmark table: clear problem formulation, careful evaluation, calibration, robustness, and deployment constraints that are treated as first-class design requirements rather than afterthoughts.
+        </p>
+        <p>
+          I am currently seeking PhD opportunities in multimodal learning, trustworthy AI, medical AI, and deployable learning systems. Groups that value rigorous experiments and strong claim-evidence alignment are the best fit.
+        </p>
+        <div class="status-note">
+          <strong>Current cycle.</strong> IJCAI 2026 accepted co-first work, corresponding-author papers at IJCNN 2026 and ICANN 2026, two ACM MM 2026 submissions with strong initial scores, and first-author work under review at NeurIPS 2026 and IEEE Wireless Communications Letters.
+        </div>
+        <div class="topic-row" aria-label="Research topics">
+          <span>Model compression</span>
+          <span>Risk triage</span>
+          <span>Audio-visual grounding</span>
+          <span>Reliable RAG</span>
+          <span>Wireless privacy</span>
+        </div>
+      </section>
 
-      if (cfg.persist) {
-        localStorage.setItem(storageKey, resolved);
-      }
-    } catch (e) {
-      const root = document.documentElement;
-      root.lang = 'en';
-      root.setAttribute('data-locale', 'en');
-    }
-  </script><title>Cheng Chen</title><meta name="description" content="Personal website of Cheng Chen, an undergraduate researcher seeking PhD opportunities in deployable trustworthy AI and multimodal intelligence."/><meta name="author" content="Cheng Chen"/><meta name="keywords" content="Cheng Chen,Undergraduate Researcher,Tongji University,Multimodal AI,Trustworthy AI"/><meta name="creator" content="Cheng Chen"/><meta name="publisher" content="Cheng Chen"/><meta property="og:title" content="Cheng Chen"/><meta property="og:description" content="Personal website of Cheng Chen, an undergraduate researcher seeking PhD opportunities in deployable trustworthy AI and multimodal intelligence."/><meta property="og:site_name" content="Cheng Chen&#x27;s Academic Website"/><meta property="og:locale" content="en_US"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Cheng Chen"/><meta name="twitter:description" content="Personal website of Cheng Chen, an undergraduate researcher seeking PhD opportunities in deployable trustworthy AI and multimodal intelligence."/><link rel="icon" href="/favicon.svg"/><script>document.querySelectorAll('body link[rel="icon"], body link[rel="apple-touch-icon"]').forEach(el => document.head.appendChild(el))</script><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script>
-<style id="cheng-site-polish">
-  :root { --cheng-ink: #172033; --cheng-accent: #7a2438; --cheng-soft: #f7f5f2; }
-  body { font-feature-settings: "liga" 1, "kern" 1; }
-  .font-serif { font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, "Times New Roman", serif !important; }
-  .text-primary { color: var(--cheng-ink) !important; }
-  .text-accent { color: var(--cheng-accent) !important; }
-  a.text-accent:hover { color: #531827 !important; }
-  .bg-neutral-100 { background-color: var(--cheng-soft) !important; }
-  .rounded-2xl { border-radius: 1rem !important; }
-  h1, h2, h3 { letter-spacing: 0 !important; }
-  .cheng-note-label { font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", "Trebuchet MS", cursive; letter-spacing: 0 !important; }
-</style>
+      <section id="research" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Research</p>
+            <h2>Three directions I am actively building around.</h2>
+          </div>
+        </div>
+        <div class="research-grid">
+          <article class="research-card">
+            <h3>Deployable Trustworthy AI</h3>
+            <p>Calibration, model compression, and risk-aware deployment strategies for systems that need to survive practical budget and reliability constraints.</p>
+          </article>
+          <article class="research-card">
+            <h3>Multimodal Intelligence</h3>
+            <p>Open-vocabulary audio-visual understanding, symbolic scene reasoning, and medical multimodal learning with attention to robustness and usable interfaces.</p>
+          </article>
+          <article class="research-card">
+            <h3>Wireless Learning Systems</h3>
+            <p>Learning-aided wireless intelligence with a focus on privacy, uncertainty, and decision-making under imperfect environmental knowledge.</p>
+          </article>
+        </div>
+      </section>
 
-<style id="cheng-site-polish">
-  :root { --cheng-ink: #172033; --cheng-accent: #7a2438; --cheng-soft: #f7f5f2; }
-  body { font-feature-settings: "liga" 1, "kern" 1; }
-  .font-serif { font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, "Times New Roman", serif !important; }
-  .text-primary { color: var(--cheng-ink) !important; }
-  .text-accent { color: var(--cheng-accent) !important; }
-  a.text-accent:hover { color: #531827 !important; }
-  .bg-neutral-100 { background-color: var(--cheng-soft) !important; }
-  .rounded-2xl { border-radius: 1rem !important; }
-  h1, h2, h3 { letter-spacing: 0 !important; }
-  .cheng-note-label,
-  .flex.items-start.space-x-3 > .text-xs.text-neutral-500,
-  .text-sm.text-neutral-500.font-medium.bg-neutral-100 { font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", "Trebuchet MS", cursive; letter-spacing: 0 !important; }
-</style>
-<link rel="stylesheet" href="/site-polish.css?v=20260530-highcontrast"/></head><body class="font-sans antialiased"><div style="visibility:hidden"><nav class="fixed top-0 left-0 right-0 z-50" data-headlessui-state=""><div class="transition-all duration-300 ease-out bg-transparent" style="transform:translateY(-100px)"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-16 lg:h-20"><div class="flex-shrink-0" tabindex="0"><a class="text-xl lg:text-2xl font-serif font-semibold text-primary hover:text-accent transition-colors duration-200" href="/">Cheng Chen</a></div><div class="hidden lg:block"><div class="ml-10 flex items-center space-x-3"><div class="relative flex items-baseline space-x-1"><a data-nav-href="/" class="relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-150 text-primary" href="/">About</a><a data-nav-href="/publications" class="relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-150 text-neutral-600" href="/publications/">Publications</a><a data-nav-href="/news" class="relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-150 text-neutral-600" href="/news/">News</a><a data-nav-href="/awards" class="relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-150 text-neutral-600" href="/awards/">Highlights</a><a data-nav-href="/output/pdf/cheng-chen-cv.pdf?v=20260530-cv-rankonly" class="relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-150 text-neutral-600" href="/output/pdf/cheng-chen-cv.pdf?v=20260530-cv-rankonly">CV</a></div><div class="flex items-center justify-center w-14 h-10 rounded-lg border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] bg-background dark:bg-neutral-800"><div class="w-6 h-4 rounded bg-neutral-300 animate-pulse"></div></div><div class="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] bg-background dark:bg-neutral-800"><div class="w-4 h-4 rounded-full bg-neutral-300 animate-pulse"></div></div></div></div><div class="lg:hidden flex items-center space-x-2"><div class="flex items-center justify-center w-14 h-10 rounded-lg border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] bg-background dark:bg-neutral-800"><div class="w-6 h-4 rounded bg-neutral-300 animate-pulse"></div></div><div class="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] bg-background dark:bg-neutral-800"><div class="w-4 h-4 rounded-full bg-neutral-300 animate-pulse"></div></div><button class="inline-flex items-center justify-center p-2 rounded-md text-neutral-600 hover:text-primary hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent transition-colors duration-200" id="headlessui-disclosure-button-«R7pdb»" type="button" aria-expanded="false" data-headlessui-state=""><span class="sr-only">Open main menu</span><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="block h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path></svg></div></button></div></div></div></div></nav><main class="min-h-screen pt-16 lg:pt-20"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-background min-h-screen"><div class="grid grid-cols-1 lg:grid-cols-3 gap-12"><div class="lg:col-span-1"><div class="sticky top-8" style="opacity:0;transform:translateY(20px)"><div class="w-64 h-64 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"><img alt="Cheng Chen" width="256" height="256" decoding="async" data-nimg="1" class="w-full h-full object-cover object-[32%_center]" style="color:transparent" src="/bio.jpg?v=20260419"/></div><div class="text-center mb-6"><h1 class="text-3xl font-serif font-bold text-primary mb-2">Cheng Chen</h1><p class="text-lg text-accent font-medium mb-1">Undergraduate Researcher | Seeking PhD Opportunities</p><p class="text-neutral-600 mb-2">Tongji University</p></div><div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-6 relative px-2"><div class="relative"><button class="p-2 sm:p-2 transition-colors duration-200 text-neutral-600 dark:text-neutral-400 hover:text-accent" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"></path></svg></button></div><div class="relative"><button class="p-2 sm:p-2 transition-colors duration-200 text-neutral-600 dark:text-neutral-400 hover:text-accent" aria-label="Location"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"></path></svg></button></div><a href="https://github.com/ceasonen" target="_blank" rel="noopener noreferrer" class="p-2 sm:p-2 text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors duration-200" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github h-5 w-5" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://www.linkedin.com/in/cheng-chen-012a83378/" target="_blank" rel="noopener noreferrer" class="p-2 sm:p-2 text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors duration-200" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin h-5 w-5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a></div><div class="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 mb-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]"><h3 class="font-semibold text-primary mb-3">Research Interests</h3><div class="space-y-2 text-sm text-neutral-700 dark:text-neutral-500"><div>Deployable Trustworthy AI</div><div>Medical and Multimodal Learning</div><div>Vision-Language and Audio-Visual Understanding</div><div>Risk-Aware Model Deployment</div><div>Wireless Intelligence</div></div></div></div></div><div class="lg:col-span-2 space-y-8"><section id="about" class="scroll-mt-24 space-y-8"><section style="opacity:0;transform:translateY(20px)"><h2 class="text-2xl font-serif font-bold text-primary mb-4">About</h2><div class="text-neutral-700 dark:text-neutral-600 leading-relaxed"><p class="mb-4 last:mb-0">I am an undergraduate researcher at <a href="https://www.tongji.edu.cn/" target="_blank" rel="noopener noreferrer" class="text-accent font-medium transition-all duration-200 rounded hover:bg-accent/10 hover:shadow-sm">Tongji University</a> in Communication Engineering. My work sits at the intersection of <strong class="font-semibold text-primary">deployable trustworthy AI</strong> and <strong class="font-semibold text-primary">multimodal intelligence</strong>, with recent projects in medical model compression, open-vocabulary audio-visual understanding, budgeted RAG, neural-operator risk assessment, and wireless-intelligence privacy.</p><p class="mb-4 last:mb-0">I am currently looking for PhD opportunities. I hope to work with advisors who care about method design, careful evaluation, calibration, robustness, and whether a system can survive real deployment constraints.</p></div></section><section style="opacity:0;transform:translateY(20px)"><h2 class="text-2xl font-serif font-bold text-primary mb-4">PhD Search</h2><div class="space-y-3"><div class="flex items-start space-x-3"><span class="cheng-note-label text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">Now</span><p class="text-sm text-neutral-700">Seeking PhD opportunities in multimodal learning, trustworthy AI, medical AI, and deployable learning systems.</p></div><div class="flex items-start space-x-3"><span class="cheng-note-label text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">Fit</span><p class="text-sm text-neutral-700">Best fit: groups that value rigorous experiments, clean problem formulation, and systems that can be evaluated beyond a single benchmark table.</p></div></div></section><section style="opacity:0;transform:translateY(20px)"><h2 class="text-2xl font-serif font-bold text-primary mb-4">Research Map</h2><div class="space-y-3"><div class="flex items-start space-x-3"><span class="cheng-note-label text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">Core</span><p class="text-sm text-neutral-700">Deployable trustworthy AI: model compression, calibration, risk triage, and robustness under practical budgets.</p></div><div class="flex items-start space-x-3"><span class="cheng-note-label text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">Modal</span><p class="text-sm text-neutral-700">Multimodal intelligence: medical imaging, vision-language reasoning, audio-visual event understanding, budgeted RAG, and learning-assisted wireless privacy.</p></div><div class="flex items-start space-x-3"><span class="cheng-note-label text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">Review</span><p class="text-sm text-neutral-700">ACM MM 2026 submissions are described by research direction in the current review cycle; the NeurIPS 2026 work is kept as ongoing research.</p></div></div></section><section style="opacity:0;transform:translateY(20px)"><h2 class="text-2xl font-serif font-bold text-primary mb-4">Outside Research</h2><div class="space-y-3"><div class="flex items-start space-x-3"><span class="cheng-note-label text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">Sport</span><p class="text-sm text-neutral-700">Football matters to me: I support FC Barcelona and Arsenal, and I like playing football and cycling.</p></div><div class="flex items-start space-x-3"><span class="cheng-note-label text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">Life</span><p class="text-sm text-neutral-700">I also enjoy music, consumer technology, and Rubik's cubes.</p></div></div></section></section></div></div></div><!--$--><!--/$--><!--$--><!--/$--></main><footer class="border-t border-neutral-200/50 bg-neutral-50/50 dark:bg-neutral-900/50 dark:border-neutral-700/50"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6"><div class="flex flex-col sm:flex-row justify-between items-center gap-2"><p class="text-xs text-neutral-500">Last updated<!-- -->: <!-- -->May 30, 2026</p><p class="text-xs text-neutral-500 flex items-center"><span>Built by Cheng Chen</span></p></div></div></footer></div><script src="/_next/static/chunks/webpack-679b75d1c4c2027c.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n3:I[3719,[\"461\",\"static/chunks/461-a9a5d7b05a71d978.js\",\"874\",\"static/chunks/874-6cc630662f3664af.js\",\"291\",\"static/chunks/291-e39730cc9327e39b.js\",\"177\",\"static/chunks/app/layout-909de2fb2b0f00cb.js\"],\"ThemeProvider\"]\n4:I[310,[\"461\",\"static/chunks/461-a9a5d7b05a71d978.js\",\"874\",\"static/chunks/874-6cc630662f3664af.js\",\"291\",\"static/chunks/291-e39730cc9327e39b.js\",\"177\",\"static/chunks/app/layout-909de2fb2b0f00cb.js\"],\"LocaleProvider\"]\n5:I[4574,[\"461\",\"static/chunks/461-a9a5d7b05a71d978.js\",\"874\",\"static/chunks/874-6cc630662f3664af.js\",\"291\",\"static/chunks/291-e39730cc9327e39b.js\",\"177\",\"static/chunks/app/layout-909de2fb2b0f00cb.js\"],\"default\"]\n6:I[7555,[],\"\"]\n7:I[1295,[],\"\"]\n8:I[2548,[\"461\",\"static/chunks/461-a9a5d7b05a71d978.js\",\"874\",\"static/chunks/874-6cc630662f3664af.js\",\"291\",\"static/chunks/291-e39730cc9327e39b.js\",\"177\",\"static/chunks/app/layout-909de2fb2b0f00cb.js\"],\"default\"]\n9:I[6613,[\"461\",\"static/chunks/461-a9a5d7b05a71d978.js\",\"178\",\"static/chunks/178-595a94b9af1e67b5.js\",\"874\",\"static/chunks/874-6cc630662f3664af.js\",\"748\",\"static/chunks/748-abdcac66b902b175.js\",\"974\",\"static/chunks/app/page-25dbe81326e3c1c7.js\"],\"default\"]\na:I[9665,[],\"MetadataBoundary\"]\nc:I[9665,[],\"OutletBoundary\"]\nf:I[4911,[],\"AsyncMetadataOutlet\"]\n11:I[9665,[],\"ViewportBoundary\"]\n13:I[6614,[],\"\"]\n:HL[\"/_next/static/css/d154649751ecde4e.css\",\"style\"]\n2:T590,\n    try {\n      const cfg = {\"enabled\":true,\"locales\":[\"zh\",\"en\"],\"defaultLocale\":\"en\",\"mode\":\"auto\",\"fixedLocale\":\"en\",\"persist\":true,\"switcher\":true,\"labels\":{\"zh\":\"中文\",\"en\":\"English\"}};\n      const storageKey = 'locale-storage';\n      const normalize = (value) => typeof value === 'string' ? value.trim().replace('_', '-').toLowerCase() : '';\n      const matchLocale = (candidate) => {\n        const normalized = normalize(candidate);\n        if (!normalized) return null;\n        if (cfg.locales.includes(normalized)) return normalized;\n        const language = normalized.split('-')[0];\n        if (cfg.locales.includes(language)) return language;\n        return null;\n      };\n\n      let resolved = null;\n\n      if (cfg.persist) {\n        resolved = matchLocale(localStorage.getItem(storageKey));\n      }\n\n      if (!resolved) {\n        if (cfg.mode === 'fixed') {\n          resolved = cfg.fixedLocale;\n        } else {\n          resolved = matchLocale(navigator.language);\n        }\n      }\n\n      if (!resolved) {\n        resolved = cfg.defaultLocale;\n      }\n\n      const root = document.documentElement;\n      root.lang = resolved;\n      root.setAttribute('data-locale', resolved);\n\n      if (cfg.persist) {\n        localStorage.setItem(storageKey, resolved);\n      }\n    } catch (e) {\n      const root = document.documentElement;\n      root.lang = 'en';\n      root.setAttribute('data-locale', 'en');\n    }\n  0:{\"P\":null,\"b\":\"sz8coDaNF47AEE5y9cz3q\",\"p\":\"\",\"c\":[\"\",\"\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/d154649751ecde4e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"scroll-smooth\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[[\"$\",\"link\",null,{\"rel\":\"icon\",\"href\":\"/favicon.svg\",\"type\":\"image/svg+xml\"}],[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n              try {\\n                const theme = localStorage.getItem('theme-storage');\\n                const parsed = theme ? JSON.parse(theme) : null;\\n                const setting = parsed?.state?.theme || 'system';\\n                const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;\\n                const effective = setting === 'dark' ? 'dark' : (setting === 'light' ? 'light' : (prefersDark ? 'dark' : 'light'));\\n                var root = document.documentElement;\\n                root.classList.add(effective);\\n                root.setAttribute('data-theme', effective);\\n              } catch (e) {\\n                var root = document.documentElement;\\n                root.classList.add('light');\\n                root.setAttribute('data-theme', 'light');\\n              }\\n            \"}}],[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"$2\"}}]]}],[\"$\",\"body\",null,{\"className\":\"font-sans antialiased\",\"children\":[\"$\",\"$L3\",null,{\"children\":[\"$\",\"$L4\",null,{\"config\":{\"enabled\":true,\"locales\":[\"zh\",\"en\"],\"defaultLocale\":\"en\",\"mode\":\"auto\",\"fixedLocale\":\"en\",\"persist\":true,\"switcher\":true,\"labels\":{\"zh\":\"中文\",\"en\":\"English\"}},\"children\":[[\"$\",\"$L5\",null,{\"items\":[{\"title\":\"About\",\"type\":\"page\",\"target\":\"about\",\"href\":\"/\"},{\"title\":\"Publications\",\"type\":\"page\",\"target\":\"publications\",\"href\":\"/publications\"},{\"title\":\"News\",\"type\":\"page\",\"target\":\"news\",\"href\":\"/news\"},{\"title\":\"Highlights\",\"type\":\"page\",\"target\":\"awards\",\"href\":\"/awards\"},{\"title\":\"CV\",\"type\":\"page\",\"target\":\"cv\",\"href\":\"/output/pdf/cheng-chen-cv.pdf?v=20260530-cv-rankonly\"}],\"siteTitle\":\"Cheng Chen\",\"enableOnePageMode\":false,\"i18n\":\"$0:f:0:1:1:props:children:1:props:children:1:props:children:props:children:props:config\",\"itemsByLocale\":{\"zh\":[{\"title\":\"关于我\",\"type\":\"page\",\"target\":\"about\",\"href\":\"/\"},{\"title\":\"论文\",\"type\":\"page\",\"target\":\"publications\",\"href\":\"/publications\"},{\"title\":\"动态\",\"type\":\"page\",\"target\":\"news\",\"href\":\"/news\"},{\"title\":\"研究亮点\",\"type\":\"page\",\"target\":\"awards\",\"href\":\"/awards\"},{\"title\":\"简历\",\"type\":\"page\",\"target\":\"cv\",\"href\":\"/output/pdf/cheng-chen-cv.pdf?v=20260530-cv-rankonly\"}],\"en\":[{\"title\":\"About\",\"type\":\"page\",\"target\":\"about\",\"href\":\"/\"},{\"title\":\"Publications\",\"type\":\"page\",\"target\":\"publications\",\"href\":\"/publications\"},{\"title\":\"News\",\"type\":\"page\",\"target\":\"news\",\"href\":\"/news\"},{\"title\":\"Highlights\",\"type\":\"page\",\"target\":\"awards\",\"href\":\"/awards\"},{\"title\":\"CV\",\"type\":\"page\",\"target\":\"cv\",\"href\":\"/output/pdf/cheng-chen-cv.pdf?v=20260530-cv-rankonly\"}]},\"siteTitleByLocale\":{\"zh\":\"陈成\",\"en\":\"Cheng Chen\"}}],[\"$\",\"main\",null,{\"className\":\"min-h-screen pt-16 lg:pt-20\",\"children\":[\"$\",\"$L6\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L7\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}],[\"$\",\"$L8\",null,{\"lastUpdated\":\"May 30, 2026\",\"lastUpdatedByLocale\":{\"zh\":\"2026年5月30日\",\"en\":\"May 30, 2026\"},\"defaultLocale\":\"en\"}]]}]}]}]]}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"$L9\",null,{\"dataByLocale\":{\"zh\":{\"author\":{\"name\":\"陈成\",\"title\":\"本科研究者｜正在寻找博士机会\",\"institution\":\"同济大学\",\"avatar\":\"/bio.jpg?v=20260419\"},\"social\":{\"email\":\"2351445@tongji.edu.cn\",\"location\":\"中国，上海\",\"location_url\":\"https://www.tongji.edu.cn/\",\"location_details\":[\"电子与信息工程学院，\",\"同济大学，上海 201804\"],\"github\":\"https://github.com/ceasonen\",\"linkedin\":\"https://www.linkedin.com/in/cheng-chen-012a83378/\"},\"features\":{\"enable_likes\":false,\"enable_one_page_mode\":false},\"enableOnePageMode\":false,\"researchInterests\":[\"可部署可信 AI\",\"医学与多模态学习\",\"视觉语言与音视频理解\",\"风险感知模型部署\",\"无线智能\"],\"pagesToShow\":[{\"type\":\"about\",\"id\":\"about\",\"sections\":[{\"id\":\"about\",\"type\":\"markdown\",\"source\":\"bio.md\",\"title\":\"关于我\",\"content\":\"我目前在[同济大学](https://www.tongji.edu.cn/)通信工程专业学习，研究主线是**可部署可信 AI 与多模态智能**。近期工作覆盖医学模型压缩、开放词汇音视频理解、预算受限 RAG、神经算子风险评估，以及无线智能隐私保护。\\n\\n我正在寻找博士阶段的研究机会，希望加入真正重视方法设计、严格评测、校准、鲁棒性和真实部署约束的课题组。\"},{\"id\":\"phd_search\",\"type\":\"list\",\"title\":\"正在寻找博士机会\",\"source\":\"phd.toml\",\"items\":[{\"date\":\"现在\",\"content\":\"寻找多模态学习、可信 AI、医学 AI 与可部署学习系统方向的博士机会。\"},{\"date\":\"匹配\",\"content\":\"希望加入重视严格实验、清晰问题定义，并愿意把系统放到真实约束下检验的课题组。\"}]},{\"id\":\"research_map\",\"type\":\"list\",\"title\":\"研究地图\",\"source\":\"research.toml\",\"items\":[{\"date\":\"核心\",\"content\":\"可部署可信 AI：模型压缩、校准、风险分诊，以及实际预算下的鲁棒性。\"},{\"date\":\"模态\",\"content\":\"多模态智能：医学影像、视觉语言推理、音视频事件理解、预算受限 RAG 与无线智能隐私保护。\"},{\"date\":\"在审\",\"content\":\"ACM MM 2026 在审投稿以研究方向与初评分展示；NeurIPS 2026 工作仅作为 ongoing research 展示。\"}]},{\"id\":\"outside_research\",\"type\":\"list\",\"title\":\"研究之外\",\"source\":\"life.toml\",\"items\":[{\"date\":\"足球\",\"content\":\"我很喜欢足球，支持巴塞罗那和阿森纳，也喜欢自己踢球和骑车。\"},{\"date\":\"日常\",\"content\":\"平时喜欢听歌、关注数码产品，也会玩魔方。\"}]}]}]},\"en\":{\"author\":{\"name\":\"Cheng Chen\",\"title\":\"Undergraduate Researcher | Seeking PhD Opportunities\",\"institution\":\"Tongji University\",\"avatar\":\"/bio.jpg?v=20260419\"},\"social\":{\"email\":\"2351445@tongji.edu.cn\",\"location\":\"Shanghai, China\",\"location_url\":\"https://www.tongji.edu.cn/\",\"location_details\":[\"College of Electronic and Information Engineering,\",\"Tongji University, Shanghai 201804, China\"],\"github\":\"https://github.com/ceasonen\",\"linkedin\":\"https://www.linkedin.com/in/cheng-chen-012a83378/\"},\"features\":{\"enable_likes\":false,\"enable_one_page_mode\":false},\"enableOnePageMode\":false,\"researchInterests\":[\"Deployable Trustworthy AI\",\"Medical and Multimodal Learning\",\"Vision-Language and Audio-Visual Understanding\",\"Risk-Aware Model Deployment\",\"Wireless Intelligence\"],\"pagesToShow\":[{\"type\":\"about\",\"id\":\"about\",\"sections\":[{\"id\":\"about\",\"type\":\"markdown\",\"source\":\"bio.md\",\"title\":\"About\",\"content\":\"I am an undergraduate researcher at [Tongji University](https://www.tongji.edu.cn/) in Communication Engineering. My work sits at the intersection of **deployable trustworthy AI** and **multimodal intelligence**, with recent projects in medical model compression, open-vocabulary audio-visual understanding, budgeted RAG, neural-operator risk assessment, and wireless-intelligence privacy.\\n\\nI am currently looking for PhD opportunities. I hope to work with advisors who care about method design, careful evaluation, calibration, robustness, and whether a system can survive real deployment constraints.\"},{\"id\":\"phd_search\",\"type\":\"list\",\"title\":\"PhD Search\",\"source\":\"phd.toml\",\"items\":[{\"date\":\"Now\",\"content\":\"Seeking PhD opportunities in multimodal learning, trustworthy AI, medical AI, and deployable learning systems.\"},{\"date\":\"Fit\",\"content\":\"Best fit: groups that value rigorous experiments, clean problem formulation, and systems that can be evaluated beyond a single benchmark table.\"}]},{\"id\":\"research_map\",\"type\":\"list\",\"title\":\"Research Map\",\"source\":\"research.toml\",\"items\":[{\"date\":\"Core\",\"content\":\"Deployable trustworthy AI: model compression, calibration, risk triage, and robustness under practical budgets.\"},{\"date\":\"Modal\",\"content\":\"Multimodal intelligence: medical imaging, vision-language reasoning, audio-visual event understanding, budgeted RAG, and learning-assisted wireless privacy.\"},{\"date\":\"Review\",\"content\":\"ACM MM 2026 submissions are described by research direction in the current review cycle; the NeurIPS 2026 work is kept as ongoing research.\"}]},{\"id\":\"outside_research\",\"type\":\"list\",\"title\":\"Outside Research\",\"source\":\"life.toml\",\"items\":[{\"date\":\"Sport\",\"content\":\"Football matters to me: I support FC Barcelona and Arsenal, and I like playing football and cycling.\"},{\"date\":\"Life\",\"content\":\"I also enjoy music, consumer technology, and Rubik's cubes.\"}]}]}]}},\"defaultLocale\":\"en\"}],[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],null,[\"$\",\"$Lc\",null,{\"children\":[\"$Ld\",\"$Le\",[\"$\",\"$Lf\",null,{\"promise\":\"$@10\"}]]}]]}],{},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$1\",\"xy13AzddVTZBDoShh2kOF\",{\"children\":[[\"$\",\"$L11\",null,{\"children\":\"$L12\"}],null]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$13\",\"$undefined\"],\"s\":false,\"S\":true}\n14:\"$Sreact.suspense\"\n15:I[4911,[],\"AsyncMetadata\"]\nb:[\"$\",\"$14\",null,{\"fallback\":null,\"children\":[\"$\",\"$L15\",null,{\"promise\":\"$@16\"}]}]\ne:null\n12:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\nd:null\n16:{\"metadata\":[[\"$\",\"title\",\"0\",{\"children\":\"Cheng Chen\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Personal website of Cheng Chen, an undergraduate researcher seeking PhD opportunities in deployable trustworthy AI and multimodal intelligence.\"}],[\"$\",\"meta\",\"2\",{\"name\":\"author\",\"content\":\"Cheng Chen\"}],[\"$\",\"meta\",\"3\",{\"name\":\"keywords\",\"content\":\"Cheng Chen,Undergraduate Researcher,Tongji University,Multimodal AI,Trustworthy AI\"}],[\"$\",\"meta\",\"4\",{\"name\":\"creator\",\"content\":\"Cheng Chen\"}],[\"$\",\"meta\",\"5\",{\"name\":\"publisher\",\"content\":\"Cheng Chen\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:title\",\"content\":\"Cheng Chen\"}],[\"$\",\"meta\",\"7\",{\"property\":\"og:description\",\"content\":\"Personal website of Cheng Chen, an undergraduate researcher seeking PhD opportunities in deployable trustworthy AI and multimodal intelligence.\"}],[\"$\",\"meta\",\"8\",{\"property\":\"og:site_name\",\"content\":\"Cheng Chen's Academic Website\"}],[\"$\",\"meta\",\"9\",{\"property\":\"og:locale\",\"content\":\"en_US\"}],[\"$\",\"meta\",\"10\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"$\",\"meta\",\"11\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"12\",{\"name\":\"twitter:title\",\"content\":\"Cheng Chen\"}],[\"$\",\"meta\",\"13\",{\"name\":\"twitter:description\",\"content\":\"Personal website of Cheng Chen, an undergraduate researcher seeking PhD opportunities in deployable trustworthy AI and multimodal intelligence.\"}],[\"$\",\"link\",\"14\",{\"rel\":\"icon\",\"href\":\"/favicon.svg\"}]],\"error\":null,\"digest\":\"$undefined\"}\n10:{\"metadata\":\"$16:metadata\",\"error\":null,\"digest\":\"$undefined\"}\n"])</script></body></html>
+      <section id="news" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">News</p>
+            <h2>Recent updates.</h2>
+          </div>
+          <a class="section-link" href="/news/">Full news archive</a>
+        </div>
+        <ol class="news-list">
+          <li>
+            <span class="news-date">05.2026</span>
+            <div class="news-copy">
+              <p><strong>ACM MM 2026 review scores updated.</strong> Two submissions received initial scores of <strong>4/4/4/4/3</strong> and <strong>4/4/3/2</strong>, on open-vocabulary audio-visual localization and transferable visual security.</p>
+            </div>
+          </li>
+          <li>
+            <span class="news-date">05.2026</span>
+            <div class="news-copy">
+              <p><strong>ICANN 2026 paper accepted.</strong> “Beyond Relevance: Counter-Evidence Planning in a Controlled Budgeted RAG Testbed” was accepted, with Cheng Chen as corresponding author.</p>
+            </div>
+          </li>
+          <li>
+            <span class="news-date">04.2026</span>
+            <div class="news-copy">
+              <p><strong>IJCAI 2026 oral presentation.</strong> “OrthKD” was accepted as an oral presentation on lightweight deployment for heterogeneous clinical teachers.</p>
+            </div>
+          </li>
+          <li>
+            <span class="news-date">04.2026</span>
+            <div class="news-copy">
+              <p><strong>NeurIPS 2026 submission under review.</strong> Current first-author work studies single-pass risk triage and deployable risk assessment for neural operators.</p>
+            </div>
+          </li>
+          <li>
+            <span class="news-date">03.2026</span>
+            <div class="news-copy">
+              <p><strong>IJCNN 2026 paper accepted.</strong> The symbolic scene-description pipeline for text-only LLM visual reasoning was accepted, with Cheng Chen as corresponding author.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="publications" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Publications</p>
+            <h2>Selected papers.</h2>
+          </div>
+          <a class="section-link" href="/publications/">Publication list</a>
+        </div>
+        <div class="year-label">2026</div>
+        <div class="publication-list">
+          <article class="publication-item">
+            <div class="publication-meta">ICANN 2026 · Corresponding Author</div>
+            <h3>Beyond Relevance: Counter-Evidence Planning in a Controlled Budgeted RAG Testbed</h3>
+            <p class="publication-authors">Yuyao Cai, Yi Xu, <strong>Cheng Chen</strong></p>
+            <p class="publication-summary">A reliability-oriented planning framework for fixed-budget RAG that explicitly reasons about counter-evidence instead of relying on relevance alone.</p>
+            <div class="publication-links">
+              <a href="/papers/icann/caperag/main.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
+              <a href="/publications/">Details</a>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-meta">IJCAI 2026 · Oral · Co-first Author</div>
+            <h3>OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment</h3>
+            <p class="publication-authors">Yi Xu*, <strong>Cheng Chen*</strong>, Mufan Cao</p>
+            <p class="publication-summary">A lightweight distillation strategy that separates transferable clinical knowledge from teacher-specific bias for resource-constrained medical deployment.</p>
+            <div class="publication-links">
+              <a href="/papers/ijcai/ijcai26.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
+              <a href="/publications/">Details</a>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-meta">IJCNN 2026 · Corresponding Author</div>
+            <h3>Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions</h3>
+            <p class="publication-authors">Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, <strong>Cheng Chen</strong></p>
+            <p class="publication-summary">A symbolic scene-description pipeline that lets text-only language models reason from structured perception outputs without multimodal pre-training.</p>
+            <div class="publication-links">
+              <a href="/papers/ijcnn/main.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
+              <a href="/publications/">Details</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="honors" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Honors</p>
+            <h2>Selected highlights and awards.</h2>
+          </div>
+          <a class="section-link" href="/awards/">All highlights</a>
+        </div>
+        <div class="honors-grid">
+          <article class="honor-card">
+            <h3>IJCAI 2026 Oral Presentation</h3>
+            <p>OrthKD was accepted as an oral presentation, marking the strongest current result in the medical-AI distillation line.</p>
+          </article>
+          <article class="honor-card">
+            <h3>IJCNN 2026 Corresponding-Author Paper</h3>
+            <p>Accepted work on symbolic scene descriptions for visual reasoning with text-only language models.</p>
+          </article>
+          <article class="honor-card">
+            <h3>ICANN 2026 Corresponding-Author Paper</h3>
+            <p>Accepted work on controlled budgeted RAG and counter-evidence planning under reliability constraints.</p>
+          </article>
+          <article class="honor-card">
+            <h3>National Second Prize in AI Algorithm Competition</h3>
+            <p>Global Campus Artificial Intelligence Algorithm Elite Competition, reflecting algorithm design and implementation strength.</p>
+          </article>
+          <article class="honor-card">
+            <h3>National Third Prize in Embedded Systems Competition</h3>
+            <p>National College Students’ Embedded Systems Competition, highlighting practical systems and engineering capability.</p>
+          </article>
+          <article class="honor-card">
+            <h3>Tongji University Scholarship</h3>
+            <p>Second-Class Undergraduate Outstanding Student Scholarship for both the 2023–2024 and 2024–2025 academic years.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Education</p>
+            <h2>Current academic trajectory.</h2>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-date">2023.09 - Present</span>
+            <div>
+              <h3>B.Eng. in Communication Engineering</h3>
+              <p>Tongji University, Shanghai. Major rank <strong>3/87</strong>, with coursework across signals and systems, digital signal processing, information theory, embedded systems, and statistics.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-date">2025 - 2026</span>
+            <div>
+              <h3>Research output cycle</h3>
+              <p>Built a research line across multimodal understanding, trustworthy reasoning, deployable medical AI, reliable RAG, and wireless privacy, with roles spanning first author, co-first author, and corresponding author.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-date">Now</span>
+            <div>
+              <h3>PhD search</h3>
+              <p>Looking for research groups that value strong problem formulation, clean evaluation, and systems that can still hold under real deployment constraints.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <p class="section-kicker">Contact</p>
+        <h2>I am open to research conversations and PhD opportunities.</h2>
+        <p>
+          If your group works on multimodal learning, trustworthy AI, medical AI, or reliable deployment under real constraints, I would be glad to connect.
+        </p>
+        <div class="contact-actions">
+          <a class="primary-button" href="mailto:2351445@tongji.edu.cn">Email me</a>
+          <a class="secondary-button" href="/output/pdf/cheng-chen-cv.pdf?v=20260530-cv-rankonly" target="_blank" rel="noopener noreferrer">Open CV</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>Last updated: June 3, 2026</p>
+      <p>Built by Cheng Chen</p>
+    </div>
+  </footer>
+</body>
+</html>
