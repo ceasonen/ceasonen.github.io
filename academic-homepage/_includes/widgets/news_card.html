@@ -1,0 +1,48 @@
+{% assign news_by_year = site.news | sort: "date" | reverse | slice: 0, include.limit | group_by_exp: "item", "item.date | date: '%Y'" -%}
+
+<div class="my-4 bg-white shadow-sm rounded-xl border-0">
+    <div class="card-body p-4">
+        <h5 class="card-title mb-4 font-weight-normal text-primary">
+            <i class="fas fa-bullhorn text-accent mr-2"></i> News
+        </h5>
+        
+        <div class="news-list">
+            {% for year in news_by_year %}
+                {% for item in year.items %}
+                <div class="news-row d-flex align-items-start py-3 {% unless forloop.last and forloop.parentloop.last %}border-bottom border-light{% endunless %}">
+                    <!-- Date (Clean, neutral gray tone) -->
+                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
+                        {{ item.date | date: "%Y.%m" }}
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+                        {% if item.category == "paper" %}
+                            <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
+                        {% elsif item.category == "submission" %}
+                            <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
+                        {% elsif item.category == "competition" %}
+                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
+                        {% elsif item.category == "scholarship" %}
+                            <i class="fas fa-graduation-cap text-muted mr-1" style="font-size: 0.85em;"></i>
+                        {% endif %}
+                        {{ item.title }}
+                    </div>
+                </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+.news-row {
+    transition: background-color 0.15s ease-in-out;
+}
+.news-row:hover {
+    background-color: #fcfcfb;
+}
+.text-accent {
+    color: #7a2438 !important; /* Deep academic burgundy matching the theme */
+}
+</style>

@@ -1,0 +1,36 @@
+"Cheng Chen":
+  bold: true
+
+"C. Chen*":
+  bold: true
+
+"Cheng Chen*":
+  bold: true
+
+"C. Chen":
+  bold: true
+
+"陈成":
+  bold: true
+
+"Yuyao Cai":
+  url: https://github.com/ceasonen
+
+"Yi Xu":
+  url: https://github.com/ceasonen
+
+"Yi Xu*":
+  name: Yi Xu
+  url: https://github.com/ceasonen
+
+"Mufan Cao":
+  url: https://github.com/ceasonen
+
+"Wenzhuo Lei":
+  url: https://github.com/ceasonen
+
+"Chaorong Ye":
+  url: https://github.com/ceasonen
+
+"et al.":
+  name: '<span class="lang-en">et al.</span><span class="lang-zh">等</span>'

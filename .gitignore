@@ -1,0 +1,20 @@
+# Jekyll ignore
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler ignore
+.bundle/
+vendor/
+Gemfile.lock
+
+# OS metadata
+.DS_Store
+**/.DS_Store
+
+# Playwright logs and outputs
+.playwright-cli/
+**/_site/
+**/output/playwright/
+output/playwright/

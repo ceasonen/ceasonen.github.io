@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Template: https://github.com/luost26/academic-homepage -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Homepage - Cheng Chen</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script>
+        function setLanguage(lang) {
+            document.documentElement.setAttribute('data-lang', lang);
+            localStorage.setItem('pref-lang', lang);
+        }
+        function toggleLang() {
+            const current = document.documentElement.getAttribute('data-lang') || 'en';
+            const target = current === 'en' ? 'zh' : 'en';
+            setLanguage(target);
+        }
+        const savedLang = localStorage.getItem('pref-lang') || 'en';
+        document.documentElement.setAttribute('data-lang', savedLang);
+    </script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="bg-light" >
+    <nav class="navbar navbar-expand-sm navbar-light fixed-top mb-5 shadow-sm">
+    <div class="container-lg">
+        <a class="navbar-brand"><strong>
+            <span class="lang-en">Cheng Chen</span>
+            <span class="lang-zh">陈成</span>
+        </strong></a>
+        <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">
+                        <span class="lang-en">Home</span>
+                        <span class="lang-zh">关于我</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/publications">
+                        <span class="lang-en">Publications</span>
+                        <span class="lang-zh">论文</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/news">
+                        <span class="lang-en">News</span>
+                        <span class="lang-zh">动态</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/awards">
+                        <span class="lang-en">Highlights</span>
+                        <span class="lang-zh">研究亮点</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/cv/cheng-chen-cv.pdf">
+                        <span class="lang-en">CV</span>
+                        <span class="lang-zh">简历</span>
+                    </a>
+                </li>
+                
+                
+                <!-- Desktop Language Toggle -->
+                <li class="nav-item pl-2 border-left d-none d-sm-block align-self-center">
+                    <a class="nav-link text-muted font-weight-bold" href="#" onclick="toggleLang(); return false;" style="cursor: pointer;">
+                        <span class="lang-en"><i class="fas fa-globe"></i> 中文</span>
+                        <span class="lang-zh"><i class="fas fa-globe"></i> EN</span>
+                    </a>
+                </li>
+                <!-- Mobile Language Toggle -->
+                <li class="nav-item d-block d-sm-none border-top mt-1 pt-1">
+                    <a class="nav-link text-muted font-weight-bold" href="#" onclick="toggleLang(); return false;" style="cursor: pointer;">
+                        <span class="lang-en"><i class="fas fa-globe"></i> Switch to 中文</span>
+                        <span class="lang-zh"><i class="fas fa-globe"></i> Switch to English</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-lg">
+        <div class="row">
+    <div class="col">
+        <div class="card border-0 shadow-sm bg-white">
+            <div class="card-body p-5">
+                <div class="row">
+                    <div class="col">
+                        
+                        <!-- When the screen is wider than md, float the portrait on the right -->
+                        <div class="figure float-right ml-4 mb-4 d-none d-md-block">
+                            <img 
+                                src="/assets/images/photos/portrait.jpg" 
+                                class="figure-img img-fluid img-thumbnail" 
+                                style="height: 200px;"
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title="">
+                        </div>
+                        
+
+                        <div class="d-flex">
+                            <div class="h1 font-weight-normal">
+                                <span class="lang-en">Cheng Chen</span>
+                                <span class="lang-zh">陈成</span>
+                            </div>
+                            
+                            <div class="ml-auto d-md-none">
+                                <a target="_blank" href="/assets/images/photos/portrait.jpg">
+                                    <img src="/assets/images/photos/portrait.jpg" class="rounded-circle" style="height: 48px;" alt="Portrait">
+                                </a>
+                            </div>
+                            
+                        </div>
+                        <div class="text-profile-position">
+                            
+                            
+                            <span class="lang-en">Undergraduate Researcher</span><span class="lang-zh">本科研究者</span><br/>
+                            
+                            
+                            <span class="lang-en">Tongji University</span><span class="lang-zh">同济大学</span><br/>
+                            
+                        </div>
+                        <div class="text-profile-bio mt-3" style="text-align: justify;">
+                            <div class="lang-en">
+  <p>
+    I am an undergraduate researcher at <a href="https://www.tongji.edu.cn/" target="_blank">Tongji University</a> in Communication Engineering. My work sits at the intersection of <strong>deployable trustworthy AI</strong> and <strong>multimodal intelligence</strong>, with recent projects in medical model compression, open-vocabulary audio-visual understanding, budgeted RAG, neural-operator risk assessment, and wireless-intelligence privacy.
+  </p>
+  <p>
+    I am currently looking for PhD opportunities. I hope to work with advisors who care about method design, careful evaluation, calibration, robustness, and whether a system can survive real deployment constraints.
+  </p>
+</div> <div class="lang-zh">
+  <p>
+    我目前在<a href="https://www.tongji.edu.cn/" target="_blank">同济大学</a>通信工程专业学习，研究主线是<strong>可部署可信 AI 与多模态智能</strong>。近期工作覆盖医学模型压缩、开放词汇音视频理解、预算受限 RAG、神经算子风险评估，以及无线智能隐私保护。
+  </p>
+  <p>
+    我正在寻找博士阶段的研究机会，希望加入真正重视方法设计、严格评测、校准、鲁棒性和真实部署约束的课题组。
+  </p>
+</div>
+                        </div>
+                        
+                    </div>
+        
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col">
+                        <a class="pr-3" href="mailto:%32%33%35%31%34%34%35@%74%6F%6E%67%6A%69.%65%64%75.%63%6E">
+                            <i class="fas fa-at"></i> <span class="email-text">2351445(at)tongji.edu.cn</span>
+                        </a>
+
+                        <a class="pr-3 no-break" target="_blank" href="https://scholar.google.com/citations?user=X92zQ68AAAAJ&hl=zh-CN">
+                            <i class="fab fa-google-scholar"></i> Google Scholar
+                        </a>
+                        
+                        
+                        
+                        <a class="pr-3 no-break" target="_blank" href="https://github.com/ceasonen">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        
+
+                        
+
+                        
+
+                        
+                        <a class="pr-3 no-break" target="_blank" href="https://www.linkedin.com/in/cheng-chen-012a83378">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+
+
+
+
+
+
+    
+    
+        <div class="my-4 bg-white shadow-sm rounded-xl border-0">
+    <div class="card-body p-4">
+        <h5 class="card-title mb-4 font-weight-normal text-primary">
+            <i class="fas fa-bullhorn text-accent mr-2"></i> News
+        </h5>
+        
+        <div class="news-list">
+            
+                
+                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date (Clean, neutral gray tone) -->
+                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
+                        2026.05
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+                        
+                            <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Two <strong>ACM MM 2026</strong> submissions received initial scores of <strong>4/4/4/4/3</strong> (approx. <strong>top 5%</strong>; co-first author) and <strong>4/4/3/2</strong> (approx. <strong>top 15--20%</strong>; first author), covering open-vocabulary audio-visual localization and transferable visual security.</span><span class="lang-zh">两篇 <strong>ACM MM 2026</strong> 在审投稿初评分为 <strong>4/4/4/4/3</strong>（约 <strong>Top 5%</strong>，共同第一作者）与 <strong>4/4/3/2</strong>（约 <strong>15--20%</strong>，第一作者），方向覆盖开放词汇视听事件定位与视觉安全可迁移攻击。</span>
+                    </div>
+                </div>
+                
+                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date (Clean, neutral gray tone) -->
+                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
+                        2026.05
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+                        
+                            <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
+                        
+                        <span class="lang-en">The counter-evidence planning work for controlled budgeted RAG was accepted to <strong>ICANN 2026</strong>; Cheng Chen is corresponding author.</span><span class="lang-zh">预算受限 RAG 反证据规划工作被 <strong>ICANN 2026</strong> 录用，陈成为通讯作者，研究固定预算下的可靠检索决策。</span>
+                    </div>
+                </div>
+                
+                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date (Clean, neutral gray tone) -->
+                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
+                        2026.04
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+                        
+                            <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
+                        
+                        <span class="lang-en"><strong>OrthKD</strong> was accepted to <strong>IJCAI 2026</strong> as an <strong>oral presentation</strong>. The work studies heterogeneous-teacher knowledge distillation for lightweight medical AI deployment.</span><span class="lang-zh"><strong>OrthKD</strong> 被 <strong>IJCAI 2026</strong> 录用为 <strong>Oral Presentation</strong>，研究面向轻量化医学 AI 部署的异构教师知识蒸馏。</span>
+                    </div>
+                </div>
+                
+                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date (Clean, neutral gray tone) -->
+                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
+                        2026.04
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+                        
+                            <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">A first-author <strong>NeurIPS 2026</strong> submission studies single-pass risk triage and deployable risk assessment for neural operators.</span><span class="lang-zh"><strong>NeurIPS 2026</strong> 第一作者在投工作研究单次前向风险分诊与可部署风险评估，面向神经算子的早期预警与低开销部署。</span>
+                    </div>
+                </div>
+                
+                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date (Clean, neutral gray tone) -->
+                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
+                        2026.03
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+                        
+                            <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
+                        
+                        <span class="lang-en">A symbolic scene-description pipeline for enabling visual reasoning in text-only LLMs was accepted to <strong>IJCNN 2026</strong>; Cheng Chen is corresponding author.</span><span class="lang-zh">面向纯文本 LLM 的符号化场景描述视觉推理工作被 <strong>IJCNN 2026</strong> 录用，陈成为通讯作者。</span>
+                    </div>
+                </div>
+                
+                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date (Clean, neutral gray tone) -->
+                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
+                        2026.01
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+                        
+                            <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">A first-author <strong>IEEE Wireless Communications Letters</strong> submission studies privacy-aware beamforming under eavesdropper location uncertainty.</span><span class="lang-zh"><strong>IEEE Wireless Communications Letters</strong> 第一作者在投工作研究窃听者位置不确定条件下的隐私感知波束赋形。</span>
+                    </div>
+                </div>
+                
+            
+                
+                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date (Clean, neutral gray tone) -->
+                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
+                        2025.12
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+                        
+                            <i class="fas fa-graduation-cap text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received the <strong>Tongji University Undergraduate Outstanding Student Scholarship</strong> (Second Class) for the 2024-2025 academic year.</span><span class="lang-zh">获得 2024-2025 学年<strong>同济大学本科优秀学生奖学金二等奖</strong>。</span>
+                    </div>
+                </div>
+                
+                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date (Clean, neutral gray tone) -->
+                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
+                        2025.12
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+                        
+                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received the <strong>National Final Second Prize</strong> in the algorithm innovation track for the AI + applied innovation project (<strong>Global Campus Artificial Intelligence Algorithm Elite Competition</strong>).</span><span class="lang-zh">获得 2025 年第七届<strong>全球校园人工智能算法精英大赛全国总决赛二等奖</strong>，赛题为 AI+应用创新-新医科。</span>
+                    </div>
+                </div>
+                
+                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date (Clean, neutral gray tone) -->
+                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
+                        2025.12
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+                        
+                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received the <strong>National Third Prize</strong> in the 2025 <strong>National College Students' Embedded Chip and System Design Competition</strong> (FPGA Innovation Design Track).</span><span class="lang-zh">获得 2025 年第八届<strong>全国大学生嵌入式芯片与系统设计竞赛 FPGA 创新设计赛道全国三等奖</strong>。</span>
+                    </div>
+                </div>
+                
+                <div class="news-row d-flex align-items-start py-3 ">
+                    <!-- Date (Clean, neutral gray tone) -->
+                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
+                        2025.12
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+                        
+                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received an award in the <strong>National College Student Mathematics Competition</strong>.</span><span class="lang-zh">获得<strong>全国大学生数学竞赛</strong>相关奖项。</span>
+                    </div>
+                </div>
+                
+            
+        </div>
+    </div>
+</div>
+
+<style>
+.news-row {
+    transition: background-color 0.15s ease-in-out;
+}
+.news-row:hover {
+    background-color: #fcfcfb;
+}
+.text-accent {
+    color: #7a2438 !important; /* Deep academic burgundy matching the theme */
+}
+</style>
+
+    
+
+
+
+    
+    
+<div class="my-3 p-0 bg-white shadow-sm rounded-xl">
+    <h6 class="border-bottom border-gray p-3 mb-0">
+        <i class="fas fa-star"></i> Selected Publications 
+        <a href="/publications">(view all <i class="fas fa-angle-double-right"></i>)</a>
+    </h6>
+    
+        
+<div class="d-none d-md-block">
+    <div class="row no-gutters border-bottom border-gray">
+        <div class="col-md-3 col-xl-2 mb-md-0 p-md-3"><img data-src="/assets/images/covers/orthkd.png" alt="OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment" class="lazy w-100 rounded-sm" src="/assets/images/empty_300x200.png"></div>
+        <div class="col-md-9 col-xl-10 p-3 pl-md-0">
+            <h5 class="mt-0 mb-1 font-weight-normal">OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment</h5>
+            <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://github.com/ceasonen">Yi Xu*</a>, <span class="text-body">
+            <strong>Cheng Chen*</strong>, </span><a class="text-body" target="_blank" href="https://github.com/ceasonen">Mufan Cao</a>
+<mark>(* <i> equal contribution</i>)</mark></p>
+            <p class="mt-0 mb-0 small"><i>International Joint Conference on Artificial Intelligence (IJCAI)</i> 2026 <span class="badge badge-pill badge-publication badge-success">Oral</span> <span data-semantic-scholar-id=""></span></p>
+            <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Proposes orthogonal distillation for heterogeneous clinical teachers, separating transferable knowledge from teacher-specific bias for lightweight deployment.</span><span class="lang-zh">提出面向异构医学教师模型的正交蒸馏方法，将可迁移的共性知识与教师特异性偏差分离，以实现轻量化模型部署。</span></p>
+            
+            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                
+                
+                <a target="_blank" href="/papers/ijcai/ijcai26.pdf">[PDF]</a>
+                
+                
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row no-gutters d-md-none border-bottom border-gray   lazy" data-src="/assets/images/covers/orthkd.png">
+    <div class="w-100  " style="background-color: rgba(255,255,255,0.9);">
+        <div class="d-flex align-items-start flex-column py-3 px-4">
+            <div class="mb-auto"></div>
+            <div>
+                <h5 class="mt-0 mb-1 font-weight-normal">OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment</h5>
+                <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://github.com/ceasonen">Yi Xu*</a>, <span class="text-body">
+            <strong>Cheng Chen*</strong>, </span><a class="text-body" target="_blank" href="https://github.com/ceasonen">Mufan Cao</a>
+<mark>(* <i> equal contribution</i>)</mark></p>
+                <p class="mt-0 mb-0 small"><i>International Joint Conference on Artificial Intelligence (IJCAI)</i> 2026 <span class="badge badge-pill badge-publication badge-success">Oral</span> <span data-semantic-scholar-id=""></span></p>
+                <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Proposes orthogonal distillation for heterogeneous clinical teachers, separating transferable knowledge from teacher-specific bias for lightweight deployment.</span><span class="lang-zh">提出面向异构医学教师模型的正交蒸馏方法，将可迁移的共性知识与教师特异性偏差分离，以实现轻量化模型部署。</span></p>
+                
+                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                    
+                    
+                    <a target="_blank" href="/papers/ijcai/ijcai26.pdf">[PDF]</a>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>    
+    
+        
+<div class="d-none d-md-block">
+    <div class="row no-gutters border-bottom border-gray">
+        <div class="col-md-3 col-xl-2 mb-md-0 p-md-3"><img data-src="/assets/images/covers/mm.png" alt="Open-Vocabulary Audio-Visual Event Localization" class="lazy w-100 rounded-sm" src="/assets/images/empty_300x200.png"></div>
+        <div class="col-md-9 col-xl-10 p-3 pl-md-0">
+            <h5 class="mt-0 mb-1 font-weight-normal">Open-Vocabulary Audio-Visual Event Localization</h5>
+            <p class="mt-0 mb-0 small"><span class="text-body">
+            <strong>Cheng Chen*</strong>, </span><span class="text-body">
+            <span class="lang-en">et al.</span><span class="lang-zh">等</span></span>
+<mark>(* <i> equal contribution</i>)</mark></p>
+            <p class="mt-0 mb-0 small"><i>ACM Multimedia (ACM MM)</i> 2026 <span class="badge badge-pill badge-publication badge-warning text-dark">Under Review</span> <span data-semantic-scholar-id=""></span></p>
+            <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Proposes an open-vocabulary audio-visual event localization framework using reliability-aware multimodal distillation.</span><span class="lang-zh">提出一种开放词汇视听事件定位与可靠性感知多模态蒸馏框架，实现对任意文本描述的视听事件检测。</span></p>
+            
+            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                
+                
+                <a target="_blank" href="/papers/mm/paper2/main.pdf">[PDF]</a>
+                
+                
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row no-gutters d-md-none border-bottom border-gray   lazy" data-src="/assets/images/covers/mm.png">
+    <div class="w-100  " style="background-color: rgba(255,255,255,0.9);">
+        <div class="d-flex align-items-start flex-column py-3 px-4">
+            <div class="mb-auto"></div>
+            <div>
+                <h5 class="mt-0 mb-1 font-weight-normal">Open-Vocabulary Audio-Visual Event Localization</h5>
+                <p class="mt-0 mb-0 small"><span class="text-body">
+            <strong>Cheng Chen*</strong>, </span><span class="text-body">
+            <span class="lang-en">et al.</span><span class="lang-zh">等</span></span>
+<mark>(* <i> equal contribution</i>)</mark></p>
+                <p class="mt-0 mb-0 small"><i>ACM Multimedia (ACM MM)</i> 2026 <span class="badge badge-pill badge-publication badge-warning text-dark">Under Review</span> <span data-semantic-scholar-id=""></span></p>
+                <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Proposes an open-vocabulary audio-visual event localization framework using reliability-aware multimodal distillation.</span><span class="lang-zh">提出一种开放词汇视听事件定位与可靠性感知多模态蒸馏框架，实现对任意文本描述的视听事件检测。</span></p>
+                
+                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                    
+                    
+                    <a target="_blank" href="/papers/mm/paper2/main.pdf">[PDF]</a>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>    
+    
+        
+<div class="d-none d-md-block">
+    <div class="row no-gutters border-bottom border-gray">
+        <div class="col-md-3 col-xl-2 mb-md-0 p-md-3"><img data-src="/assets/images/covers/caperag.png" alt="Beyond Relevance: Counter-Evidence Planning in a Controlled Budgeted RAG Testbed" class="lazy w-100 rounded-sm" src="/assets/images/empty_300x200.png"></div>
+        <div class="col-md-9 col-xl-10 p-3 pl-md-0">
+            <h5 class="mt-0 mb-1 font-weight-normal">Beyond Relevance: Counter-Evidence Planning in a Controlled Budgeted RAG Testbed</h5>
+            <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://github.com/ceasonen">Yuyao Cai</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Yi Xu</a>, <span class="text-body">
+            <strong>Cheng Chen</strong></span></p>
+            <p class="mt-0 mb-0 small"><i>International Conference on Artificial Neural Networks (ICANN)</i> 2026 <span class="badge badge-pill badge-publication badge-info">Corresponding Author</span> <span data-semantic-scholar-id=""></span></p>
+            <p class="mt-0 mb-0 small text-muted"><span class="lang-en">A counter-evidence planning framework for controlled budgeted RAG, optimizing sequential planning under uncertainty calibration.</span><span class="lang-zh">针对预算受限的 RAG 提出反证据规划框架，在不确定性校准下优化序列规划决策。</span></p>
+            
+            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                
+                
+                <a target="_blank" href="/papers/icann/caperag/main.pdf">[PDF]</a>
+                
+                
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row no-gutters d-md-none border-bottom border-gray   lazy" data-src="/assets/images/covers/caperag.png">
+    <div class="w-100  " style="background-color: rgba(255,255,255,0.9);">
+        <div class="d-flex align-items-start flex-column py-3 px-4">
+            <div class="mb-auto"></div>
+            <div>
+                <h5 class="mt-0 mb-1 font-weight-normal">Beyond Relevance: Counter-Evidence Planning in a Controlled Budgeted RAG Testbed</h5>
+                <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://github.com/ceasonen">Yuyao Cai</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Yi Xu</a>, <span class="text-body">
+            <strong>Cheng Chen</strong></span></p>
+                <p class="mt-0 mb-0 small"><i>International Conference on Artificial Neural Networks (ICANN)</i> 2026 <span class="badge badge-pill badge-publication badge-info">Corresponding Author</span> <span data-semantic-scholar-id=""></span></p>
+                <p class="mt-0 mb-0 small text-muted"><span class="lang-en">A counter-evidence planning framework for controlled budgeted RAG, optimizing sequential planning under uncertainty calibration.</span><span class="lang-zh">针对预算受限的 RAG 提出反证据规划框架，在不确定性校准下优化序列规划决策。</span></p>
+                
+                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                    
+                    
+                    <a target="_blank" href="/papers/icann/caperag/main.pdf">[PDF]</a>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>    
+    
+        
+<div class="d-none d-md-block">
+    <div class="row no-gutters border-bottom border-gray">
+        <div class="col-md-3 col-xl-2 mb-md-0 p-md-3"><img data-src="/assets/images/covers/nips.png" alt="Neural-Operator Risk Assessment for Deployable Risk Triage" class="lazy w-100 rounded-sm" src="/assets/images/empty_300x200.png"></div>
+        <div class="col-md-9 col-xl-10 p-3 pl-md-0">
+            <h5 class="mt-0 mb-1 font-weight-normal">Neural-Operator Risk Assessment for Deployable Risk Triage</h5>
+            <p class="mt-0 mb-0 small"><span class="text-body">
+            <strong>Cheng Chen</strong>, </span><span class="text-body">
+            <span class="lang-en">et al.</span><span class="lang-zh">等</span></span></p>
+            <p class="mt-0 mb-0 small"><i>Neural Information Processing Systems (NeurIPS)</i> 2026 <span class="badge badge-pill badge-publication badge-warning text-dark">Under Review</span> <span data-semantic-scholar-id=""></span></p>
+            <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Studies single-pass risk triage for neural operators, targeting early warning, calibration, and low-overhead deployment.</span><span class="lang-zh">研究面向神经算子的单次前向风险分诊与风险评估方法，实现早期预警、不确定性校准与低开销部署。</span></p>
+            
+            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row no-gutters d-md-none border-bottom border-gray   lazy" data-src="/assets/images/covers/nips.png">
+    <div class="w-100  " style="background-color: rgba(255,255,255,0.9);">
+        <div class="d-flex align-items-start flex-column py-3 px-4">
+            <div class="mb-auto"></div>
+            <div>
+                <h5 class="mt-0 mb-1 font-weight-normal">Neural-Operator Risk Assessment for Deployable Risk Triage</h5>
+                <p class="mt-0 mb-0 small"><span class="text-body">
+            <strong>Cheng Chen</strong>, </span><span class="text-body">
+            <span class="lang-en">et al.</span><span class="lang-zh">等</span></span></p>
+                <p class="mt-0 mb-0 small"><i>Neural Information Processing Systems (NeurIPS)</i> 2026 <span class="badge badge-pill badge-publication badge-warning text-dark">Under Review</span> <span data-semantic-scholar-id=""></span></p>
+                <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Studies single-pass risk triage for neural operators, targeting early warning, calibration, and low-overhead deployment.</span><span class="lang-zh">研究面向神经算子的单次前向风险分诊与风险评估方法，实现早期预警、不确定性校准与低开销部署。</span></p>
+                
+                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>    
+    
+        
+<div class="d-none d-md-block">
+    <div class="row no-gutters border-bottom border-gray">
+        <div class="col-md-3 col-xl-2 mb-md-0 p-md-3"><img data-src="/assets/images/covers/symbolic_visual_reasoning.png" alt="Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions" class="lazy w-100 rounded-sm" src="/assets/images/empty_300x200.png"></div>
+        <div class="col-md-9 col-xl-10 p-3 pl-md-0">
+            <h5 class="mt-0 mb-1 font-weight-normal">Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions</h5>
+            <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://github.com/ceasonen">Wenzhuo Lei</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Mufan Cao</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Chaorong Ye</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Yi Xu</a>, <span class="text-body">
+            <strong>Cheng Chen</strong></span></p>
+            <p class="mt-0 mb-0 small"><i>International Joint Conference on Neural Networks (IJCNN)</i> 2026 <span class="badge badge-pill badge-publication badge-info">Corresponding Author</span> <span data-semantic-scholar-id=""></span></p>
+            <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Encodes visual scenes as symbolic descriptions so text-only LLMs can reason from structured perception outputs without multimodal pre-training.</span><span class="lang-zh">通过将视觉场景编码为符号化描述，使纯文本大语言模型能够基于结构化感知输出进行推理，无需进行多模态预训练。</span></p>
+            
+            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                
+                
+                <a target="_blank" href="/papers/ijcnn/main.pdf">[PDF]</a>
+                
+                
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row no-gutters d-md-none border-bottom border-gray   lazy" data-src="/assets/images/covers/symbolic_visual_reasoning.png">
+    <div class="w-100  " style="background-color: rgba(255,255,255,0.9);">
+        <div class="d-flex align-items-start flex-column py-3 px-4">
+            <div class="mb-auto"></div>
+            <div>
+                <h5 class="mt-0 mb-1 font-weight-normal">Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions</h5>
+                <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://github.com/ceasonen">Wenzhuo Lei</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Mufan Cao</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Chaorong Ye</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Yi Xu</a>, <span class="text-body">
+            <strong>Cheng Chen</strong></span></p>
+                <p class="mt-0 mb-0 small"><i>International Joint Conference on Neural Networks (IJCNN)</i> 2026 <span class="badge badge-pill badge-publication badge-info">Corresponding Author</span> <span data-semantic-scholar-id=""></span></p>
+                <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Encodes visual scenes as symbolic descriptions so text-only LLMs can reason from structured perception outputs without multimodal pre-training.</span><span class="lang-zh">通过将视觉场景编码为符号化描述，使纯文本大语言模型能够基于结构化感知输出进行推理，无需进行多模态预训练。</span></p>
+                
+                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                    
+                    
+                    <a target="_blank" href="/papers/ijcnn/main.pdf">[PDF]</a>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>    
+    
+    <h6 class="d-block p-3 mt-0 text-right">
+        <a href="/publications">All publications <i class="fas fa-angle-double-right"></i></a>
+    </h6>
+</div>
+
+
+
+
+    </div>
+    <footer class="footer border-top py-2 mt-5 bg-white small">
+    <div class="container-lg">
+        <div class="row my-3">
+            <div class="col-6">
+                <div class="text-muted">
+                    <i>Last updated: Jun 2026</i>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-right text-muted">
+                    <a href="https://github.com/luost26/academic-homepage" target="_blank"><i class="fas fa-pencil-ruler"></i> academic-homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/github-buttons/2.14.2/buttons.min.js" integrity="sha512-OYwZx04hKFeFNYrWxIyo3atgGpb+cxU0ENWBZs72X7T9U+NoHPM1ftUn/Mfw7dRDXrqWA6M1wBg6z6fGE32aeA==" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false}
+              ],
+              throwOnError : false
+            });
+        });
+    </script>
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/bubble_visual_hash.js"></script>
+    <script src="/assets/js/semantic_scholar_citation_count.js"></script>
+</body>
+</html>

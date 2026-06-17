@@ -1,0 +1,59 @@
+primary_name: "Cheng Chen"
+secondary_name: "陈成"
+navbar_name: "Cheng Chen"
+
+positions:
+- name: >-
+    <span class="lang-en">Undergraduate Researcher</span><span class="lang-zh">本科研究者</span>
+- name: >-
+    <span class="lang-en">Tongji University</span><span class="lang-zh">同济大学</span>
+
+email: "2351445@tongji.edu.cn"
+github: ceasonen
+linkedin: cheng-chen-012a83378
+gscholar: "https://scholar.google.com/citations?user=X92zQ68AAAAJ&hl=zh-CN"
+
+short_bio_text_justify: true
+short_bio: >-
+  <div class="lang-en">
+    <p>
+      I am an undergraduate researcher at <a href="https://www.tongji.edu.cn/" target="_blank">Tongji University</a> in Communication Engineering. My work sits at the intersection of <strong>deployable trustworthy AI</strong> and <strong>multimodal intelligence</strong>, with recent projects in medical model compression, open-vocabulary audio-visual understanding, budgeted RAG, neural-operator risk assessment, and wireless-intelligence privacy.
+    </p>
+    <p>
+      I am currently looking for PhD opportunities. I hope to work with advisors who care about method design, careful evaluation, calibration, robustness, and whether a system can survive real deployment constraints.
+    </p>
+  </div>
+  <div class="lang-zh">
+    <p>
+      我目前在<a href="https://www.tongji.edu.cn/" target="_blank">同济大学</a>通信工程专业学习，研究主线是<strong>可部署可信 AI 与多模态智能</strong>。近期工作覆盖医学模型压缩、开放词汇音视频理解、预算受限 RAG、神经算子风险评估，以及无线智能隐私保护。
+    </p>
+    <p>
+      我正在寻找博士阶段的研究机会，希望加入真正重视方法设计、严格评测、校准、鲁棒性和真实部署约束的课题组。
+    </p>
+  </div>
+
+portrait_url: /assets/images/photos/portrait.jpg
+
+education:
+- name: Tongji University
+  dept: College of Electronic and Information Engineering
+  position: B.Eng. in Communication Engineering
+  date: Sep. 2023 - present
+
+# experience:
+
+awards:
+- name: National Second Prize, Global Campus Artificial Intelligence Algorithm Elite Competition
+  date: 2025
+- name: National Third Prize, National College Students' Embedded Systems Competition (FPGA Track)
+  date: 2025
+- name: Shanghai Third Prize, National College Students' Mathematical Modeling Competition
+  date: 2025
+- name: Shanghai Third Prize, National College Students Statistical Modeling Competition
+  date: 2025
+- name: Tongji University Undergraduate Outstanding Student Scholarship (Second Class)
+  date: 2024-2025
+- name: Tongji University Undergraduate Outstanding Student Scholarship (Second Class)
+  date: 2023-2024
+- name: Second Prize, National College Student Mathematics Competition (Non-Mathematics A)
+  date: 2024

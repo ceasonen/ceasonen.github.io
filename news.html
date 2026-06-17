@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Template: https://github.com/luost26/academic-homepage -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>News - Cheng Chen</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script>
+        function setLanguage(lang) {
+            document.documentElement.setAttribute('data-lang', lang);
+            localStorage.setItem('pref-lang', lang);
+        }
+        function toggleLang() {
+            const current = document.documentElement.getAttribute('data-lang') || 'en';
+            const target = current === 'en' ? 'zh' : 'en';
+            setLanguage(target);
+        }
+        const savedLang = localStorage.getItem('pref-lang') || 'en';
+        document.documentElement.setAttribute('data-lang', savedLang);
+    </script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="bg-light" >
+    <nav class="navbar navbar-expand-sm navbar-light fixed-top mb-5 shadow-sm">
+    <div class="container-lg">
+        <a class="navbar-brand"><strong>
+            <span class="lang-en">Cheng Chen</span>
+            <span class="lang-zh">陈成</span>
+        </strong></a>
+        <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">
+                        <span class="lang-en">Home</span>
+                        <span class="lang-zh">关于我</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/publications">
+                        <span class="lang-en">Publications</span>
+                        <span class="lang-zh">论文</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item active">
+                    <a class="nav-link" href="/news">
+                        <span class="lang-en">News</span>
+                        <span class="lang-zh">动态</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/awards">
+                        <span class="lang-en">Highlights</span>
+                        <span class="lang-zh">研究亮点</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/cv/cheng-chen-cv.pdf">
+                        <span class="lang-en">CV</span>
+                        <span class="lang-zh">简历</span>
+                    </a>
+                </li>
+                
+                
+                <!-- Desktop Language Toggle -->
+                <li class="nav-item pl-2 border-left d-none d-sm-block align-self-center">
+                    <a class="nav-link text-muted font-weight-bold" href="#" onclick="toggleLang(); return false;" style="cursor: pointer;">
+                        <span class="lang-en"><i class="fas fa-globe"></i> 中文</span>
+                        <span class="lang-zh"><i class="fas fa-globe"></i> EN</span>
+                    </a>
+                </li>
+                <!-- Mobile Language Toggle -->
+                <li class="nav-item d-block d-sm-none border-top mt-1 pt-1">
+                    <a class="nav-link text-muted font-weight-bold" href="#" onclick="toggleLang(); return false;" style="cursor: pointer;">
+                        <span class="lang-en"><i class="fas fa-globe"></i> Switch to 中文</span>
+                        <span class="lang-zh"><i class="fas fa-globe"></i> Switch to English</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-lg">
+        <div class="row pt-4 justify-content-center">
+    <div class="col-lg-10 col-md-12">
+        <div class="text-center mb-5">
+            <h2 class="font-weight-normal"><i class="fas fa-bullhorn text-accent"></i> News & Updates</h2>
+            <p class="text-muted">Stay updated with my latest research, submissions, awards, and academic milestones.</p>
+        </div>
+
+        
+        
+        
+        <div class="timeline-year-section mb-5">
+            <h3 class="year-header pb-2 mb-4 text-accent font-weight-bold">2026</h3>
+            
+            <div class="timeline-items bg-white shadow-sm rounded-xl px-4 py-2">
+                
+                <div class="news-page-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2026.05
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Two <strong>ACM MM 2026</strong> submissions received initial scores of <strong>4/4/4/4/3</strong> (approx. <strong>top 5%</strong>; co-first author) and <strong>4/4/3/2</strong> (approx. <strong>top 15--20%</strong>; first author), covering open-vocabulary audio-visual localization and transferable visual security.</span><span class="lang-zh">两篇 <strong>ACM MM 2026</strong> 在审投稿初评分为 <strong>4/4/4/4/3</strong>（约 <strong>Top 5%</strong>，共同第一作者）与 <strong>4/4/3/2</strong>（约 <strong>15--20%</strong>，第一作者），方向覆盖开放词汇视听事件定位与视觉安全可迁移攻击。</span>
+                    </div>
+                </div>
+                
+                <div class="news-page-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2026.05
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
+                        
+                        <span class="lang-en">The counter-evidence planning work for controlled budgeted RAG was accepted to <strong>ICANN 2026</strong>; Cheng Chen is corresponding author.</span><span class="lang-zh">预算受限 RAG 反证据规划工作被 <strong>ICANN 2026</strong> 录用，陈成为通讯作者，研究固定预算下的可靠检索决策。</span>
+                    </div>
+                </div>
+                
+                <div class="news-page-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2026.04
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
+                        
+                        <span class="lang-en"><strong>OrthKD</strong> was accepted to <strong>IJCAI 2026</strong> as an <strong>oral presentation</strong>. The work studies heterogeneous-teacher knowledge distillation for lightweight medical AI deployment.</span><span class="lang-zh"><strong>OrthKD</strong> 被 <strong>IJCAI 2026</strong> 录用为 <strong>Oral Presentation</strong>，研究面向轻量化医学 AI 部署的异构教师知识蒸馏。</span>
+                    </div>
+                </div>
+                
+                <div class="news-page-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2026.04
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">A first-author <strong>NeurIPS 2026</strong> submission studies single-pass risk triage and deployable risk assessment for neural operators.</span><span class="lang-zh"><strong>NeurIPS 2026</strong> 第一作者在投工作研究单次前向风险分诊与可部署风险评估，面向神经算子的早期预警与低开销部署。</span>
+                    </div>
+                </div>
+                
+                <div class="news-page-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2026.03
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
+                        
+                        <span class="lang-en">A symbolic scene-description pipeline for enabling visual reasoning in text-only LLMs was accepted to <strong>IJCNN 2026</strong>; Cheng Chen is corresponding author.</span><span class="lang-zh">面向纯文本 LLM 的符号化场景描述视觉推理工作被 <strong>IJCNN 2026</strong> 录用，陈成为通讯作者。</span>
+                    </div>
+                </div>
+                
+                <div class="news-page-row d-flex align-items-start py-3 ">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2026.01
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">A first-author <strong>IEEE Wireless Communications Letters</strong> submission studies privacy-aware beamforming under eavesdropper location uncertainty.</span><span class="lang-zh"><strong>IEEE Wireless Communications Letters</strong> 第一作者在投工作研究窃听者位置不确定条件下的隐私感知波束赋形。</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="timeline-year-section mb-5">
+            <h3 class="year-header pb-2 mb-4 text-accent font-weight-bold">2025</h3>
+            
+            <div class="timeline-items bg-white shadow-sm rounded-xl px-4 py-2">
+                
+                <div class="news-page-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2025.12
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="fas fa-graduation-cap text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received the <strong>Tongji University Undergraduate Outstanding Student Scholarship</strong> (Second Class) for the 2024-2025 academic year.</span><span class="lang-zh">获得 2024-2025 学年<strong>同济大学本科优秀学生奖学金二等奖</strong>。</span>
+                    </div>
+                </div>
+                
+                <div class="news-page-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2025.12
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received the <strong>National Final Second Prize</strong> in the algorithm innovation track for the AI + applied innovation project (<strong>Global Campus Artificial Intelligence Algorithm Elite Competition</strong>).</span><span class="lang-zh">获得 2025 年第七届<strong>全球校园人工智能算法精英大赛全国总决赛二等奖</strong>，赛题为 AI+应用创新-新医科。</span>
+                    </div>
+                </div>
+                
+                <div class="news-page-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2025.12
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received the <strong>National Third Prize</strong> in the 2025 <strong>National College Students' Embedded Chip and System Design Competition</strong> (FPGA Innovation Design Track).</span><span class="lang-zh">获得 2025 年第八届<strong>全国大学生嵌入式芯片与系统设计竞赛 FPGA 创新设计赛道全国三等奖</strong>。</span>
+                    </div>
+                </div>
+                
+                <div class="news-page-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2025.12
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received an award in the <strong>National College Student Mathematics Competition</strong>.</span><span class="lang-zh">获得<strong>全国大学生数学竞赛</strong>相关奖项。</span>
+                    </div>
+                </div>
+                
+                <div class="news-page-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2025.11
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received the <strong>Shanghai Third Prize</strong> in the national college students mathematical modeling competition.</span><span class="lang-zh">获得全国大学生数学建模竞赛<strong>上海市三等奖</strong>。</span>
+                    </div>
+                </div>
+                
+                <div class="news-page-row d-flex align-items-start py-3 ">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2025.06
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received the <strong>Undergraduate Third Prize</strong> (Shanghai regional) in the 2025 <strong>National College Students Statistical Modeling Competition</strong>.</span><span class="lang-zh">作品《基于深度学习的股票市场波动率预测》获得 2025 年<strong>全国大学生统计建模大赛上海赛区本科生组三等奖</strong>。</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="timeline-year-section mb-5">
+            <h3 class="year-header pb-2 mb-4 text-accent font-weight-bold">2024</h3>
+            
+            <div class="timeline-items bg-white shadow-sm rounded-xl px-4 py-2">
+                
+                <div class="news-page-row d-flex align-items-start py-3 border-bottom border-light">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2024.12
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="fas fa-graduation-cap text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received the <strong>Tongji University Undergraduate Outstanding Student Scholarship</strong> (Second Class) for the 2023-2024 academic year.</span><span class="lang-zh">获得 2023-2024 学年<strong>同济大学本科优秀学生奖学金二等奖</strong>。</span>
+                    </div>
+                </div>
+                
+                <div class="news-page-row d-flex align-items-start py-3 ">
+                    <!-- Date -->
+                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
+                        2024.11
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
+                        
+                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
+                        
+                        <span class="lang-en">Received the <strong>Second Prize</strong> in the <strong>16th National College Student Mathematics Competition</strong> (Non-Mathematics A).</span><span class="lang-zh">获得第十六届<strong>全国大学生数学竞赛（非数学 A 类）二等奖</strong>。</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<style>
+.news-page-row {
+    transition: background-color 0.15s ease-in-out;
+}
+.news-page-row:hover {
+    background-color: #fcfcfb;
+}
+.year-header {
+    font-size: 1.85rem;
+    border-bottom: 2px solid #dee2e6 !important;
+    position: relative;
+    padding-left: 10px;
+}
+.year-header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 60px;
+    height: 2px;
+    background-color: var(--primary-accent-color, #7a2438);
+}
+</style>
+
+    </div>
+    <footer class="footer border-top py-2 mt-5 bg-white small">
+    <div class="container-lg">
+        <div class="row my-3">
+            <div class="col-6">
+                <div class="text-muted">
+                    <i>Last updated: Jun 2026</i>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-right text-muted">
+                    <a href="https://github.com/luost26/academic-homepage" target="_blank"><i class="fas fa-pencil-ruler"></i> academic-homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/github-buttons/2.14.2/buttons.min.js" integrity="sha512-OYwZx04hKFeFNYrWxIyo3atgGpb+cxU0ENWBZs72X7T9U+NoHPM1ftUn/Mfw7dRDXrqWA6M1wBg6z6fGE32aeA==" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false}
+              ],
+              throwOnError : false
+            });
+        });
+    </script>
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/bubble_visual_hash.js"></script>
+    <script src="/assets/js/semantic_scholar_citation_count.js"></script>
+</body>
+</html>
