@@ -101,3 +101,14 @@ div.lazy {
 .email-text {
     font-family: Source Code Pro, monospace;
 }
+
+strong, b {
+    font-weight: 700;
+}
+
+.news-title strong,
+.news-content-col strong,
+.news-page-content strong {
+    font-weight: 700 !important;
+    color: #1f1f1f;
+}
