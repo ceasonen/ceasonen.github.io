@@ -7,8 +7,8 @@ navbar_title: News
 <div class="row pt-4 justify-content-center">
     <div class="col-lg-10 col-md-12">
         <div class="text-center mb-5">
-            <h2 class="font-weight-normal"><i class="fas fa-bullhorn text-accent"></i> News & Updates</h2>
-            <p class="text-muted">Stay updated with my latest research, submissions, awards, and academic milestones.</p>
+            <h2 class="font-weight-normal"><i class="fas fa-bullhorn text-accent"></i> News</h2>
+            <p class="text-muted">Paper acceptances, submissions, and a few other updates.</p>
         </div>
 
         {% assign news_by_year = site.news | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}

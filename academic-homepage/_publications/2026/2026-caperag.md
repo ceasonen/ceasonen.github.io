@@ -7,7 +7,7 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-info">Cor
 pub_date:       "2026"
 cover:          /assets/images/covers/caperag.png
 abstract: >-
-  <span class="lang-en">A counter-evidence planning framework for controlled budgeted RAG, optimizing sequential planning under uncertainty calibration.</span><span class="lang-zh">针对预算受限的 RAG 提出反证据规划框架，在不确定性校准下优化序列规划决策。</span>
+  <span class="lang-en">RAG with a fixed retrieval budget — plan what to fetch, including evidence that might disagree.</span><span class="lang-zh">固定检索预算下的 RAG，规划该取什么证据，也包括可能反驳的内容。</span>
 authors:
   - Yuyao Cai
   - Yi Xu

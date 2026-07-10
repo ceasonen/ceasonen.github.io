@@ -7,7 +7,7 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-info">Cor
 pub_date:       "2026"
 cover:          /assets/images/covers/symbolic_visual_reasoning.png
 abstract: >-
-  <span class="lang-en">Encodes visual scenes as symbolic descriptions so text-only LLMs can reason from structured perception outputs without multimodal pre-training.</span><span class="lang-zh">通过将视觉场景编码为符号化描述，使纯文本大语言模型能够基于结构化感知输出进行推理，无需进行多模态预训练。</span>
+  <span class="lang-en">Describe a scene in symbols so a text-only LLM can reason about it — no vision module needed.</span><span class="lang-zh">用符号描述场景，让纯文本 LLM 也能做视觉推理，不需要视觉模块。</span>
 authors:
   - Wenzhuo Lei
   - Mufan Cao
