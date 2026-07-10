@@ -1,6 +1,7 @@
 ---
 title:          "Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions"
 date:           2026-03-15 00:00:00 +0800
+rank:           3
 selected:       true
 pub:            "International Joint Conference on Neural Networks (IJCNN)"
 pub_last:       '<span class="badge badge-pill badge-publication badge-info">Corresponding Author</span>'
