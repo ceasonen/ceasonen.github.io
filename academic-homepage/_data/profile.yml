@@ -31,9 +31,19 @@ education:
 # experience:
 
 awards:
+- name: Provincial First Prize, China Robot and Artificial Intelligence Competition
+  date: 2025
 - name: National Second Prize, Global Campus AI Algorithm Elite Competition
   date: 2025
-- name: National Third Prize, National College Students' Embedded Systems Competition
+- name: National Third Prize, National College Students' Embedded Systems Competition (FPGA Track)
   date: 2025
-- name: Tongji University Outstanding Student Scholarship (Second Class)
-  date: 2023-2025
+- name: Shanghai Third Prize, National College Students' Mathematical Modeling Competition
+  date: 2025
+- name: Shanghai Third Prize, National College Students Statistical Modeling Competition
+  date: 2025
+- name: Second Prize, National College Student Mathematics Competition (Non-Mathematics A)
+  date: 2024
+- name: Tongji University Undergraduate Outstanding Student Scholarship (Second Class)
+  date: 2023-2024
+- name: Tongji University Undergraduate Outstanding Student Scholarship (Second Class)
+  date: 2024-2025
