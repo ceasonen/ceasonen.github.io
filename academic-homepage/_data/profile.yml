@@ -3,10 +3,8 @@ secondary_name: "陈成"
 navbar_name: "Cheng Chen"
 
 positions:
-- name: >-
-    <span class="lang-en">Undergraduate · Electrical Engineering</span><span class="lang-zh">本科生 · 电气工程</span>
-- name: >-
-    <span class="lang-en">Tongji University</span><span class="lang-zh">同济大学</span>
+- name: Undergraduate · Electrical Engineering
+- name: Tongji University
 
 email: "2351445@tongji.edu.cn"
 github: ceasonen
@@ -15,22 +13,12 @@ gscholar: "https://scholar.google.com/citations?user=X92zQ68AAAAJ&hl=zh-CN"
 
 short_bio_text_justify: false
 short_bio: >-
-  <div class="lang-en">
-    <p>
-      I'm an undergrad at <a href="https://www.tongji.edu.cn/" target="_blank">Tongji University</a>, majoring in electrical engineering. My research is mostly about <strong>multimodal AI</strong> and <strong>trustworthy AI</strong> — building models that work across vision, language, and audio, and making them reliable enough to actually use.
-    </p>
-    <p>
-      I'm looking for PhD opportunities in these areas.
-    </p>
-  </div>
-  <div class="lang-zh">
-    <p>
-      我就读<a href="https://www.tongji.edu.cn/" target="_blank">同济大学</a>电气工程专业。本科研究主要做<strong>多模态 AI</strong>和<strong>可信 AI</strong>：让模型能处理视觉、语言、音频等多种信息，也让它足够可靠、值得信任。
-    </p>
-    <p>
-      目前在找这两个方向的博士机会。
-    </p>
-  </div>
+  <p>
+    I'm an undergrad at <a href="https://www.tongji.edu.cn/" target="_blank">Tongji University</a>, majoring in electrical engineering. My research is mostly about <strong>multimodal AI</strong> and <strong>trustworthy AI</strong> — building models that work across vision, language, and audio, and making them reliable enough to actually use.
+  </p>
+  <p>
+    I'm looking for PhD opportunities in these areas.
+  </p>
 
 portrait_url: /assets/images/photos/portrait.jpg
 

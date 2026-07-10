@@ -1,16 +1,11 @@
 pages:
 - name: Home
-  name_zh: 关于我
   url: /
 - name: Publications
-  name_zh: 论文
   url: /publications
 - name: News
-  name_zh: 动态
   url: /news
 - name: Highlights
-  name_zh: 研究亮点
   url: /awards
 - name: CV
-  name_zh: 简历
   url: /cv/cheng-chen-cv.pdf

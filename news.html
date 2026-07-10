@@ -6,19 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>News - Cheng Chen</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <script>
-        function setLanguage(lang) {
-            document.documentElement.setAttribute('data-lang', lang);
-            localStorage.setItem('pref-lang', lang);
-        }
-        function toggleLang() {
-            const current = document.documentElement.getAttribute('data-lang') || 'en';
-            const target = current === 'en' ? 'zh' : 'en';
-            setLanguage(target);
-        }
-        const savedLang = localStorage.getItem('pref-lang') || 'en';
-        document.documentElement.setAttribute('data-lang', savedLang);
-    </script>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
@@ -33,10 +20,7 @@
 <body class="bg-light" >
     <nav class="navbar navbar-expand-sm navbar-light fixed-top mb-5 shadow-sm">
     <div class="container-lg">
-        <a class="navbar-brand"><strong>
-            <span class="lang-en">Cheng Chen</span>
-            <span class="lang-zh">陈成</span>
-        </strong></a>
+        <a class="navbar-brand"><strong>Cheng Chen</strong></a>
         <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
@@ -45,55 +29,25 @@
             <ul class="navbar-nav ml-auto">
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/">
-                        <span class="lang-en">Home</span>
-                        <span class="lang-zh">关于我</span>
-                    </a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/publications">
-                        <span class="lang-en">Publications</span>
-                        <span class="lang-zh">论文</span>
-                    </a>
+                    <a class="nav-link" href="/publications">Publications</a>
                 </li>
                 
                 <li class="nav-item active">
-                    <a class="nav-link" href="/news">
-                        <span class="lang-en">News</span>
-                        <span class="lang-zh">动态</span>
-                    </a>
+                    <a class="nav-link" href="/news">News</a>
                 </li>
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/awards">
-                        <span class="lang-en">Highlights</span>
-                        <span class="lang-zh">研究亮点</span>
-                    </a>
+                    <a class="nav-link" href="/awards">Highlights</a>
                 </li>
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/cv/cheng-chen-cv.pdf">
-                        <span class="lang-en">CV</span>
-                        <span class="lang-zh">简历</span>
-                    </a>
+                    <a class="nav-link" href="/cv/cheng-chen-cv.pdf">CV</a>
                 </li>
                 
-                
-                <!-- Desktop Language Toggle -->
-                <li class="nav-item pl-2 border-left d-none d-sm-block align-self-center">
-                    <a class="nav-link text-muted font-weight-bold" href="#" onclick="toggleLang(); return false;" style="cursor: pointer;">
-                        <span class="lang-en"><i class="fas fa-globe"></i> 中文</span>
-                        <span class="lang-zh"><i class="fas fa-globe"></i> EN</span>
-                    </a>
-                </li>
-                <!-- Mobile Language Toggle -->
-                <li class="nav-item d-block d-sm-none border-top mt-1 pt-1">
-                    <a class="nav-link text-muted font-weight-bold" href="#" onclick="toggleLang(); return false;" style="cursor: pointer;">
-                        <span class="lang-en"><i class="fas fa-globe"></i> Switch to 中文</span>
-                        <span class="lang-zh"><i class="fas fa-globe"></i> Switch to English</span>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
@@ -126,7 +80,7 @@
                         
                             <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
                         
-                        <span class="lang-en">Two <strong>ACM MM 2026</strong> papers got initial scores of <strong>4/4/4/4/3</strong> (co-first) and <strong>4/4/3/2</strong> (first author).</span><span class="lang-zh">两篇 <strong>ACM MM 2026</strong> 投稿初评 <strong>4/4/4/4/3</strong>（共一）和 <strong>4/4/3/2</strong>（一作）。</span>
+                        Two **ACM MM 2026** papers got initial scores of **4/4/4/4/3** (co-first) and **4/4/3/2** (first author).
                     </div>
                 </div>
                 
@@ -141,7 +95,7 @@
                         
                             <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
                         
-                        <span class="lang-en">Our budgeted RAG paper was accepted to <strong>ICANN 2026</strong>. I'm corresponding author.</span><span class="lang-zh">预算受限 RAG 论文被 <strong>ICANN 2026</strong> 接收，我是通讯作者。</span>
+                        Our budgeted RAG paper was accepted to **ICANN 2026**. I'm corresponding author.
                     </div>
                 </div>
                 
@@ -156,7 +110,7 @@
                         
                             <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
                         
-                        <span class="lang-en"><strong>OrthKD</strong> accepted to <strong>IJCAI 2026</strong> as an <strong>oral</strong>. Co-first author.</span><span class="lang-zh"><strong>OrthKD</strong> 被 <strong>IJCAI 2026</strong> 接收为 <strong>Oral</strong>，共同一作。</span>
+                        **OrthKD** accepted to **IJCAI 2026** as an **oral**. Co-first author.
                     </div>
                 </div>
                 
@@ -171,7 +125,7 @@
                         
                             <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
                         
-                        <span class="lang-en">Submitted a first-author paper to <strong>NeurIPS 2026</strong> on risk assessment for neural operators.</span><span class="lang-zh">一作投稿 <strong>NeurIPS 2026</strong>，关于神经算子的风险评估。</span>
+                        Submitted a first-author paper to **NeurIPS 2026** on risk assessment for neural operators.
                     </div>
                 </div>
                 
@@ -186,7 +140,7 @@
                         
                             <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
                         
-                        <span class="lang-en">Our visual reasoning paper was accepted to <strong>IJCNN 2026</strong>. I'm corresponding author.</span><span class="lang-zh">视觉推理论文被 <strong>IJCNN 2026</strong> 接收，我是通讯作者。</span>
+                        Our visual reasoning paper was accepted to **IJCNN 2026**. I'm corresponding author.
                     </div>
                 </div>
                 
@@ -209,7 +163,7 @@
                         
                             <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
                         
-                        <span class="lang-en">National 2nd Prize at the <strong>Global Campus AI Algorithm Elite Competition</strong>.</span><span class="lang-zh"><strong>全球校园 AI 算法精英大赛</strong>全国二等奖。</span>
+                        National 2nd Prize at the **Global Campus AI Algorithm Elite Competition**.
                     </div>
                 </div>
                 
@@ -224,7 +178,7 @@
                         
                             <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
                         
-                        <span class="lang-en">National 3rd Prize at the <strong>Embedded Chip & System Design Competition</strong> (FPGA track).</span><span class="lang-zh"><strong>全国大学生嵌入式芯片与系统设计竞赛</strong> FPGA 赛道全国三等奖。</span>
+                        National 3rd Prize at the **Embedded Chip & System Design Competition** (FPGA track).
                     </div>
                 </div>
                 

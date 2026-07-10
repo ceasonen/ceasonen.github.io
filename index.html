@@ -6,19 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Homepage - Cheng Chen</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <script>
-        function setLanguage(lang) {
-            document.documentElement.setAttribute('data-lang', lang);
-            localStorage.setItem('pref-lang', lang);
-        }
-        function toggleLang() {
-            const current = document.documentElement.getAttribute('data-lang') || 'en';
-            const target = current === 'en' ? 'zh' : 'en';
-            setLanguage(target);
-        }
-        const savedLang = localStorage.getItem('pref-lang') || 'en';
-        document.documentElement.setAttribute('data-lang', savedLang);
-    </script>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
@@ -33,10 +20,7 @@
 <body class="bg-light" >
     <nav class="navbar navbar-expand-sm navbar-light fixed-top mb-5 shadow-sm">
     <div class="container-lg">
-        <a class="navbar-brand"><strong>
-            <span class="lang-en">Cheng Chen</span>
-            <span class="lang-zh">陈成</span>
-        </strong></a>
+        <a class="navbar-brand"><strong>Cheng Chen</strong></a>
         <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
@@ -45,55 +29,25 @@
             <ul class="navbar-nav ml-auto">
                 
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">
-                        <span class="lang-en">Home</span>
-                        <span class="lang-zh">关于我</span>
-                    </a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/publications">
-                        <span class="lang-en">Publications</span>
-                        <span class="lang-zh">论文</span>
-                    </a>
+                    <a class="nav-link" href="/publications">Publications</a>
                 </li>
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/news">
-                        <span class="lang-en">News</span>
-                        <span class="lang-zh">动态</span>
-                    </a>
+                    <a class="nav-link" href="/news">News</a>
                 </li>
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/awards">
-                        <span class="lang-en">Highlights</span>
-                        <span class="lang-zh">研究亮点</span>
-                    </a>
+                    <a class="nav-link" href="/awards">Highlights</a>
                 </li>
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/cv/cheng-chen-cv.pdf">
-                        <span class="lang-en">CV</span>
-                        <span class="lang-zh">简历</span>
-                    </a>
+                    <a class="nav-link" href="/cv/cheng-chen-cv.pdf">CV</a>
                 </li>
                 
-                
-                <!-- Desktop Language Toggle -->
-                <li class="nav-item pl-2 border-left d-none d-sm-block align-self-center">
-                    <a class="nav-link text-muted font-weight-bold" href="#" onclick="toggleLang(); return false;" style="cursor: pointer;">
-                        <span class="lang-en"><i class="fas fa-globe"></i> 中文</span>
-                        <span class="lang-zh"><i class="fas fa-globe"></i> EN</span>
-                    </a>
-                </li>
-                <!-- Mobile Language Toggle -->
-                <li class="nav-item d-block d-sm-none border-top mt-1 pt-1">
-                    <a class="nav-link text-muted font-weight-bold" href="#" onclick="toggleLang(); return false;" style="cursor: pointer;">
-                        <span class="lang-en"><i class="fas fa-globe"></i> Switch to 中文</span>
-                        <span class="lang-zh"><i class="fas fa-globe"></i> Switch to English</span>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
@@ -121,8 +75,7 @@
 
                         <div class="d-flex">
                             <div class="h1 font-weight-normal">
-                                <span class="lang-en">Cheng Chen</span>
-                                <span class="lang-zh">陈成</span>
+                                Cheng Chen
                             </div>
                             
                             <div class="ml-auto d-md-none">
@@ -135,28 +88,18 @@
                         <div class="text-profile-position">
                             
                             
-                            <span class="lang-en">Undergraduate · Electrical Engineering</span><span class="lang-zh">本科生 · 电气工程</span><br/>
+                            Undergraduate · Electrical Engineering<br/>
                             
                             
-                            <span class="lang-en">Tongji University</span><span class="lang-zh">同济大学</span><br/>
+                            Tongji University<br/>
                             
                         </div>
                         <div class="text-profile-bio mt-3" >
-                            <div class="lang-en">
-  <p>
-    I'm an undergrad at <a href="https://www.tongji.edu.cn/" target="_blank">Tongji University</a>, majoring in electrical engineering. My research is mostly about <strong>multimodal AI</strong> and <strong>trustworthy AI</strong> — building models that work across vision, language, and audio, and making them reliable enough to actually use.
-  </p>
-  <p>
-    I'm looking for PhD opportunities in these areas.
-  </p>
-</div> <div class="lang-zh">
-  <p>
-    我就读<a href="https://www.tongji.edu.cn/" target="_blank">同济大学</a>电气工程专业。本科研究主要做<strong>多模态 AI</strong>和<strong>可信 AI</strong>：让模型能处理视觉、语言、音频等多种信息，也让它足够可靠、值得信任。
-  </p>
-  <p>
-    目前在找这两个方向的博士机会。
-  </p>
-</div>
+                            <p>
+  I'm an undergrad at <a href="https://www.tongji.edu.cn/" target="_blank">Tongji University</a>, majoring in electrical engineering. My research is mostly about <strong>multimodal AI</strong> and <strong>trustworthy AI</strong> — building models that work across vision, language, and audio, and making them reliable enough to actually use.
+</p> <p>
+  I'm looking for PhD opportunities in these areas.
+</p>
                         </div>
                         
                     </div>
@@ -206,16 +149,13 @@
             <div class="card-body p-4">
                 <h5 class="card-title text-primary border-bottom pb-2 mb-3 font-weight-normal">
                     <i class="fas fa-flask text-accent mr-2"></i>
-                    <span class="lang-en">Research</span>
-                    <span class="lang-zh">研究</span>
+                    Research
                 </h5>
                 <p class="mb-2" style="line-height: 1.7;">
-                    <span class="lang-en"><strong>Multimodal AI</strong> — vision-language reasoning, audio-visual understanding, medical imaging.</span>
-                    <span class="lang-zh"><strong>多模态 AI</strong> — 视觉语言推理、音视频理解、医学影像。</span>
+                    <strong>Multimodal AI</strong> — vision-language reasoning, audio-visual understanding, medical imaging.
                 </p>
                 <p class="mb-0" style="line-height: 1.7;">
-                    <span class="lang-en"><strong>Trustworthy AI</strong> — model compression, calibration, and knowing when a model might be wrong.</span>
-                    <span class="lang-zh"><strong>可信 AI</strong> — 模型压缩、校准，以及判断模型什么时候可能出错。</span>
+                    <strong>Trustworthy AI</strong> — model compression, calibration, and knowing when a model might be wrong.
                 </p>
             </div>
         </div>
@@ -226,16 +166,13 @@
             <div class="card-body p-4">
                 <h5 class="card-title text-primary border-bottom pb-2 mb-3 font-weight-normal">
                     <i class="fas fa-search text-accent mr-2"></i>
-                    <span class="lang-en">PhD Search</span>
-                    <span class="lang-zh">博士申请</span>
+                    PhD Search
                 </h5>
                 <p class="mb-3" style="line-height: 1.7;">
-                    <span class="lang-en">Looking for a PhD in multimodal learning or trustworthy AI. Happy to talk if your group works on either.</span>
-                    <span class="lang-zh">想找多模态学习或可信 AI 方向的博士。如果课题组做这两个方向，欢迎聊聊。</span>
+                    Looking for a PhD in multimodal learning or trustworthy AI. Happy to talk if your group works on either.
                 </p>
                 <p class="mb-0 text-muted small" style="line-height: 1.6;">
-                    <span class="lang-en">Outside lab: football (Barça & Arsenal), cycling, music.</span>
-                    <span class="lang-zh">实验室外：足球（巴萨 & 阿森纳）、骑车、听歌。</span>
+                    Outside lab: football (Barça & Arsenal), cycling, music.
                 </p>
             </div>
         </div>
@@ -268,7 +205,7 @@
                         
                             <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
                         
-                        <span class="lang-en">Two <strong>ACM MM 2026</strong> papers got initial scores of <strong>4/4/4/4/3</strong> (co-first) and <strong>4/4/3/2</strong> (first author).</span><span class="lang-zh">两篇 <strong>ACM MM 2026</strong> 投稿初评 <strong>4/4/4/4/3</strong>（共一）和 <strong>4/4/3/2</strong>（一作）。</span>
+                        Two **ACM MM 2026** papers got initial scores of **4/4/4/4/3** (co-first) and **4/4/3/2** (first author).
                     </div>
                 </div>
                 
@@ -283,7 +220,7 @@
                         
                             <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
                         
-                        <span class="lang-en">Our budgeted RAG paper was accepted to <strong>ICANN 2026</strong>. I'm corresponding author.</span><span class="lang-zh">预算受限 RAG 论文被 <strong>ICANN 2026</strong> 接收，我是通讯作者。</span>
+                        Our budgeted RAG paper was accepted to **ICANN 2026**. I'm corresponding author.
                     </div>
                 </div>
                 
@@ -298,7 +235,7 @@
                         
                             <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
                         
-                        <span class="lang-en"><strong>OrthKD</strong> accepted to <strong>IJCAI 2026</strong> as an <strong>oral</strong>. Co-first author.</span><span class="lang-zh"><strong>OrthKD</strong> 被 <strong>IJCAI 2026</strong> 接收为 <strong>Oral</strong>，共同一作。</span>
+                        **OrthKD** accepted to **IJCAI 2026** as an **oral**. Co-first author.
                     </div>
                 </div>
                 
@@ -313,7 +250,7 @@
                         
                             <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
                         
-                        <span class="lang-en">Submitted a first-author paper to <strong>NeurIPS 2026</strong> on risk assessment for neural operators.</span><span class="lang-zh">一作投稿 <strong>NeurIPS 2026</strong>，关于神经算子的风险评估。</span>
+                        Submitted a first-author paper to **NeurIPS 2026** on risk assessment for neural operators.
                     </div>
                 </div>
                 
@@ -328,7 +265,7 @@
                         
                             <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
                         
-                        <span class="lang-en">Our visual reasoning paper was accepted to <strong>IJCNN 2026</strong>. I'm corresponding author.</span><span class="lang-zh">视觉推理论文被 <strong>IJCNN 2026</strong> 接收，我是通讯作者。</span>
+                        Our visual reasoning paper was accepted to **IJCNN 2026**. I'm corresponding author.
                     </div>
                 </div>
                 
@@ -371,7 +308,7 @@
             <strong>Cheng Chen*</strong>, </span><a class="text-body" target="_blank" href="https://github.com/ceasonen">Mufan Cao</a>
 <mark>(* <i> equal contribution</i>)</mark></p>
             <p class="mt-0 mb-0 small"><i>International Joint Conference on Artificial Intelligence (IJCAI)</i> 2026 <span class="badge badge-pill badge-publication badge-success">Oral</span> <span data-semantic-scholar-id=""></span></p>
-            <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Distill knowledge from multiple clinical models into one small model, without picking up each teacher's quirks.</span><span class="lang-zh">把多个医学教师模型的知识蒸馏到一个小模型里，同时避免学到各自的偏差。</span></p>
+            <p class="mt-0 mb-0 small text-muted">Distill knowledge from multiple clinical models into one small model, without picking up each teacher's quirks.</p>
             
             <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
                 
@@ -395,7 +332,7 @@
             <strong>Cheng Chen*</strong>, </span><a class="text-body" target="_blank" href="https://github.com/ceasonen">Mufan Cao</a>
 <mark>(* <i> equal contribution</i>)</mark></p>
                 <p class="mt-0 mb-0 small"><i>International Joint Conference on Artificial Intelligence (IJCAI)</i> 2026 <span class="badge badge-pill badge-publication badge-success">Oral</span> <span data-semantic-scholar-id=""></span></p>
-                <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Distill knowledge from multiple clinical models into one small model, without picking up each teacher's quirks.</span><span class="lang-zh">把多个医学教师模型的知识蒸馏到一个小模型里，同时避免学到各自的偏差。</span></p>
+                <p class="mt-0 mb-0 small text-muted">Distill knowledge from multiple clinical models into one small model, without picking up each teacher's quirks.</p>
                 
                 <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
                     
@@ -418,10 +355,10 @@
             <h5 class="mt-0 mb-1 font-weight-normal">Open-Vocabulary Audio-Visual Event Localization</h5>
             <p class="mt-0 mb-0 small"><span class="text-body">
             <strong>Cheng Chen*</strong>, </span><span class="text-body">
-            <span class="lang-en">et al.</span><span class="lang-zh">等</span></span>
+            et al.</span>
 <mark>(* <i> equal contribution</i>)</mark></p>
             <p class="mt-0 mb-0 small"><i>ACM Multimedia (ACM MM)</i> 2026 <span class="badge badge-pill badge-publication badge-warning text-dark">Under Review</span> <span data-semantic-scholar-id=""></span></p>
-            <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Find audio-visual events from any text query, with distillation that pays attention to which modalities to trust.</span><span class="lang-zh">用任意文本查询定位音视频事件，蒸馏时关注该信任哪个模态。</span></p>
+            <p class="mt-0 mb-0 small text-muted">Find audio-visual events from any text query, with distillation that pays attention to which modalities to trust.</p>
             
             <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
                 
@@ -443,10 +380,10 @@
                 <h5 class="mt-0 mb-1 font-weight-normal">Open-Vocabulary Audio-Visual Event Localization</h5>
                 <p class="mt-0 mb-0 small"><span class="text-body">
             <strong>Cheng Chen*</strong>, </span><span class="text-body">
-            <span class="lang-en">et al.</span><span class="lang-zh">等</span></span>
+            et al.</span>
 <mark>(* <i> equal contribution</i>)</mark></p>
                 <p class="mt-0 mb-0 small"><i>ACM Multimedia (ACM MM)</i> 2026 <span class="badge badge-pill badge-publication badge-warning text-dark">Under Review</span> <span data-semantic-scholar-id=""></span></p>
-                <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Find audio-visual events from any text query, with distillation that pays attention to which modalities to trust.</span><span class="lang-zh">用任意文本查询定位音视频事件，蒸馏时关注该信任哪个模态。</span></p>
+                <p class="mt-0 mb-0 small text-muted">Find audio-visual events from any text query, with distillation that pays attention to which modalities to trust.</p>
                 
                 <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
                     
@@ -470,7 +407,7 @@
             <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://github.com/ceasonen">Yuyao Cai</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Yi Xu</a>, <span class="text-body">
             <strong>Cheng Chen</strong></span></p>
             <p class="mt-0 mb-0 small"><i>International Conference on Artificial Neural Networks (ICANN)</i> 2026 <span class="badge badge-pill badge-publication badge-info">Corresponding Author</span> <span data-semantic-scholar-id=""></span></p>
-            <p class="mt-0 mb-0 small text-muted"><span class="lang-en">RAG with a fixed retrieval budget — plan what to fetch, including evidence that might disagree.</span><span class="lang-zh">固定检索预算下的 RAG，规划该取什么证据，也包括可能反驳的内容。</span></p>
+            <p class="mt-0 mb-0 small text-muted">RAG with a fixed retrieval budget — plan what to fetch, including evidence that might disagree.</p>
             
             <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
                 
@@ -493,7 +430,7 @@
                 <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://github.com/ceasonen">Yuyao Cai</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Yi Xu</a>, <span class="text-body">
             <strong>Cheng Chen</strong></span></p>
                 <p class="mt-0 mb-0 small"><i>International Conference on Artificial Neural Networks (ICANN)</i> 2026 <span class="badge badge-pill badge-publication badge-info">Corresponding Author</span> <span data-semantic-scholar-id=""></span></p>
-                <p class="mt-0 mb-0 small text-muted"><span class="lang-en">RAG with a fixed retrieval budget — plan what to fetch, including evidence that might disagree.</span><span class="lang-zh">固定检索预算下的 RAG，规划该取什么证据，也包括可能反驳的内容。</span></p>
+                <p class="mt-0 mb-0 small text-muted">RAG with a fixed retrieval budget — plan what to fetch, including evidence that might disagree.</p>
                 
                 <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
                     
@@ -517,7 +454,7 @@
             <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://github.com/ceasonen">Wenzhuo Lei</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Mufan Cao</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Chaorong Ye</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Yi Xu</a>, <span class="text-body">
             <strong>Cheng Chen</strong></span></p>
             <p class="mt-0 mb-0 small"><i>International Joint Conference on Neural Networks (IJCNN)</i> 2026 <span class="badge badge-pill badge-publication badge-info">Corresponding Author</span> <span data-semantic-scholar-id=""></span></p>
-            <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Describe a scene in symbols so a text-only LLM can reason about it — no vision module needed.</span><span class="lang-zh">用符号描述场景，让纯文本 LLM 也能做视觉推理，不需要视觉模块。</span></p>
+            <p class="mt-0 mb-0 small text-muted">Describe a scene in symbols so a text-only LLM can reason about it — no vision module needed.</p>
             
             <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
                 
@@ -540,7 +477,7 @@
                 <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://github.com/ceasonen">Wenzhuo Lei</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Mufan Cao</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Chaorong Ye</a>, <a class="text-body" target="_blank" href="https://github.com/ceasonen">Yi Xu</a>, <span class="text-body">
             <strong>Cheng Chen</strong></span></p>
                 <p class="mt-0 mb-0 small"><i>International Joint Conference on Neural Networks (IJCNN)</i> 2026 <span class="badge badge-pill badge-publication badge-info">Corresponding Author</span> <span data-semantic-scholar-id=""></span></p>
-                <p class="mt-0 mb-0 small text-muted"><span class="lang-en">Describe a scene in symbols so a text-only LLM can reason about it — no vision module needed.</span><span class="lang-zh">用符号描述场景，让纯文本 LLM 也能做视觉推理，不需要视觉模块。</span></p>
+                <p class="mt-0 mb-0 small text-muted">Describe a scene in symbols so a text-only LLM can reason about it — no vision module needed.</p>
                 
                 <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
                     

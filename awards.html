@@ -6,19 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Highlights - Cheng Chen</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <script>
-        function setLanguage(lang) {
-            document.documentElement.setAttribute('data-lang', lang);
-            localStorage.setItem('pref-lang', lang);
-        }
-        function toggleLang() {
-            const current = document.documentElement.getAttribute('data-lang') || 'en';
-            const target = current === 'en' ? 'zh' : 'en';
-            setLanguage(target);
-        }
-        const savedLang = localStorage.getItem('pref-lang') || 'en';
-        document.documentElement.setAttribute('data-lang', savedLang);
-    </script>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
@@ -33,10 +20,7 @@
 <body class="bg-light" >
     <nav class="navbar navbar-expand-sm navbar-light fixed-top mb-5 shadow-sm">
     <div class="container-xl">
-        <a class="navbar-brand"><strong>
-            <span class="lang-en">Cheng Chen</span>
-            <span class="lang-zh">陈成</span>
-        </strong></a>
+        <a class="navbar-brand"><strong>Cheng Chen</strong></a>
         <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
@@ -45,55 +29,25 @@
             <ul class="navbar-nav ml-auto">
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/">
-                        <span class="lang-en">Home</span>
-                        <span class="lang-zh">关于我</span>
-                    </a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/publications">
-                        <span class="lang-en">Publications</span>
-                        <span class="lang-zh">论文</span>
-                    </a>
+                    <a class="nav-link" href="/publications">Publications</a>
                 </li>
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/news">
-                        <span class="lang-en">News</span>
-                        <span class="lang-zh">动态</span>
-                    </a>
+                    <a class="nav-link" href="/news">News</a>
                 </li>
                 
                 <li class="nav-item active">
-                    <a class="nav-link" href="/awards">
-                        <span class="lang-en">Highlights</span>
-                        <span class="lang-zh">研究亮点</span>
-                    </a>
+                    <a class="nav-link" href="/awards">Highlights</a>
                 </li>
                 
                 <li class="nav-item ">
-                    <a class="nav-link" href="/cv/cheng-chen-cv.pdf">
-                        <span class="lang-en">CV</span>
-                        <span class="lang-zh">简历</span>
-                    </a>
+                    <a class="nav-link" href="/cv/cheng-chen-cv.pdf">CV</a>
                 </li>
                 
-                
-                <!-- Desktop Language Toggle -->
-                <li class="nav-item pl-2 border-left d-none d-sm-block align-self-center">
-                    <a class="nav-link text-muted font-weight-bold" href="#" onclick="toggleLang(); return false;" style="cursor: pointer;">
-                        <span class="lang-en"><i class="fas fa-globe"></i> 中文</span>
-                        <span class="lang-zh"><i class="fas fa-globe"></i> EN</span>
-                    </a>
-                </li>
-                <!-- Mobile Language Toggle -->
-                <li class="nav-item d-block d-sm-none border-top mt-1 pt-1">
-                    <a class="nav-link text-muted font-weight-bold" href="#" onclick="toggleLang(); return false;" style="cursor: pointer;">
-                        <span class="lang-en"><i class="fas fa-globe"></i> Switch to 中文</span>
-                        <span class="lang-zh"><i class="fas fa-globe"></i> Switch to English</span>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>

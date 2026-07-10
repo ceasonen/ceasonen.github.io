@@ -7,7 +7,7 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-info">Cor
 pub_date:       "2026"
 cover:          /assets/images/covers/symbolic_visual_reasoning.png
 abstract: >-
-  <span class="lang-en">Describe a scene in symbols so a text-only LLM can reason about it — no vision module needed.</span><span class="lang-zh">用符号描述场景，让纯文本 LLM 也能做视觉推理，不需要视觉模块。</span>
+  Describe a scene in symbols so a text-only LLM can reason about it — no vision module needed.
 authors:
   - Wenzhuo Lei
   - Mufan Cao

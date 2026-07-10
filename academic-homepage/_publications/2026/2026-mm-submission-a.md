@@ -7,7 +7,7 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-warning t
 pub_date:       "2026"
 cover:          /assets/images/covers/mm.png
 abstract: >-
-  <span class="lang-en">Find audio-visual events from any text query, with distillation that pays attention to which modalities to trust.</span><span class="lang-zh">用任意文本查询定位音视频事件，蒸馏时关注该信任哪个模态。</span>
+  Find audio-visual events from any text query, with distillation that pays attention to which modalities to trust.
 authors:
   - Cheng Chen*
   - et al.

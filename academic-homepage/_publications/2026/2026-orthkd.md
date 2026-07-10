@@ -7,7 +7,7 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-success">
 pub_date:       "2026"
 cover:          /assets/images/covers/orthkd.png
 abstract: >-
-  <span class="lang-en">Distill knowledge from multiple clinical models into one small model, without picking up each teacher's quirks.</span><span class="lang-zh">把多个医学教师模型的知识蒸馏到一个小模型里，同时避免学到各自的偏差。</span>
+  Distill knowledge from multiple clinical models into one small model, without picking up each teacher's quirks.
 authors:
   - Yi Xu*
   - Cheng Chen*
