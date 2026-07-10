@@ -2,7 +2,7 @@
 % Compile with pdfLaTeX
 \documentclass[10pt]{article}
 
-\usepackage[a4paper,margin=0.62in,top=0.58in,bottom=0.58in]{geometry}
+\usepackage[a4paper,margin=0.6in,top=0.55in,bottom=0.55in]{geometry}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{tabularx}
@@ -11,13 +11,13 @@
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-\setlength{\baselineskip}{11.2pt}
+\setlength{\baselineskip}{10.8pt}
 \setlist[itemize]{leftmargin=1.05em, itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt}
 
 \newcommand{\cvsection}[1]{%
-  \par\vspace{1.5pt}%
-  {\bfseries #1}\par\vspace{-1pt}%
-  \noindent\rule{\textwidth}{0.4pt}\par\vspace{0.5pt}%
+  \par\vspace{1pt}%
+  {\bfseries #1}\par\vspace{-1.5pt}%
+  \noindent\rule{\textwidth}{0.4pt}\par\vspace{0pt}%
 }
 
 \newcommand{\researchblock}[3]{%
@@ -28,43 +28,41 @@
 
 \begin{document}
 
-\centering
-{\Large\bfseries Cheng Chen}\par\vspace{1pt}
+\noindent{\Large\bfseries Cheng Chen}\\[-1pt]
 Email: \href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn} \textbar{}
 \href{https://ceasonen.github.io}{ceasonen.github.io} \textbar{}
 \href{https://github.com/ceasonen}{github.com/ceasonen}
-\par\vspace{2pt}
-
 \cvsection{Education}
 \noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
   \textbf{Tongji University}, Shanghai, China & Sept. 2023 -- Present \\
-\end{tabularx}\vspace{-1pt}
+\end{tabularx}\vspace{-2pt}
 \textbf{B.Eng. in Electrical Engineering}, College of Electronic and Information Engineering\\
 Major Rank: \textbf{3/87}
 \cvsection{Publications}
 \begin{itemize}
-  \item Yi Xu, \textbf{Cheng Chen}, Wenzhuo Lei.\\
+  \item Yi Xu$^*$, \textbf{Cheng Chen}$^*$, Wenzhuo Lei.\\
   If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization\\
   \textbf{\textit{ACM MM 2026}} (Accepted; Oral).
-  \item \textbf{Cheng Chen}, Yi Xu, Mufan Cao.\\
+  \item \textbf{Cheng Chen}$^*$, Yi Xu$^*$, Mufan Cao.\\
   OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment\\
   \textbf{\textit{IJCAI 2026}} (Accepted; Oral).
   \item \textbf{Cheng Chen}, et al.\\
   Neural-Operator Risk Assessment for Deployable Risk Triage\\
   \textbf{\textit{NeurIPS 2026}} (Under Review).
 \end{itemize}
+\vspace{-2pt}{\small $^*$ equal contribution.}
 \cvsection{Research Experiences}
-\researchblock{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{Accepted at \textbf{ACM MM 2026}}{
+\researchblock{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{Accepted at \textbf{ACM MM 2026}, Co-first Author}{
   \item Addressed the difficulty of open-vocabulary audio-visual event localization, where heterogeneous audio and visual teachers provide uneven supervision and naive distillation propagates modality-specific errors.
   \item Proposed \textbf{OvOrthKD}, extending orthogonal feature distillation to audio-visual learning so complementary cross-modal cues are preserved while unreliable teacher signals are suppressed.
   \item Built a lightweight open-vocabulary localization pipeline accepted as an \textbf{oral} presentation at ACM Multimedia 2026.
 }
-\researchblock{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment}{Accepted at \textbf{IJCAI 2026}}{
+\researchblock{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment}{Accepted at \textbf{IJCAI 2026}, Co-first Author (listed first)}{
   \item Addressed expertise asymmetry in multi-teacher distillation for diabetic retinopathy screening, where a weaker ViT teacher (\textbf{0.83 QWK}) harms students under standard logit fusion with a stronger CNN teacher (\textbf{0.88 QWK}).
   \item Proposed \textbf{OrthKD}, distilling only complementary feature-level context from the weak teacher while enforcing orthogonality between teacher projections to avoid redundant knowledge transfer.
   \item Evaluated on \textbf{132{,}049} retinal images; the \textbf{5.4M}-parameter MobileNetV3 student reached \textbf{0.885 QWK} on EyePACS and improved zero-shot Messidor-2 performance from \textbf{0.507} to \textbf{0.728 QWK} (\textbf{+22.1} percentage points).
 }
-\researchblock{Neural-Operator Risk Assessment for Deployable Risk Triage}{Submitted to \textbf{NeurIPS 2026}}{
+\researchblock{Neural-Operator Risk Assessment for Deployable Risk Triage}{Submitted to \textbf{NeurIPS 2026}, First Author}{
   \item Addressed the deployment risk of neural operators in scientific computing, where incorrect operator predictions can silently corrupt downstream analysis without affordable post-hoc verification.
   \item Developed a single forward-pass risk assessment module that flags unreliable neural-operator outputs at inference time for deployable triage.
   \item Targeted low-overhead safety screening integrable into neural-operator pipelines without expensive ensemble or sampling-based uncertainty estimation.
