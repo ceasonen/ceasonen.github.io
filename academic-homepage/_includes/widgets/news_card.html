@@ -26,7 +26,7 @@
                         {% elsif item.category == "scholarship" %}
                             <i class="fas fa-graduation-cap text-muted mr-1" style="font-size: 0.85em;"></i>
                         {% endif %}
-                        {{ item.title }}
+                        <span class="news-title">{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
                     </div>
                 </div>
                 {% endfor %}
