@@ -1,5 +1,5 @@
 ---
-title:          "Beyond Relevance: Counter-Evidence Planning in a Controlled Budgeted RAG Testbed"
+title:          "CapeRAG: Counter-Evidence Planning in a Controlled Budgeted RAG Testbed"
 date:           2026-05-12 00:00:00 +0800
 rank:           4
 selected:       true
@@ -8,7 +8,7 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-info">Cor
 pub_date:       "2026"
 cover:          /assets/images/covers/caperag.png
 abstract: >-
-  RAG with a fixed retrieval budget — plan what to fetch, including evidence that might disagree.
+  CapeRAG — a sequential RAG controller that chooses support, refute, or stop via a Calibrated Shrinkage Score; 87.4% vs 80.8% on 440 examples with 2.4× fewer retrieval tokens.
 authors:
   - Yuyao Cai
   - Yi Xu
