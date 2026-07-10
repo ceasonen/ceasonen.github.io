@@ -56,9 +56,9 @@ Major Rank: \textbf{3/85}
 \vspace{-2pt}{\small $^*$ equal contribution.}
 \cvsection{Research Experiences}
 \researchblock{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{Accepted at \textbf{ACM MM 2026}, Co-first Author}{
-  \item Addressed the difficulty of open-vocabulary audio-visual event localization, where heterogeneous audio and visual teachers provide uneven supervision and naive distillation propagates modality-specific errors.
-  \item Proposed \textbf{OvOrthKD}, extending orthogonal feature distillation to audio-visual learning so complementary cross-modal cues are preserved while unreliable teacher signals are suppressed.
-  \item Built a lightweight open-vocabulary localization pipeline accepted as an \textbf{oral} presentation at ACM Multimedia 2026.
+  \item Addressed modality reliability asymmetry in open-vocabulary audio-visual event localization, where audio is semantically useful but often off-screen, delayed, or noisy, so symmetric distillation lets weak-audio supervision distort temporal boundaries.
+  \item Proposed \textbf{OV-OrthKD}, a reliability-aware asymmetric distillation framework: a strong visual teacher supervises decision-aligned features, a weak audio teacher is restricted to an auxiliary orthogonal subspace, and a text prototype anchors open-vocabulary transfer.
+  \item On OV-AVEBench, reached \textbf{0.816} segment AP and improved F1@0.5 by \textbf{+2.7} points overall and \textbf{+3.4} on unseen categories over the official fine-tuning baseline; ablations show weak-audio feature transfer helps only when kept off the decision path.
 }
 \researchblock{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment}{Accepted at \textbf{IJCAI 2026}, Co-first Author}{
   \item Addressed expertise asymmetry in multi-teacher distillation for diabetic retinopathy screening, where a weaker ViT teacher (\textbf{0.83 QWK}) harms students under standard logit fusion with a stronger CNN teacher (\textbf{0.88 QWK}).
@@ -66,9 +66,9 @@ Major Rank: \textbf{3/85}
   \item Evaluated on \textbf{132{,}049} retinal images; the \textbf{5.4M}-parameter MobileNetV3 student reached \textbf{0.885 QWK} on EyePACS and improved zero-shot Messidor-2 performance from \textbf{0.507} to \textbf{0.728 QWK} (\textbf{+22.1} percentage points).
 }
 \researchblock{Neural-Operator Risk Assessment for Deployable Risk Triage}{Submitted to \textbf{NeurIPS 2026}, First Author}{
-  \item Addressed the deployment risk of neural operators in scientific computing, where incorrect operator predictions can silently corrupt downstream analysis without affordable post-hoc verification.
-  \item Developed a single forward-pass risk assessment module that flags unreliable neural-operator outputs at inference time for deployable triage.
-  \item Targeted low-overhead safety screening integrable into neural-operator pipelines without expensive ensemble or sampling-based uncertainty estimation.
+  \item Addressed the deployment paradox of neural operators: single-pass surrogates are fast, but deciding when to trust a predicted field often requires multi-pass uncertainty estimators that erode the latency advantage.
+  \item Proposed \textbf{AUD} (Allocation Uncertainty Decomposition), a single-pass risk score read from ambiguity in prediction-path allocation; in the wavelet instantiation \textbf{MWNO-AUD}, the same masks that modulate detail coefficients also yield local allocation entropy $H_L$.
+  \item On EM scattering, $H_L$ improved Spearman $\rho_s$ from \textbf{0.61} to \textbf{0.67} and AUROC from \textbf{0.78} to \textbf{0.82} at \textbf{1.13$\times$} batched cost; escalating only high-entropy cases raised ranking to $\rho_s=\textbf{0.72}$ and AUROC=\textbf{0.85}.
 }
 \cvsection{Awards}
 \begin{itemize}

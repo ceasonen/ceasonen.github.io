@@ -13,10 +13,10 @@ github: ceasonen
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I'm an undergrad at <a href="https://www.tongji.edu.cn/" target="_blank">Tongji University</a>, majoring in electrical engineering. My research is mostly about <strong>multimodal AI</strong> and <strong>trustworthy AI</strong> — building models that work across vision, language, and audio, and making them reliable enough to actually use.
+    I'm an undergrad at <a href="https://www.tongji.edu.cn/" target="_blank">Tongji University</a>, majoring in electrical engineering. My research spans <strong>multimodal AI</strong>, <strong>trustworthy AI</strong>, and <strong>interdisciplinary AI</strong> — building models across vision, language, and audio, making them reliable enough to deploy, and connecting them to domains from clinical screening to scientific computing.
   </p>
   <p>
-    I'm looking for PhD opportunities in these areas. 🔭
+    I'm looking for PhD opportunities in these areas, including interdisciplinary programs at the AI–engineering–science interface. 🔭
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg
