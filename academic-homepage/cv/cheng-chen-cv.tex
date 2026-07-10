@@ -1,48 +1,46 @@
-% English application CV — compact academic style
+% English application CV — ultra-compact academic style
 % Compile with pdfLaTeX
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 
-\usepackage[a4paper,margin=0.68in]{geometry}
+\usepackage[a4paper,margin=0.62in,top=0.58in,bottom=0.58in]{geometry}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{tabularx}
-\usepackage{setspace}
 
 \hypersetup{hidelinks}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-\setstretch{0.98}
-\setlist[itemize]{leftmargin=1.1em, itemsep=0pt, topsep=1pt, parsep=0pt, partopsep=0pt}
+\setlength{\baselineskip}{11.2pt}
+\setlist[itemize]{leftmargin=1.05em, itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt}
 
 \newcommand{\cvsection}[1]{%
-  \vspace{3pt}%
-  {\bfseries #1}\par\vspace{1pt}%
-  \noindent\rule{\textwidth}{0.4pt}\par\vspace{2pt}%
+  \par\vspace{1.5pt}%
+  {\bfseries #1}\par\vspace{-1pt}%
+  \noindent\rule{\textwidth}{0.4pt}\par\vspace{0.5pt}%
 }
 
 \newcommand{\researchblock}[3]{%
   \textbf{#1}\par
-  #2\par\vspace{1pt}%
-  \begin{itemize}#3\end{itemize}\vspace{2pt}%
+  #2\par
+  \begin{itemize}#3\end{itemize}%
 }
 
 \begin{document}
 
-\begin{center}
-  {\LARGE\bfseries Cheng Chen}\\[3pt]
-  Email: \href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn} \textbar{}
-  \href{https://ceasonen.github.io}{ceasonen.github.io} \textbar{}
-  \href{https://github.com/ceasonen}{github.com/ceasonen}
-\end{center}
+\centering
+{\Large\bfseries Cheng Chen}\par\vspace{1pt}
+Email: \href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn} \textbar{}
+\href{https://ceasonen.github.io}{ceasonen.github.io} \textbar{}
+\href{https://github.com/ceasonen}{github.com/ceasonen}
+\par\vspace{2pt}
 
 \cvsection{Education}
 \noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
   \textbf{Tongji University}, Shanghai, China & Sept. 2023 -- Present \\
-\end{tabularx}
+\end{tabularx}\vspace{-1pt}
 \textbf{B.Eng. in Electrical Engineering}, College of Electronic and Information Engineering\\
 Major Rank: \textbf{3/87}
-
 \cvsection{Publications}
 \begin{itemize}
   \item Yi Xu, \textbf{Cheng Chen}, Wenzhuo Lei.\\
@@ -55,7 +53,6 @@ Major Rank: \textbf{3/87}
   Neural-Operator Risk Assessment for Deployable Risk Triage\\
   \textbf{\textit{NeurIPS 2026}} (Under Review).
 \end{itemize}
-
 \cvsection{Research Experiences}
 \researchblock{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{Accepted at \textbf{ACM MM 2026}}{
   \item Addressed the difficulty of open-vocabulary audio-visual event localization, where heterogeneous audio and visual teachers provide uneven supervision and naive distillation propagates modality-specific errors.
@@ -72,13 +69,11 @@ Major Rank: \textbf{3/87}
   \item Developed a single forward-pass risk assessment module that flags unreliable neural-operator outputs at inference time for deployable triage.
   \item Targeted low-overhead safety screening integrable into neural-operator pipelines without expensive ensemble or sampling-based uncertainty estimation.
 }
-
 \cvsection{Awards}
 \begin{itemize}
   \item National 2nd Prize, Global Campus AI Algorithm Elite Competition (2025)
   \item National 3rd Prize, Embedded Chip \& System Design Competition, FPGA track (2025)
 \end{itemize}
-
 \cvsection{Skills}
 \textbf{Programming:} Python, PyTorch, Git, Linux, Hugging Face, LaTeX, experiment tracking, LLM/agent prototyping.\\
 \textbf{Mathematics:} Linear Algebra, Probability, Optimization, Signal Processing, Mathematical Modeling.\\
