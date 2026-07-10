@@ -1,5 +1,5 @@
 ---
-title:          "Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions"
+title:          "DeepYOLO: Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions"
 date:           2026-03-15 00:00:00 +0800
 rank:           3
 selected:       true
