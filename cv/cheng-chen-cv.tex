@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%
 % English application CV
 % Compile with XeLaTeX
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,11pt]{article}
 
 \usepackage[a4paper,left=1.18cm,right=1.18cm,top=0.68cm,bottom=0.72cm]{geometry}
 \usepackage{graphicx}
@@ -44,36 +44,36 @@
 
 \setstretch{1.05}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1.0pt}
-\setlist[itemize]{leftmargin=1.15em,itemsep=0.7pt,topsep=0.7pt,parsep=0pt}
+\setlength{\parskip}{1.2pt}
+\setlist[itemize]{leftmargin=1.15em,itemsep=1.0pt,topsep=1.0pt,parsep=0pt}
 \hypersetup{hidelinks,colorlinks=false}
 \pagestyle{empty}
 
 \newcommand{\sectionhead}[1]{%
-  \vspace{5.2pt}%
-  \noindent{\fontsize{13.1}{14.1}\selectfont\bfseries #1}\par\vspace{0pt}%
-  {\color{deepred}\rule{2.4em}{0.7pt}}{\color{rulegray}\rule{\dimexpr\textwidth-2.4em\relax}{0.45pt}}\par\vspace{2.0pt}%
+  \vspace{5.5pt}%
+  \noindent{\fontsize{14.2}{15.4}\selectfont\bfseries #1}\par\vspace{0pt}%
+  {\color{deepred}\rule{2.4em}{0.7pt}}{\color{rulegray}\rule{\dimexpr\textwidth-2.4em\relax}{0.45pt}}\par\vspace{2.2pt}%
 }
 \newcommand{\contacticon}[1]{\textcolor{deepred}{#1}\hspace{0.34em}}
 \newcommand{\role}[1]{\textbf{\textcolor{textgray}{#1}}}
-\newcommand{\dateright}[1]{\hfill{\footnotesize\textcolor{textgray}{#1}}}
+\newcommand{\dateright}[1]{\hfill{\small\textcolor{textgray}{#1}}}
 \newcommand{\paperitem}[4]{%
-  \noindent\makebox[1.0em][l]{\textcolor{markerred}{\footnotesize\faBookmark}}%
+  \noindent\makebox[1.0em][l]{\textcolor{markerred}{\small\faBookmark}}%
   \begin{minipage}[t]{\dimexpr\textwidth-8.0em\relax}\raggedright\textbf{#1}\end{minipage}%
-  \makebox[7.0em][r]{\footnotesize\textcolor{textgray}{#2}}\par\vspace{-2pt}
+  \makebox[7.0em][r]{\small\textcolor{textgray}{#2}}\par\vspace{-2pt}
   \hspace*{1.0em}\begin{minipage}[t]{\dimexpr\textwidth-1.0em\relax}
     #3\\[-1pt]
-    {\small #4}
-  \end{minipage}\par\vspace{2pt}
+    {\normalsize #4}
+  \end{minipage}\par\vspace{2.5pt}
 }
 
 \begin{document}
 
 \noindent\begin{minipage}[t]{0.775\textwidth}
-  {\fontsize{17.2}{19.0}\selectfont\bfseries Cheng Chen}\\[0.2pt]
-  {\fontsize{10.0}{11.5}\selectfont\textcolor{deepred}{Prospective PhD Applicant}}\\[0.2pt]
-  {\fontsize{11.2}{12.8}\selectfont\bfseries Tongji University · Electrical Engineering}\\[3pt]
-  {\fontsize{10.5}{12.0}\selectfont
+  {\fontsize{18.5}{20.5}\selectfont\bfseries Cheng Chen}\\[0.2pt]
+  {\fontsize{10.8}{12.4}\selectfont\textcolor{deepred}{Prospective PhD Applicant}}\\[0.2pt]
+  {\fontsize{12.0}{13.6}\selectfont\bfseries Tongji University · Electrical Engineering}\\[3pt]
+  {\fontsize{11.2}{12.8}\selectfont
   \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
     \contacticon{\faEnvelope}\href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn} &
     \contacticon{\faEnvelope}\href{mailto:chenceason10@gmail.com}{chenceason10@gmail.com} \\
@@ -88,7 +88,7 @@
   \raggedleft
   \vspace{0.00cm}
   \setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.35pt}%
-  \fcolorbox{softgray}{white}{\includegraphics[width=2.18cm]{me.png}}
+  \fcolorbox{softgray}{white}{\includegraphics[width=2.25cm]{me.png}}
 \end{minipage}\par\vspace{2pt}
 
 \sectionhead{Summary}
@@ -124,14 +124,16 @@ Major rank: \textbf{3/87}; CET-6: \textbf{519}.
 
 \sectionhead{Awards}
 \begin{tabularx}{\textwidth}{@{}Xr@{}}
+  Provincial First Prize, China Robot and Artificial Intelligence Competition & \\
   National 2nd Prize, Global Campus AI Algorithm Elite Competition & 2025 \\
   National 3rd Prize, Embedded Chip \& System Design Competition & 2025 \\
 \end{tabularx}
 
 \sectionhead{Skills}
 \begin{itemize}
-  \item \role{Experiments:} PyTorch — training, baselines, ablations, and writing up what actually happened.
-  \item \role{Writing:} English papers in LaTeX; first author, co-first, and corresponding author experience.
+  \item \role{Experience:} Familiar with common research workflows and tools, including \textbf{Python}, \textbf{PyTorch}, \textbf{Git}, \textbf{LaTeX}, experiment tracking, and LLM/agent prototyping for literature review, coding, and analysis.
+  \item \role{Writing:} English level sufficient to read and understand research papers; familiar with the focus, process, and logic of both academic writing and project writing.
+  \item \role{Passion:} Genuinely enthusiastic about learning and exploration, and eager to push into areas I have not worked in yet.
 \end{itemize}
 
 \end{document}
