@@ -56,14 +56,6 @@ Major Rank: \textbf{3/87} \textbar{} CET-6: \textbf{519}
   OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment\\
   \textbf{\textit{IJCAI 2026}} (Accepted; Oral).
 
-  \item Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}.\\
-  Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions\\
-  \textbf{\textit{IJCNN 2026}} (Accepted).
-
-  \item Yuyao Cai, Yi Xu, \textbf{Cheng Chen}.\\
-  Beyond Relevance: Counter-Evidence Planning in a Controlled Budgeted RAG Testbed\\
-  \textbf{\textit{ICANN 2026}} (Accepted).
-
   \item \textbf{Cheng Chen}, et al.\\
   Neural-Operator Risk Assessment for Deployable Risk Triage\\
   \textbf{\textit{NeurIPS 2026}} (Under Review).
@@ -81,18 +73,6 @@ Major Rank: \textbf{3/87} \textbar{} CET-6: \textbf{519}
   \item Addressed expertise asymmetry in multi-teacher distillation for diabetic retinopathy screening, where a weaker ViT teacher (\textbf{0.83 QWK}) harms students under standard logit fusion with a stronger CNN teacher (\textbf{0.88 QWK}).
   \item Proposed \textbf{OrthKD}, distilling only complementary feature-level context from the weak teacher while enforcing orthogonality between teacher projections to avoid redundant knowledge transfer.
   \item Evaluated on \textbf{132{,}049} retinal images; the \textbf{5.4M}-parameter MobileNetV3 student reached \textbf{0.885 QWK} on EyePACS and improved zero-shot Messidor-2 performance from \textbf{0.507} to \textbf{0.728 QWK} (\textbf{+22.1} percentage points).
-}
-
-\researchblock{Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions}{Accepted at \textbf{IJCNN 2026}}{
-  \item Investigated whether text-only LLMs can perform visual reasoning without multimodal pre-training, avoiding the cost and opacity of end-to-end vision-language models.
-  \item Designed \textbf{DeepYOLO}, converting images into grammar-constrained symbolic scene reports with an off-the-shelf detector and feeding them to a text-only LLM.
-  \item On a stratified \textbf{5k} VQAv2 subset, achieved \textbf{42.3\%} accuracy, outperforming a scene-graph baseline (\textbf{38.2\%}) with \textbf{2.5$\times$} fewer prompt tokens; oracle symbolic inputs reached \textbf{44.5\%}.
-}
-
-\researchblock{Beyond Relevance: Counter-Evidence Planning in a Controlled Budgeted RAG Testbed}{Accepted at \textbf{ICANN 2026}}{
-  \item Tackled the limitation of relevance-only retrieval in RAG, where fixed budgets force systems to ignore contradictory evidence and over-trust top-ranked passages.
-  \item Proposed \textbf{CapeRAG}, a counter-evidence planning framework that allocates retrieval budget to both supporting and opposing documents before generation.
-  \item Demonstrated more reliable reasoning under strict retrieval budgets by balancing relevance with explicit counter-evidence search rather than greedy top-$k$ retrieval alone.
 }
 
 \researchblock{Neural-Operator Risk Assessment for Deployable Risk Triage}{Submitted to \textbf{NeurIPS 2026}}{
