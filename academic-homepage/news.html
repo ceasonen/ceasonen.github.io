@@ -7,8 +7,8 @@ navbar_title: News
 <div class="row pt-4 justify-content-center">
     <div class="col-lg-10 col-md-12">
         <div class="text-center mb-5">
-            <h2 class="font-weight-normal"><i class="fas fa-bullhorn text-accent"></i> News</h2>
-            <p class="text-muted">Paper acceptances, submissions, and a few other updates.</p>
+            <h2 class="font-weight-normal"><span class="section-glyph" aria-hidden="true">📌</span>News</h2>
+            <p class="text-muted">Paper acceptances, competitions, and a few other updates.</p>
         </div>
 
         {% assign news_by_year = site.news | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
@@ -27,15 +27,7 @@ navbar_title: News
                     
                     <!-- Content -->
                     <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
-                        {% if item.category == "paper" %}
-                            <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
-                        {% elsif item.category == "submission" %}
-                            <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
-                        {% elsif item.category == "competition" %}
-                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
-                        {% elsif item.category == "scholarship" %}
-                            <i class="fas fa-graduation-cap text-muted mr-1" style="font-size: 0.85em;"></i>
-                        {% endif %}
+                        {% include widgets/news_category_glyph.html category=item.category %}
                         <span class="news-title">{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 <div class="my-4 bg-white shadow-sm rounded-xl border-0">
     <div class="card-body p-4">
         <h5 class="card-title mb-4 font-weight-normal text-primary">
-            <i class="fas fa-bullhorn text-accent mr-2"></i> News
+            <span class="section-glyph" aria-hidden="true">📌</span>News
         </h5>
         
         <div class="news-list">
@@ -17,15 +17,7 @@
                     
                     <!-- Content -->
                     <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-                        {% if item.category == "paper" %}
-                            <i class="far fa-file-lines text-muted mr-1" style="font-size: 0.9em;"></i>
-                        {% elsif item.category == "submission" %}
-                            <i class="far fa-paper-plane text-muted mr-1" style="font-size: 0.85em;"></i>
-                        {% elsif item.category == "competition" %}
-                            <i class="fas fa-award text-muted mr-1" style="font-size: 0.85em;"></i>
-                        {% elsif item.category == "scholarship" %}
-                            <i class="fas fa-graduation-cap text-muted mr-1" style="font-size: 0.85em;"></i>
-                        {% endif %}
+                        {% include widgets/news_category_glyph.html category=item.category %}
                         <span class="news-title">{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
                     </div>
                 </div>

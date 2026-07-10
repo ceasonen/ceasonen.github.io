@@ -1,0 +1,7 @@
+{% assign cat = include.category %}
+{% case cat %}
+{% when 'paper' %}<span class="news-emoji" aria-hidden="true">🎉</span>
+{% when 'submission' %}<span class="news-emoji" aria-hidden="true">📨</span>
+{% when 'competition' %}<span class="news-emoji" aria-hidden="true">🏆</span>
+{% when 'scholarship' %}<span class="news-emoji" aria-hidden="true">✨</span>
+{% endcase %}
