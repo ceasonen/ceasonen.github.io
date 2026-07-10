@@ -10,8 +10,8 @@ cover:          /assets/images/covers/orthkd.png
 abstract: >-
   Distill knowledge from multiple clinical models into one small model, without picking up each teacher's quirks.
 authors:
-  - Yi Xu*
   - Cheng Chen*
+  - Yi Xu*
   - Mufan Cao
 links:
   PDF: /papers/ijcai/ijcai26.pdf
