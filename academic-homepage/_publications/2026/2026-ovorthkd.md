@@ -8,11 +8,12 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-success">
 pub_date:       "2026"
 cover:          /assets/images/covers/mm.png
 abstract: >-
-  Open-vocabulary audio-visual event localization with orthogonal knowledge distillation across modalities.
+  OV-OrthKD routes weak-audio supervision into an auxiliary orthogonal path while a strong visual teacher shapes temporal boundaries and a text prototype anchors open-vocabulary transfer.
 authors:
   - Yi Xu*
   - Cheng Chen*
-  - Wenzhuo Lei
+  - Wenzhuo Lei#
 links:
-  PDF: /papers/mm/paper2/main.pdf
+  PDF: /papers/mm/paper/main.pdf
+  Supplementary: /papers/mm/paper/supplementary.pdf
 ---
