@@ -12,7 +12,7 @@ abstract: >-
 authors:
   - Yi Xu*
   - Cheng Chen*
-  - Wenzhuo Lei#
+  - Wenzhuo Lei
 links:
   PDF: /papers/mm/paper/main.pdf
 ---
