@@ -11,6 +11,10 @@
     --academic-paper: #ffffff;
 }
 
+html {
+    font-size: 14px;
+}
+
 html, body, p, li, a, div, span, strong, em, b,
 .navbar-brand, .nav-link, .btn, .badge,
 h1, h2, h3, h4, h5, h6,
@@ -22,8 +26,8 @@ h1, h2, h3, h4, h5, h6,
 body {
     color: var(--academic-ink);
     font-weight: 400;
-    line-height: 1.65;
-    padding-top: 5rem;
+    line-height: 1.58;
+    padding-top: 4.5rem;
     background-color: var(--academic-background) !important;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -75,7 +79,7 @@ a:focus {
 
 .navbar .nav-link {
     color: #4f5963 !important;
-    font-size: 0.9rem;
+    font-size: 1rem;
     letter-spacing: 0.025em;
     margin-left: 0.35rem;
     padding-right: 0.65rem !important;
@@ -150,7 +154,11 @@ a:focus {
 .text-profile-bio {
     max-width: 820px;
     font-weight: 400;
-    line-height: 1.72;
+    line-height: 1.62;
+}
+
+.text-profile-bio p {
+    margin-bottom: 0.72rem;
 }
 
 .figure-img,
@@ -276,7 +284,7 @@ b {
 /* Homepage: profile sidebar + continuous research narrative. */
 .homepage-layout {
     align-items: flex-start;
-    margin-top: 2.6rem;
+    margin-top: 2.2rem;
 }
 
 .homepage-sidebar-column {
@@ -284,13 +292,12 @@ b {
 }
 
 .homepage-sidebar {
-    position: sticky;
-    top: 6.6rem;
+    position: static;
 }
 
 .sidebar-portrait-wrap {
-    width: min(220px, 100%);
-    margin-bottom: 1.45rem;
+    width: min(190px, 100%);
+    margin-bottom: 1.2rem;
 }
 
 .sidebar-portrait {
@@ -310,15 +317,15 @@ b {
 }
 
 .sidebar-affiliation {
-    margin-bottom: 1.35rem;
+    margin-bottom: 1.1rem;
     font-size: 1.02rem;
     font-weight: 700;
 }
 
 .sidebar-bio {
     max-width: 235px;
-    margin-bottom: 1.45rem;
-    line-height: 1.65;
+    margin-bottom: 1.2rem;
+    line-height: 1.58;
 }
 
 .sidebar-links {
@@ -371,11 +378,11 @@ b {
 .homepage-introduction .text-profile-bio {
     max-width: none;
     font-size: 1rem;
-    line-height: 1.72;
+    line-height: 1.62;
 }
 
 .homepage-section {
-    margin-top: 2.8rem;
+    margin-top: 2.25rem;
 }
 
 .homepage-section > h2 {
@@ -385,9 +392,9 @@ b {
 }
 
 .research-area-list {
-    margin-bottom: 1.35rem;
+    margin-bottom: 1rem;
     padding-left: 1.7rem;
-    line-height: 1.85;
+    line-height: 1.65;
 }
 
 .research-contact {
@@ -421,7 +428,7 @@ b {
 .content-page {
     width: 100%;
     max-width: 1080px;
-    margin: 2.8rem auto 0;
+    margin: 2.2rem auto 0;
 }
 
 .content-page-header h1,
@@ -436,7 +443,7 @@ b {
 }
 
 .content-section {
-    margin-top: 2.7rem;
+    margin-top: 2.2rem;
 }
 
 .content-section > h2 {
@@ -454,7 +461,7 @@ b {
 }
 
 .news-record {
-    padding: 0.95rem 0;
+    padding: 0.72rem 0;
 }
 
 .news-record time,
@@ -467,11 +474,11 @@ b {
 }
 
 .news-record-content {
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 .news-year-section {
-    margin-top: 2.15rem;
+    margin-top: 1.7rem;
 }
 
 .news-year-section > h2 {
@@ -479,7 +486,7 @@ b {
 }
 
 .highlight-record {
-    padding: 1.35rem 0;
+    padding: 1rem 0;
 }
 
 .highlight-record h3 {
@@ -489,7 +496,7 @@ b {
 
 .highlight-record p {
     margin: 0;
-    line-height: 1.65;
+    line-height: 1.55;
 }
 
 .record-venue {
@@ -502,13 +509,21 @@ b {
 
 .award-record {
     align-items: baseline;
-    padding: 0.85rem 0;
-    line-height: 1.55;
+    padding: 0.65rem 0;
+    line-height: 1.48;
 }
 
 @media (min-width: 1200px) {
     .container-xl {
         max-width: 1380px;
+    }
+}
+
+@media (min-width: 768px) {
+    .homepage-sidebar-column {
+        position: sticky;
+        top: 5.8rem;
+        align-self: flex-start;
     }
 }
 
@@ -527,6 +542,10 @@ b {
 }
 
 @media (max-width: 767.98px) {
+    html {
+        font-size: 15px;
+    }
+
     body {
         padding-top: 4.4rem;
     }
@@ -550,7 +569,6 @@ b {
     }
 
     .homepage-sidebar {
-        position: static;
         display: grid;
         grid-template-columns: 92px minmax(0, 1fr);
         column-gap: 1.1rem;
