@@ -13,6 +13,7 @@
 
 html {
     font-size: 14px;
+    min-height: 100%;
 }
 
 html, body, p, li, a, div, span, strong, em, b,
@@ -24,6 +25,9 @@ h1, h2, h3, h4, h5, h6,
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     color: var(--academic-ink);
     font-weight: 400;
     line-height: 1.5;
@@ -31,6 +35,10 @@ body {
     background-color: var(--academic-background) !important;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+}
+
+body > main {
+    flex: 1 0 auto;
 }
 
 .bg-light {
@@ -265,6 +273,7 @@ b {
 }
 
 .footer {
+    flex-shrink: 0;
     color: var(--academic-muted);
     background-color: var(--academic-paper) !important;
     border-color: var(--academic-rule) !important;
