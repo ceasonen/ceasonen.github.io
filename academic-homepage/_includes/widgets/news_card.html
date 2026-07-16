@@ -1,36 +1,15 @@
 {% assign news_by_year = site.news | sort: "date" | reverse | slice: 0, include.limit | group_by_exp: "item", "item.date | date: '%Y'" -%}
 
 <section id="news" class="homepage-section homepage-news">
-        <h2><span class="section-glyph" aria-hidden="true">🔥</span>News</h2>
-        
-        <div class="news-list">
-            {% for year in news_by_year %}
-                {% for item in year.items %}
-                <div class="news-row d-flex align-items-start py-3 {% unless forloop.last and forloop.parentloop.last %}border-bottom border-light{% endunless %}">
-                    <!-- Date (Clean, neutral gray tone) -->
-                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
-                        {{ item.date | date: "%Y.%m" }}
-                    </div>
-                    
-                    <!-- Content -->
-                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-                        {% include widgets/news_category_glyph.html category=item.category %}
-                        <span class="news-title">{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
-                    </div>
-                </div>
-                {% endfor %}
+    <h2><span class="section-glyph" aria-hidden="true">🔥</span>News</h2>
+    <ul class="academic-list news-list">
+        {% for year in news_by_year %}
+            {% for item in year.items %}
+            <li>
+                <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%Y.%m" }}:</time>
+                <span class="news-title">{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
+            </li>
             {% endfor %}
-        </div>
+        {% endfor %}
+    </ul>
 </section>
-
-<style>
-.news-row {
-    transition: background-color 0.15s ease-in-out;
-}
-.news-row:hover {
-    background-color: #fcfcfb;
-}
-.text-accent {
-    color: #7a2438 !important; /* Deep academic burgundy matching the theme */
-}
-</style>

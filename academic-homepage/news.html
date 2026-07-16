@@ -14,16 +14,14 @@ container_class: container-xl
     {% for year in news_by_year %}
     <section class="content-section news-year-section">
         <h2>{{ year.name }}</h2>
-        <div class="news-records">
+        <ul class="academic-list news-records">
             {% for item in year.items %}
-            <article class="news-record">
-                <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%Y.%m" }}</time>
-                <div class="news-record-content">
-                    <span class="news-title">{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
-                </div>
-            </article>
+            <li class="news-record">
+                <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%Y.%m" }}:</time>
+                <span class="news-title">{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
+            </li>
             {% endfor %}
-        </div>
+        </ul>
     </section>
     {% endfor %}
 </div>

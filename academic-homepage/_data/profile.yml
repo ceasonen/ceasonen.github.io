@@ -16,19 +16,13 @@ sidebar_bio: >-
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I'm <strong>Cheng Chen</strong> (CN name: <strong>陈成</strong>), an undergraduate student majoring in <strong>Electrical Engineering</strong> at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
+    I'm <strong>Cheng Chen</strong> (CN name: 陈成), an undergraduate student majoring in Electrical Engineering at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
   </p>
   <p>
-    My research began in my second year with neural operators. I studied how to assess the reliability of a predicted field without repeated inference, and this project has since developed into a first-author submission to <strong>NeurIPS 2026</strong>.
+    My research began in my second year with neural operators and the reliability of predicted fields. This work has developed into a first-author submission to NeurIPS 2026. I later worked on knowledge distillation for diabetic retinopathy screening and open-vocabulary audio-visual event localization. The resulting papers, <strong>OrthKD</strong> and <strong>OV-OrthKD</strong>, were accepted for oral presentations at IJCAI 2026 and ACM MM 2026, respectively.
   </p>
   <p>
-    I then worked on knowledge distillation for diabetic retinopathy screening. We studied how a lightweight model can learn from clinical models with different strengths and developed <strong>OrthKD</strong>, which was accepted for an oral presentation at <strong>IJCAI 2026</strong>. I later worked on open-vocabulary audio-visual event localization. Our method, <strong>OV-OrthKD</strong>, separates visual and audio supervision according to their reliability and was accepted for an oral presentation at <strong>ACM MM 2026</strong>.
-  </p>
-  <p>
-    <strong>DeepYOLO</strong> grew out of a collaboration with a junior student. I proposed the initial idea of representing images as symbolic scene descriptions for text-only language models, while he led the implementation and experiments. I serve as the corresponding author of the resulting <strong>IJCNN 2026</strong> paper.
-  </p>
-  <p>
-    I am looking for PhD opportunities and am currently learning about <strong>embodied AI</strong>, <strong>reinforcement learning</strong>, and <strong>multimodal large language models</strong>. I am eager to explore where these directions may lead and remain open to research problems beyond my current experience. Learning a new topic, understanding it in depth, and turning it into a concrete result is what makes research exciting and rewarding for me.
+    <strong>DeepYOLO</strong> grew out of a collaboration with a junior student: I proposed the initial idea, while he led the implementation and experiments; I serve as the corresponding author. I am now exploring embodied AI, reinforcement learning, and multimodal large language models, and I am looking for PhD opportunities in these and related directions. Learning a new topic deeply and turning it into a concrete result is what makes research rewarding for me.
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg

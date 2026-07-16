@@ -12,18 +12,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/css/global.css?v=20260716-6">
+    <link rel="stylesheet" href="/assets/css/global.css?v=20260716-7">
 </head>
 <body class="bg-light" >
     <nav class="navbar navbar-expand-sm navbar-light fixed-top mb-5 shadow-sm">
     <div class="container-xl">
-        <a class="navbar-brand"><strong>Cheng Chen</strong></a>
+        <a class="navbar-brand d-sm-none" href="/">Cheng Chen</a>
         <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home</a>
@@ -51,8 +51,8 @@
 </nav>
 
     <div class="container-xl">
-        <div class="homepage-layout row">
-    <aside class="col-lg-3 col-md-4 homepage-sidebar-column">
+        <div class="homepage-layout">
+    <aside class="homepage-sidebar-column">
         <div class="homepage-sidebar">
 
     <div class="sidebar-portrait-wrap">
@@ -80,34 +80,30 @@
 
     </aside>
 
-    <main class="col-lg-9 col-md-8 homepage-main">
+    <main class="homepage-main">
         <section id="about-me" class="homepage-introduction">
             <h1><span class="section-glyph" aria-hidden="true">👋</span>Hi, welcome to my homepage!</h1>
             <div class="text-profile-bio">
                 <p>
-  I'm <strong>Cheng Chen</strong> (CN name: <strong>陈成</strong>), an undergraduate student majoring in <strong>Electrical Engineering</strong> at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
+  I'm <strong>Cheng Chen</strong> (CN name: 陈成), an undergraduate student majoring in Electrical Engineering at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
 </p> <p>
-  My research began in my second year with neural operators. I studied how to assess the reliability of a predicted field without repeated inference, and this project has since developed into a first-author submission to <strong>NeurIPS 2026</strong>.
+  My research began in my second year with neural operators and the reliability of predicted fields. This work has developed into a first-author submission to NeurIPS 2026. I later worked on knowledge distillation for diabetic retinopathy screening and open-vocabulary audio-visual event localization. The resulting papers, <strong>OrthKD</strong> and <strong>OV-OrthKD</strong>, were accepted for oral presentations at IJCAI 2026 and ACM MM 2026, respectively.
 </p> <p>
-  I then worked on knowledge distillation for diabetic retinopathy screening. We studied how a lightweight model can learn from clinical models with different strengths and developed <strong>OrthKD</strong>, which was accepted for an oral presentation at <strong>IJCAI 2026</strong>. I later worked on open-vocabulary audio-visual event localization. Our method, <strong>OV-OrthKD</strong>, separates visual and audio supervision according to their reliability and was accepted for an oral presentation at <strong>ACM MM 2026</strong>.
-</p> <p>
-  <strong>DeepYOLO</strong> grew out of a collaboration with a junior student. I proposed the initial idea of representing images as symbolic scene descriptions for text-only language models, while he led the implementation and experiments. I serve as the corresponding author of the resulting <strong>IJCNN 2026</strong> paper.
-</p> <p>
-  I am looking for PhD opportunities and am currently learning about <strong>embodied AI</strong>, <strong>reinforcement learning</strong>, and <strong>multimodal large language models</strong>. I am eager to explore where these directions may lead and remain open to research problems beyond my current experience. Learning a new topic, understanding it in depth, and turning it into a concrete result is what makes research exciting and rewarding for me.
+  <strong>DeepYOLO</strong> grew out of a collaboration with a junior student: I proposed the initial idea, while he led the implementation and experiments; I serve as the corresponding author. I am now exploring embodied AI, reinforcement learning, and multimodal large language models, and I am looking for PhD opportunities in these and related directions. Learning a new topic deeply and turning it into a concrete result is what makes research rewarding for me.
 </p>
             </div>
         </section>
 
         <section id="research-areas" class="homepage-section">
     <h2><span class="section-glyph" aria-hidden="true">📚</span>Research Areas</h2>
-    <p>My current research interests include:</p>
+    <p>My research interests include:</p>
     <ul class="research-area-list">
-        <li><strong>Neural operators</strong> and reliability assessment</li>
-        <li><strong>Multimodal learning</strong>, especially audio-visual event understanding and visual reasoning</li>
-        <li><strong>Knowledge distillation</strong> and lightweight models</li>
-        <li><strong>Trustworthy machine learning</strong>, including risk assessment and calibration</li>
-        <li><strong>Machine learning for medicine and science</strong></li>
-        <li><strong>Current explorations</strong>: embodied AI, reinforcement learning, and multimodal large language models</li>
+        <li>Neural operators and reliability assessment</li>
+        <li>Multimodal learning and visual reasoning</li>
+        <li>Knowledge distillation and lightweight models</li>
+        <li>Trustworthy machine learning</li>
+        <li>Machine learning for medicine and science</li>
+        <li>Embodied AI, reinforcement learning, and multimodal large language models</li>
     </ul>
     <p class="research-contact">
         I am currently looking for PhD opportunities and welcome conversations about both these topics and research directions beyond my current work. Please feel free to <a href="mailto:%32%33%35%31%34%34%35@%74%6F%6E%67%6A%69.%65%64%75.%63%6E">contact me</a>.
@@ -121,156 +117,55 @@
 
 
                 <section id="news" class="homepage-section homepage-news">
-        <h2><span class="section-glyph" aria-hidden="true">🔥</span>News</h2>
-
-        <div class="news-list">
-
-
-                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
-                    <!-- Date (Clean, neutral gray tone) -->
-                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
-                        2026.07
-                    </div>
-
-                    <!-- Content -->
-                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-
-<span class="news-emoji" aria-hidden="true">🎉</span>
+    <h2><span class="section-glyph" aria-hidden="true">🔥</span>News</h2>
+    <ul class="academic-list news-list">
 
 
-                        <span class="news-title">Our paper, <strong>OV-OrthKD</strong>, was accepted for an oral presentation at <strong>ACM MM 2026</strong>. I am a co-first author, and Wenzhuo Lei is the corresponding author.</span>
-                    </div>
-                </div>
+            <li>
+                <time datetime="2026-07-10">2026.07:</time>
+                <span class="news-title">Our paper, <strong>OV-OrthKD</strong>, was accepted for an oral presentation at <strong>ACM MM 2026</strong>. I am a co-first author, and Wenzhuo Lei is the corresponding author.</span>
+            </li>
 
-                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
-                    <!-- Date (Clean, neutral gray tone) -->
-                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
-                        2026.06
-                    </div>
+            <li>
+                <time datetime="2026-06-01">2026.06:</time>
+                <span class="news-title">Provincial First Prize in the <strong>China Robot and Artificial Intelligence Competition</strong>.</span>
+            </li>
 
-                    <!-- Content -->
-                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+            <li>
+                <time datetime="2026-04-20">2026.04:</time>
+                <span class="news-title">Our paper, <strong>OrthKD</strong>, was accepted for an oral presentation at <strong>IJCAI 2026</strong>. I am a co-first author.</span>
+            </li>
 
-<span class="news-emoji" aria-hidden="true">🏆</span>
+            <li>
+                <time datetime="2026-04-10">2026.04:</time>
+                <span class="news-title">I submitted a first-author paper on risk assessment for neural operators to <strong>NeurIPS 2026</strong>.</span>
+            </li>
 
-
-                        <span class="news-title">Provincial First Prize in the <strong>China Robot and Artificial Intelligence Competition</strong>.</span>
-                    </div>
-                </div>
-
-                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
-                    <!-- Date (Clean, neutral gray tone) -->
-                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
-                        2026.04
-                    </div>
-
-                    <!-- Content -->
-                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-
-<span class="news-emoji" aria-hidden="true">🎉</span>
-
-
-                        <span class="news-title">Our paper, <strong>OrthKD</strong>, was accepted for an oral presentation at <strong>IJCAI 2026</strong>. I am a co-first author.</span>
-                    </div>
-                </div>
-
-                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
-                    <!-- Date (Clean, neutral gray tone) -->
-                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
-                        2026.04
-                    </div>
-
-                    <!-- Content -->
-                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-
-<span class="news-emoji" aria-hidden="true">📨</span>
-
-
-                        <span class="news-title">I submitted a first-author paper on risk assessment for neural operators to <strong>NeurIPS 2026</strong>.</span>
-                    </div>
-                </div>
-
-                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
-                    <!-- Date (Clean, neutral gray tone) -->
-                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
-                        2026.03
-                    </div>
-
-                    <!-- Content -->
-                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-
-<span class="news-emoji" aria-hidden="true">🎉</span>
-
-
-                        <span class="news-title">Our paper, <strong>DeepYOLO</strong>, was accepted to <strong>IJCNN 2026</strong>. I am the corresponding author.</span>
-                    </div>
-                </div>
+            <li>
+                <time datetime="2026-03-15">2026.03:</time>
+                <span class="news-title">Our paper, <strong>DeepYOLO</strong>, was accepted to <strong>IJCNN 2026</strong>. I am the corresponding author.</span>
+            </li>
 
 
 
-                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
-                    <!-- Date (Clean, neutral gray tone) -->
-                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
-                        2025.12
-                    </div>
+            <li>
+                <time datetime="2025-12-25">2025.12:</time>
+                <span class="news-title">Received the <strong>Tongji University Outstanding Student Scholarship</strong> (Second Class) for 2024-2025.</span>
+            </li>
 
-                    <!-- Content -->
-                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
+            <li>
+                <time datetime="2025-12-20">2025.12:</time>
+                <span class="news-title">National 2nd Prize at the <strong>Global Campus AI Algorithm Elite Competition</strong>.</span>
+            </li>
 
-<span class="news-emoji" aria-hidden="true">✨</span>
-
-
-                        <span class="news-title">Received the <strong>Tongji University Outstanding Student Scholarship</strong> (Second Class) for 2024-2025.</span>
-                    </div>
-                </div>
-
-                <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
-                    <!-- Date (Clean, neutral gray tone) -->
-                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
-                        2025.12
-                    </div>
-
-                    <!-- Content -->
-                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-
-<span class="news-emoji" aria-hidden="true">🏆</span>
+            <li>
+                <time datetime="2025-12-15">2025.12:</time>
+                <span class="news-title">National 3rd Prize at the <strong>Embedded Chip &amp; System Design Competition</strong> (FPGA track).</span>
+            </li>
 
 
-                        <span class="news-title">National 2nd Prize at the <strong>Global Campus AI Algorithm Elite Competition</strong>.</span>
-                    </div>
-                </div>
-
-                <div class="news-row d-flex align-items-start py-3 ">
-                    <!-- Date (Clean, neutral gray tone) -->
-                    <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
-                        2025.12
-                    </div>
-
-                    <!-- Content -->
-                    <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-
-<span class="news-emoji" aria-hidden="true">🏆</span>
-
-
-                        <span class="news-title">National 3rd Prize at the <strong>Embedded Chip &amp; System Design Competition</strong> (FPGA track).</span>
-                    </div>
-                </div>
-
-
-        </div>
+    </ul>
 </section>
-
-<style>
-.news-row {
-    transition: background-color 0.15s ease-in-out;
-}
-.news-row:hover {
-    background-color: #fcfcfb;
-}
-.text-accent {
-    color: #7a2438 !important; /* Deep academic burgundy matching the theme */
-}
-</style>
 
 
 
@@ -441,17 +336,9 @@
     </div>
     <footer class="footer border-top py-2 mt-5 bg-white small">
     <div class="container-xl">
-        <div class="row my-3">
-            <div class="col-6">
-                <div class="text-muted">
-                    <i>Last updated: Jul 2026</i>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="text-right text-muted">
-                    <a href="https://github.com/luost26/academic-homepage" target="_blank"><i class="fas fa-pencil-ruler"></i> academic-homepage</a>
-                </div>
-            </div>
+        <div class="footer-line text-muted">
+            <span>Last updated: Jul 2026</span>
+            <span>© 2026 Cheng Chen</span>
         </div>
     </div>
 </footer>
