@@ -9,11 +9,14 @@ positions:
 email: "2351445@tongji.edu.cn"
 phone: "(+86) 13587919792"
 github: ceasonen
+location: "Shanghai, China"
+sidebar_bio: >-
+  An undergraduate student in Electrical Engineering at Tongji University. My research focuses on multimodal learning, trustworthy machine learning, and machine learning for medical and scientific applications.
 
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I'm <strong>Cheng Chen</strong> (CN name: <strong>陈成</strong>), an undergraduate student majoring in <strong>Electrical Engineering</strong> at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>. I am currently ranked <strong>3/85</strong> in my major.
+    I'm <strong>Cheng Chen</strong> (CN name: <strong>陈成</strong>), an undergraduate student majoring in <strong>Electrical Engineering</strong> at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
   </p>
   <p>
     My research started with knowledge distillation for diabetic retinopathy screening. In this work, we studied how a lightweight model can learn from clinical models with different strengths and developed <strong>OrthKD</strong>, which was accepted for an oral presentation at <strong>IJCAI 2026</strong>. I later worked on open-vocabulary audio-visual event localization. Our method, <strong>OV-OrthKD</strong>, separates visual and audio supervision according to their reliability and was accepted for an oral presentation at <strong>ACM MM 2026</strong>.
@@ -22,7 +25,7 @@ short_bio: >-
     I am currently studying risk assessment for neural operators, with a focus on identifying unreliable predictions from a single forward pass. In another project, I worked on converting images into symbolic scene descriptions so that text-only language models can perform visual question answering.
   </p>
   <p>
-    I am looking for PhD opportunities related to multimodal learning, trustworthy machine learning, and machine learning for medical and scientific applications.
+    I am looking for PhD opportunities related to multimodal learning, trustworthy machine learning, and machine learning for medical and scientific applications. I would also like to explore large language models and other areas beyond my current work. Learning a new topic, understanding it in depth, and turning it into a concrete result is what makes research exciting and rewarding for me.
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg

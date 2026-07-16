@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/css/global.css?v=20260716-1">
+    <link rel="stylesheet" href="/assets/css/global.css?v=20260716-2">
 </head>
 <body class="bg-light" >
     <nav class="navbar navbar-expand-sm navbar-light fixed-top mb-5 shadow-sm">
-    <div class="container-lg">
+    <div class="container-xl">
         <a class="navbar-brand"><strong>Cheng Chen</strong></a>
         <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
@@ -24,255 +24,184 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                
+
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                
+
                 <li class="nav-item ">
                     <a class="nav-link" href="/publications">Publications</a>
                 </li>
-                
+
                 <li class="nav-item ">
                     <a class="nav-link" href="/news">News</a>
                 </li>
-                
+
                 <li class="nav-item ">
                     <a class="nav-link" href="/awards">Highlights</a>
                 </li>
-                
+
                 <li class="nav-item ">
                     <a class="nav-link" href="/cv/cheng-chen-cv.pdf">CV</a>
                 </li>
-                
+
             </ul>
         </div>
     </div>
 </nav>
 
-    <div class="container-lg">
-        <div class="row">
-    <div class="col">
-        <div class="card border-0 shadow-sm bg-white">
-            <div class="card-body p-5">
-                <div class="row">
-                    <div class="col">
-                        
-                        <!-- When the screen is wider than md, float the portrait on the right -->
-                        <div class="figure float-right ml-4 mb-4 d-none d-md-block">
-                            <img 
-                                src="/assets/images/photos/portrait.jpg" 
-                                class="figure-img img-fluid img-thumbnail" 
-                                style="height: 200px;"
-                                data-toggle="tooltip" 
-                                data-placement="top" 
-                                title="">
-                        </div>
-                        
+    <div class="container-xl">
+        <div class="homepage-layout row">
+    <aside class="col-lg-3 col-md-4 homepage-sidebar-column">
+        <div class="homepage-sidebar">
 
-                        <div class="d-flex">
-                            <div class="h1 font-weight-normal">
-                                Cheng Chen
-                            </div>
-                            
-                            <div class="ml-auto d-md-none">
-                                <a target="_blank" href="/assets/images/photos/portrait.jpg">
-                                    <img src="/assets/images/photos/portrait.jpg" class="rounded-circle" style="height: 48px;" alt="Portrait">
-                                </a>
-                            </div>
-                            
-                        </div>
-                        <div class="text-profile-position">
-                            
-                            
-                            Undergraduate · Electrical Engineering<br/>
-                            
-                            
-                            Tongji University<br/>
-                            
-                        </div>
-                        <div class="text-profile-bio mt-3" >
-                            <p>
-  I'm <strong>Cheng Chen</strong> (CN name: <strong>陈成</strong>), an undergraduate student majoring in <strong>Electrical Engineering</strong> at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>. I am currently ranked <strong>3/85</strong> in my major.
+    <div class="sidebar-portrait-wrap">
+        <img src="/assets/images/photos/portrait.jpg" alt="Portrait of Cheng Chen" class="sidebar-portrait">
+    </div>
+
+
+    <h2 class="sidebar-name">Cheng Chen</h2>
+    <p class="sidebar-affiliation">Tongji University</p>
+    <p class="sidebar-bio">An undergraduate student in Electrical Engineering at Tongji University. My research focuses on multimodal learning, trustworthy machine learning, and machine learning for medical and scientific applications.</p>
+
+    <ul class="sidebar-links list-unstyled">
+
+        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>Shanghai, China</span></li>
+
+
+        <li><a href="mailto:%32%33%35%31%34%34%35@%74%6F%6E%67%6A%69.%65%64%75.%63%6E"><i class="fas fa-envelope" aria-hidden="true"></i><span>Email</span></a></li>
+
+
+        <li><a target="_blank" href="https://github.com/ceasonen"><i class="fab fa-github" aria-hidden="true"></i><span>GitHub</span></a></li>
+
+        <li><a target="_blank" href="/cv/cheng-chen-cv.pdf"><i class="fas fa-file-alt" aria-hidden="true"></i><span>Curriculum Vitae</span></a></li>
+    </ul>
+</div>
+
+    </aside>
+
+    <main class="col-lg-9 col-md-8 homepage-main">
+        <section id="about-me" class="homepage-introduction">
+            <h1><span class="section-glyph" aria-hidden="true">👋</span>Hi, welcome to my homepage!</h1>
+            <div class="text-profile-bio">
+                <p>
+  I'm <strong>Cheng Chen</strong> (CN name: <strong>陈成</strong>), an undergraduate student majoring in <strong>Electrical Engineering</strong> at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
 </p> <p>
   My research started with knowledge distillation for diabetic retinopathy screening. In this work, we studied how a lightweight model can learn from clinical models with different strengths and developed <strong>OrthKD</strong>, which was accepted for an oral presentation at <strong>IJCAI 2026</strong>. I later worked on open-vocabulary audio-visual event localization. Our method, <strong>OV-OrthKD</strong>, separates visual and audio supervision according to their reliability and was accepted for an oral presentation at <strong>ACM MM 2026</strong>.
 </p> <p>
   I am currently studying risk assessment for neural operators, with a focus on identifying unreliable predictions from a single forward pass. In another project, I worked on converting images into symbolic scene descriptions so that text-only language models can perform visual question answering.
 </p> <p>
-  I am looking for PhD opportunities related to multimodal learning, trustworthy machine learning, and machine learning for medical and scientific applications.
+  I am looking for PhD opportunities related to multimodal learning, trustworthy machine learning, and machine learning for medical and scientific applications. I would also like to explore large language models and other areas beyond my current work. Learning a new topic, understanding it in depth, and turning it into a concrete result is what makes research exciting and rewarding for me.
 </p>
-                        </div>
-                        
-                    </div>
-        
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col">
-                        <a class="pr-3" href="mailto:%32%33%35%31%34%34%35@%74%6F%6E%67%6A%69.%65%64%75.%63%6E">
-                            <i class="fas fa-at"></i> <span class="email-text">2351445(at)tongji.edu.cn</span>
-                        </a>
-
-                        
-                        <a class="pr-3 no-break" href="tel:+8613587919792">
-                            <i class="fas fa-phone"></i> (+86) 13587919792
-                        </a>
-                        
-
-                        
-                        
-                        
-                        <a class="pr-3 no-break" target="_blank" href="https://github.com/ceasonen">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-                    </div>
-                </div>
             </div>
-        </div>        
-    </div>
-</div>
+        </section>
 
-
-
-<div class="row mt-4">
-    <div class="col-lg-7 col-md-12 mb-3">
-        <div class="card border-0 shadow-sm bg-white h-100">
-            <div class="card-body p-4">
-                <h5 class="card-title text-primary border-bottom pb-2 mb-3 font-weight-normal">
-                    <span class="section-glyph" aria-hidden="true">🔬</span>Research Areas
-                </h5>
-                <p class="mb-2">My current research interests include:</p>
-                <ul class="mb-0 pl-4" style="line-height: 1.8;">
-                    <li><strong>Multimodal learning</strong>, especially audio-visual event understanding and visual reasoning</li>
-                    <li><strong>Knowledge distillation</strong> and lightweight models</li>
-                    <li><strong>Trustworthy machine learning</strong>, including risk assessment and calibration</li>
-                    <li><strong>Machine learning for medicine and science</strong></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-5 col-md-12 mb-3">
-        <div class="card border-0 shadow-sm bg-white h-100">
-            <div class="card-body p-4">
-                <h5 class="card-title text-primary border-bottom pb-2 mb-3 font-weight-normal">
-                    <span class="section-glyph" aria-hidden="true">🔭</span>PhD Search
-                </h5>
-                <p class="mb-3" style="line-height: 1.7;">
-                    I am currently looking for PhD opportunities. If your group works on multimodal learning, trustworthy machine learning, medical AI, or scientific machine learning, please feel free to contact me.
-                </p>
-                <p class="mb-0 text-muted small" style="line-height: 1.6;">
-                    Outside lab: football (Barça & Arsenal), cycling, music.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+        <section id="research-areas" class="homepage-section">
+    <h2><span class="section-glyph" aria-hidden="true">📚</span>Research Areas</h2>
+    <p>My current research interests include:</p>
+    <ul class="research-area-list">
+        <li><strong>Multimodal learning</strong>, especially audio-visual event understanding and visual reasoning</li>
+        <li><strong>Knowledge distillation</strong> and lightweight models</li>
+        <li><strong>Trustworthy machine learning</strong>, including risk assessment and calibration</li>
+        <li><strong>Machine learning for medicine and science</strong></li>
+    </ul>
+    <p class="research-contact">
+        I am currently looking for PhD opportunities and would also like to explore large language models and other areas beyond my current work. If you are interested in these topics, please feel free to <a href="mailto:%32%33%35%31%34%34%35@%74%6F%6E%67%6A%69.%65%64%75.%63%6E">contact me</a>.
+    </p>
+</section>
 
 
 
 
 
-    
-    
-        <div class="my-4 bg-white shadow-sm rounded-xl border-0">
-    <div class="card-body p-4">
-        <h5 class="card-title mb-4 font-weight-normal text-primary">
-            <span class="section-glyph" aria-hidden="true">📌</span>News
-        </h5>
-        
+
+
+                <section id="news" class="homepage-section homepage-news">
+        <h2><span class="section-glyph" aria-hidden="true">🔥</span>News</h2>
+
         <div class="news-list">
-            
-                
+
+
                 <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
                     <!-- Date (Clean, neutral gray tone) -->
                     <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
                         2026.07
                     </div>
-                    
+
                     <!-- Content -->
                     <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-                        
+
 <span class="news-emoji" aria-hidden="true">🎉</span>
 
 
                         <span class="news-title">Our paper, <strong>OV-OrthKD</strong>, was accepted for an oral presentation at <strong>ACM MM 2026</strong>. I am a co-first author, and Wenzhuo Lei is the corresponding author.</span>
                     </div>
                 </div>
-                
+
                 <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
                     <!-- Date (Clean, neutral gray tone) -->
                     <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
                         2026.06
                     </div>
-                    
+
                     <!-- Content -->
                     <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-                        
+
 <span class="news-emoji" aria-hidden="true">🏆</span>
 
 
                         <span class="news-title">Provincial First Prize in the <strong>China Robot and Artificial Intelligence Competition</strong>.</span>
                     </div>
                 </div>
-                
+
                 <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
                     <!-- Date (Clean, neutral gray tone) -->
                     <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
                         2026.04
                     </div>
-                    
+
                     <!-- Content -->
                     <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-                        
+
 <span class="news-emoji" aria-hidden="true">🎉</span>
 
 
                         <span class="news-title">Our paper, <strong>OrthKD</strong>, was accepted for an oral presentation at <strong>IJCAI 2026</strong>. I am a co-first author.</span>
                     </div>
                 </div>
-                
+
                 <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
                     <!-- Date (Clean, neutral gray tone) -->
                     <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
                         2026.04
                     </div>
-                    
+
                     <!-- Content -->
                     <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-                        
+
 <span class="news-emoji" aria-hidden="true">📨</span>
 
 
                         <span class="news-title">I submitted a first-author paper on risk assessment for neural operators to <strong>NeurIPS 2026</strong>.</span>
                     </div>
                 </div>
-                
+
                 <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
                     <!-- Date (Clean, neutral gray tone) -->
                     <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
                         2026.03
                     </div>
-                    
+
                     <!-- Content -->
                     <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-                        
+
 <span class="news-emoji" aria-hidden="true">🎉</span>
 
 
                         <span class="news-title">Our paper, <strong>DeepYOLO</strong>, was accepted to <strong>IJCNN 2026</strong>. I am the corresponding author.</span>
                     </div>
                 </div>
-                
+
 
 
                 <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
@@ -280,53 +209,52 @@
                     <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
                         2025.12
                     </div>
-                    
+
                     <!-- Content -->
                     <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-                        
+
 <span class="news-emoji" aria-hidden="true">✨</span>
 
 
                         <span class="news-title">Received the <strong>Tongji University Outstanding Student Scholarship</strong> (Second Class) for 2024-2025.</span>
                     </div>
                 </div>
-                
+
                 <div class="news-row d-flex align-items-start py-3 border-bottom border-light">
                     <!-- Date (Clean, neutral gray tone) -->
                     <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
                         2025.12
                     </div>
-                    
+
                     <!-- Content -->
                     <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-                        
+
 <span class="news-emoji" aria-hidden="true">🏆</span>
 
 
                         <span class="news-title">National 2nd Prize at the <strong>Global Campus AI Algorithm Elite Competition</strong>.</span>
                     </div>
                 </div>
-                
+
                 <div class="news-row d-flex align-items-start py-3 ">
                     <!-- Date (Clean, neutral gray tone) -->
                     <div class="news-date-col mr-3 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.9rem;">
                         2025.12
                     </div>
-                    
+
                     <!-- Content -->
                     <div class="news-content-col flex-grow-1 text-dark" style="line-height: 1.6; font-size: 0.98rem;">
-                        
+
 <span class="news-emoji" aria-hidden="true">🏆</span>
 
 
                         <span class="news-title">National 3rd Prize at the <strong>Embedded Chip &amp; System Design Competition</strong> (FPGA track).</span>
                     </div>
                 </div>
-                
-            
+
+
         </div>
-    </div>
-</div>
+</section>
 
 <style>
 .news-row {
@@ -340,19 +268,19 @@
 }
 </style>
 
-    
 
 
 
-    
-    
-<div class="my-3 p-0 bg-white shadow-sm rounded-xl">
-    <h6 class="border-bottom border-gray p-3 mb-0">
-        <span class="section-glyph" aria-hidden="true">✨</span>Selected Publications 
-        <a href="/publications">(view all <i class="fas fa-angle-double-right"></i>)</a>
-    </h6>
-    
-        
+
+
+
+<section id="selected-publications" class="homepage-section homepage-publications">
+    <h2>
+        <span class="section-glyph" aria-hidden="true">📄</span>Selected Publications
+        <a class="section-more-link" href="/publications">view all <i class="fas fa-angle-double-right"></i></a>
+    </h2>
+
+
 <div class="d-none d-md-block">
     <div class="row no-gutters border-bottom border-gray">
         <div class="col-md-3 col-xl-2 mb-md-0 p-md-3"><img data-src="/assets/images/covers/mm.png" alt="If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization" class="lazy w-100 rounded-sm" src="/assets/images/empty_300x200.png"></div>
@@ -363,13 +291,13 @@
 <mark>(* <i> equal contribution</i>, <sup>#</sup> <i> corresponding author</i>)</mark></p>
             <p class="mt-0 mb-0 small"><i>ACM Multimedia (ACM MM)</i> 2026 <span class="badge badge-pill badge-publication badge-success">Oral</span> <span data-semantic-scholar-id=""></span></p>
             <p class="mt-0 mb-0 small text-muted">We study open-vocabulary audio-visual event localization when visual and audio teachers differ in reliability. OV-OrthKD places their supervision in separate orthogonal feature paths and uses text prototypes for open-vocabulary transfer.</p>
-            
+
             <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                
-                
+
+
                 <a target="_blank" href="/papers/mm/paper/main.pdf">[PDF]</a>
-                
-                
+
+
             </p>
 
         </div>
@@ -387,21 +315,21 @@
 <mark>(* <i> equal contribution</i>, <sup>#</sup> <i> corresponding author</i>)</mark></p>
                 <p class="mt-0 mb-0 small"><i>ACM Multimedia (ACM MM)</i> 2026 <span class="badge badge-pill badge-publication badge-success">Oral</span> <span data-semantic-scholar-id=""></span></p>
                 <p class="mt-0 mb-0 small text-muted">We study open-vocabulary audio-visual event localization when visual and audio teachers differ in reliability. OV-OrthKD places their supervision in separate orthogonal feature paths and uses text prototypes for open-vocabulary transfer.</p>
-                
+
                 <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                    
-                    
+
+
                     <a target="_blank" href="/papers/mm/paper/main.pdf">[PDF]</a>
-                    
-                    
+
+
                 </p>
             </div>
         </div>
     </div>
 
-</div>    
-    
-        
+</div>
+
+
 <div class="d-none d-md-block">
     <div class="row no-gutters border-bottom border-gray">
         <div class="col-md-3 col-xl-2 mb-md-0 p-md-3"><img data-src="/assets/images/covers/orthkd.png" alt="OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment" class="lazy w-100 rounded-sm" src="/assets/images/empty_300x200.png"></div>
@@ -412,13 +340,13 @@
 <mark>(* <i> equal contribution</i>)</mark></p>
             <p class="mt-0 mb-0 small"><i>International Joint Conference on Artificial Intelligence (IJCAI)</i> 2026 <span class="badge badge-pill badge-publication badge-success">Oral</span> <span data-semantic-scholar-id=""></span></p>
             <p class="mt-0 mb-0 small text-muted">We study multi-teacher distillation for diabetic retinopathy screening. OrthKD transfers complementary feature-level knowledge from heterogeneous teachers to a 5.4M-parameter MobileNetV3 student.</p>
-            
+
             <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                
-                
+
+
                 <a target="_blank" href="/papers/ijcai/ijcai26.pdf">[PDF]</a>
-                
-                
+
+
             </p>
 
         </div>
@@ -436,21 +364,21 @@
 <mark>(* <i> equal contribution</i>)</mark></p>
                 <p class="mt-0 mb-0 small"><i>International Joint Conference on Artificial Intelligence (IJCAI)</i> 2026 <span class="badge badge-pill badge-publication badge-success">Oral</span> <span data-semantic-scholar-id=""></span></p>
                 <p class="mt-0 mb-0 small text-muted">We study multi-teacher distillation for diabetic retinopathy screening. OrthKD transfers complementary feature-level knowledge from heterogeneous teachers to a 5.4M-parameter MobileNetV3 student.</p>
-                
+
                 <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                    
-                    
+
+
                     <a target="_blank" href="/papers/ijcai/ijcai26.pdf">[PDF]</a>
-                    
-                    
+
+
                 </p>
             </div>
         </div>
     </div>
 
-</div>    
-    
-        
+</div>
+
+
 <div class="d-none d-md-block">
     <div class="row no-gutters border-bottom border-gray">
         <div class="col-md-3 col-xl-2 mb-md-0 p-md-3"><img data-src="/assets/images/covers/symbolic_visual_reasoning.png" alt="DeepYOLO: Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions" class="lazy w-100 rounded-sm" src="/assets/images/empty_300x200.png"></div>
@@ -460,13 +388,13 @@
             <strong>Cheng Chen</strong></span></p>
             <p class="mt-0 mb-0 small"><i>International Joint Conference on Neural Networks (IJCNN)</i> 2026 <span class="badge badge-pill badge-publication badge-info">Corresponding Author</span> <span data-semantic-scholar-id=""></span></p>
             <p class="mt-0 mb-0 small text-muted">We convert images into grammar-constrained scene descriptions that can be processed by a text-only LLM. On VQAv2, DeepYOLO achieves 42.3% accuracy while using 2.5× fewer prompt tokens than scene-graph serialization.</p>
-            
+
             <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                
-                
+
+
                 <a target="_blank" href="/papers/ijcnn/main.pdf">[PDF]</a>
-                
-                
+
+
             </p>
 
         </div>
@@ -483,31 +411,32 @@
             <strong>Cheng Chen</strong></span></p>
                 <p class="mt-0 mb-0 small"><i>International Joint Conference on Neural Networks (IJCNN)</i> 2026 <span class="badge badge-pill badge-publication badge-info">Corresponding Author</span> <span data-semantic-scholar-id=""></span></p>
                 <p class="mt-0 mb-0 small text-muted">We convert images into grammar-constrained scene descriptions that can be processed by a text-only LLM. On VQAv2, DeepYOLO achieves 42.3% accuracy while using 2.5× fewer prompt tokens than scene-graph serialization.</p>
-                
+
                 <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                    
-                    
+
+
                     <a target="_blank" href="/papers/ijcnn/main.pdf">[PDF]</a>
-                    
-                    
+
+
                 </p>
             </div>
         </div>
     </div>
 
-</div>    
-    
-    <h6 class="d-block p-3 mt-0 text-right">
-        <a href="/publications">All publications <i class="fas fa-angle-double-right"></i></a>
-    </h6>
 </div>
 
+    <div class="d-block py-3 mt-0 text-right all-publications-link">
+        <a href="/publications">All publications <i class="fas fa-angle-double-right"></i></a>
+    </div>
+</section>
 
 
+    </main>
+</div>
 
     </div>
     <footer class="footer border-top py-2 mt-5 bg-white small">
-    <div class="container-lg">
+    <div class="container-xl">
         <div class="row my-3">
             <div class="col-6">
                 <div class="text-muted">

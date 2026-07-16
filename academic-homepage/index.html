@@ -2,26 +2,42 @@
 layout: default
 title : Homepage
 navbar_title: Home
+container_class: container-xl
 ---
-{% include widgets/profile_card.html %}
-{% include widgets/details_card.html %}
 
-{% if site.data.display.homepage.show_experience %}
-    {% include widgets/experience_card.html %}
-{% endif %}
+<div class="homepage-layout row">
+    <aside class="col-lg-3 col-md-4 homepage-sidebar-column">
+        {% include widgets/homepage_sidebar.html %}
+    </aside>
 
-{% if site.data.display.homepage.show_news %}
-    {% assign count_news = site.news | size %}
-    {% if count_news > 0 %}
-        {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
-    {% endif %}
-{% endif %}
+    <main class="col-lg-9 col-md-8 homepage-main">
+        <section id="about-me" class="homepage-introduction">
+            <h1><span class="section-glyph" aria-hidden="true">👋</span>Hi, welcome to my homepage!</h1>
+            <div class="text-profile-bio">
+                {{ site.data.profile.short_bio }}
+            </div>
+        </section>
 
-{% if site.data.display.homepage.show_selected_publications %}
-    {% assign pubs = site.publications | where: "selected", true | sort: "rank" %}
-    {% 
-        include widgets/publication_card.html 
-        publications=pubs
-        title='<span class="section-glyph" aria-hidden="true">✨</span>Selected Publications'
-    %}
-{% endif %}
+        {% include widgets/details_card.html %}
+
+        {% if site.data.display.homepage.show_experience %}
+            {% include widgets/experience_card.html %}
+        {% endif %}
+
+        {% if site.data.display.homepage.show_news %}
+            {% assign count_news = site.news | size %}
+            {% if count_news > 0 %}
+                {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
+            {% endif %}
+        {% endif %}
+
+        {% if site.data.display.homepage.show_selected_publications %}
+            {% assign pubs = site.publications | where: "selected", true | sort: "rank" %}
+            {%
+                include widgets/publication_card.html
+                publications=pubs
+                title='<span class="section-glyph" aria-hidden="true">📄</span>Selected Publications'
+            %}
+        {% endif %}
+    </main>
+</div>

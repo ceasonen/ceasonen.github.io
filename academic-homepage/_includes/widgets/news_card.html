@@ -1,10 +1,7 @@
 {% assign news_by_year = site.news | sort: "date" | reverse | slice: 0, include.limit | group_by_exp: "item", "item.date | date: '%Y'" -%}
 
-<div class="my-4 bg-white shadow-sm rounded-xl border-0">
-    <div class="card-body p-4">
-        <h5 class="card-title mb-4 font-weight-normal text-primary">
-            <span class="section-glyph" aria-hidden="true">📌</span>News
-        </h5>
+<section id="news" class="homepage-section homepage-news">
+        <h2><span class="section-glyph" aria-hidden="true">🔥</span>News</h2>
         
         <div class="news-list">
             {% for year in news_by_year %}
@@ -24,8 +21,7 @@
                 {% endfor %}
             {% endfor %}
         </div>
-    </div>
-</div>
+</section>
 
 <style>
 .news-row {
