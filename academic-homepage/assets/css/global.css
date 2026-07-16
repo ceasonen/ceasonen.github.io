@@ -417,6 +417,95 @@ b {
     font-size: 0.9rem;
 }
 
+/* Interior pages use the same open, continuous structure as the homepage. */
+.content-page {
+    width: 100%;
+    max-width: 1080px;
+    margin: 2.8rem auto 0;
+}
+
+.content-page-header h1,
+.content-section > h2 {
+    margin: 0;
+    padding-bottom: 0.68rem;
+    border-bottom: 1px solid var(--academic-soft-rule);
+}
+
+.content-page-header h1 {
+    font-size: 2rem;
+}
+
+.content-section {
+    margin-top: 2.7rem;
+}
+
+.content-section > h2 {
+    margin-bottom: 0.6rem;
+    font-size: 1.35rem;
+}
+
+.news-record,
+.highlight-record,
+.award-record {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    column-gap: 1.35rem;
+    border-bottom: 1px solid var(--academic-soft-rule);
+}
+
+.news-record {
+    padding: 0.95rem 0;
+}
+
+.news-record time,
+.highlight-record time,
+.award-record time {
+    color: var(--academic-muted);
+    font-size: 0.86rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.news-record-content {
+    line-height: 1.6;
+}
+
+.news-year-section {
+    margin-top: 2.15rem;
+}
+
+.news-year-section > h2 {
+    color: var(--academic-accent);
+}
+
+.highlight-record {
+    padding: 1.35rem 0;
+}
+
+.highlight-record h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.15rem;
+}
+
+.highlight-record p {
+    margin: 0;
+    line-height: 1.65;
+}
+
+.record-venue {
+    margin-left: 0.45rem;
+    color: var(--academic-muted);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.award-record {
+    align-items: baseline;
+    padding: 0.85rem 0;
+    line-height: 1.55;
+}
+
 @media (min-width: 1200px) {
     .container-xl {
         max-width: 1380px;
@@ -514,5 +603,25 @@ b {
 
     .homepage-section > h2 {
         font-size: 1.35rem;
+    }
+
+    .content-page {
+        margin-top: 1.5rem;
+    }
+
+    .content-page-header h1 {
+        font-size: 1.65rem;
+    }
+
+    .news-record,
+    .highlight-record,
+    .award-record {
+        grid-template-columns: 68px minmax(0, 1fr);
+        column-gap: 0.8rem;
+    }
+
+    .record-venue {
+        display: block;
+        margin: 0.18rem 0 0;
     }
 }

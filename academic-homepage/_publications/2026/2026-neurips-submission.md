@@ -8,7 +8,7 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-warning t
 pub_date:       "2026"
 cover:          /assets/images/covers/nips.png
 abstract: >-
-  We study how to identify unreliable neural-operator predictions without repeated inference. The proposed risk score is computed from a single forward pass.
+  This first-author project began in my second year and studies how to identify unreliable neural-operator predictions without repeated inference. The proposed risk score is computed from a single forward pass.
 authors:
   - Cheng Chen
   - et al.

@@ -2,62 +2,28 @@
 layout: default
 title : News
 navbar_title: News
+container_class: container-xl
 ---
 
-<div class="row pt-4 justify-content-center">
-    <div class="col-lg-10 col-md-12">
-        <div class="text-center mb-5">
-            <h2 class="font-weight-normal"><span class="section-glyph" aria-hidden="true">📌</span>News</h2>
-            <p class="text-muted">Paper acceptances, competitions, and a few other updates.</p>
-        </div>
+<div class="content-page news-page">
+    <header class="content-page-header">
+        <h1><span class="section-glyph" aria-hidden="true">🔥</span>News</h1>
+    </header>
 
-        {% assign news_by_year = site.news | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
-        
-        {% for year in news_by_year %}
-        <div class="timeline-year-section mb-5">
-            <h3 class="year-header pb-2 mb-4 text-accent font-weight-bold">{{ year.name }}</h3>
-            
-            <div class="timeline-items bg-white shadow-sm rounded-xl px-4 py-2">
-                {% for item in year.items %}
-                <div class="news-page-row d-flex align-items-start py-3 {% unless forloop.last %}border-bottom border-light{% endunless %}">
-                    <!-- Date -->
-                    <div class="news-page-date mr-4 pt-1 text-muted text-right font-weight-bold" style="min-width: 90px; font-size: 0.95rem;">
-                        {{ item.date | date: "%Y.%m" }}
-                    </div>
-                    
-                    <!-- Content -->
-                    <div class="news-page-content flex-grow-1 text-dark" style="line-height: 1.6; font-size: 1.05rem;">
-                        {% include widgets/news_category_glyph.html category=item.category %}
-                        <span class="news-title">{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
-                    </div>
+    {% assign news_by_year = site.news | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
+    {% for year in news_by_year %}
+    <section class="content-section news-year-section">
+        <h2>{{ year.name }}</h2>
+        <div class="news-records">
+            {% for item in year.items %}
+            <article class="news-record">
+                <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%Y.%m" }}</time>
+                <div class="news-record-content">
+                    <span class="news-title">{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
                 </div>
-                {% endfor %}
-            </div>
+            </article>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
+    </section>
+    {% endfor %}
 </div>
-
-<style>
-.news-page-row {
-    transition: background-color 0.15s ease-in-out;
-}
-.news-page-row:hover {
-    background-color: #fcfcfb;
-}
-.year-header {
-    font-size: 1.85rem;
-    border-bottom: 2px solid #dee2e6 !important;
-    position: relative;
-    padding-left: 10px;
-}
-.year-header::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 60px;
-    height: 2px;
-    background-color: var(--primary-accent-color, #7a2438);
-}
-</style>
