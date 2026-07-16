@@ -15,5 +15,4 @@ authors:
   - Wenzhuo Lei#
 links:
   PDF: /papers/mm/paper/main.pdf
-  Supplementary: /papers/mm/paper/supplementary.pdf
 ---
