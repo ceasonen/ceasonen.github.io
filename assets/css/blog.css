@@ -169,16 +169,7 @@
     margin: 0 0.2em;
 }
 
-/* Blog pages use the same restrained single-column rhythm as the main site. */
-.blog-layout-wrapper {
-    width: 100%;
-    max-width: 1040px;
-    margin: 1.85rem auto 0;
-    padding: 0 15px;
-}
-
 .blog-main {
-    width: 100%;
     min-width: 0;
 }
 

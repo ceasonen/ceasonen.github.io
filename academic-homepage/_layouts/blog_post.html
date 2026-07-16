@@ -20,8 +20,13 @@
     {% include navbar.html active_page="Blog" %}
 
     <main class="flex-grow-1">
-        <div class="blog-layout-wrapper">
-            <article class="blog-main">
+        <div class="container-xl">
+            <div class="academic-layout blog-layout">
+                <aside class="academic-sidebar-column">
+                    {% include widgets/homepage_sidebar.html %}
+                </aside>
+
+                <article class="academic-main blog-main">
                 <header class="blog-post-header">
                     <h1 class="blog-post-title">{{ page.title }}</h1>
                     <div class="blog-post-meta text-muted">
@@ -40,7 +45,8 @@
                 <div class="blog-content">
                     {{ content }}
                 </div>
-            </article>
+                </article>
+            </div>
         </div>
     </main>
 

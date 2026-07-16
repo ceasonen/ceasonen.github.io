@@ -5,7 +5,12 @@ navbar_title: News
 container_class: container-xl
 ---
 
-<div class="content-page news-page">
+<div class="academic-layout">
+    <aside class="academic-sidebar-column">
+        {% include widgets/homepage_sidebar.html %}
+    </aside>
+
+    <main class="academic-main content-page news-page">
     <header class="content-page-header">
         <h1><span class="section-glyph" aria-hidden="true">🔥</span>News</h1>
     </header>
@@ -24,4 +29,5 @@ container_class: container-xl
         </ul>
     </section>
     {% endfor %}
+    </main>
 </div>

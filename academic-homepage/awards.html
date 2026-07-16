@@ -5,7 +5,12 @@ navbar_title: Highlights
 container_class: container-xl
 ---
 
-<div class="content-page highlights-page">
+<div class="academic-layout">
+    <aside class="academic-sidebar-column">
+        {% include widgets/homepage_sidebar.html %}
+    </aside>
+
+    <main class="academic-main content-page highlights-page">
     <header class="content-page-header">
         <h1><span class="section-glyph" aria-hidden="true">🏆</span>Highlights</h1>
     </header>
@@ -32,4 +37,5 @@ container_class: container-xl
             <li><time>2023–25:</time><span>Tongji University Outstanding Student Scholarship</span></li>
         </ul>
     </section>
+    </main>
 </div>

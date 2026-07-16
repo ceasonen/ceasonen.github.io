@@ -79,6 +79,7 @@ a:focus {
 .navbar .nav-link {
     color: var(--academic-muted) !important;
     font-size: 1rem;
+    font-weight: 400;
     letter-spacing: 0;
     margin-right: 2rem;
     padding-right: 0 !important;
@@ -87,7 +88,7 @@ a:focus {
 
 .navbar .nav-item.active .nav-link {
     color: var(--academic-ink) !important;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .navbar .nav-link:hover {
@@ -277,7 +278,8 @@ b {
     font-size: 0.78rem;
 }
 
-/* Homepage: profile sidebar + continuous research narrative. */
+/* Shared academic shell: every page follows the homepage alignment. */
+.academic-layout,
 .homepage-layout {
     display: grid;
     grid-template-columns: 215px minmax(0, 1fr);
@@ -286,6 +288,7 @@ b {
     margin-top: 1.85rem;
 }
 
+.academic-sidebar-column,
 .homepage-sidebar-column {
     min-width: 0;
 }
@@ -357,6 +360,7 @@ b {
     color: var(--academic-accent);
 }
 
+.academic-main,
 .homepage-main {
     min-width: 0;
 }
@@ -418,14 +422,14 @@ b {
 }
 
 .publications-page {
-    margin-top: 1.2rem;
+    margin-top: 0;
 }
 
 .publication-year-heading {
-    margin: 0 0 0.35rem;
-    padding: 0.65rem 0 0.45rem;
+    margin: 1.3rem 0 0.35rem;
+    padding: 0 0 0.45rem;
     border-bottom: 1px solid var(--academic-soft-rule);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .publications-page h5,
@@ -444,6 +448,15 @@ b {
     width: 100%;
     max-width: 1040px;
     margin: 1.85rem auto 0;
+}
+
+.academic-main.content-page {
+    max-width: none;
+    margin: 0;
+}
+
+.prompt-page p {
+    margin-top: 0.8rem;
 }
 
 .content-page-header h1,
@@ -500,6 +513,7 @@ b {
 }
 
 @media (min-width: 768px) {
+    .academic-sidebar-column,
     .homepage-sidebar-column {
         position: sticky;
         top: 5.2rem;
@@ -508,6 +522,7 @@ b {
 }
 
 @media (max-width: 991.98px) {
+    .academic-layout,
     .homepage-layout {
         grid-template-columns: 185px minmax(0, 1fr);
         column-gap: 2.25rem;
@@ -535,11 +550,14 @@ b {
         padding: 1.75rem !important;
     }
 
+    .academic-layout,
     .homepage-layout {
         display: block;
         margin-top: 1.35rem;
     }
 
+    .academic-sidebar-column,
+    .academic-main,
     .homepage-sidebar-column,
     .homepage-main {
         padding-right: 0;
