@@ -8,7 +8,7 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-success">
 pub_date:       "2026"
 cover:          /assets/images/covers/orthkd.png
 abstract: >-
-  Distill knowledge from multiple clinical models into one small model, without picking up each teacher's quirks.
+  We study multi-teacher distillation for diabetic retinopathy screening. OrthKD transfers complementary feature-level knowledge from heterogeneous teachers to a 5.4M-parameter MobileNetV3 student.
 authors:
   - Cheng Chen*
   - Yi Xu*

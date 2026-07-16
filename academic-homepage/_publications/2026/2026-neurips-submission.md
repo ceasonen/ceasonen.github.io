@@ -8,7 +8,7 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-warning t
 pub_date:       "2026"
 cover:          /assets/images/covers/nips.png
 abstract: >-
-  Flag risky neural-operator outputs in one forward pass, without expensive post-hoc checks.
+  We study how to identify unreliable neural-operator predictions without repeated inference. The proposed risk score is computed from a single forward pass.
 authors:
   - Cheng Chen
   - et al.

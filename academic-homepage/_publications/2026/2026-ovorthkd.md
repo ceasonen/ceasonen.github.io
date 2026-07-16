@@ -8,7 +8,7 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-success">
 pub_date:       "2026"
 cover:          /assets/images/covers/mm.png
 abstract: >-
-  OV-OrthKD routes weak-audio supervision into an auxiliary orthogonal path while a strong visual teacher shapes temporal boundaries and a text prototype anchors open-vocabulary transfer.
+  We study open-vocabulary audio-visual event localization when visual and audio teachers differ in reliability. OV-OrthKD places their supervision in separate orthogonal feature paths and uses text prototypes for open-vocabulary transfer.
 authors:
   - Yi Xu*
   - Cheng Chen*

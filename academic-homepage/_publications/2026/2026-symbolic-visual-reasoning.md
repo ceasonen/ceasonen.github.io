@@ -8,7 +8,7 @@ pub_last:       '<span class="badge badge-pill badge-publication badge-info">Cor
 pub_date:       "2026"
 cover:          /assets/images/covers/symbolic_visual_reasoning.png
 abstract: >-
-  DeepYOLO — YOLO turns images into compact grammar-constrained scene reports so a text-only LLM can answer VQAv2 without multimodal pre-training; 42.3% accuracy with 2.5× fewer prompt tokens than a scene-graph baseline.
+  We convert images into grammar-constrained scene descriptions that can be processed by a text-only LLM. On VQAv2, DeepYOLO achieves 42.3% accuracy while using 2.5× fewer prompt tokens than scene-graph serialization.
 authors:
   - Wenzhuo Lei
   - Mufan Cao
