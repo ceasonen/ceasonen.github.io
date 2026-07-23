@@ -4,7 +4,6 @@ date:           2026-04-20 00:00:00 +0800
 rank:           2
 selected:       true
 pub:            "International Joint Conference on Artificial Intelligence (IJCAI)"
-pub_last:       '<span class="badge badge-pill badge-publication badge-success">Oral</span>'
 pub_date:       "2026"
 cover:          /assets/images/covers/orthkd.png
 abstract: >-

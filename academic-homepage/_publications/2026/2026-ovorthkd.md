@@ -4,7 +4,6 @@ date:           2026-07-10 00:00:00 +0800
 rank:           1
 selected:       true
 pub:            "ACM Multimedia (ACM MM)"
-pub_last:       '<span class="badge badge-pill badge-publication badge-success">Oral</span>'
 pub_date:       "2026"
 cover:          /assets/images/covers/mm.png
 abstract: >-
