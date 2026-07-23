@@ -7,7 +7,7 @@ pub:            "Neural Information Processing Systems (NeurIPS)"
 pub_last:       '<span class="badge badge-pill badge-publication badge-warning text-dark">Under Review</span>'
 pub_date:       "2026"
 abstract: >-
-  Main Track: 4/3/3. Evaluations & Datasets Track: 4/4/3.
+  The Main Track work studies single-pass risk assessment for neural operators (4/3/3). The Evaluations & Datasets Track work studies rubric-grounded faithfulness evaluation for AI-generated images (4/4/3).
 authors:
   - Cheng Chen
   - et al.
