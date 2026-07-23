@@ -49,9 +49,7 @@ Major Rank: \textbf{3/85}
   \item \textbf{Cheng Chen}$^*$, Yi Xu$^*$, Mufan Cao.\\
   OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment\\
   \textbf{\textit{IJCAI 2026}} (Accepted).
-  \item \textbf{Cheng Chen}, et al.\\
-  Neural-Operator Risk Assessment for Deployable Risk Triage\\
-  \textbf{\textit{NeurIPS 2026}} (Under Review).
+  \item Two papers under review at \textbf{\textit{NeurIPS 2026}}: Main Track work on neural-operator reliability and risk triage; Evaluations \& Datasets Track work on rubric-grounded image faithfulness evaluation.
 \end{itemize}
 \vspace{-2pt}{\small $^*$ equal contribution.}
 \cvsection{Research Experiences}
@@ -65,10 +63,11 @@ Major Rank: \textbf{3/85}
   \item Proposed \textbf{OrthKD}, distilling only complementary feature-level context from the weak teacher while enforcing orthogonality between teacher projections to avoid redundant knowledge transfer.
   \item Evaluated on \textbf{132{,}049} retinal images; the \textbf{5.4M}-parameter MobileNetV3 student reached \textbf{0.885 QWK} on EyePACS and improved zero-shot Messidor-2 performance from \textbf{0.507} to \textbf{0.728 QWK} (\textbf{+22.1} percentage points).
 }
-\researchblock{Neural-Operator Risk Assessment for Deployable Risk Triage}{Submitted to \textbf{NeurIPS 2026}, First Author}{
-  \item Addressed the deployment paradox of neural operators: single-pass surrogates are fast, but deciding when to trust a predicted field often requires multi-pass uncertainty estimators that erode the latency advantage.
-  \item Proposed \textbf{AUD} (Allocation Uncertainty Decomposition), a single-pass risk score read from ambiguity in prediction-path allocation; in the wavelet instantiation \textbf{MWNO-AUD}, the same masks that modulate detail coefficients also yield local allocation entropy $H_L$.
-  \item On EM scattering, $H_L$ improved Spearman $\rho_s$ from \textbf{0.61} to \textbf{0.67} and AUROC from \textbf{0.78} to \textbf{0.82} at \textbf{1.13$\times$} batched cost; escalating only high-entropy cases raised ranking to $\rho_s=\textbf{0.72}$ and AUROC=\textbf{0.85}.
+\researchblock{Neural-Operator Reliability and Risk Triage}{Research Project, First Author}{
+  \item Studied single-pass reliability assessment for neural operators and selective escalation of unreliable predictions.
+}
+\researchblock{Rubric-Grounded Image Faithfulness Evaluation}{Research Project}{
+  \item Studied auditable prompt-faithfulness evaluation for AI-generated images through rubric-level checks.
 }
 \cvsection{Awards}
 \begin{itemize}
