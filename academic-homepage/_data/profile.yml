@@ -19,7 +19,7 @@ short_bio: >-
     I'm <strong>Cheng Chen</strong> (CN name: 陈成), an undergraduate student majoring in Electrical Engineering at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
   </p>
   <p>
-    My research began in my second year with neural operators and the reliability of predicted fields. I now have two papers under review at NeurIPS 2026. The Main Track work studies single-pass risk assessment for neural operators (initial scores <strong>4/3/3</strong>), while the Evaluations &amp; Datasets Track work studies rubric-grounded faithfulness evaluation for AI-generated images (initial scores <strong>4/4/3</strong>). I later worked on knowledge distillation for diabetic retinopathy screening and open-vocabulary audio-visual event localization. The resulting papers, <strong>OrthKD</strong> and <strong>OV-OrthKD</strong>, were accepted at IJCAI 2026 and ACM MM 2026, respectively.
+    My research began in my second year with neural operators and the reliability of predicted fields. I now have two papers under review at NeurIPS 2026. The Main Track work derives a risk signal from the internal prediction path of a neural operator, allowing unreliable outputs to be identified from a single forward pass (initial scores <strong>4/3/3</strong>). The Evaluations &amp; Datasets Track work decomposes prompt faithfulness into auditable checks and studies how well AI-generated images satisfy subjects, attributes, counts, relations, styles, and anatomical constraints (initial scores <strong>4/4/3</strong>). I later worked on knowledge distillation for diabetic retinopathy screening and open-vocabulary audio-visual event localization. The resulting papers, <strong>OrthKD</strong> and <strong>OV-OrthKD</strong>, were accepted at IJCAI 2026 and ACM MM 2026, respectively.
   </p>
   <p>
     <strong>DeepYOLO</strong> grew out of a collaboration with a junior student: I proposed the initial idea, while he led the implementation and experiments; I serve as the corresponding author. I am now exploring embodied AI, reinforcement learning, and multimodal large language models, and I am looking for PhD opportunities in these and related directions. Learning a new topic deeply and turning it into a concrete result is what makes research rewarding for me.
@@ -36,7 +36,7 @@ education:
 # experience:
 
 awards:
-- name: Provincial First Prize, China Robot and Artificial Intelligence Competition
+- name: National First Prize, China Robot and Artificial Intelligence Competition (CRAIC), Team Captain
   date: 2026
 - name: National Second Prize, Global Campus AI Algorithm Elite Competition
   date: 2025

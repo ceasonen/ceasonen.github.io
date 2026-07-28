@@ -2,7 +2,7 @@
 % Compile with pdfLaTeX
 \documentclass[10pt]{article}
 
-\usepackage[a4paper,margin=0.6in,top=0.55in,bottom=0.55in]{geometry}
+\usepackage[a4paper,left=0.55in,right=0.55in,top=0.45in,bottom=0.35in]{geometry}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{tabularx}
@@ -11,7 +11,7 @@
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-\setlength{\baselineskip}{10.8pt}
+\setlength{\baselineskip}{10.5pt}
 \setlist[itemize]{leftmargin=1.05em, itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt}
 
 \newcommand{\cvsection}[1]{%
@@ -50,10 +50,10 @@ Major Rank: \textbf{3/85}
   OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment\\
   \textbf{\textit{IJCAI 2026}} (Accepted).
   \item \textbf{Cheng Chen}, et al.\\
-  Single-pass reliability assessment and risk triage for neural operators\\
+  Neural-Operator Reliability and Risk Triage\\
   \textbf{\textit{NeurIPS 2026 Main Track}} (Under Review; Initial Scores: 4/3/3).
   \item \textbf{Cheng Chen}, et al.\\
-  Rubric-grounded faithfulness evaluation for AI-generated images\\
+  Rubric-Grounded Image Faithfulness Evaluation\\
   \textbf{\textit{NeurIPS 2026 Evaluations \& Datasets Track}} (Under Review; Initial Scores: 4/4/3).
 \end{itemize}
 \vspace{-2pt}{\small $^*$ equal contribution.}
@@ -69,20 +69,21 @@ Major Rank: \textbf{3/85}
   \item Evaluated on \textbf{132{,}049} retinal images; the \textbf{5.4M}-parameter MobileNetV3 student reached \textbf{0.885 QWK} on EyePACS and improved zero-shot Messidor-2 performance from \textbf{0.507} to \textbf{0.728 QWK} (\textbf{+22.1} percentage points).
 }
 \researchblock{Neural-Operator Reliability and Risk Triage}{NeurIPS 2026 Main Track, Under Review (4/3/3); First Author}{
-  \item Studied single-pass reliability assessment for neural operators and selective escalation of unreliable predictions.
+  \item Developed a single-pass risk score from prediction-path allocation entropy, avoiding repeated inference and auxiliary uncertainty heads.
+  \item On electromagnetic scattering, improved Spearman correlation from \textbf{0.61} to \textbf{0.67} and failure-detection AUROC from \textbf{0.78} to \textbf{0.82} at \textbf{1.13$\times$} batched cost; selective escalation reached \textbf{0.72} correlation and \textbf{0.85} AUROC.
 }
 \researchblock{Rubric-Grounded Image Faithfulness Evaluation}{NeurIPS 2026 Evaluations \& Datasets Track, Under Review (4/4/3)}{
-  \item Studied auditable prompt-faithfulness evaluation for AI-generated images through rubric-level checks.
+  \item Decomposed prompt faithfulness into auditable checks for subject, attribute, count, relation, style, and anatomy.
+  \item Built human rubric labels for \textbf{2{,}400} prompt-image pairs, evidence and counterfactual subsets, and a cross-dataset stress test; rubric-specific checking improved macro-F1 from \textbf{0.8762} to \textbf{0.8836} under the same frozen CLIP backbone.
 }
 \cvsection{Awards}
 \begin{itemize}
-  \item Provincial First Prize, China Robot and Artificial Intelligence Competition (2026), Team Captain
+  \item National First Prize, China Robot and Artificial Intelligence Competition (CRAIC, 2026), Team Captain
   \item National 2nd Prize, Global Campus AI Algorithm Elite Competition (2025), Team Captain
   \item National 3rd Prize, Embedded Chip \& System Design Competition, FPGA track (2025), Team Captain
 \end{itemize}
 \cvsection{Skills}
 \textbf{Programming:} Python, PyTorch, Git, Linux, LaTeX, experiment tracking, LLM/agent prototyping.\\
-\textbf{Foundations:} Machine Learning, Data Structures \& Algorithms, Linear Algebra, Probability, Optimization, Information Theory, Signal Processing.\\
-\textbf{Passion:} Deep enthusiasm for exploring the unknown and continuous learning across new areas.
+\textbf{Foundations:} Machine Learning, Algorithms, Linear Algebra, Probability, Optimization, and Signal Processing.
 
 \end{document}
