@@ -3,7 +3,7 @@ secondary_name: "陈成"
 navbar_name: "Cheng Chen"
 
 positions:
-- name: Undergraduate · Electrical Engineering
+- name: Undergraduate · Communication Engineering
 - name: Tongji University
 
 email: "2351445@tongji.edu.cn"
@@ -12,12 +12,12 @@ github: ceasonen
 gscholar: "https://scholar.google.com/citations?user=X92zQ68AAAAJ&hl=zh-CN"
 location: "Shanghai, China"
 sidebar_bio: >-
-  An undergraduate student at Tongji University, majoring in Electrical Engineering. Interested in multimodal learning, efficient AI, and reasonable AI.
+  An undergraduate student at Tongji University, majoring in Communication Engineering. Interested in multimodal learning, efficient AI, and reasonable AI.
 
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I'm <strong>Cheng Chen</strong> (CN name: 陈成), an undergraduate student majoring in Electrical Engineering at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
+    I'm <strong>Cheng Chen</strong> (CN name: 陈成), an undergraduate student majoring in Communication Engineering at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
   </p>
   <p>
     My research began in my second year with neural operators and the reliability of predicted fields. I now have a first-author paper under review in the NeurIPS 2026 Main Track. This work derives a risk signal from the internal prediction path of a neural operator, allowing unreliable outputs to be identified from a single forward pass (initial scores <strong>4/3/3</strong>). I later worked on knowledge distillation for diabetic retinopathy screening and open-vocabulary audio-visual event localization. The resulting papers, <strong>OrthKD</strong> and <strong>OV-OrthKD</strong>, were accepted at IJCAI 2026 and ACM MM 2026, respectively.
@@ -31,7 +31,7 @@ portrait_url: /assets/images/photos/portrait.jpg
 education:
 - name: Tongji University
   dept: College of Electronic and Information Engineering
-  position: B.Eng. in Electrical Engineering
+  position: B.Eng. in Communication Engineering
   date: Sep. 2023 - present
 
 # experience:

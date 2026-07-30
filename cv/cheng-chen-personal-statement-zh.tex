@@ -1,0 +1,79 @@
+% 陈成：个人陈述
+% 使用 XeLaTeX 编译：xelatex cheng-chen-personal-statement-zh.tex
+\documentclass[UTF8,fontset=none,11pt,a4paper]{ctexart}
+
+\usepackage[left=2.2cm,right=2.2cm,top=1.75cm,bottom=1.75cm]{geometry}
+\usepackage{fontspec}
+\usepackage{hyperref}
+\usepackage{needspace}
+\usepackage{xcolor}
+
+\setmainfont{Times New Roman}
+\setCJKmainfont{Songti SC}[AutoFakeBold=2]
+
+\definecolor{accent}{HTML}{173F5F}
+\definecolor{muted}{HTML}{687782}
+\definecolor{line}{HTML}{CBD6DE}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accent,
+  pdfauthor={Cheng Chen},
+  pdftitle={陈成个人陈述}
+}
+
+\pagestyle{plain}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{4pt}
+\linespread{1.36}
+\color{black}
+
+\newcommand{\statementsection}[1]{%
+  \Needspace{7\baselineskip}%
+  \vspace{5pt}%
+  \noindent{\large\bfseries\color{accent}#1}\par
+  \vspace{-3pt}\noindent\textcolor{line}{\rule{\textwidth}{0.65pt}}\vspace{3pt}%
+}
+
+\begin{document}
+
+\begin{center}
+  {\fontsize{25}{29}\selectfont\bfseries\color{accent}个人陈述}\\[5pt]
+  {\large 陈成}\\[2pt]
+  {\color{muted}同济大学电子与信息工程学院 · 通信工程}
+\end{center}
+
+\vspace{5pt}
+
+\statementsection{研究起点}
+
+我在同济大学通信工程专业学习。本科阶段的主要精力集中在机器学习研究，研究内容从神经算子可靠性延伸到知识蒸馏、多模态学习和大语言模型。通信工程训练使我熟悉信号、系统与优化问题，也让我习惯从信息表示、传递和决策三个层面分析模型。进入研究之后，我逐渐将这种分析方式用于回答两个问题：模型为什么会产生不可靠的预测，以及如何以更低的计算成本保留真正有用的信息。
+
+我从大二开始研究神经算子的可靠性评估。神经算子能够直接学习函数之间的映射，但一次预测通常只给出结果，缺少与误差相关的风险信号。我从模型内部预测路径的分配情况出发，以分配熵构造单次前向风险分数，并据此识别需要追加计算的高风险样本。该工作形成了一篇神经信息处理系统大会（NeurIPS）2026 主会第一作者投稿，初始评分为 4/3/3。在这一过程中，我依次完成问题定义、方法设计、实验排查和论文写作，并开始把指标变化、计算代价和适用边界放在同一实验框架中分析。
+
+\statementsection{科研经历}
+
+在 OrthKD 项目中，我研究糖尿病视网膜病变筛查中的异构多教师蒸馏。不同教师模型的能力并不一致，直接融合分类得分会让弱教师损害学生模型。我们保留弱教师的互补特征，并通过正交约束减少冗余知识传递。该工作获国际人工智能联合会议（IJCAI）2026 录用，我担任共同第一作者。医学影像任务同时受到准确性、参数规模和跨数据集迁移约束，我由此将高效人工智能在真实场景中的部署问题纳入后续研究关注。
+
+随后，我参与开放词汇音视频事件定位研究。音频能够补充视觉语义，但画外音、时延和噪声会干扰时间边界学习。OV-OrthKD 将弱音频监督限制在辅助正交子空间，让视觉教师负责决策相关特征。该工作获 ACM 国际多媒体会议（ACM MM）2026 录用，我担任共同第一作者。与 OrthKD 相比，这项研究进一步将“教师能力差异”扩展到“模态可靠性差异”。此后，我先定位监督信号失效的位置，再决定哪些信息应当进入最终决策路径。
+
+DeepYOLO 来自我与低年级同学的一次合作。我提出以受语法约束的符号场景描述连接图像与纯文本大语言模型的思路，负责研究设定与方法设计，并指导实现和实验。该工作获国际神经网络联合大会（IJCNN）2026 录用，我担任通讯作者。合作中，我把研究问题拆成符号表示、约束生成和视觉问答验证三个环节，并据此安排实现与实验。
+
+\statementsection{研究方法与能力}
+
+这些项目覆盖科学计算、医学影像、音视频理解和视觉问答，但我的工作方式保持一致。我先把任务中的不确定性来源写成可以验证的问题，再用消融实验判断每个模块承担的作用。实验过程中，我使用 Python、PyTorch、Linux 和 Git 管理代码与结果，并用 \LaTeX 完成论文写作。我重视结果复现、命名一致和图表与文字之间的对应关系，因为这些细节会影响研究结论的可信度与可复现性。
+
+科研之外，多次担任团队竞赛队长的经历也训练了我的组织能力。我根据成员能力拆分任务，统一代码、数据和文档接口，并控制阶段检查与提交节奏。科研合作则要求更细致的讨论：共同作者需要对问题边界、实验协议和论文表述形成一致理解。这些经历帮助我在独立推进与团队协作之间建立稳定的工作方式。
+
+\statementsection{未来计划}
+
+我希望以多模态学习、高效人工智能以及推理与可靠人工智能为主要研究方向，并继续学习大语言模型、多模态大模型、具身智能和强化学习。我关注资源受限或信息不完整条件下的学习与决策，具体包括可靠信息识别、按样本分配计算和推理过程检验。神经算子可靠性、异构蒸馏和多模态监督为这些问题提供了不同切入点，我希望在后续学习中将现有经验发展为更系统的方法。
+
+研究吸引我的地方，是把陌生问题逐步变成可以分析、实现和验证的对象。理解一个新方向、找到关键矛盾并把想法落实为结果，会给我明确的兴奋感和成就感。我希望在更扎实的科研训练中扩大理论基础，提升实验与写作能力，并持续探索值得长期投入的问题。
+
+\vfill
+\begin{flushright}
+  陈成
+\end{flushright}
+
+\end{document}
