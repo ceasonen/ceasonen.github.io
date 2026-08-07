@@ -15,6 +15,4 @@ authors:
   - Chaorong Ye
   - Yi Xu
   - Cheng Chen
-links:
-  PDF: /papers/ijcnn/main.pdf
 ---

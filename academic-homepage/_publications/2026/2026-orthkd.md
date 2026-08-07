@@ -12,6 +12,4 @@ authors:
   - Cheng Chen*
   - Yi Xu*
   - Mufan Cao
-links:
-  PDF: /papers/ijcai/ijcai26.pdf
 ---

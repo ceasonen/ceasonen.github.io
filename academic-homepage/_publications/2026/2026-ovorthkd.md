@@ -12,6 +12,4 @@ authors:
   - Yi Xu*
   - Cheng Chen*
   - Wenzhuo Lei
-links:
-  PDF: /papers/mm/paper/main.pdf
 ---
