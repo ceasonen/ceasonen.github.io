@@ -1,0 +1,85 @@
+% 中文简历 — 紧凑学术风格
+% 使用 XeLaTeX 编译
+\documentclass[10pt]{article}
+
+\usepackage[a4paper,left=0.55in,right=0.55in,top=0.45in,bottom=0.35in]{geometry}
+\usepackage[fontset=none]{ctex}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tabularx}
+
+\setmainfont{Times New Roman}
+\setCJKmainfont{Songti SC}[AutoFakeBold=2]
+
+\hypersetup{hidelinks}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\baselineskip}{10.4pt}
+\setlist[itemize]{leftmargin=1.05em, itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt}
+
+\newcommand{\cvsection}[1]{%
+  \par\vspace{1pt}%
+  \noindent{\large\bfseries #1}\\[-4.5pt]%
+  \noindent\rule{\textwidth}{0.4pt}\par\vspace{0pt}%
+}
+
+\newcommand{\researchblock}[3]{%
+  \textbf{#1}\par
+  #2\par
+  \begin{itemize}#3\end{itemize}%
+}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries 陈成}\\[4pt]
+邮箱：\href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn} \textbar{}
+电话：(+86) 13587919792 \textbar{}
+\href{https://ceasonen.github.io}{主页：ceasonen.github.io}
+\end{center}
+\vspace{-2pt}
+\cvsection{教育背景}
+\noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
+  \textbf{同济大学}，上海 & 2023.09 -- 至今 \\
+\end{tabularx}\vspace{-2pt}
+\textbf{通信工程}，电子与信息工程学院\\
+专业排名：\textbf{3/85}
+\cvsection{发表论文}
+\begin{itemize}
+  \item If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization\\
+  \textbf{\textit{ACM MM 2026}}（录用）。
+  \item OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment\\
+  \textbf{\textit{IJCAI 2026}}（录用）。
+  \item 神经算子可靠性与风险分流\\
+  \textbf{\textit{NeurIPS 2026}}（审稿中）。
+\end{itemize}
+\cvsection{科研经历}
+\researchblock{OV-OrthKD：开放词汇音视频事件定位}{ACM MM 2026，共同一作}{
+  \item 针对模态可靠性不对称：音频有语义价值但常画外音、时延或带噪，对称蒸馏会使弱音频监督扭曲时间边界。
+  \item 提出 \textbf{OV-OrthKD}：强视觉教师负责决策相关特征，弱音频教师被限制在辅助正交子空间，文本原型用于开放词汇迁移。
+  \item 在 OV-AVEBench 上取得 \textbf{0.816} segment AP，F1@0.5 较官方微调基线整体提升 \textbf{2.7} 个百分点、未见类别提升 \textbf{3.4} 个百分点。
+}
+\researchblock{OrthKD：临床多教师轻量部署}{IJCAI 2026，共同一作}{
+  \item 糖网筛查中弱 ViT 教师（\textbf{0.83 QWK}）在 logit 融合下会损害强 CNN 教师（\textbf{0.88 QWK}）的学生。
+  \item 提出 \textbf{OrthKD}，由强教师提供完整监督，仅提取弱教师的互补特征，并以正交约束减少教师特定表征之间的冗余。
+  \item 在 \textbf{132{,}049} 张眼底图上，\textbf{5.4M} 参数学生达到 EyePACS \textbf{0.885 QWK}，Messidor-2 零样本结果由 \textbf{0.507} 提升至 \textbf{0.728}。
+}
+\researchblock{神经算子可靠性与风险分流}{NeurIPS 2026，审稿中，第一作者}{
+  \item 研究神经算子的部署可靠性，解决传统不确定性方法依赖重复推理、削弱快速场预测效率优势的问题。
+  \item 提出分配不确定性分解方法，从预测路径的分配熵中构造单次前向风险分数，无需后验采样或额外不确定性分支。
+  \item 在电磁散射任务上，将 Spearman 相关性由 \textbf{0.61} 提升至 \textbf{0.67}、失效检测 AUROC 由 \textbf{0.78} 提升至 \textbf{0.82}，批处理开销为 \textbf{1.13$\times$}；选择性升级高风险样本后分别达到 \textbf{0.72} 与 \textbf{0.85}。
+}
+\cvsection{获奖情况}
+\begin{itemize}
+  \item 中国机器人及人工智能大赛 全国一等奖（2026），队长
+  \item 全球校园人工智能算法精英大赛 全国二等奖（2025），队长
+  \item 全国大学生嵌入式芯片与系统设计竞赛 全国三等奖（2025），队长
+\end{itemize}
+\cvsection{专业能力}
+\textbf{编程：}Python，C/C++，Verilog。\\
+\textbf{框架：}PyTorch。\\
+\textbf{工具：}Git，Linux，LaTeX，OpenAI Codex，Claude Code。\\
+\textbf{基础：}机器学习、算法、线性代数、概率论、优化方法与信号处理。
+\end{document}

@@ -43,21 +43,17 @@ Tel: (+86) 13587919792 \textbar{}
 Major Rank: \textbf{3/85}
 \cvsection{Publications}
 \begin{itemize}
-  \item Yi Xu$^*$, \textbf{Cheng Chen}$^*$, Wenzhuo Lei.\\
-  If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization\\
+  \item If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization\\
   \textbf{\textit{ACM MM 2026}} (Accepted).
-  \item \textbf{Cheng Chen}$^*$, Yi Xu$^*$, Mufan Cao.\\
-  OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment\\
+  \item OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment\\
   \textbf{\textit{IJCAI 2026}} (Accepted).
-  \item \textbf{Cheng Chen}, et al.\\
-  Neural-Operator Reliability and Risk Triage\\
-  \textbf{\textit{NeurIPS 2026 Main Track}} (Under Review; Initial Scores: 4/3/3).
+  \item Neural-Operator Reliability and Risk Triage\\
+  \textbf{\textit{NeurIPS 2026}} (Under Review).
 \end{itemize}
-\vspace{-2pt}{\small $^*$ equal contribution.}
-\cvsection{Research Experiences}
+\cvsection{Research Experience}
 \researchblock{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{Accepted at \textbf{ACM MM 2026}, Co-first Author}{
   \item Addressed modality reliability asymmetry in open-vocabulary audio-visual event localization, where audio is semantically useful but often off-screen, delayed, or noisy, so symmetric distillation lets weak-audio supervision distort temporal boundaries.
-  \item Proposed \textbf{OV-OrthKD}, a reliability-aware asymmetric distillation framework: a strong visual teacher supervises decision-aligned features, a weak audio teacher is restricted to an auxiliary orthogonal subspace, and a text prototype anchors open-vocabulary transfer.
+  \item Proposed \textbf{OV-OrthKD}, a reliability-aware asymmetric distillation framework: a strong visual teacher supervises decision-aligned features, we restrict a weak audio teacher to an auxiliary orthogonal subspace, and a text prototype anchors open-vocabulary transfer.
   \item On OV-AVEBench, reached \textbf{0.816} segment AP and improved F1@0.5 by \textbf{+2.7} points overall and \textbf{+3.4} on unseen categories over the official fine-tuning baseline; ablations show weak-audio feature transfer helps only when kept off the decision path.
 }
 \researchblock{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment}{Accepted at \textbf{IJCAI 2026}, Co-first Author}{
@@ -65,18 +61,21 @@ Major Rank: \textbf{3/85}
   \item Proposed \textbf{OrthKD}, distilling only complementary feature-level context from the weak teacher while enforcing orthogonality between teacher projections to avoid redundant knowledge transfer.
   \item Evaluated on \textbf{132{,}049} retinal images; the \textbf{5.4M}-parameter MobileNetV3 student reached \textbf{0.885 QWK} on EyePACS and improved zero-shot Messidor-2 performance from \textbf{0.507} to \textbf{0.728 QWK} (\textbf{+22.1} percentage points).
 }
-\researchblock{Neural-Operator Reliability and Risk Triage}{NeurIPS 2026 Main Track, Under Review (4/3/3); First Author}{
-  \item Developed a single-pass risk score from prediction-path allocation entropy, avoiding repeated inference and auxiliary uncertainty heads.
-  \item On electromagnetic scattering, improved Spearman correlation from \textbf{0.61} to \textbf{0.67} and failure-detection AUROC from \textbf{0.78} to \textbf{0.82} at \textbf{1.13$\times$} batched cost; selective escalation reached \textbf{0.72} correlation and \textbf{0.85} AUROC.
+\researchblock{Neural-Operator Reliability and Risk Triage}{NeurIPS 2026, Under Review; First Author}{
+  \item Studied deployment-time reliability for neural operators, where conventional uncertainty estimators require repeated inference and can erase the latency advantage of fast field prediction.
+  \item Developed \textbf{Allocation Uncertainty Decomposition}, a single-pass risk score computed from prediction-path allocation entropy without posterior sampling or an auxiliary uncertainty head.
+  \item On electromagnetic scattering, improved Spearman correlation from \textbf{0.61} to \textbf{0.67} and failure-detection AUROC from \textbf{0.78} to \textbf{0.82} at \textbf{1.13$\times$} batched cost; selectively escalating high-risk cases reached \textbf{0.72} correlation and \textbf{0.85} AUROC.
 }
 \cvsection{Awards}
 \begin{itemize}
-  \item National First Prize, China Robot and Artificial Intelligence Competition (CRAIC, 2026), Team Captain
-  \item National 2nd Prize, Global Campus AI Algorithm Elite Competition (2025), Team Captain
-  \item National 3rd Prize, Embedded Chip \& System Design Competition, FPGA track (2025), Team Captain
+  \item National First Prize, China Robot and Artificial Intelligence Competition (2026), Team Leader
+  \item National Second Prize, Global Campus Artificial Intelligence Algorithm Elite Competition (2025), Team Leader
+  \item National Third Prize, National Undergraduate Embedded Chip and System Design Contest (2025), Team Leader
 \end{itemize}
 \cvsection{Skills}
-\textbf{Programming:} Python, PyTorch, Git, Linux, LaTeX, experiment tracking, LLM/agent prototyping.\\
+\textbf{Programming:} Python, C/C++, Verilog.\\
+\textbf{Framework:} PyTorch.\\
+\textbf{Tools:} Git, Linux, LaTeX, OpenAI Codex, Claude Code.\\
 \textbf{Foundations:} Machine Learning, Algorithms, Linear Algebra, Probability, Optimization, and Signal Processing.
 
 \end{document}
