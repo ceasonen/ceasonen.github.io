@@ -515,6 +515,105 @@ b {
     color: var(--academic-ink);
 }
 
+.intern-page-intro {
+    margin: 1rem 0 1.45rem;
+    color: var(--academic-muted);
+}
+
+.intern-timeline {
+    position: relative;
+    margin: 0;
+}
+
+.intern-timeline::before {
+    position: absolute;
+    top: 3.1rem;
+    bottom: 3.1rem;
+    left: 3rem;
+    width: 1px;
+    background: var(--academic-soft-rule);
+    content: "";
+}
+
+.intern-entry {
+    position: relative;
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: 1.35rem;
+    align-items: center;
+    min-height: 7.5rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--academic-soft-rule);
+}
+
+.intern-entry:first-child {
+    border-top: 1px solid var(--academic-soft-rule);
+}
+
+.intern-logo-wrap {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 6rem;
+    padding: 0.55rem;
+    overflow: hidden;
+    border: 1px solid var(--academic-soft-rule);
+    border-radius: 0.25rem;
+    background: #fff;
+}
+
+.intern-logo-wrap:hover,
+.intern-logo-wrap:focus {
+    border-color: #b8bec4;
+    text-decoration: none;
+}
+
+.intern-logo-wrap img {
+    display: block;
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.intern-logo-personal {
+    padding: 0.22rem;
+    border-radius: 50%;
+}
+
+.intern-logo-personal img {
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.intern-entry-heading {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.intern-entry-heading h2 {
+    margin: 0;
+    font-size: 1.08rem;
+}
+
+.intern-entry-heading time {
+    flex: 0 0 auto;
+    color: var(--academic-muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.intern-entry-body p {
+    margin: 0.35rem 0 0;
+    color: var(--academic-muted);
+}
+
 @media (min-width: 1200px) {
     .container-xl {
         max-width: 1280px;
@@ -638,5 +737,29 @@ b {
 
     .academic-list {
         padding-left: 1.3rem;
+    }
+
+    .intern-timeline::before {
+        left: 2.375rem;
+    }
+
+    .intern-entry {
+        grid-template-columns: 4.75rem minmax(0, 1fr);
+        gap: 1rem;
+        min-height: 6.5rem;
+    }
+
+    .intern-logo-wrap {
+        width: 4.75rem;
+        height: 4.75rem;
+    }
+
+    .intern-entry-heading {
+        display: block;
+    }
+
+    .intern-entry-heading time {
+        display: block;
+        margin-top: 0.2rem;
     }
 }
