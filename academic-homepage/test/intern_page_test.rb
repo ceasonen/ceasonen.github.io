@@ -12,8 +12,15 @@ class InternPageTest < Minitest::Test
     assert_equal "/intern", intern["url"]
   end
 
+  def test_logo_styles_use_the_latest_cache_busted_asset_version
+    config = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
+
+    assert_equal "20260902-2", config["asset_version"]
+  end
+
   def test_intern_page_contains_all_three_experiences
     page = File.read(File.join(ROOT, "intern.html"))
+    styles = File.read(File.join(ROOT, "assets/css/global.css"))
 
     assert_includes page, "Independent Researcher"
     assert_includes page, "Apr. 2025 – Present"
@@ -22,9 +29,13 @@ class InternPageTest < Minitest::Test
     assert_includes page, "School of Artificial Intelligence"
     assert_includes page, "Zhejiang University"
     assert_includes page, "Jul. 2026 – Present"
-    assert_equal 1, page.scan("/assets/images/organizations/tongji-university.png").length
+    assert_equal 2, page.scan("/assets/images/organizations/tongji-university.png").length
     assert_includes page, "/assets/images/organizations/zju-university.png"
-    assert_includes page, "/assets/images/photos/portrait.jpg"
+    assert_equal 3, page.scan('class="intern-logo-wrap"').length
+    refute_includes page, "intern-logo-personal"
+    assert_includes page, "intern-logo-zju"
+    assert_includes styles, ".intern-logo-zju"
+    assert_includes styles, "transform: scale(1.6)"
     assert File.file?(File.join(ROOT, "assets/images/organizations/tongji-university.png"))
     assert File.file?(File.join(ROOT, "assets/images/organizations/zju-university.png"))
   end
