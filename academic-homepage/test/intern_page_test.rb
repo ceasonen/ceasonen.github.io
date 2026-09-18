@@ -33,7 +33,7 @@ class InternPageTest < Minitest::Test
     assert_includes page, "Sep. 2026 – Present"
     assert_equal 2, page.scan("/assets/images/organizations/tongji-university.png").length
     assert_includes page, "/assets/images/organizations/zju-university.png"
-    assert_includes page, "/assets/images/organizations/hkust-gz.png"
+    assert_includes page, "/assets/images/organizations/hkust-gz-icon.png"
     assert_includes page, "intern-logo-hkust"
     assert_equal 4, page.scan('class="intern-logo-wrap"').length
     refute_includes page, "intern-logo-personal"
@@ -41,10 +41,10 @@ class InternPageTest < Minitest::Test
     assert_includes styles, ".intern-logo-zju"
     assert_includes styles, "transform: scale(1.6)"
     assert_includes styles, ".intern-logo-hkust"
-    assert_includes styles, "height: 145%"
-    assert_includes styles, "left: 0.4rem"
-    assert_includes styles, "transform: translateY(-50%)"
+    assert_includes styles, "height: 4.5rem"
+    assert_includes page, "hkust-gz-icon.png"
     assert File.file?(File.join(ROOT, "assets/images/organizations/tongji-university.png"))
     assert File.file?(File.join(ROOT, "assets/images/organizations/zju-university.png"))
+    assert File.file?(File.join(ROOT, "assets/images/organizations/hkust-gz-icon.png"))
   end
 end
