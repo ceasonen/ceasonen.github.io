@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 baseurl: "" # the subpath of your site, e.g. /blog
-asset_version: "20260902-2"
+asset_version: "20260918-1"
 
 # Build settings
 markdown: kramdown

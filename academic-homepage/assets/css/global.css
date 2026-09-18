@@ -582,6 +582,13 @@ b {
     transform: scale(1.6);
 }
 
+.intern-logo-hkust {
+    width: auto !important;
+    max-width: none !important;
+    height: 145% !important;
+    object-fit: initial !important;
+}
+
 .intern-entry-heading {
     display: flex;
     gap: 1rem;

@@ -15,7 +15,7 @@ class InternPageTest < Minitest::Test
   def test_logo_styles_use_the_latest_cache_busted_asset_version
     config = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
 
-    assert_equal "20260902-2", config["asset_version"]
+    assert_equal "20260918-1", config["asset_version"]
   end
 
   def test_intern_page_contains_all_four_experiences
@@ -34,11 +34,14 @@ class InternPageTest < Minitest::Test
     assert_equal 2, page.scan("/assets/images/organizations/tongji-university.png").length
     assert_includes page, "/assets/images/organizations/zju-university.png"
     assert_includes page, "/assets/images/organizations/hkust-gz.png"
+    assert_includes page, "intern-logo-hkust"
     assert_equal 4, page.scan('class="intern-logo-wrap"').length
     refute_includes page, "intern-logo-personal"
     assert_includes page, "intern-logo-zju"
     assert_includes styles, ".intern-logo-zju"
     assert_includes styles, "transform: scale(1.6)"
+    assert_includes styles, ".intern-logo-hkust"
+    assert_includes styles, "height: 145%"
     assert File.file?(File.join(ROOT, "assets/images/organizations/tongji-university.png"))
     assert File.file?(File.join(ROOT, "assets/images/organizations/zju-university.png"))
   end
