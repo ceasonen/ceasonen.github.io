@@ -18,7 +18,7 @@ class InternPageTest < Minitest::Test
     assert_equal "20260902-2", config["asset_version"]
   end
 
-  def test_intern_page_contains_all_three_experiences
+  def test_intern_page_contains_all_four_experiences
     page = File.read(File.join(ROOT, "intern.html"))
     styles = File.read(File.join(ROOT, "assets/css/global.css"))
 
@@ -29,9 +29,12 @@ class InternPageTest < Minitest::Test
     assert_includes page, "School of Artificial Intelligence"
     assert_includes page, "Zhejiang University"
     assert_includes page, "Jul. 2026 – Present"
+    assert_includes page, "The Hong Kong University of Science and Technology (Guangzhou)"
+    assert_includes page, "Sep. 2026 – Present"
     assert_equal 2, page.scan("/assets/images/organizations/tongji-university.png").length
     assert_includes page, "/assets/images/organizations/zju-university.png"
-    assert_equal 3, page.scan('class="intern-logo-wrap"').length
+    assert_includes page, "/assets/images/organizations/hkust-gz.png"
+    assert_equal 4, page.scan('class="intern-logo-wrap"').length
     refute_includes page, "intern-logo-personal"
     assert_includes page, "intern-logo-zju"
     assert_includes styles, ".intern-logo-zju"
