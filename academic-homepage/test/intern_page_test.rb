@@ -42,6 +42,8 @@ class InternPageTest < Minitest::Test
     assert_includes styles, "transform: scale(1.6)"
     assert_includes styles, ".intern-logo-hkust"
     assert_includes styles, "height: 145%"
+    assert_includes styles, "left: 0.4rem"
+    assert_includes styles, "transform: translateY(-50%)"
     assert File.file?(File.join(ROOT, "assets/images/organizations/tongji-university.png"))
     assert File.file?(File.join(ROOT, "assets/images/organizations/zju-university.png"))
   end

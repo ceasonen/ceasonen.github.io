@@ -583,9 +583,14 @@ b {
 }
 
 .intern-logo-hkust {
+    position: absolute;
+    left: 0.4rem;
+    top: 50%;
     width: auto !important;
     max-width: none !important;
     height: 145% !important;
+    max-height: none !important;
+    transform: translateY(-50%);
     object-fit: initial !important;
 }
 
