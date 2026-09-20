@@ -3,8 +3,8 @@ secondary_name: "陈成"
 navbar_name: "Cheng Chen"
 
 positions:
-- name: Undergraduate · Communication Engineering
-- name: Tongji University
+- name: Incoming Ph.D. Student
+- name: Institute of Automation, Chinese Academy of Sciences
 
 email: "2351445@tongji.edu.cn"
 phone: "(+86) 13587919792"
@@ -12,23 +12,27 @@ github: ceasonen
 gscholar: "https://scholar.google.com/citations?user=X92zQ68AAAAJ&hl=zh-CN"
 location: "Shanghai, China"
 sidebar_bio: >-
-  An undergraduate student at Tongji University, majoring in Communication Engineering. Interested in multimodal learning, efficient AI, and reasonable AI.
+  An incoming Ph.D. student at the Institute of Automation, Chinese Academy of Sciences. Interested in multimodal learning, efficient AI, and reasonable AI.
 
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I'm <strong>Cheng Chen</strong> (CN name: 陈成), an undergraduate student majoring in Communication Engineering at the College of Electronic and Information Engineering, <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
+    I'm <strong>Cheng Chen</strong> (CN name: 陈成), an incoming Ph.D. student at the <a href="https://www.ia.cas.cn/" target="_blank"><strong>Institute of Automation, Chinese Academy of Sciences</strong></a>, supervised by Prof. Kaiqi Huang (黄凯奇). I received my B.Eng. in Communication Engineering from <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
   </p>
   <p>
     My research began in my second year with neural operators and the reliability of predicted fields. I now have a first-author paper under review in the NeurIPS 2026 Main Track. This work derives a risk signal from the internal prediction path of a neural operator, allowing unreliable outputs to be identified from a single forward pass (initial scores <strong>4/3/3</strong>). I later worked on knowledge distillation for diabetic retinopathy screening and open-vocabulary audio-visual event localization. The resulting papers, <strong>OrthKD</strong> and <strong>OV-OrthKD</strong>, were accepted at IJCAI 2026 and ACM MM 2026, respectively.
   </p>
   <p>
-    <strong>DeepYOLO</strong> grew out of a collaboration with a junior student: I proposed the initial idea, while he led the implementation and experiments; I serve as the corresponding author. My current research interests are multimodal learning, efficient AI, and reasonable AI, and I am looking for PhD opportunities in these and related directions. Learning a new topic deeply and turning it into a concrete result is what makes research rewarding for me.
+    <strong>DeepYOLO</strong> grew out of a collaboration with a junior student: I proposed the initial idea, while he led the implementation and experiments; I serve as the corresponding author. My current research interests are multimodal learning, efficient AI, and reasonable AI. Learning a new topic deeply and turning it into a concrete result is what makes research rewarding for me.
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg
 
 education:
+- name: Institute of Automation, Chinese Academy of Sciences
+  dept: "Supervisor: Prof. Kaiqi Huang (黄凯奇)"
+  position: Incoming Ph.D. Student
+  date: Sep. 2026 - present
 - name: Tongji University
   dept: College of Electronic and Information Engineering
   position: B.Eng. in Communication Engineering
