@@ -1,5 +1,4 @@
 primary_name: "Cheng Chen"
-secondary_name: "陈成"
 navbar_name: "Cheng Chen"
 
 positions:
@@ -17,7 +16,7 @@ sidebar_bio: >-
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I'm <strong>Cheng Chen</strong> (CN name: 陈成), an incoming Ph.D. student at the <a href="https://www.ia.cas.cn/" target="_blank"><strong>Institute of Automation, Chinese Academy of Sciences</strong></a>, supervised by Prof. Kaiqi Huang (黄凯奇). I received my B.Eng. in Communication Engineering from <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
+    I'm <strong>Cheng Chen</strong>, an incoming Ph.D. student at the <a href="https://www.ia.cas.cn/" target="_blank"><strong>Institute of Automation, Chinese Academy of Sciences</strong></a>, supervised by Prof. Kaiqi Huang. I received my B.Eng. in Communication Engineering from <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>.
   </p>
   <p>
     My research began in my second year with neural operators and the reliability of predicted fields. I now have a first-author paper under review in the NeurIPS 2026 Main Track. This work derives a risk signal from the internal prediction path of a neural operator, allowing unreliable outputs to be identified from a single forward pass (initial scores <strong>4/3/3</strong>). I later worked on knowledge distillation for diabetic retinopathy screening and open-vocabulary audio-visual event localization. The resulting papers, <strong>OrthKD</strong> and <strong>OV-OrthKD</strong>, were accepted at IJCAI 2026 and ACM MM 2026, respectively.
@@ -30,7 +29,7 @@ portrait_url: /assets/images/photos/portrait.jpg
 
 education:
 - name: Institute of Automation, Chinese Academy of Sciences
-  dept: "Supervisor: Prof. Kaiqi Huang (黄凯奇)"
+  dept: "Supervisor: Prof. Kaiqi Huang"
   position: Incoming Ph.D. Student
   date: Sep. 2026 - present
 - name: Tongji University
