@@ -21,6 +21,20 @@ markdown: kramdown
 plugins:
   - jekyll-email-protect
 
+# Build only website pages and assets. Documents are maintained at the repo root.
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - test
+  - output
+  - cv
+  - papers
+  - 2025_AIC_Award.pdf
+  - 2025_Embedded_Systems.png
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

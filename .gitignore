@@ -21,3 +21,24 @@ output/playwright/
 
 # Confidential double-blind review copies
 /papers/nips/*.pdf
+
+# Local build output and recoverable workspace archives
+/.build/
+/.local/
+
+# LaTeX intermediate files (keep sources, bibliography .bbl files and PDFs)
+*.aux
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.xdv
+
+# The legacy CV is a local reference; the main CV PDFs are published.
+/cv/cheng-chen-cv-legacy.pdf
