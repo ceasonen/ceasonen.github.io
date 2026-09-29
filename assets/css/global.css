@@ -442,9 +442,21 @@ b {
 }
 
 .publications-page h5,
-.homepage-publications h5 {
+.homepage-publications h5,
+.highlights-page .publication-item h5 {
     font-size: 1rem;
     font-weight: 700 !important;
+}
+
+.publication-cover {
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: #fff;
+}
+
+.publication-cover-mobile {
+    max-height: 180px;
 }
 
 .publications-page .row.border-bottom,

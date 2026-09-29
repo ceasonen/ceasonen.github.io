@@ -35,9 +35,9 @@ class MaintenanceTest < Minitest::Test
 
   def test_highlights_are_data_driven
     highlights = data("highlights")
-    assert_equal 3, highlights.fetch("research").length
     assert_equal 7, highlights.fetch("awards").length
     assert_includes File.read(File.join(ROOT, "site/awards.html")), "site.data.highlights"
+    assert_includes File.read(File.join(ROOT, "site/awards.html")), "site.publications"
   end
 
   def test_workspace_points_to_existing_editing_folders

@@ -15,7 +15,7 @@
 | Research Areas | [site/_data/research.yml](site/_data/research.yml) |
 | Intern 经历、日期、校徽 | [site/_data/internships.yml](site/_data/internships.yml) |
 | Reviewer | [site/_data/service.yml](site/_data/service.yml) |
-| Highlights、奖项 | [site/_data/highlights.yml](site/_data/highlights.yml) |
+| Highlights 奖项（论文卡片共用论文列表） | [site/_data/highlights.yml](site/_data/highlights.yml) |
 | 添加或修改论文 | [site/_publications/](site/_publications/)（每篇一个文件） |
 | 添加新闻 | [site/_news/](site/_news/)（每条一个文件） |
 | 导航栏 | [site/_data/navigation.yml](site/_data/navigation.yml) |

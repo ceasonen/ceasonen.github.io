@@ -1,15 +1,4 @@
-# Highlights 页的简介与奖项。完整论文条目仍在 _publications/ 维护。
-research:
-  - date: "2026"
-    name: OV-OrthKD
-    description: co-first-author ACM MM 2026 paper on reliable supervision for open-vocabulary audio-visual event localization.
-  - date: "2026"
-    name: OrthKD
-    description: co-first-author IJCAI 2026 paper on distillation from heterogeneous clinical models.
-  - date: "2026"
-    name: DeepYOLO
-    description: corresponding-author IJCNN 2026 paper developed with a junior student from an idea I proposed.
-
+# Highlights 页的奖项。论文卡片统一来自 _publications/，不在这里重复维护。
 awards:
   - date: "2026"
     name: National First Prize, China Robot and Artificial Intelligence Competition (CRAIC) — Team Captain

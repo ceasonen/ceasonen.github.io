@@ -4,6 +4,7 @@ date: 2026-09-29 00:00:00 +0800
 rank: 103
 selected: true
 anonymous: true
+cover: /assets/images/covers/multimodal-learning.png
 pub: "ICLR"
 pub_date: "2027"
 pub_last: '<span class="badge badge-pill badge-publication badge-warning text-dark">Submitted</span>'

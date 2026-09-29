@@ -27,13 +27,8 @@ container_class: container-xl
     </section>
     <section class="content-section">
         <h2>Selected Research and Publications</h2>
-        <ul class="academic-list highlight-records">
-            {% for item in site.data.highlights.research %}
-            <li><time>{{ item.date | escape }}:</time><span><strong>{{ item.name | escape }}</strong> — {{ item.description | escape }}</span></li>
-            {% endfor %}
-        </ul>
-        {% assign private_pubs = site.publications | where: "anonymous", true | sort: "rank" %}
-        {% for item in private_pubs %}
+        {% assign selected_pubs = site.publications | where: "selected", true | sort: "rank" %}
+        {% for item in selected_pubs %}
             {% include widgets/publication_item.html item=item first=forloop.first last=forloop.last hide_bottom_border=forloop.last %}
         {% endfor %}
     </section>

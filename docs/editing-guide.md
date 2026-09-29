@@ -14,7 +14,7 @@ VS Code / Cursor：“文件 → 从文件打开工作区” → 根目录 `webs
 | `_data/research.yml` | 一行一个方向，按列表顺序显示 |
 | `_data/internships.yml` | 一段一个实习；`organization` 单位、`date` 显示日期、`datetime` 机器可读日期、`logo` 校徽 |
 | `_data/service.yml` | 在 `reviewer` 下增减会议 |
-| `_data/highlights.yml` | `awards` 是奖项，`research` 是已录用研究的简短介绍 |
+| `_data/highlights.yml` | `awards` 是奖项；Highlights 的论文卡片共用 `_publications/`，不需重复维护 |
 | `_data/navigation.yml` | 导航名称、链接、顺序 |
 | `_data/display.yml` | News、精选论文等开关，以及首页新闻条数 |
 
@@ -30,6 +30,7 @@ YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片�
 - `rank`：越小越靠前；当前已录用是 1、2、3，在投是 101、102、103。
 - `selected: true`：同时出现在首页。
 - `abstract`：简述；在审稿件不写具体方法或实验结果。
+- `cover`：论文主图截图路径，如 `/assets/images/covers/image-evaluation.png`。只截主图区域，避开真实题目、作者、投稿编号及页眉；不添加专门的匿名或在审说明行。
 - `authors`：公开条目的作者顺序；链接信息在 `_data/authors.yml`。
 - `anonymous: true`：在审匿名展示。不要把真实题目、作者、稿件链接写进此文件，即使页面不显示也不应公开提交。
 
