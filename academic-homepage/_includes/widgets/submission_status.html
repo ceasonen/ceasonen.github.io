@@ -1,0 +1,8 @@
+<section class="content-section" aria-labelledby="submission-status-heading">
+    <h2 id="submission-status-heading">Current Submissions</h2>
+    <ul class="academic-list">
+        {% for item in site.data.submissions %}
+        <li><strong>{{ item.venue }}</strong>: {{ item.description }}</li>
+        {% endfor %}
+    </ul>
+</section>
