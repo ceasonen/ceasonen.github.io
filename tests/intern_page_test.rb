@@ -24,12 +24,14 @@ class InternPageTest < Minitest::Test
 
     refute_includes page, "Independent Researcher"
     refute_includes page, "Apr. 2025 – Present"
-    assert_includes page, "College of Electronic and Information Engineering"
+    assert_includes page, "Tongji University"
+    refute_includes page, "College of Electronic and Information Engineering"
     assert_includes page, "Oct. 2025 – Jun. 2026"
-    assert_includes page, "School of Artificial Intelligence"
+    refute_includes page, "School of Artificial Intelligence"
     assert_includes page, "Zhejiang University"
     assert_includes page, "Jun. 2026 – Sep. 2026"
-    assert_includes page, "The Hong Kong University of Science and Technology (Guangzhou)"
+    assert_includes page, "Hong Kong University of Science and Technology (Guangzhou)"
+    refute_includes page, "The Hong Kong"
     assert_includes page, "Sep. 2026 – Present"
     assert_equal 1, page.scan("/assets/images/organizations/tongji-university.png").length
     assert_includes page, "/assets/images/organizations/zju-university.png"

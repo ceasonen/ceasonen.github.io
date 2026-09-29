@@ -1,6 +1,6 @@
 # Intern 页按列表顺序显示。logo 指向 site/assets/ 下的图片。
 - role: Research Intern
-  organization: College of Electronic and Information Engineering, Tongji University
+  organization: Tongji University
   date: Oct. 2025 – Jun. 2026
   datetime: 2025-10/2026-06
   url: https://www.tongji.edu.cn/
@@ -9,7 +9,7 @@
   logo_alt: Tongji University logo
 
 - role: Research Intern
-  organization: School of Artificial Intelligence, Zhejiang University
+  organization: Zhejiang University
   date: Jun. 2026 – Sep. 2026
   datetime: 2026-06/2026-09
   url: https://www.zju.edu.cn/
@@ -19,11 +19,11 @@
   logo_class: intern-logo-zju
 
 - role: Research Intern
-  organization: The Hong Kong University of Science and Technology (Guangzhou)
+  organization: Hong Kong University of Science and Technology (Guangzhou)
   date: Sep. 2026 – Present
   datetime: 2026-09
   url: https://www.hkust-gz.edu.cn/
   link_label: Visit the HKUST(GZ) website
   logo: /assets/images/organizations/hkust-gz-icon.png
-  logo_alt: The Hong Kong University of Science and Technology (Guangzhou) emblem
+  logo_alt: Hong Kong University of Science and Technology (Guangzhou) emblem
   logo_class: intern-logo-hkust
