@@ -49,23 +49,26 @@
 }
 
 \newcommand{\leftsection}[1]{%
-  \vspace{9pt}%
-  {\normalsize\bfseries\color{accent}#1}\par
-  \vspace{-2pt}\textcolor{line}{\rule{\linewidth}{0.6pt}}\vspace{4pt}%
+  \par\addvspace{10pt}%
+  {\normalsize\bfseries\color{accent}#1\par}%
+  \nobreak\vspace{2pt}%
+  {\color{line}\hrule height 0.6pt}%
+  \nobreak\vspace{4pt}%
 }
 
 \newcommand{\rightsection}[1]{%
+  \par
   \needspace{4\baselineskip}%
-  \vspace{4pt}%
-  {\Large\bfseries\color{accent}#1}\par
-  \vspace{-2pt}\textcolor{line}{\rule{\linewidth}{0.7pt}}\vspace{3pt}%
+  \addvspace{10pt}%
+  {\Large\bfseries\color{accent}#1\par}%
+  \nobreak\vspace{2pt}%
+  {\color{line}\hrule height 0.7pt}%
+  \nobreak\vspace{4pt}%
 }
 
 \newcommand{\entry}[4]{%
-  \needspace{6\baselineskip}%
-  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\raggedleft\arraybackslash}p{2.25cm}@{}}
-    {\bfseries\color{accent}#1} & {\small\color{muted}#3}
-  \end{tabularx}\par
+  \par
+  \noindent{\bfseries\color{accent}#1}\hfill{\small\color{muted}#3}\par
   {\small\color{muted}#2}\par
   \vspace{-1pt}
   \begin{itemize}#4\end{itemize}

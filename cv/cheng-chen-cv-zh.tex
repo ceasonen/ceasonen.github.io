@@ -19,10 +19,12 @@
 \setlength{\baselineskip}{10.4pt}
 \setlist[itemize]{leftmargin=1.05em, itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt}
 
-\newcommand{\cvsection}[1]{%
-  \par\vspace{1pt}%
-  \noindent{\large\bfseries #1}\\[-4.5pt]%
-  \noindent\rule{\textwidth}{0.4pt}\par\vspace{0pt}%
+\newcommand{\cvsection}[2][9pt]{%
+  \par\addvspace{#1}%
+  \noindent{\large\bfseries #2\par}%
+  \nobreak\vspace{2pt}%
+  \hrule height 0.4pt\relax
+  \nobreak\vspace{3pt}%
 }
 
 \newcommand{\researchblock}[3]{%
@@ -40,7 +42,7 @@
 \href{https://ceasonen.github.io}{主页：ceasonen.github.io}
 \end{center}
 \vspace{-2pt}
-\cvsection{教育背景}
+\cvsection[2pt]{教育背景}
 \noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
   \textbf{中国科学院自动化研究所}，北京 & 2027.09（预计） \\
 \end{tabularx}\vspace{-2pt}
@@ -72,6 +74,7 @@
   \item 提出 \textbf{OV-OrthKD}，针对音频噪声等模态不对称问题，将弱音频监督限制在辅助正交子空间；结合强视觉教师与文本原型进行开放词汇迁移。
   \item 在 OV-AVEBench 上取得 \textbf{0.816} segment AP，F1@0.5 较官方微调基线整体提升 \textbf{2.7} 个百分点、未见类别提升 \textbf{3.4} 个百分点。
 }
+\par\addvspace{4pt}
 \researchblock{OrthKD：临床多教师轻量部署}{IJCAI 2026，共同一作}{
   \item 提出 \textbf{OrthKD}，解决糖网筛查中异构教师能力不对称的问题：由强教师提供完整监督，以正交约束提取弱教师的互补特征并减少冗余。
   \item 在 \textbf{132{,}049} 张眼底图上，\textbf{5.4M} 参数学生达到 EyePACS \textbf{0.885 QWK}，Messidor-2 零样本结果由 \textbf{0.507} 提升至 \textbf{0.728}。

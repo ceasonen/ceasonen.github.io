@@ -52,9 +52,11 @@
 \newcommand{\cvicon}[1]{\textcolor{deepred}{#1}}
 
 \newcommand{\sectionhead}[1]{%
-  \vspace{2pt}%
-  \noindent{\fontsize{14.2}{15.4}\selectfont\bfseries #1}\par\vspace{0pt}%
-  {\color{deepred}\rule{2.4em}{0.7pt}}{\color{rulegray}\rule{\dimexpr\textwidth-2.4em\relax}{0.45pt}}\par\vspace{0.5pt}%
+  \par\addvspace{9pt}%
+  \noindent{\fontsize{14.2}{15.4}\selectfont\bfseries #1\par}%
+  \nobreak\vspace{2pt}%
+  \nointerlineskip\hbox{\textcolor{deepred}{\rule{2.4em}{0.7pt}}\textcolor{rulegray}{\rule{\dimexpr\textwidth-2.4em\relax}{0.45pt}}}%
+  \nobreak\vspace{3pt}\nointerlineskip
 }
 \newcommand{\contacticon}[1]{\textcolor{deepred}{#1}\hspace{0.34em}}
 \newcommand{\role}[1]{\textbf{\textcolor{textgray}{#1}}}

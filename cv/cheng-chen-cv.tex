@@ -1,4 +1,4 @@
-% English application CV — ultra-compact academic style
+% English application CV — section-grouped academic style
 % Compile with pdfLaTeX
 \documentclass[10pt]{article}
 
@@ -14,10 +14,12 @@
 \setlength{\baselineskip}{10.5pt}
 \setlist[itemize]{leftmargin=1.05em, itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt}
 
-\newcommand{\cvsection}[1]{%
-  \par\vspace{1pt}%
-  \noindent{\large\bfseries #1}\\[-4.5pt]%
-  \noindent\rule{\textwidth}{0.4pt}\par\vspace{0pt}%
+\newcommand{\cvsection}[2][9pt]{%
+  \par\addvspace{#1}%
+  \noindent{\large\bfseries #2\par}%
+  \nobreak\vspace{2pt}%
+  \hrule height 0.4pt\relax
+  \nobreak\vspace{3pt}%
 }
 
 \newcommand{\researchblock}[3]{%
@@ -35,7 +37,7 @@ Tel: (+86) 13587919792 \textbar{}
 \href{https://ceasonen.github.io}{Homepage: ceasonen.github.io}
 \end{center}
 \vspace{-2pt}
-\cvsection{Education}
+\cvsection[2pt]{Education}
 \noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
   \textbf{Institute of Automation, Chinese Academy of Sciences}, Beijing, China & Sept. 2027 (Expected) \\
 \end{tabularx}\vspace{-2pt}
@@ -72,6 +74,7 @@ Major Rank: \textbf{2/85}
   \item Proposed \textbf{OV-OrthKD}, a reliability-aware asymmetric distillation framework: a strong visual teacher supervises decision-aligned features, we restrict a weak audio teacher to an auxiliary orthogonal subspace, and a text prototype anchors open-vocabulary transfer.
   \item On OV-AVEBench, reached \textbf{0.816} segment AP and improved F1@0.5 by \textbf{+2.7} points overall and \textbf{+3.4} on unseen categories over the official fine-tuning baseline; ablations show weak-audio feature transfer helps only when kept off the decision path.
 }
+\par\addvspace{4pt}
 \researchblock{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment}{Accepted at \textbf{IJCAI 2026}, Co-first Author}{
   \item Addressed expertise asymmetry in multi-teacher distillation for diabetic retinopathy screening, where a weaker ViT teacher (\textbf{0.83 QWK}) harms students under standard logit fusion with a stronger CNN teacher (\textbf{0.88 QWK}).
   \item Proposed \textbf{OrthKD}, distilling only complementary feature-level context from the weak teacher while enforcing orthogonality between teacher projections to avoid redundant knowledge transfer.
@@ -86,8 +89,7 @@ Major Rank: \textbf{2/85}
 \cvsection{Academic Service}
 \textbf{Reviewer:} ICLR, PRCV, ICME, IJCNN, AAAI.
 \cvsection{Skills}
-\textbf{Programming:} Python, C/C++, Verilog.\\
-\textbf{Framework:} PyTorch.\\
+\textbf{Programming:} Python, C/C++, Verilog.\quad\textbf{Framework:} PyTorch.\\
 \textbf{Tools:} Git, Linux, LaTeX, OpenAI Codex, Claude Code.\\
 \textbf{Foundations:} Machine Learning, Algorithms, Linear Algebra, Probability, Optimization, and Signal Processing.
 
