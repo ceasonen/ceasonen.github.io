@@ -21,6 +21,8 @@ output/playwright/
 
 # Confidential double-blind review copies
 /papers/nips/*.pdf
+# PDFs dropped at the repository root are local drafts, not public downloads.
+/*.pdf
 
 # Local build output and recoverable workspace archives
 /.build/

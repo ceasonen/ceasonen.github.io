@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%
 % English application CV
 % Compile with XeLaTeX
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,10pt]{article}
 
 \usepackage[a4paper,left=1.18cm,right=1.18cm,top=0.68cm,bottom=0.72cm]{geometry}
 \usepackage{graphicx}
@@ -42,7 +42,7 @@
 \definecolor{softgray}{HTML}{E6E0D6}
 \definecolor{textgray}{HTML}{333333}
 
-\setstretch{1.05}
+\setstretch{1.0}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1.2pt}
 \setlist[itemize]{leftmargin=1.15em,itemsep=1.0pt,topsep=1.0pt,parsep=0pt}
@@ -52,7 +52,7 @@
 \newcommand{\cvicon}[1]{\textcolor{deepred}{#1}}
 
 \newcommand{\sectionhead}[1]{%
-  \vspace{5.5pt}%
+  \vspace{3pt}%
   \noindent{\fontsize{14.2}{15.4}\selectfont\bfseries #1}\par\vspace{0pt}%
   {\color{deepred}\rule{2.4em}{0.7pt}}{\color{rulegray}\rule{\dimexpr\textwidth-2.4em\relax}{0.45pt}}\par\vspace{2.2pt}%
 }
@@ -105,6 +105,14 @@ Supervisor: \textbf{Prof. Kaiqi Huang}.\\
 \textbf{B.Eng. in Communication Engineering, Tongji University}, Shanghai \dateright{2023.09 \textendash Jun. 2027}\\[-1pt]
 Expected graduation: Jun. 2027. Major rank: \textbf{2/85}; CET-6: \textbf{519}.
 
+\sectionhead{Internships}
+\textit{Research Intern}\\
+\begin{tabularx}{\textwidth}{@{}Xr@{}}
+  \textbf{The Hong Kong University of Science and Technology (Guangzhou)} & Sept. 2026 \textendash Present \\
+  \textbf{Zhejiang University}, School of Artificial Intelligence & Jun. 2026 \textendash Sept. 2026 \\
+  \textbf{Tongji University} & Oct. 2025 \textendash Jun. 2026 \\
+\end{tabularx}
+
 \sectionhead{Research}
 \paperitem{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{ACM MM 2026}
 {\role{Accepted; co-first author.}}
@@ -121,6 +129,9 @@ Expected graduation: Jun. 2027. Major rank: \textbf{2/85}; CET-6: \textbf{519}.
   National Third Prize, National Undergraduate Embedded Chip and System Design Contest, Team Leader & 2025 \\
   Tongji University Outstanding Student Scholarship & 2023--2024, 2024--2025 \\
 \end{tabularx}
+
+\sectionhead{Academic Service}
+\textbf{Reviewer:} ICLR, PRCV, ICME, IJCNN, AAAI.
 
 \sectionhead{Skills}
 \begin{itemize}

@@ -15,6 +15,7 @@
 | 根目录 HTML、`assets/`、`2026/` | GitHub Pages 发布文件，由网站构建命令更新 |
 | `.build/` | 构建结果、LaTeX 中间文件及日志，不提交 Git |
 | `.local/archive/` | 可恢复的本地归档，不提交 Git |
+| `.local/submissions/` | 按会议分类的在审稿 PDF，仅本地保存、不公开 |
 
 根目录保留发布页面，因为当前 GitHub Pages 使用根目录静态文件，并通过 `.nojekyll` 禁用二次编译。移动它们会改变现有网址。
 
@@ -24,6 +25,7 @@
 - 导航：`academic-homepage/_data/navigation.yml`
 - 左侧身份栏：`academic-homepage/_includes/widgets/homepage_sidebar.html`
 - 实习：`academic-homepage/intern.html`
+- 审稿服务：`academic-homepage/_data/service.yml`
 - 新闻与论文：`academic-homepage/_news/`、`academic-homepage/_publications/`
 - 样式、图片：`academic-homepage/assets/`
 
@@ -49,7 +51,7 @@ ruby tools/build_cv.rb cheng-chen-cv cheng-chen-cv-zh
 
 需要 TeX Live（`pdflatex`、`xelatex`）及简历使用的字体。PDF 更新到 `cv/`，辅助文件和日志集中在 `.build/cv/`。旧版 PDF 仅保留在 `.build/cv/cheng-chen-cv-legacy/`。
 
-脚本同步 `academic-homepage/cv/` 中已有的简历镜像；始终编辑根目录 `cv/` 的主版本，不必分别改两份。
+CV 只保留根目录 `cv/` 一个主版本。旧的 `academic-homepage/cv/` 和 `academic-homepage/papers/` 重复镜像已移入 `.local/archive/`，不再维护两份。
 
 ## 整理与发布
 

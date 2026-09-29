@@ -18,12 +18,12 @@ class InternPageTest < Minitest::Test
     assert_equal "20260918-1", config["asset_version"]
   end
 
-  def test_intern_page_contains_all_four_experiences
+  def test_intern_page_contains_three_internships_without_independent_research
     page = File.read(File.join(ROOT, "intern.html"))
     styles = File.read(File.join(ROOT, "assets/css/global.css"))
 
-    assert_includes page, "Independent Researcher"
-    assert_includes page, "Apr. 2025 – Present"
+    refute_includes page, "Independent Researcher"
+    refute_includes page, "Apr. 2025 – Present"
     assert_includes page, "College of Electronic and Information Engineering"
     assert_includes page, "Oct. 2025 – Jun. 2026"
     assert_includes page, "School of Artificial Intelligence"
@@ -31,11 +31,11 @@ class InternPageTest < Minitest::Test
     assert_includes page, "Jun. 2026 – Sep. 2026"
     assert_includes page, "The Hong Kong University of Science and Technology (Guangzhou)"
     assert_includes page, "Sep. 2026 – Present"
-    assert_equal 2, page.scan("/assets/images/organizations/tongji-university.png").length
+    assert_equal 1, page.scan("/assets/images/organizations/tongji-university.png").length
     assert_includes page, "/assets/images/organizations/zju-university.png"
     assert_includes page, "/assets/images/organizations/hkust-gz-icon.png"
     assert_includes page, "intern-logo-hkust"
-    assert_equal 4, page.scan('class="intern-logo-wrap"').length
+    assert_equal 3, page.scan('class="intern-logo-wrap"').length
     refute_includes page, "intern-logo-personal"
     assert_includes page, "intern-logo-zju"
     assert_includes styles, ".intern-logo-zju"

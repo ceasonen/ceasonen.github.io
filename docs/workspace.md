@@ -4,13 +4,14 @@
 
 网站源码在 `academic-homepage/`，根目录 HTML 和 `assets/` 是发布副本。运行 `ruby tools/build_site.rb` 后，所有页面的导航与侧栏会一起更新。
 
-CV 以根目录 `cv/` 为主，`academic-homepage/cv/` 由 CV 编译命令同步。论文以根目录 `papers/` 为主，`academic-homepage/papers/` 暂保留历史镜像，不作为独立编辑版本。论文模板依赖和研究笔记保留在原论文目录，避免影响编译。
+CV 和论文分别只在根目录 `cv/`、`papers/` 维护。旧的 `academic-homepage/cv/`、`academic-homepage/papers/` 已比对并完整移入 `.local/archive/source-mirrors-*/`，可按归档说明恢复。论文模板依赖和研究笔记保留在根目录论文目录，避免影响编译。
 
 ## 编译文件与归档
 
 - `.build/site/`：最新网站构建结果。
 - `.build/cv/<文档名称>/`：简历 PDF、辅助文件和 `build.log`。
 - `.local/archive/<整理时间>/`：历史输出、截图、重复证书和散落编译文件。
+- `.local/submissions/<会议年份>/`：在审稿件的本地 PDF，不提交 Git、不进入网站构建。公开页面只展示投稿数量和阶段。
 
 每次归档创建独立时间目录，`manifest.json` 记录原始相对路径。恢复时，将目标文件复制回相同的仓库相对路径；若当前位置已有文件，先比较内容，避免覆盖新版本。
 

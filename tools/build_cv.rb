@@ -32,10 +32,5 @@ requested.each do |name|
   # Legacy remains available in .build/cv/ without adding another download.
   FileUtils.cp(pdf, File.join(root, "cv", "#{name}.pdf")) unless name.end_with?("-legacy")
 
-  mirror = File.join(root, "academic-homepage", "cv")
-  if File.file?(File.join(mirror, "#{name}.tex"))
-    FileUtils.cp(File.join(root, "cv", "#{name}.tex"), mirror)
-    FileUtils.cp(pdf, mirror) unless name.end_with?("-legacy")
-  end
   puts "Built #{name}"
 end
