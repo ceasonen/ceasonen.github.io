@@ -1,0 +1,38 @@
+---
+layout: default
+title: Intern
+navbar_title: Intern
+container_class: container-xl
+---
+
+<div class="academic-layout">
+    <aside class="academic-sidebar-column">
+        {% include widgets/homepage_sidebar.html %}
+    </aside>
+
+    <main class="academic-main content-page intern-page">
+        <header class="content-page-header">
+            <h1><span class="section-glyph" aria-hidden="true">💼</span>Intern</h1>
+        </header>
+
+        <p class="intern-page-intro">Research internship experience.</p>
+
+        <ol class="intern-timeline list-unstyled">
+            {% for item in site.data.internships %}
+            <li class="intern-entry">
+                <a class="intern-logo-wrap" href="{{ item.url | escape }}" target="_blank" rel="noopener" aria-label="{{ item.link_label | escape }}">
+                    <img{% if item.logo_class %} class="{{ item.logo_class | escape }}"{% endif %} src="{{ item.logo | relative_url }}" alt="{{ item.logo_alt | escape }}">
+                </a>
+                <div class="intern-entry-body">
+                    <div class="intern-entry-heading">
+                        <h2>{{ item.role | escape }}</h2>
+                        <time datetime="{{ item.datetime | escape }}">{{ item.date | escape }}</time>
+                    </div>
+                    <p>{{ item.organization | escape }}</p>
+                </div>
+            </li>
+
+            {% endfor %}
+        </ol>
+    </main>
+</div>

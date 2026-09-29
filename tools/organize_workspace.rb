@@ -9,15 +9,15 @@ Dir.chdir(root)
 abort "Usage: ruby tools/organize_workspace.rb [--apply]" unless (ARGV - ["--apply"]).empty?
 
 intermediates = /\.(?:aux|bcf|blg|fdb_latexmk|fls|log|out|run\.xml|synctex\.gz|toc|xdv)\z/
-candidates = ["cv", "papers", "academic-homepage/cv", "academic-homepage/papers"].flat_map do |dir|
+candidates = ["cv", "papers", "site/cv", "site/papers"].flat_map do |dir|
   Dir.glob("#{dir}/**/*").select { |path| File.file?(path) && path.match?(intermediates) }
 end
-candidates += %w[texput.log output academic-homepage/output academic-homepage/_site cv/rubbish cv/cheng-chen-cv-legacy.pdf].select { |p| File.exist?(p) }
+candidates += %w[texput.log output site/output site/_site cv/rubbish cv/cheng-chen-cv-legacy.pdf].select { |p| File.exist?(p) }
 
 # Compare bytes directly; preserve every copy in the archive, even when identical.
 %w[2025_AIC_Award.pdf 2025_Embedded_Systems.png].each do |name|
   canonical = "awards/#{name}"
-  [name, "academic-homepage/#{name}"].each do |copy|
+  [name, "site/#{name}"].each do |copy|
     next unless File.file?(copy) && File.file?(canonical)
     if FileUtils.compare_file(copy, canonical)
       candidates << copy

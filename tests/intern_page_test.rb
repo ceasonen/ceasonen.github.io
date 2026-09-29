@@ -2,7 +2,7 @@ require "minitest/autorun"
 require "yaml"
 
 class InternPageTest < Minitest::Test
-  ROOT = File.expand_path("..", __dir__)
+  ROOT = File.expand_path("../site", __dir__)
 
   def test_intern_is_a_top_level_navigation_item
     navigation = YAML.safe_load(File.read(File.join(ROOT, "_data/navigation.yml")))
@@ -19,7 +19,7 @@ class InternPageTest < Minitest::Test
   end
 
   def test_intern_page_contains_three_internships_without_independent_research
-    page = File.read(File.join(ROOT, "intern.html"))
+    page = File.read(File.join(ROOT, "../intern.html"))
     styles = File.read(File.join(ROOT, "assets/css/global.css"))
 
     refute_includes page, "Independent Researcher"

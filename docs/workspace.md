@@ -2,7 +2,9 @@
 
 ## 主版本与发布副本
 
-网站源码在 `academic-homepage/`，根目录 HTML 和 `assets/` 是发布副本。运行 `ruby tools/build_site.rb` 后，所有页面的导航与侧栏会一起更新。
+网站唯一源码在 `site/`（原 `academic-homepage/` 已整体改名），根目录 HTML 和 `assets/` 是发布副本。运行 `ruby tools/website.rb build` 后，导航和侧栏会一起更新，并执行链接及内容检查。
+
+日常编辑推荐打开根目录 `website.code-workspace`，按网站、CV、论文、证书、维护指南、工具、测试分组。根目录发布副本不显示在工作区中，避免改错。逐项修改入口见 [editing-guide.md](editing-guide.md)。
 
 CV 和论文分别只在根目录 `cv/`、`papers/` 维护。旧的 `academic-homepage/cv/`、`academic-homepage/papers/` 已比对并完整移入 `.local/archive/source-mirrors-*/`，可按归档说明恢复。论文模板依赖和研究笔记保留在根目录论文目录，避免影响编译。
 

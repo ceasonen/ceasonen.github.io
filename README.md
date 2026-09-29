@@ -1,69 +1,51 @@
-# Cheng Chen 的个人主页
+# Cheng Chen · 网站维护入口
 
-线上地址：https://ceasonen.github.io/
+线上主页：https://ceasonen.github.io/
 
-## 目录与维护入口
+**改网站只进 `site/`，改简历只进 `cv/`。根目录 HTML 和 `assets/` 是自动生成的发布副本，不要直接编辑。**
 
-| 目录 / 文件 | 用途 |
+## 从这里开始
+
+1. 在 VS Code / Cursor 中选择“文件 → 从文件打开工作区”，打开 [website.code-workspace](website.code-workspace)。左侧按网站、CV、论文、证书分组，不显示根目录发布副本。
+2. 按下表找到文件，修改后在根目录运行 `ruby tools/website.rb build`。工作区也提供“网站：构建并检查”任务。
+
+| 想改什么 | 只改这里 |
 | --- | --- |
-| `academic-homepage/` | 网站源码：个人资料、新闻、论文列表、模板和图片 |
-| `cv/` | 简历、个人陈述等材料的主版本，在这里编辑 `.tex` |
-| `papers/` | 按会议分类的论文及配套文件 |
-| `awards/` | 奖状与证书 |
-| `tools/` | 网站构建、CV 编译及本地整理脚本 |
-| `docs/` | 维护说明和原模板文档 |
-| 根目录 HTML、`assets/`、`2026/` | GitHub Pages 发布文件，由网站构建命令更新 |
-| `.build/` | 构建结果、LaTeX 中间文件及日志，不提交 Git |
-| `.local/archive/` | 可恢复的本地归档，不提交 Git |
-| `.local/submissions/` | 按会议分类的在审稿 PDF，仅本地保存、不公开 |
+| 身份、联系方式、简介、教育 | [site/_data/profile.yml](site/_data/profile.yml) |
+| Research Areas | [site/_data/research.yml](site/_data/research.yml) |
+| Intern 经历、日期、校徽 | [site/_data/internships.yml](site/_data/internships.yml) |
+| Reviewer | [site/_data/service.yml](site/_data/service.yml) |
+| Highlights、奖项 | [site/_data/highlights.yml](site/_data/highlights.yml) |
+| 添加或修改论文 | [site/_publications/](site/_publications/)（每篇一个文件） |
+| 添加新闻 | [site/_news/](site/_news/)（每条一个文件） |
+| 导航栏 | [site/_data/navigation.yml](site/_data/navigation.yml) |
+| 首页板块顺序 | [site/index.html](site/index.html) |
+| 配色、字体、间距 | [site/assets/css/global.css](site/assets/css/global.css) |
+| 头像、校徽、论文封面 | [site/assets/images/](site/assets/images/) |
+| 英文 / 中文主 CV | [cv/cheng-chen-cv.tex](cv/cheng-chen-cv.tex) / [cv/cheng-chen-cv-zh.tex](cv/cheng-chen-cv-zh.tex) |
 
-根目录保留发布页面，因为当前 GitHub Pages 使用根目录静态文件，并通过 `.nojekyll` 禁用二次编译。移动它们会改变现有网址。
-
-## 修改主页
-
-- 简介与教育经历：`academic-homepage/_data/profile.yml`
-- 导航：`academic-homepage/_data/navigation.yml`
-- 左侧身份栏：`academic-homepage/_includes/widgets/homepage_sidebar.html`
-- 实习：`academic-homepage/intern.html`
-- 审稿服务：`academic-homepage/_data/service.yml`
-- 新闻与论文：`academic-homepage/_news/`、`academic-homepage/_publications/`
-- 样式、图片：`academic-homepage/assets/`
+## 常用命令
 
 ```sh
-ruby tools/build_site.rb
-ruby tools/check_site.rb
-ruby academic-homepage/test/intern_page_test.rb
+ruby tools/website.rb build    # 生成网站 + 检查链接及内容
+ruby tools/website.rb preview  # 预览 http://127.0.0.1:4000，Ctrl+C 停止
+ruby tools/website.rb cv       # 编译所有 CV，更新 PDF
 ```
 
-使用 `academic-homepage/Gemfile` 中的 Jekyll/Bundler 依赖。构建仅同步网页、网站资源和 favicon，不复制论文、日志、截图或测试目录。下载文件继续由根目录 `cv/`、`papers/` 提供。
+预览不是自动热更新；修改后在另一个终端运行 `build`，再刷新浏览器。脚本不自动提交或推送。论文条目示例和发布步骤见 [详细修改指南](docs/editing-guide.md)。
 
-## 修改 CV
+## 文件放哪里
 
-英文主简历为 `cv/cheng-chen-cv.tex`，中文为 `cv/cheng-chen-cv-zh.tex`。其他文件对应照片版、个人陈述、补充材料和旧版参考。
+| 目录 | 用途 |
+| --- | --- |
+| `site/` | 唯一网站源码（原 `academic-homepage/` 已迁到这里） |
+| `cv/` | 唯一简历及个人材料源文件、正式 PDF |
+| `papers/` | 论文原稿、模板与配套材料；不是主页论文列表的编辑入口 |
+| `awards/` | 奖状与证书文件 |
+| `docs/`、`tools/`、`tests/` | 维护指南、工具、自动检查 |
+| `.build/` | 自动构建产物、LaTeX 日志；不提交 |
+| `.local/` | 私有在审稿件与可恢复归档；不提交 |
 
-```sh
-# 编译全部简历材料
-ruby tools/build_cv.rb
+根目录发布副本保留是为了兼容当前 GitHub Pages 设置及原有网址。不要另建第二套源码，也不要将整个仓库作为本地网页服务器根目录。归档和恢复见 [目录说明](docs/workspace.md)。
 
-# 只编译中英文主简历
-ruby tools/build_cv.rb cheng-chen-cv cheng-chen-cv-zh
-```
-
-需要 TeX Live（`pdflatex`、`xelatex`）及简历使用的字体。PDF 更新到 `cv/`，辅助文件和日志集中在 `.build/cv/`。旧版 PDF 仅保留在 `.build/cv/cheng-chen-cv-legacy/`。
-
-CV 只保留根目录 `cv/` 一个主版本。旧的 `academic-homepage/cv/` 和 `academic-homepage/papers/` 重复镜像已移入 `.local/archive/`，不再维护两份。
-
-## 整理与发布
-
-```sh
-# 预览归档清单
-ruby tools/organize_workspace.rb
-# 执行归档
-ruby tools/organize_workspace.rb --apply
-```
-
-文件保留在 `.local/archive/`，不永久删除，恢复方式见 [目录整理说明](docs/workspace.md)。论文源码、`.bib`、`.bbl`、模板依赖、插图和正式 PDF 均保留。`papers/nips/` 匿名审稿 PDF 继续保持本地忽略状态。
-
-构建后查看 `git diff`，仅提交相关源码和发布文件。构建脚本不执行 Git 暂存、提交或推送。推送 `main` 后由现有 GitHub Pages 流程发布。
-
-项目基于 [academic-homepage](https://github.com/luost26/academic-homepage)。原文档保存在 [docs/template-readme.md](docs/template-readme.md)，许可证保留在 `LICENSE`。
+项目基于 [academic-homepage](https://github.com/luost26/academic-homepage)，原模板文档保存在 [docs/template-readme.md](docs/template-readme.md)，许可证保留。

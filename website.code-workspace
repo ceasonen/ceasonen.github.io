@@ -1,0 +1,55 @@
+{
+  "folders": [
+    { "name": "01-网站源码", "path": "site" },
+    { "name": "02-CV与个人材料", "path": "cv" },
+    { "name": "03-论文材料", "path": "papers" },
+    { "name": "04-证书", "path": "awards" },
+    { "name": "05-维护指南", "path": "docs" },
+    { "name": "06-工具", "path": "tools" },
+    { "name": "07-测试", "path": "tests" }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.DS_Store": true,
+      "**/.bundle": true,
+      "**/vendor": true,
+      "**/.jekyll-cache": true,
+      "**/_site": true,
+      "**/*.aux": true,
+      "**/*.log": true,
+      "**/*.synctex.gz": true
+    },
+    "search.exclude": { "**/vendor": true, "**/.bundle": true },
+    "terminal.integrated.cwd": "${workspaceFolder:01-网站源码}/.."
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "网站：构建并检查",
+        "type": "process",
+        "command": "ruby",
+        "args": ["tools/website.rb", "build"],
+        "options": { "cwd": "${workspaceFolder:01-网站源码}/.." },
+        "group": { "kind": "build", "isDefault": true },
+        "problemMatcher": []
+      },
+      {
+        "label": "网站：本地预览",
+        "type": "process",
+        "command": "ruby",
+        "args": ["tools/website.rb", "preview"],
+        "options": { "cwd": "${workspaceFolder:01-网站源码}/.." },
+        "problemMatcher": []
+      },
+      {
+        "label": "CV：编译全部版本",
+        "type": "process",
+        "command": "ruby",
+        "args": ["tools/website.rb", "cv"],
+        "options": { "cwd": "${workspaceFolder:01-网站源码}/.." },
+        "problemMatcher": []
+      }
+    ]
+  }
+}

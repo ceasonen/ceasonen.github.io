@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
-# Jekyll source lives in academic-homepage/; GitHub Pages serves the repo root.
+# Edit site/ only; GitHub Pages serves generated files at the repository root.
 require "fileutils"
 
 root = File.expand_path("..", __dir__)
-source = File.join(root, "academic-homepage")
+source = File.join(root, "site")
 destination = File.join(root, ".build", "site")
 FileUtils.mkdir_p(destination)
 ok = system("bundle", "exec", "jekyll", "build", "--destination", destination, chdir: source)
@@ -20,7 +20,8 @@ end
 pages.each do |relative|
   output = File.join(root, relative)
   FileUtils.mkdir_p(File.dirname(output))
-  File.write(output, File.read(File.join(destination, relative)).gsub(/[ \t]+$/, ""))
+  notice = "<!-- GENERATED FILE: edit site/ sources, then run ruby tools/website.rb build. Do not edit this copy. -->\n"
+  File.write(output, notice + File.read(File.join(destination, relative)).gsub(/[ \t]+$/, ""))
 end
 
 assets = Dir.glob(File.join(destination, "assets", "**", "*")).select { |path| File.file?(path) }
@@ -29,5 +30,12 @@ assets.each do |input|
   output = File.join(root, input.delete_prefix("#{destination}/"))
   FileUtils.mkdir_p(File.dirname(output))
   FileUtils.cp(input, output)
+end
+
+# Copy only explicitly public downloads into the preview, after every build.
+# Never copy cv/ sources, papers/ working trees or .local/ into the server root.
+FileUtils.mkdir_p(File.join(destination, "cv"))
+%w[index.html cheng-chen-cv.pdf].each do |file|
+  FileUtils.cp(File.join(root, "cv", file), File.join(destination, "cv", file))
 end
 puts "Updated #{pages.length} public pages and #{assets.length} assets."

@@ -2,10 +2,9 @@
     <h2><span class="section-glyph" aria-hidden="true">📚</span>Research Areas</h2>
     <p>My research interests include:</p>
     <ul class="research-area-list">
-        <li>Multimodal learning and audio-visual understanding</li>
-        <li>Large language models and multimodal large language models</li>
-        <li>Embodied AI and reinforcement learning</li>
-        <li>Efficient AI, knowledge distillation, model compression, and lightweight deployment</li>
+        {% for area in site.data.research %}
+        <li>{{ area | escape }}</li>
+        {% endfor %}
     </ul>
     <p class="research-contact">
         I am an incoming Ph.D. student at the Institute of Automation, Chinese Academy of Sciences. I welcome conversations about these topics and research directions beyond my current work. Please feel free to <a href="mailto:{{ site.data.profile.email | encode_email }}">contact me</a>.

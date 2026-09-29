@@ -1,0 +1,28 @@
+# Highlights 页的简介与奖项。完整论文条目仍在 _publications/ 维护。
+research:
+  - date: "2026"
+    name: OV-OrthKD
+    description: co-first-author ACM MM 2026 paper on reliable supervision for open-vocabulary audio-visual event localization.
+  - date: "2026"
+    name: OrthKD
+    description: co-first-author IJCAI 2026 paper on distillation from heterogeneous clinical models.
+  - date: "2026"
+    name: DeepYOLO
+    description: corresponding-author IJCNN 2026 paper developed with a junior student from an idea I proposed.
+
+awards:
+  - date: "2026"
+    name: National First Prize, China Robot and Artificial Intelligence Competition (CRAIC) — Team Captain
+  - date: "2025"
+    name: National Second Prize, Global Campus AI Algorithm Elite Competition — Team Captain
+  - date: "2025"
+    name: National Third Prize, Embedded Chip & System Design Competition, FPGA Track — Team Captain
+  - date: "2025"
+    name: Shanghai Third Prize, National Mathematical Modeling Competition — Team Captain
+  - date: "2025"
+    name: Shanghai Third Prize, National Statistical Modeling Competition — Team Captain
+  - date: "2024–25"
+    name: Provincial Second Prize, National College Student Mathematics Competition
+  - date: "2023–25"
+    name: Tongji University Outstanding Student Scholarship
+    detail: "Second Class; academic years 2023–2024 and 2024–2025"
