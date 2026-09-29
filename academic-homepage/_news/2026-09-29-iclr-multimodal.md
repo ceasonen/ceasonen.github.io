@@ -1,0 +1,6 @@
+---
+title: "Our work on **understanding and generation in multimodal models** has been submitted to **ICLR 2027**."
+date: 2026-09-29 00:00:00 +0800
+category: "submission"
+badge: "Submitted"
+---

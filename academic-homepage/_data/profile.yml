@@ -11,7 +11,7 @@ github: ceasonen
 gscholar: "https://scholar.google.com/citations?user=X92zQ68AAAAJ&hl=zh-CN"
 location: "Shanghai, China"
 sidebar_bio: >-
-  An incoming Ph.D. student at the Institute of Automation, Chinese Academy of Sciences. Interested in multimodal learning, efficient AI, and reasonable AI.
+  An incoming Ph.D. student at the Institute of Automation, Chinese Academy of Sciences. Interested in multimodal learning, language models, embodied AI, and efficient AI.
 
 short_bio_text_justify: false
 short_bio: >-
@@ -19,10 +19,10 @@ short_bio: >-
     I'm <strong>Cheng Chen</strong>, an incoming Ph.D. student at the <a href="https://www.ia.cas.cn/" target="_blank"><strong>Institute of Automation, Chinese Academy of Sciences</strong></a>, supervised by Prof. Kaiqi Huang. I am currently pursuing a B.Eng. in Communication Engineering at <a href="https://www.tongji.edu.cn/" target="_blank"><strong>Tongji University</strong></a>, with expected graduation in June 2027.
   </p>
   <p>
-    My research began in my second year with neural operators and the reliability of predicted fields. I later worked on knowledge distillation for diabetic retinopathy screening and open-vocabulary audio-visual event localization. The resulting papers, <strong>OrthKD</strong> and <strong>OV-OrthKD</strong>, were accepted at IJCAI 2026 and ACM MM 2026, respectively. One paper submitted to <strong>AAAI 2027</strong> has advanced to <strong>Phase 2</strong>, and I have submitted two papers to <strong>ICLR 2027</strong>.
+    My research began in my second year with neural operators and the reliability of predicted fields. I later worked on knowledge distillation for diabetic retinopathy screening and open-vocabulary audio-visual event localization. The resulting papers, <strong>OrthKD</strong> and <strong>OV-OrthKD</strong>, were accepted at IJCAI 2026 and ACM MM 2026, respectively. My recent work explores generated image evaluation (AAAI 2027, Phase 2), reliability in model interpretability (submitted to ICLR 2027), and the relationship between understanding and generation in multimodal models (submitted to ICLR 2027).
   </p>
   <p>
-    <strong>DeepYOLO</strong> grew out of a collaboration with a junior student: I proposed the initial idea, while he led the implementation and experiments; I serve as the corresponding author. My current research interests are multimodal learning, efficient AI, and reasonable AI. Learning a new topic deeply and turning it into a concrete result is what makes research rewarding for me.
+    <strong>DeepYOLO</strong> grew out of a collaboration with a junior student: I proposed the initial idea, while he led the implementation and experiments; I serve as the corresponding author. My research interests span multimodal learning and audio-visual understanding, language models, embodied AI and reinforcement learning, and efficient AI. Learning a new topic deeply and turning it into a concrete result is what makes research rewarding for me.
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg

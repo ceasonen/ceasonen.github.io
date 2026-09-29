@@ -20,6 +20,8 @@ container_class: container-xl
 
         {% include widgets/details_card.html %}
 
+        {% include widgets/reviewer_service.html %}
+
         {% if site.data.display.homepage.show_experience %}
             {% include widgets/experience_card.html %}
         {% endif %}
@@ -40,6 +42,5 @@ container_class: container-xl
             %}
         {% endif %}
 
-        {% include widgets/reviewer_service.html %}
     </main>
 </div>

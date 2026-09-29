@@ -15,16 +15,7 @@ container_class: container-xl
         <h1><span class="section-glyph" aria-hidden="true">🏆</span>Highlights</h1>
     </header>
 
-    {% include widgets/submission_status.html %}
-
-    <section class="content-section">
-        <h2>Selected Research and Publications</h2>
-        <ul class="academic-list highlight-records">
-            <li><time>2026:</time><span><strong>OV-OrthKD</strong> — co-first-author ACM MM 2026 paper on reliable supervision for open-vocabulary audio-visual event localization.</span></li>
-            <li><time>2026:</time><span><strong>OrthKD</strong> — co-first-author IJCAI 2026 paper on distillation from heterogeneous clinical models.</span></li>
-            <li><time>2026:</time><span><strong>DeepYOLO</strong> — corresponding-author IJCNN 2026 paper developed with a junior student from an idea I proposed.</span></li>
-        </ul>
-    </section>
+    {% include widgets/reviewer_service.html %}
 
     <section class="content-section">
         <h2>Honors and Awards</h2>
@@ -38,6 +29,17 @@ container_class: container-xl
             <li><time>2023–25:</time><span>Tongji University Outstanding Student Scholarship</span></li>
         </ul>
     </section>
-    {% include widgets/reviewer_service.html %}
+    <section class="content-section">
+        <h2>Selected Research and Publications</h2>
+        <ul class="academic-list highlight-records">
+            <li><time>2026:</time><span><strong>OV-OrthKD</strong> — co-first-author ACM MM 2026 paper on reliable supervision for open-vocabulary audio-visual event localization.</span></li>
+            <li><time>2026:</time><span><strong>OrthKD</strong> — co-first-author IJCAI 2026 paper on distillation from heterogeneous clinical models.</span></li>
+            <li><time>2026:</time><span><strong>DeepYOLO</strong> — corresponding-author IJCNN 2026 paper developed with a junior student from an idea I proposed.</span></li>
+        </ul>
+        {% assign private_pubs = site.publications | where: "anonymous", true | sort: "rank" %}
+        {% for item in private_pubs %}
+            {% include widgets/publication_item.html item=item first=forloop.first last=forloop.last hide_bottom_border=forloop.last %}
+        {% endfor %}
+    </section>
     </main>
 </div>

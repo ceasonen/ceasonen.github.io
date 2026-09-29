@@ -57,27 +57,23 @@
   \textbf{浙江大学}，人工智能学院 & 2026.06 \textendash 2026.09 \\
   \textbf{同济大学} & 2025.10 \textendash 2026.06 \\
 \end{tabularx}
-\cvsection{发表论文}
+\cvsection{论文（在审稿件以研究方向代称）}
 \begin{itemize}
   \item If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization\\
   \textbf{\textit{ACM MM 2026}}（录用）。
   \item OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment\\
   \textbf{\textit{IJCAI 2026}}（录用）。
-\end{itemize}
-\cvsection{投稿进展}
-\begin{itemize}
-  \item \textbf{AAAI 2027}：1 篇投稿进入第二阶段。
-  \item \textbf{ICLR 2027}：2 篇论文已投稿。
+  \item \textbf{生成图像评估}，\textbf{AAAI 2027}（第二阶段审稿中）。研究生成图像是否满足文本指令要求。
+  \item \textbf{模型可解释性的可靠性}，\textbf{ICLR 2027}（已投稿）。研究用于解释神经网络行为的证据是否可靠。
+  \item \textbf{多模态模型的理解与生成}，\textbf{ICLR 2027}（已投稿）。研究视觉理解学习与图像生成行为之间的联系。
 \end{itemize}
 \cvsection{科研经历}
 \researchblock{OV-OrthKD：开放词汇音视频事件定位}{ACM MM 2026，共同一作}{
-  \item 针对模态可靠性不对称：音频有语义价值但常画外音、时延或带噪，对称蒸馏会使弱音频监督扭曲时间边界。
-  \item 提出 \textbf{OV-OrthKD}：强视觉教师负责决策相关特征，弱音频教师被限制在辅助正交子空间，文本原型用于开放词汇迁移。
+  \item 提出 \textbf{OV-OrthKD}，针对音频噪声等模态不对称问题，将弱音频监督限制在辅助正交子空间；结合强视觉教师与文本原型进行开放词汇迁移。
   \item 在 OV-AVEBench 上取得 \textbf{0.816} segment AP，F1@0.5 较官方微调基线整体提升 \textbf{2.7} 个百分点、未见类别提升 \textbf{3.4} 个百分点。
 }
 \researchblock{OrthKD：临床多教师轻量部署}{IJCAI 2026，共同一作}{
-  \item 糖网筛查中弱 ViT 教师（\textbf{0.83 QWK}）在 logit 融合下会损害强 CNN 教师（\textbf{0.88 QWK}）的学生。
-  \item 提出 \textbf{OrthKD}，由强教师提供完整监督，仅提取弱教师的互补特征，并以正交约束减少教师特定表征之间的冗余。
+  \item 提出 \textbf{OrthKD}，解决糖网筛查中异构教师能力不对称的问题：由强教师提供完整监督，以正交约束提取弱教师的互补特征并减少冗余。
   \item 在 \textbf{132{,}049} 张眼底图上，\textbf{5.4M} 参数学生达到 EyePACS \textbf{0.885 QWK}，Messidor-2 零样本结果由 \textbf{0.507} 提升至 \textbf{0.728}。
 }
 \cvsection{获奖情况}
