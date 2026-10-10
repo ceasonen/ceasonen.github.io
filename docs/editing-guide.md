@@ -24,7 +24,7 @@ YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片�
 
 按会议年份放在 `site/_publications/2026/`、`2027/` 等目录。复制同类现有文件修改即可。
 
-- `title`：展示标题；在审稿件只用宽泛研究方向，不写真题目。
+- `title`：论文真实题目；当前四篇 Preprint 已获授权展示题目。
 - `date`：条目实际日期，保持现有格式。
 - `pub` / `pub_date`：会议名称 / 会议年份；年份加引号。
 - `preprint_year`：预印本年份；当前四篇匿名稿件均为 `"2026"`。网站以 Preprint 展示，原投稿会议字段保留作维护记录。
@@ -33,13 +33,13 @@ YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片�
 - `abstract`：简述；在审稿件不写具体方法或实验结果。
 - `cover`：论文主图截图路径，如 `/assets/images/covers/image-evaluation.png`。只截主图区域，避开真实题目、作者、投稿编号及页眉；不添加专门的匿名或在审说明行。
 - `authors`：公开条目的作者顺序；链接信息在 `_data/authors.yml`。
-- `anonymous: true`：在审匿名展示。不要把真实题目、作者、稿件链接写进此文件，即使页面不显示也不应公开提交。
+- `anonymous: true`：隐藏作者及稿件链接；现在仍显示真实题目。不要把未授权作者或私人稿件链接写进文件，即使页面不显示也不应公开提交。
 
 当前在审条目的格式示例（不要新增重复条目）：
 
 ```yaml
 ---
-title: Generated Image Evaluation
+title: "From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness"
 date: 2026-09-29 00:00:00 +0800
 rank: 101
 selected: true
@@ -52,7 +52,7 @@ abstract: Research on assessing whether generated images satisfy textual instruc
 ---
 ```
 
-录用后，确认可以公开再更新题目、作者和状态，移除 `anonymous: true`，调整 `rank`。同时检查简介、News 和 CV；LaTeX CV 不会自动从网站数据生成。
+录用后，确认作者与稿件可以公开再补充作者、链接和状态，移除 `anonymous: true`，调整 `rank`。同时检查简介、News 和 CV；LaTeX CV 不会自动从网站数据生成。
 
 ## News：一条一个文件
 
@@ -77,6 +77,7 @@ badge: "Accepted"
 - 原独立栏目页面仅保留旧地址跳转，使用 `site/_layouts/redirect.html`，无需重复维护内容。
 - 单页导航脚本：`site/assets/js/home.js`，负责手机菜单和当前板块提示。
 - CSS：`site/assets/css/global.css`。修改后可更新 `_config.yml` 的 `asset_version` 字符串，让浏览器重新加载；相应测试也需同步预期。
+- 字体参考 WowPage：正文优先使用系统 Arial Rounded MT Bold，后备 Comic Sans MS / Verdana；欢迎标题使用 Permanent Marker（Google Fonts）。不分发系统商业字体文件。CV 独立使用 Times New Roman，不受网站字体影响。
 
 ## 构建、预览、发布
 
@@ -105,7 +106,7 @@ cd ..
 
 ## CV 与本地材料
 
-中英文主简历均为两页：第一页为教育、Main Interests、已录用论文、预印本、实习和学术服务；第二页逐篇介绍七项研究，再列奖项与技能。成绩当前为均分 92/100、GPA 4.70（未添加满分制）、排名 2/85。中文 Main Interests 保留指定原句，英文为对应翻译。精选 GitHub 项目只放网站，不放 CV。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
+中英文主简历均为两页：第一页为教育、MAIN INTERESTS、已录用论文、预印本、实习和学术服务；第二页逐篇介绍七项研究，再列奖项与技能。成绩当前为均分 92/100、GPA 4.70（未添加满分制）、排名 2/85。中文 MAIN INTERESTS 保留指定原句，英文为对应翻译。Preprint 显示真实题目但不列作者。精选 GitHub 项目只放网站，不放 CV。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
 
 ```sh
 ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh

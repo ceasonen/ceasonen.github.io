@@ -1,5 +1,5 @@
 ---
-title: "Reliability of Neural Operator Predictions"
+title: "Allocation Entropy for Single-Pass Risk Triage in Neural Operators"
 date: 2026-10-10 00:00:00 +0800
 rank: 104
 selected: true

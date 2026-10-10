@@ -4,7 +4,7 @@ require "fileutils"
 
 root = File.expand_path("..", __dir__)
 documents = {
-  "cheng-chen-cv" => "pdflatex",
+  "cheng-chen-cv" => "xelatex",
   "cheng-chen-cv-zh" => "xelatex",
   "cheng-chen-cv-legacy" => "xelatex",
   "cheng-chen-resume-photo-zh" => "xelatex",

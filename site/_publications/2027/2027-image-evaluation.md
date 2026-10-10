@@ -1,5 +1,5 @@
 ---
-title: "Generated Image Evaluation"
+title: "From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness"
 date: 2026-09-29 00:00:00 +0800
 rank: 101
 selected: true

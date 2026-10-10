@@ -5,6 +5,12 @@ require "date"
 
 class PublicationPresentationTest < Minitest::Test
   ROOT = File.expand_path("..", __dir__)
+  PREPRINT_TITLES = [
+    "From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness",
+    "What Can Activation-Patching Evidence Establish?",
+    "Follow Me If You Can: Auditing Understanding-to-Generation Transfer",
+    "Allocation Entropy for Single-Pass Risk Triage in Neural Operators"
+  ].freeze
 
   def publications
     Dir[File.join(ROOT, "site/_publications/**/*.md")].map do |file|
@@ -12,8 +18,9 @@ class PublicationPresentationTest < Minitest::Test
     end.sort_by { |entry| entry.fetch("rank") }
   end
 
-  def test_review_entries_have_real_covers_without_identifying_metadata
+  def test_preprints_have_full_titles_and_covers_but_no_authors_or_manuscript_links
     anonymous = publications.select { |entry| entry["anonymous"] }
+    assert_equal PREPRINT_TITLES, anonymous.map { |entry| entry.fetch("title") }
     assert_equal 3, anonymous.count { |entry| entry["pub"] == "ICLR" }
     assert_equal 1, anonymous.count { |entry| entry["pub"] == "AAAI" }
     anonymous.each do |entry|

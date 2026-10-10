@@ -1,8 +1,8 @@
-% Two-page academic CV. Compile with pdfLaTeX.
+% Two-page academic CV. Compile with XeLaTeX.
 \documentclass[10pt]{article}
 \usepackage[a4paper,left=0.7in,right=0.7in,top=0.55in,bottom=0.55in]{geometry}
-\usepackage[T1]{fontenc}
-\usepackage{newtxtext,newtxmath}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
 \usepackage{enumitem,hyperref,tabularx,fancyhdr,needspace,xcolor}
 \hypersetup{hidelinks,pdftitle={Cheng Chen - Curriculum Vitae},pdfauthor={Cheng Chen}}
 \setlength{\parindent}{0pt}
@@ -33,26 +33,26 @@ Incoming Ph.D. Student, Beijing, China. Supervisor: \textbf{Prof. Kaiqi Huang}.
 B.Eng. in Communication Engineering, Shanghai, China.\\
 Average score: \textbf{92/100}\quad GPA: \textbf{4.70}\quad Major rank: \textbf{2/85}
 
-\cvsection{Main Interests}
+\cvsection{MAIN INTERESTS}
 I explore interesting approaches to solving problems in AI research simply and efficiently, including but not limited to multimodal large models, image/video generation, and embodied intelligence.
 
 \cvsection{PUBLICATIONS}
-{\small * Equal contribution; $\dagger$ corresponding author.}
+{\small * Equal contribution; † corresponding author.}
 \begin{enumerate}
 \item \textbf{Cheng Chen*}, Yi Xu*, Wenzhuo Lei.\\
 If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization. \textit{ACM MM 2026}, accepted.
 \item Yi Xu*, \textbf{Cheng Chen*}, Mufan Cao.\\
 OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment. \textit{IJCAI 2026}, accepted.
-\item Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}$^{\dagger}$.\\
+\item Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{†}.\\
 Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions. \textit{IJCNN 2026}, accepted.
 \end{enumerate}
 
 \cvsection{PREPRINTS}
 \begin{enumerate}[start=4]
-\item Generated Image Evaluation. \textit{Preprint, 2026.}
-\item Reliability in Model Interpretability. \textit{Preprint, 2026.}
-\item Understanding and Generation in Multimodal Models. \textit{Preprint, 2026.}
-\item Reliability of Neural Operator Predictions. \textit{Preprint, 2026.}
+\item From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness. \textit{Preprint, 2026.}
+\item What Can Activation-Patching Evidence Establish? \textit{Preprint, 2026.}
+\item Follow Me If You Can: Auditing Understanding-to-Generation Transfer. \textit{Preprint, 2026.}
+\item Allocation Entropy for Single-Pass Risk Triage in Neural Operators. \textit{Preprint, 2026.}
 \end{enumerate}
 
 \cvsection{RESEARCH INTERNSHIPS}

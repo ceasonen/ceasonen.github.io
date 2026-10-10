@@ -1,5 +1,5 @@
 ---
-title: "Understanding and Generation in Multimodal Models"
+title: "Follow Me If You Can: Auditing Understanding-to-Generation Transfer"
 date: 2026-09-29 00:00:00 +0800
 rank: 103
 selected: true
