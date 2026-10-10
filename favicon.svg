@@ -1,3 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32">
-  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="80">💪</text>
-</svg> 
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <title>Cheng Chen's Rubik's cube</title>
+  <g stroke="#233044" stroke-width="1.2" stroke-linejoin="round">
+    <polygon points="16,2 30,9 16,16 2,9" fill="#b6e21a"/>
+    <polygon points="2,9 16,16 16,30 2,23" fill="#1679dc"/>
+    <polygon points="16,16 30,9 30,23 16,30" fill="#ef4444"/>
+  </g>
+  <g fill="none" stroke="#233044" stroke-width="0.9" stroke-linecap="round">
+    <path d="M20.667 4.333 6.667 11.333 M25.333 6.667 11.333 13.667 M11.333 4.333 25.333 11.333 M6.667 6.667 20.667 13.667"/>
+    <path d="M6.667 11.333v14 M11.333 13.667v14 M2 13.667 16 20.667 M2 18.333 16 25.333"/>
+    <path d="M20.667 13.667v14 M25.333 11.333v14 M16 20.667 30 13.667 M16 25.333 30 18.333"/>
+  </g>
+</svg>

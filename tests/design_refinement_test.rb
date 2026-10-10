@@ -16,6 +16,20 @@ class DesignRefinementTest < Minitest::Test
     assert_equal "2026.10", items.first.at_css("time").text
   end
 
+  def test_browser_icon_is_a_vector_rubiks_cube_with_a_fresh_cache_key
+    icon = Nokogiri::XML(File.read(File.join(ROOT, "favicon.svg")))
+    icon.remove_namespaces!
+    assert_equal "0 0 32 32", icon.at_css("svg")["viewBox"]
+    assert_equal 3, icon.css("polygon").length
+    assert_equal ["#b6e21a", "#1679dc", "#ef4444"], icon.css("polygon").map { |face| face["fill"] }
+    assert_equal 3, icon.css("path").length
+    assert_empty icon.css("text, image")
+    %w[index.html 404.html].each do |page|
+      doc = Nokogiri::HTML(File.read(File.join(ROOT, page)))
+      assert_equal "/favicon.svg?v=rubik-1", doc.at_css('link[rel="icon"]')["href"], page
+    end
+  end
+
   def test_displayed_text_has_no_parenthetical_acronym_expansions
     refute_match(/\([A-Z][A-Z0-9-]{1,}\)/, home.at_css("main").text)
     refute_includes home.text, "(CRAIC)"
