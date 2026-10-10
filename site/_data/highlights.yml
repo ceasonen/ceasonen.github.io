@@ -1,17 +1,31 @@
 # Highlights 只展示奖项和学术服务；论文在 Publications，项目在 Projects。
 awards:
   - date: "2026"
-    name: National First Prize, China Robot and Artificial Intelligence Competition (CRAIC) — Team Captain
+    name: China Robot and Artificial Intelligence Competition
+    prize: National First Prize
+    role: Team Captain
+    featured: true
   - date: "2025"
-    name: National Second Prize, Global Campus AI Algorithm Elite Competition — Team Captain
+    name: Global Campus AI Algorithm Elite Competition
+    prize: National Second Prize
+    role: Team Captain
   - date: "2025"
-    name: National Third Prize, Embedded Chip & System Design Competition, FPGA Track — Team Captain
+    name: Embedded Chip and System Design Competition
+    prize: National Third Prize
+    role: Team Captain
+    detail: FPGA Track
   - date: "2025"
-    name: Shanghai Third Prize, National Mathematical Modeling Competition — Team Captain
+    name: National Mathematical Modeling Competition
+    prize: Shanghai Third Prize
+    role: Team Captain
   - date: "2025"
-    name: Shanghai Third Prize, National Statistical Modeling Competition — Team Captain
+    name: National Statistical Modeling Competition
+    prize: Shanghai Third Prize
+    role: Team Captain
   - date: "2024–25"
-    name: Provincial Second Prize, National College Student Mathematics Competition
+    name: National College Student Mathematics Competition
+    prize: Provincial Second Prize
   - date: "2023–25"
     name: Tongji University Outstanding Student Scholarship
-    detail: "Second Class; academic years 2023–2024 and 2024–2025"
+    prize: Second-Class Scholarship
+    detail: "Academic years 2023–2024 and 2024–2025"

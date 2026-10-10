@@ -14,5 +14,5 @@ authors:
   - Yi Xu*
   - Wenzhuo Lei
 links:
-  arXiv: https://arxiv.org/abs/2609.23376
+  PDF: https://arxiv.org/pdf/2609.23376
 ---

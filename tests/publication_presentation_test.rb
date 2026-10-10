@@ -11,32 +11,32 @@ class PublicationPresentationTest < Minitest::Test
     "Follow Me If You Can: Auditing Understanding-to-Generation Transfer",
     "Allocation Entropy for Single-Pass Risk Triage in Neural Operators"
   ].freeze
-  VERIFIED_ARXIV = {
-    "If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization" => "https://arxiv.org/abs/2609.23376",
-    "OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment" => "https://arxiv.org/abs/2607.25545"
+  VERIFIED_PDFS = {
+    "If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization" => "https://arxiv.org/pdf/2609.23376",
+    "OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment" => "https://arxiv.org/pdf/2607.25545",
+    "Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions" => "https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf"
   }.freeze
 
-  def test_ijcnn_has_the_verified_researchgate_link_on_home_and_cvs
-    url = "https://www.researchgate.net/publication/410953742_Enabling_Visual_Reasoning_in_Text-Only_LLMs_via_Symbolic_Scene_Descriptions"
+  def test_direct_pdf_links_are_shared_by_home_and_main_cvs
     doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
-    card = doc.css(".publication-card")[2]
-    refute_nil card.at_css(".publication-links a[href='#{url}']")
-    %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
-      assert_includes File.read(File.join(ROOT, "cv/#{name}.tex")), "\\href{#{url}}{[ResearchGate]}"
-    end
-  end
-
-  def test_verified_arxiv_links_are_shared_by_home_and_main_cvs
-    doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
-    VERIFIED_ARXIV.each do |title, url|
+    VERIFIED_PDFS.each do |title, url|
       card = doc.css(".publication-card").find { |item| item.at_css("h3").text == title }
       refute_nil card
       link = card.at_css(".publication-links a[href='#{url}']")
-      refute_nil link, "Missing arXiv link for #{title}"
-      assert_equal "[arXiv]", link.text.strip
+      refute_nil link, "Missing direct PDF link for #{title}"
+      assert_equal "[PDF]", link.text.strip
       %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
-        assert_includes File.read(File.join(ROOT, "cv/#{name}.tex")), "\\href{#{url}}{"
+        assert_includes File.read(File.join(ROOT, "cv/#{name}.tex")), "\\href{#{url}}{[PDF]}"
       end
+    end
+  end
+
+  def test_ijcnn_public_pdf_is_available_without_a_researchgate_login
+    %w[site .build/site].each do |folder|
+      path = File.join(ROOT, folder, "assets/papers/deepyolo-ijcnn-2026.pdf")
+      assert File.file?(path), "Missing public IJCNN PDF in #{folder}"
+      assert_equal "%PDF-", File.binread(path, 5)
+      assert_operator File.size(path), :<, 2_000_000
     end
   end
 

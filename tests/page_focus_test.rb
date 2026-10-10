@@ -62,13 +62,14 @@ class PageFocusTest < Minitest::Test
 
   def test_home_uses_reference_typography_without_duplicate_anchor_offsets
     css = File.read(File.join(ROOT, "site/assets/css/global.css"))
-    assert_includes css, '"Arial Rounded MT Bold"'
-    assert_includes css, '"Permanent Marker"'
+    assert_includes css, '"Nunito"'
     assert_includes css, '"Comic Sans MS"'
+    assert_includes css, '@font-face'
+    refute_includes css, '--detail-font'
     refute_match(/html\s*\{[^}]*scroll-padding-top/, css)
     assert_match(/\.home-section\s*\{[^}]*scroll-margin-top/, css)
     doc = page("index.html")
-    assert doc.at_css('link[href*="fonts.googleapis.com/css2?family=Permanent+Marker"]')
+    assert doc.at_css('link[rel="preload"][as="font"][href="/assets/fonts/nunito-latin.woff2"]')
     assert_includes doc.at_css("h1").text, "Welcome"
   end
 

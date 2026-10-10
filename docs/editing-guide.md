@@ -14,7 +14,7 @@ VS Code / Cursor：“文件 → 从文件打开工作区” → 根目录 `webs
 | `_data/research.yml` | 一行一个方向，按列表顺序显示 |
 | `_data/internships.yml` | 一段一个实习；`organization` 单位、`date` 显示日期、`datetime` 机器可读日期、`logo` 校徽 |
 | `_data/service.yml` | 在 `reviewer` 下增减会议 |
-| `_data/highlights.yml` | 首页奖项列表 |
+| `_data/highlights.yml` | 奖项卡片：`name` 比赛全称、`prize` 奖级、`date` 年份、`role` 角色、`detail` 补充、`featured` 突出展示 |
 | `_data/projects.yml` | 首页精选 GitHub 项目，Projects 板块直接展示全部条目 |
 | `_data/navigation.yml` | 导航名称、顺序；板块链接格式 `/#publications` 等 |
 
@@ -30,7 +30,7 @@ YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片�
 - `venue_short`：可选的会议简称（如 `ACM MM`、`IJCAI`），用于论文卡片展示；完整会议名称仍保存在 `pub`。
 - `preprint_year`：预印本年份；当前四篇匿名稿件均为 `"2026"`。网站以 Preprint 展示，原投稿会议字段保留作维护记录。
 - `rank`：越小越靠前；当前已录用是 1、2、3，在投是 101、102、103、104。
-- `links`：已核实的论文页面，键名可用 `arXiv` 或 `ResearchGate`；网址和题目必须匹配。当前已录用论文均已添加，核验记录见 [publication-links.md](publication-links.md)。
+- `links`：统一使用 `PDF` 键名，网址必须直接打开论文 PDF，而不是摘要页面或登录页面。当前两篇使用 arXiv `/pdf/` 地址，IJCNN 使用明确公开的 `site/assets/papers/deepyolo-ijcnn-2026.pdf`；核验记录见 [publication-links.md](publication-links.md)。不要上传 `.local/` 在审稿件。
 - 首页按 `rank` 显示全部论文，一篇只展示一次。
 - `abstract`：简述；在审稿件不写具体方法或实验结果。
 - `cover`：论文主图截图路径，如 `/assets/images/covers/image-evaluation.png`。只截主图区域，避开真实题目、作者、投稿编号及页眉；不添加专门的匿名或在审说明行。
@@ -69,7 +69,7 @@ badge: "Accepted"
 ---
 ```
 
-此处仅是格式示例，不要发布未发生的事项。首页 News 滚动区域按时间显示完整列表。
+此处仅是格式示例，不要发布未发生的事项。首页 News 滚动区域按时间显示完整列表。同一批投稿合并为一条；有汇总消息就不保留重复的单篇消息。比赛名称使用全称，不额外追加 CRAIC / CMC 等括号简写。
 
 ## 页面结构
 
@@ -79,7 +79,7 @@ badge: "Accepted"
 - 原独立栏目页面仅保留旧地址跳转，使用 `site/_layouts/redirect.html`，无需重复维护内容。
 - 单页导航脚本：`site/assets/js/home.js`，负责手机菜单和当前板块提示。
 - CSS：`site/assets/css/global.css`。修改后可更新 `_config.yml` 的 `asset_version` 字符串，让浏览器重新加载；相应测试也需同步预期。
-- 网站字体参考 WowPage：正文优先使用系统 Arial Rounded MT Bold，后备 Comic Sans MS / Verdana；欢迎标题使用 Permanent Marker（Google Fonts）。不分发系统商业字体文件。主 CV 与照片简历使用 Computer Modern Unicode（TeX Live 自带 OpenType 字体），中文保留宋体；不受网站字体影响。
+- 网站保持 WowPage 的圆润风格，全站统一使用本地托管的 Nunito 可变字体（`site/assets/fonts/nunito-latin.woff2`，约 38 KB，SIL 开源授权）；标题、正文、简介、奖项、论文、导航使用同一家族，以字号和字重区分层级，不混用其他正文或手写字体，也不依赖 Google Fonts 在线加载。主 CV 与照片简历仍使用 Computer Modern Unicode，中文保留宋体；不受网站字体影响。
 - 本轮直接以克隆的 WowPage 源码为基础调整；样式来源和改进说明见 [design-reference.md](design-reference.md)。论文区的三个筛选按钮共用同一组卡片，不需要重复维护内容；联系图标在 `site/_includes/widgets/icon.html`。
 
 ## 构建、预览、发布
@@ -92,6 +92,8 @@ ruby tools/website.rb preview
 ```
 
 浏览器打开 `http://127.0.0.1:4000`，`Ctrl+C` 停止。预览只提供构建后的公开网站和主 CV，不提供论文工作目录或私有在审稿。
+
+可选浏览器验证：启动一个专用 Chrome 调试实例（端口 9225），运行 `node tests/browser_design_test.mjs`；也可追加预览地址和调试端口。该检查核验实际渲染字体、八个屏幕宽度、七个板块锚点、论文筛选、菜单与 PDF 响应，截图保存在忽略目录 `.build/preview/`。请只连接专用测试浏览器，不连接日常浏览器。
 
 修改后在另一个终端运行 `build`，再刷新浏览器；主 CV 重新编译后也运行 `build` 即可同步预览 PDF。以后新增下载链接时需显式扩展 `tools/build_site.rb` 的公开预览文件清单。
 

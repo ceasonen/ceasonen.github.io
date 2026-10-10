@@ -14,5 +14,5 @@ authors:
   - Cheng Chen*
   - Mufan Cao
 links:
-  arXiv: https://arxiv.org/abs/2607.25545
+  PDF: https://arxiv.org/pdf/2607.25545
 ---

@@ -17,5 +17,5 @@ authors:
   - Yi Xu
   - Cheng Chen
 links:
-  ResearchGate: https://www.researchgate.net/publication/410953742_Enabling_Visual_Reasoning_in_Text-Only_LLMs_via_Symbolic_Scene_Descriptions
+  PDF: https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf
 ---

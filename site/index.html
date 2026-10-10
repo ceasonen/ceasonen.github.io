@@ -45,9 +45,17 @@ title: Homepage
 
     <section id="awards" class="home-section">
         <h2>Honors and Awards</h2>
-        <ul class="award-list">
+        <ul class="award-grid">
             {% for item in site.data.highlights.awards %}
-            <li><time>{{ item.date | escape }}</time><span>{{ item.name | escape }}{% if item.detail %}<small>{{ item.detail | escape }}</small>{% endif %}</span></li>
+            <li class="award-card{% if item.featured %} award-card--featured{% endif %}">
+                <div class="award-card-top">
+                    <span class="award-emblem">{% include widgets/icon.html name='award' %}</span>
+                    <span class="award-prize">{{ item.prize | escape }}</span>
+                    <time>{{ item.date | escape }}</time>
+                </div>
+                <h3>{{ item.name | escape }}</h3>
+                {% if item.role or item.detail %}<p class="award-meta">{% if item.role %}<span>{{ item.role | escape }}</span>{% endif %}{% if item.detail %}<span>{{ item.detail | escape }}</span>{% endif %}</p>{% endif %}
+            </li>
             {% endfor %}
         </ul>
     </section>
@@ -56,6 +64,9 @@ title: Homepage
 
     <section id="service" class="home-section">
         <h2>Academic Service</h2>
-        <p><strong>Reviewer:</strong> {{ site.data.service.reviewer | join: ', ' }}.</p>
+        <div class="service-panel">
+            <p><strong>Reviewer</strong></p>
+            <ul class="service-venues" aria-label="Conferences reviewed for">{% for venue in site.data.service.reviewer %}<li>{{ venue | escape }}</li>{% endfor %}</ul>
+        </div>
     </section>
 </main>
