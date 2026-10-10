@@ -27,6 +27,7 @@ YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片�
 - `title`：展示标题；在审稿件只用宽泛研究方向，不写真题目。
 - `date`：条目实际日期，保持现有格式。
 - `pub` / `pub_date`：会议名称 / 会议年份；年份加引号。
+- `preprint_year`：预印本年份；当前四篇匿名稿件均为 `"2026"`。网站以 Preprint 展示，原投稿会议字段保留作维护记录。
 - `rank`：越小越靠前；当前已录用是 1、2、3，在投是 101、102、103、104。
 - 首页按 `rank` 显示全部论文，一篇只展示一次。
 - `abstract`：简述；在审稿件不写具体方法或实验结果。
@@ -45,7 +46,8 @@ selected: true
 anonymous: true
 pub: AAAI
 pub_date: "2027"
-pub_last: '<span class="badge badge-info">Under Review · Phase 2</span>'
+preprint_year: "2026"
+pub_last: '<span class="badge-publication">Preprint</span>'
 abstract: Research on assessing whether generated images satisfy textual instructions.
 ---
 ```
@@ -103,7 +105,7 @@ cd ..
 
 ## CV 与本地材料
 
-中英文主简历均为两页：第一页为个人背景及科研经历，第二页为论文、奖项和技能。精选 GitHub 项目只放网站，不放 CV。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
+中英文主简历均为两页：第一页为教育、Main Interests、已录用论文、预印本、实习和学术服务；第二页逐篇介绍七项研究，再列奖项与技能。成绩当前为均分 92/100、GPA 4.70（未添加满分制）、排名 2/85。中文 Main Interests 保留指定原句，英文为对应翻译。精选 GitHub 项目只放网站，不放 CV。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
 
 ```sh
 ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh

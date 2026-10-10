@@ -17,6 +17,8 @@ class PublicationPresentationTest < Minitest::Test
     assert_equal 3, anonymous.count { |entry| entry["pub"] == "ICLR" }
     assert_equal 1, anonymous.count { |entry| entry["pub"] == "AAAI" }
     anonymous.each do |entry|
+      assert_includes entry.fetch("pub_last"), "Preprint"
+      refute_match(/Under Review|Submitted/i, entry.fetch("pub_last"))
       refute_nil entry["cover"], "Missing figure cover for #{entry['title']}"
       assert File.file?(File.join(ROOT, "site", entry.fetch("cover")))
       assert_nil entry["authors"]
@@ -36,6 +38,7 @@ class PublicationPresentationTest < Minitest::Test
           assert_equal entry.fetch("cover"), image["src"]
           assert_nil card.at_css(".fa-file-alt"), "File icon should not replace a paper figure"
           assert_nil card.at_css(".publication-authors") if entry["anonymous"]
+          assert_equal "Preprint 2026", card.at_css(".publication-venue").text.strip if entry["anonymous"]
       end
   end
 

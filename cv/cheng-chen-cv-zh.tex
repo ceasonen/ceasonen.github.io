@@ -1,45 +1,63 @@
 % 两页学术简历，使用 XeLaTeX 编译。
 \documentclass[10pt]{article}
-\usepackage[a4paper,margin=0.65in,top=0.55in,bottom=0.55in]{geometry}
+\usepackage[a4paper,left=0.7in,right=0.7in,top=0.55in,bottom=0.55in]{geometry}
 \usepackage[fontset=none]{ctex}
 \usepackage{fontspec,enumitem,hyperref,tabularx,fancyhdr,needspace,xcolor}
 \setmainfont{Times New Roman}
 \setCJKmainfont{Songti SC}[AutoFakeBold=2]
 \linespread{1}
-\definecolor{accent}{HTML}{224B8D}
 \hypersetup{hidelinks,pdftitle={陈成 - 学术简历},pdfauthor={陈成}}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{2pt}
+\setlength{\parskip}{1pt}
 \setlength{\headheight}{14pt}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyfoot[L]{\small\color{gray}陈成\quad |\quad 学术简历}
-\fancyfoot[R]{\small\thepage\ / 2}
+\fancyfoot[L]{\footnotesize\color{gray}陈成\quad |\quad 学术简历}
+\fancyfoot[R]{\footnotesize\thepage\ / 2}
 \renewcommand{\headrulewidth}{0pt}
-\setlist[itemize]{leftmargin=1.15em,itemsep=3pt,topsep=3pt,parsep=0pt,partopsep=0pt}
-\newcommand{\cvsection}[1]{\par\addvspace{12pt}\Needspace{5\baselineskip}{\large\bfseries\color{accent}#1\par}\nobreak\vspace{2pt}\hrule height 0.4pt\nobreak\vspace{6pt}}
+\setlist[itemize]{leftmargin=1.15em,itemsep=2pt,topsep=3pt,parsep=0pt,partopsep=0pt}
+\setlist[enumerate]{leftmargin=1.4em,label=\arabic*),itemsep=4pt,topsep=3pt,parsep=0pt,partopsep=0pt}
+\newcommand{\cvsection}[1]{\par\addvspace{11pt}\Needspace{4\baselineskip}{\fontsize{12}{14}\selectfont\bfseries #1\par}\nobreak\vspace{2pt}\hrule height 0.4pt\nobreak\vspace{5pt}}
+\newcommand{\researchentry}[2]{\par\addvspace{6pt}\Needspace{5\baselineskip}\textbf{#1}\hfill{\small #2}\par}
 \begin{document}
-\fontsize{10.5}{14}\selectfont
+\fontsize{10.5}{13}\selectfont
 \begin{center}
-{\LARGE\bfseries 陈成\quad Cheng Chen}\\[4pt]
-同济大学\\[3pt]
-\href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn}\quad |\quad (+86) 13587919792\\[2pt]
-\href{https://ceasonen.github.io}{ceasonen.github.io}\quad |\quad\href{https://github.com/ceasonen}{github.com/ceasonen}
+{\fontsize{21}{24}\selectfont\bfseries 陈成\quad Cheng Chen}\\[5pt]
+同济大学\quad |\quad \href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn}\quad |\quad (+86) 13587919792\\[2pt]
+\href{https://ceasonen.github.io}{个人主页}\quad |\quad \href{https://github.com/ceasonen}{GitHub}\quad |\quad \href{https://scholar.google.com/citations?user=X92zQ68AAAAJ}{Google Scholar}
 \end{center}
 
 \cvsection{教育背景}
-\textbf{中国科学院自动化研究所}\hfill 北京\\
-博士生（拟入学）\hfill 2027.09（预计）\\
-导师：\textbf{黄凯奇教授}
+\textbf{中国科学院自动化研究所}\hfill 2027.09（预计）\\
+博士生（拟入学），北京。导师：\textbf{黄凯奇教授}。
 \par\addvspace{5pt}
-\textbf{同济大学}\hfill 上海\\
-通信工程，本科在读\hfill 2023.09 - 2027.06（预计）\\
-专业排名：\textbf{2/85}
+\textbf{同济大学}\hfill 2023.09 - 2027.06（预计）\\
+通信工程，本科在读，上海。\\
+平均成绩：\textbf{92/100}\quad GPA：\textbf{4.70}\quad 专业排名：\textbf{2/85}
 
-\cvsection{研究方向}
-多模态学习与音视频理解；大语言模型与多模态大语言模型；具身智能与强化学习；高效人工智能、知识蒸馏、模型压缩与轻量化部署。
+\cvsection{Main Interests}
+探索如何用有趣的方法简洁高效地解决人工智能研究中的各种问题，包括但不限于多模态大模型，视频/图片生成，具身智能。
 
-\cvsection{实习经历}
+\cvsection{已录用论文}
+{\small * 表示共同第一作者；$\dagger$ 表示通讯作者。}
+\begin{enumerate}
+\item \textbf{Cheng Chen*}, Yi Xu*, Wenzhuo Lei.\\
+If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization. \textit{ACM MM 2026}，录用。
+\item Yi Xu*, \textbf{Cheng Chen*}, Mufan Cao.\\
+OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment. \textit{IJCAI 2026}，录用。
+\item Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}$^{\dagger}$.\\
+Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions. \textit{IJCNN 2026}，录用。
+\end{enumerate}
+
+\cvsection{预印本}
+\begin{enumerate}[start=4]
+\item 生成图像评估。\textit{Preprint, 2026.}
+\item 模型可解释性的可靠性。\textit{Preprint, 2026.}
+\item 多模态模型的理解与生成。\textit{Preprint, 2026.}
+\item 神经算子预测的可靠性。\textit{Preprint, 2026.}
+\end{enumerate}
+
+\cvsection{科研实习}
 科研实习生
 \par\begin{tabularx}{\textwidth}{@{}Xr@{}}
 \textbf{香港科技大学（广州）} & 2026.09 - 至今 \\[3pt]
@@ -50,43 +68,45 @@
 \cvsection{学术服务}
 \textbf{审稿人：}ICLR、PRCV、ICME、IJCNN、AAAI。
 
-\cvsection{代表性科研工作}
-\textbf{OV-OrthKD：开放词汇音视频事件定位}\hfill 共同第一作者
-\begin{itemize}
-\item 针对视觉与音频教师的可靠性差异，通过正交特征路径区分强视觉监督与弱音频监督，结合文本原型实现开放词汇迁移。
-\item 在 OV-AVEBench 上取得 \textbf{0.816 segment AP}；F1@0.5 较官方微调基线整体提升 \textbf{2.7} 个百分点，未见类别提升 \textbf{3.4} 个百分点。
-\end{itemize}
-\par\addvspace{4pt}
-\textbf{OrthKD：轻量化糖尿病视网膜病变筛查}\hfill 共同第一作者
-\begin{itemize}
-\item 从异构教师中提取互补知识，将弱教师监督限制在特征层，并通过正交约束减少冗余信息传递。
-\item 在 \textbf{132,049} 张眼底图像上评估；\textbf{5.4M} 参数学生模型在 EyePACS 上达到 \textbf{0.885 QWK}（二次加权 Kappa），Messidor-2 零样本 QWK 从 \textbf{0.507} 提升至 \textbf{0.728}。
-\end{itemize}
-\par\addvspace{4pt}
-\textbf{DeepYOLO：符号化视觉推理}\hfill 通讯作者\\
-提出初始研究想法，与低年级同学合作探索将图像转换为场景描述、供纯文本语言模型进行推理的路径；该同学负责实现与实验。
-
 \newpage
-\cvsection{学术论文}
-{\small * 表示共同第一作者。}
+\cvsection{科研经历}
+\researchentry{OV-OrthKD：开放词汇音视频事件定位}{ACM MM 2026；共同第一作者}
 \begin{itemize}
-\item \textbf{Cheng Chen*}, Yi Xu*, Wenzhuo Lei.\\
-If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization. \textit{ACM MM 2026}，录用。
-\item Yi Xu*, \textbf{Cheng Chen*}, Mufan Cao.\\
-OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment. \textit{IJCAI 2026}，录用。
-\item Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}.\\
-Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions. \textit{IJCNN 2026}，录用；\textbf{通讯作者}。
-\item \textbf{生成图像评估}。\textit{AAAI 2027}，第二阶段审稿中。\\
-研究生成图像是否满足文本指令要求。
-\item \textbf{模型可解释性的可靠性}。\textit{ICLR 2027}，已投稿。\\
-研究用于解释神经网络行为的证据是否可靠。
-\item \textbf{多模态模型的理解与生成}。\textit{ICLR 2027}，已投稿。\\
-研究视觉理解学习与图像生成行为之间的联系。
-\item \textbf{神经算子预测的可靠性}。\textit{ICLR 2027}，已投稿。\\
-研究如何通过单次前向计算识别不可靠的物理场预测。
+\item 针对音视频教师的可靠性差异，将强视觉监督用于定位路径，将弱音频监督限制在正交辅助路径，并结合文本原型支持未见事件类别。
+\item 在 OV-AVEBench 上取得 \textbf{0.816 分段平均精度}；F1@0.5 较官方微调基线整体提升 \textbf{2.7} 个百分点，未见类别提升 \textbf{3.4} 个百分点。
+\end{itemize}
+\researchentry{OrthKD：轻量化糖尿病视网膜病变筛查}{IJCAI 2026；共同第一作者}
+\begin{itemize}
+\item 结合强教师的完整监督与弱教师的表征迁移，通过学生投影的正交约束保留异构教师提供的互补临床信息。
+\item 基于 \textbf{132,049} 张眼底图像组成的数据集，\textbf{5.4M} 参数学生模型在 EyePACS 达到 \textbf{0.885 QWK}（二次加权 Kappa），Messidor-2 零样本 QWK 从 \textbf{0.507} 提升至 \textbf{0.728}。
+\end{itemize}
+\researchentry{DeepYOLO：基于符号化场景描述的视觉推理}{IJCNN 2026；通讯作者}
+\begin{itemize}
+\item 提出初始研究想法，与负责实现和实验的低年级同学合作，通过紧凑场景报告连接目标检测器与纯文本语言模型。
+\item 在 VQAv2 分层抽样的 \textbf{5,000 张图像子集}上取得 \textbf{42.3\%} 问答准确率，场景图序列化基线为 \textbf{38.2\%}，提示词元用量减少至基线的 \textbf{1/2.5}。
+\end{itemize}
+\researchentry{生成图像评估}{2026}
+\begin{itemize}
+\item 研究生成图像对文本指令中各项要求的满足情况，借助人工标注区分不同类型的图文忠实度错误。
+\item 在匹配条件下比较轻量评估器，分析置信度校准、图像支持区域，以及跨生成器和数据集的迁移表现。
+\end{itemize}
+\researchentry{模型可解释性的可靠性}{2026}
+\begin{itemize}
+\item 研究神经网络干预观测能够支持哪些功能性结论，分析观测输出一致但其他行为仍未确定的情况。
+\item 结合数学分析与语言模型的受控实验，考察补充测量的作用，以及模型在此前未测量响应上的失效。
+\end{itemize}
+\researchentry{多模态模型的理解与生成}{2026}
+\begin{itemize}
+\item 围绕计数与空间关系，审查统一多模态模型中的视觉理解训练是否改变图像生成行为。
+\item 通过配对模型状态与受控比较，区分问答能力提升、生成行为变化，以及目标视觉属性的迁移。
+\end{itemize}
+\researchentry{神经算子预测的可靠性}{2026}
+\begin{itemize}
+\item 研究神经算子单次预测过程中的风险指标，保持输出物理场不变，并避免额外训练独立的风险预测头。
+\item 在不同物理任务上分析评分表征对误差排序与接受决策的影响，比较不同指标的筛选质量与计算成本。
 \end{itemize}
 
-\cvsection{代表性荣誉与奖项}
+\cvsection{荣誉与奖项}
 \begin{itemize}
 \item 中国机器人及人工智能大赛，全国一等奖（2026），队长。
 \item 全球校园人工智能算法精英大赛，全国二等奖（2025），队长。

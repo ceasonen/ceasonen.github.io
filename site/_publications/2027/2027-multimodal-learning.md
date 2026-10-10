@@ -7,7 +7,8 @@ anonymous: true
 cover: /assets/images/covers/multimodal-learning.png
 pub: "ICLR"
 pub_date: "2027"
-pub_last: '<span class="badge badge-pill badge-publication badge-warning text-dark">Submitted</span>'
+preprint_year: "2026"
+pub_last: '<span class="badge-publication">Preprint</span>'
 abstract: >-
   Research on how learning in visual understanding relates to image-generation behavior in multimodal models.
 ---

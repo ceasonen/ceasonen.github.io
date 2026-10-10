@@ -58,7 +58,18 @@ class PageFocusTest < Minitest::Test
       text, status = Open3.capture2e("pdftotext", pdf, "-")
       assert status.success?, text
       %w[IJCNN AAAI ICLR].each { |term| assert_includes text, term }
-      assert_equal 3, text.scan(/ICLR 2027/).length
+      assert_equal 4, text.scan(/\bPreprint\b/i).length, name
+      assert_includes text, "92"
+      assert_includes text, "4.70"
+      refute_match(/under review|submitted|审稿中|已投稿/i, text)
+      source = File.read(File.join(ROOT, "cv/#{name}.tex"))
+      assert_equal 7, source.scan(/^\\researchentry\{/).length
+      if name.end_with?("-zh")
+        assert_includes source, "探索如何用有趣的方法简洁高效地解决人工智能研究中的各种问题，包括但不限于多模态大模型，视频/图片生成，具身智能"
+      else
+        assert_includes text, "Main Interests"
+        assert_includes text, "image/video generation"
+      end
       ["AutoSearch", "OfferPilot", "FPGA Algorithm Optimization", "Research Skills", "精选软件与工程项目"].each do |term|
         refute_includes text, term
       end

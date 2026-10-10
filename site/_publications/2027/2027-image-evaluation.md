@@ -7,7 +7,8 @@ anonymous: true
 cover: /assets/images/covers/image-evaluation.png
 pub: "AAAI"
 pub_date: "2027"
-pub_last: '<span class="badge badge-pill badge-publication badge-warning text-dark">Under Review · Phase 2</span>'
+preprint_year: "2026"
+pub_last: '<span class="badge-publication">Preprint</span>'
 abstract: >-
   Research on assessing whether generated images satisfy textual instructions, with a focus on reliable evaluation.
 ---
