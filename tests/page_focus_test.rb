@@ -48,7 +48,7 @@ class PageFocusTest < Minitest::Test
     assert_operator doc.to_html.index('id="projects"'), :<, doc.to_html.index('class="publication-item')
   end
 
-  def test_main_cvs_are_two_pages_and_include_projects_and_all_accepted_papers
+  def test_main_cvs_are_two_pages_with_papers_but_no_website_projects
     %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
       pdf = File.join(ROOT, "cv/#{name}.pdf")
       info, status = Open3.capture2e("pdfinfo", pdf)
@@ -56,7 +56,10 @@ class PageFocusTest < Minitest::Test
       assert_match(/^Pages:\s+2\s*$/, info, name)
       text, status = Open3.capture2e("pdftotext", pdf, "-")
       assert status.success?, text
-      %w[AutoSearch OfferPilot IJCNN AAAI ICLR].each { |term| assert_includes text, term }
+      %w[IJCNN AAAI ICLR].each { |term| assert_includes text, term }
+      ["AutoSearch", "OfferPilot", "FPGA Algorithm Optimization", "Research Skills", "精选软件与工程项目"].each do |term|
+        refute_includes text, term
+      end
       assert_includes text, "2/85"
     end
   end

@@ -103,7 +103,7 @@ cd ..
 
 ## CV 与本地材料
 
-中英文主简历均为两页：第一页为个人背景及论文，第二页为研究工作、项目、奖项和技能。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
+中英文主简历均为两页：第一页为个人背景及科研经历，第二页为论文、奖项和技能。精选 GitHub 项目只放网站，不放 CV。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
 
 ```sh
 ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh
