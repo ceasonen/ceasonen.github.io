@@ -15,12 +15,12 @@
 \fancyfoot[L]{\footnotesize\color{gray}Cheng Chen\quad |\quad Curriculum Vitae}
 \fancyfoot[R]{\footnotesize\thepage\ / 2}
 \renewcommand{\headrulewidth}{0pt}
-\setlist[itemize]{leftmargin=1.15em,itemsep=2pt,topsep=3pt,parsep=0pt,partopsep=0pt}
+\setlist[itemize]{leftmargin=1.15em,itemsep=1pt,topsep=2pt,parsep=0pt,partopsep=0pt}
 \setlist[enumerate]{leftmargin=1.4em,label=\arabic*),itemsep=4pt,topsep=3pt,parsep=0pt,partopsep=0pt}
 \newcommand{\cvsection}[1]{\par\addvspace{11pt}\Needspace{4\baselineskip}{\fontsize{12}{14}\selectfont\bfseries #1\par}\nobreak\vspace{2pt}\hrule height 0.4pt\nobreak\vspace{5pt}}
-\newcommand{\researchentry}[2]{\par\addvspace{6pt}\Needspace{5\baselineskip}\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1em}}r@{}}\textbf{#1} & {\small\textit{#2}}\end{tabularx}\par}
+\newcommand{\researchentry}[2]{\par\addvspace{5pt}\Needspace{5\baselineskip}\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1em}}r@{}}\textbf{#1} & {\small\textit{#2}}\end{tabularx}\par}
 \begin{document}
-\fontsize{10.5}{12.5}\selectfont
+\fontsize{10}{12}\selectfont
 \begin{center}
 {\fontsize{21}{24}\selectfont\bfseries Cheng Chen}\\[5pt]
 Tongji University\quad |\quad (+86) 13587919792\\[2pt]
@@ -28,18 +28,18 @@ Tongji University\quad |\quad (+86) 13587919792\\[2pt]
 \href{https://ceasonen.github.io}{Homepage}\quad |\quad \href{https://github.com/ceasonen}{GitHub}\quad |\quad \href{https://scholar.google.com/citations?user=X92zQ68AAAAJ}{Google Scholar}
 \end{center}
 
-\cvsection{EDUCATION}
+\cvsection{Education}
 \textbf{Institute of Automation, Chinese Academy of Sciences}\hfill Sept. 2027 (expected)\\
 Incoming Ph.D. Student, Beijing, China. Supervisor: \textbf{Prof. Kaiqi Huang}.
 \par\addvspace{5pt}
 \textbf{Tongji University}\hfill Sept. 2023 - Jun. 2027 (expected)\\
 B.Eng. in Communication Engineering, Shanghai, China.\\
-Average score: \textbf{92/100}\quad GPA: \textbf{4.70}\quad Major rank: \textbf{2/85}
+Average score: \textbf{92.02/100}\quad GPA: \textbf{4.70}\quad Major rank: \textbf{2/85}
 
-\cvsection{MAIN INTERESTS}
+\cvsection{Main interests}
 I explore interesting approaches to solving problems in AI research simply and efficiently, including but not limited to multimodal large models, image/video generation, and embodied intelligence.
 
-\cvsection{PUBLICATIONS}
+\cvsection{Publications}
 {\small * Equal contribution; † corresponding author.}
 \begin{enumerate}
 \raggedright
@@ -54,15 +54,16 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\raisebox{.5ex}{\
 \textit{IJCNN 2026}, accepted.\quad \href{https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf}{[PDF]}
 \end{enumerate}
 
-\cvsection{PREPRINTS}
+\cvsection{Preprints}
 \begin{enumerate}[start=4]
+\raggedright
 \item From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness. \textit{Preprint, 2026.}
 \item What Can Activation-Patching Evidence Establish? \textit{Preprint, 2026.}
 \item Follow Me If You Can: Auditing Understanding-to-Generation Transfer. \textit{Preprint, 2026.}
 \item Allocation Entropy for Single-Pass Risk Triage in Neural Operators. \textit{Preprint, 2026.}
 \end{enumerate}
 
-\cvsection{RESEARCH INTERNSHIPS}
+\cvsection{Research internships}
 \textit{Research Intern}
 \par\begin{tabularx}{\textwidth}{@{}Xr@{}}
 \textbf{Hong Kong University of Science and Technology (Guangzhou)} & Sept. 2026 - Present \\[3pt]
@@ -70,48 +71,48 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\raisebox{.5ex}{\
 \textbf{Tongji University} & Oct. 2025 - Jun. 2026
 \end{tabularx}
 
-\cvsection{ACADEMIC SERVICE}
+\cvsection{Academic service}
 \textbf{Reviewer:} ICLR, PRCV, ICME, IJCNN, AAAI.
 
 \newpage
-\cvsection{RESEARCH EXPERIENCE}
-\researchentry{OV-OrthKD: Open-Vocabulary Audio-Visual Event Localization}{ACM MM 2026; co-first author}
+\cvsection{Research experience}
+\researchentry{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{ACM MM 2026; co-first author}
 \begin{itemize}
 \item Routed strong visual supervision to the localization path and weaker audio supervision to an orthogonal auxiliary path; used text prototypes to support unseen event categories.
 \item Reached \textbf{0.816 segment average precision} on OV-AVEBench. F1@0.5 improved over the official fine-tuning baseline by \textbf{2.7 points} overall and \textbf{3.4 points} on unseen categories.
 \end{itemize}
-\researchentry{OrthKD: Lightweight Diabetic Retinopathy Screening}{IJCAI 2026; co-first author}
+\researchentry{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment}{IJCAI 2026; co-first author}
 \begin{itemize}
 \item Combined full supervision from a stronger teacher with representation-level transfer from a weaker teacher; orthogonal student projections preserved complementary clinical information.
 \item Used a combined pool of \textbf{132,049} retinal images. A \textbf{5.4M}-parameter student reached \textbf{0.885 QWK} (quadratic weighted kappa) on EyePACS and improved zero-shot Messidor-2 QWK from \textbf{0.507 to 0.728}.
 \end{itemize}
-\researchentry{DeepYOLO: Visual Reasoning through Symbolic Scene Descriptions}{IJCNN 2026; corresponding author}
+\researchentry{Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions}{IJCNN 2026; corresponding author}
 \begin{itemize}
 \item Proposed the initial idea and worked with a junior student, who led implementation and experiments, to connect an object detector with a text-only language model through compact scene reports.
 \item The pipeline reached \textbf{42.3\%} visual question answering accuracy on a stratified \textbf{5,000-image VQAv2 subset}, versus \textbf{38.2\%} for scene-graph serialization, using \textbf{1/2.5 as many prompt tokens as that baseline}.
 \end{itemize}
-\researchentry{Generated Image Evaluation}{2026}
+\researchentry{From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness}{2026}
 \begin{itemize}
 \item Studied whether generated images satisfy individual requirements in text prompts, using human annotations to separate different types of faithfulness errors.
 \item Compared lightweight evaluators under matched conditions; examined confidence calibration, supporting image regions, and transfer across generators and datasets.
 \end{itemize}
-\researchentry{Reliability in Model Interpretability}{2026}
+\researchentry{What Can Activation-Patching Evidence Establish?}{2026}
 \begin{itemize}
 \item Studied which functional claims observations from neural-network interventions can support, including cases where matching observed outputs leaves other behavior unresolved.
 \item Combined mathematical analysis with controlled language-model tests to examine additional measurements and failures on previously unmeasured responses.
 \end{itemize}
-\researchentry{Understanding and Generation in Multimodal Models}{2026}
+\researchentry{Follow Me If You Can: Auditing Understanding-to-Generation Transfer}{2026}
 \begin{itemize}
 \item Audited whether training for visual understanding changes image generation in unified multimodal models, focusing on counting and spatial relations.
 \item Used paired model states and controlled comparisons to distinguish gains in answering questions, effects on generation, and transfer of the requested visual attribute.
 \end{itemize}
-\researchentry{Reliability of Neural Operator Predictions}{2026}
+\researchentry{Allocation Entropy for Single-Pass Risk Triage in Neural Operators}{2026}
 \begin{itemize}
 \item Studied risk indicators available within one prediction pass of a neural operator, preserving the predicted physical field and avoiding a separate learned risk head.
 \item Tested how the scoring representation affects error ranking and acceptance decisions across physical tasks; compared screening quality and computational cost with alternative indicators.
 \end{itemize}
 
-\cvsection{AWARDS AND HONORS}
+\cvsection{Awards and honors}
 \begin{itemize}
 \item National First Prize, China Robot and Artificial Intelligence Competition (2026); Team Leader.
 \item National Second Prize, Global Campus AI Algorithm Elite Competition (2025); Team Leader.
@@ -120,7 +121,7 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\raisebox{.5ex}{\
 \item Tongji University Outstanding Student Scholarship, Second Class (2023--2024 and 2024--2025).
 \end{itemize}
 
-\cvsection{TECHNICAL SKILLS}
+\cvsection{Technical skills}
 \textbf{Programming:} Python, C/C++, Verilog.\quad\textbf{Machine learning:} PyTorch.\\
 \textbf{Tools:} Git, Linux, LaTeX, OpenAI Codex, Claude Code.\\
 \textbf{Foundations:} Machine learning, algorithms, linear algebra, probability, optimization, and signal processing.

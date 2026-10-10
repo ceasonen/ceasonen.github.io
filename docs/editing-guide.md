@@ -111,7 +111,7 @@ cd ..
 
 ## CV 与本地材料
 
-中英文主简历均为两页：第一页为教育、MAIN INTERESTS、已录用论文、预印本、实习和学术服务；第二页逐篇介绍七项研究，再列奖项与技能。成绩当前为均分 92/100、GPA 4.70（未添加满分制）、排名 2/85。中文 MAIN INTERESTS 保留指定原句，英文为对应翻译。Preprint 显示真实题目但不列作者。精选 GitHub 项目只放网站，不放 CV。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
+中英文主简历均为两页：第一页为教育、Main interests、已录用论文、预印本、实习和学术服务；第二页逐篇介绍七项研究，再列奖项与技能。成绩当前为均分 92.02/100、GPA 4.70（未添加满分制）、排名 2/85。英文小标题使用句首大写，研究经历题目与论文列表的完整正式题目一致。中文 Main interests 保留指定原句，英文为对应翻译。Preprint 显示真实题目但不列作者。精选 GitHub 项目只放网站，不放 CV。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
 
 ```sh
 ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh
