@@ -101,6 +101,14 @@ class PageFocusTest < Minitest::Test
     assert_includes doc.at_css(".introduction > p").text, "Tongji University"
   end
 
+  def test_intro_describes_current_interests_and_undergraduate_major
+    paragraphs = page("index.html").css(".introduction > p")
+    opening = paragraphs.first.text.strip
+    assert opening.start_with?("I'm an undergraduate student majoring in Communication Engineering at Tongji University")
+    interests = paragraphs.last.text.strip
+    assert_equal "My current research interests center on finding simpler, more elegant ways to improve model capabilities. Areas of interest include, but are not limited to, multimodal large language models, video and image generation, and embodied intelligence.", interests
+  end
+
   def test_main_cvs_are_two_pages_with_papers_but_no_website_projects
     %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
       pdf = File.join(ROOT, "cv/#{name}.pdf")
