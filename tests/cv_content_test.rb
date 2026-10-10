@@ -53,9 +53,18 @@ class CvContentTest < Minitest::Test
     assert_equal awards.length, chinese.scan(/^\\item /).length
     awards.each { |award| assert_includes english, award.fetch("name") }
     assert_equal 5, english.scan("Team Captain").length
-    ["全国大学生数学建模竞赛，上海市三等奖（2025），队长",
-     "全国大学生统计建模大赛，上海市三等奖（2025），队长"].each do |award|
+    ["全国大学生数学建模竞赛，省级三等奖（2025），队长",
+     "全国大学生统计建模大赛，省级三等奖（2025），队长"].each do |award|
       assert_includes chinese, award
     end
+  end
+
+  def test_cv_modeling_prizes_use_provincial_labels
+    english = source("cheng-chen-cv")
+    chinese = source("cheng-chen-cv-zh")
+    assert_equal 2, english.scan("Provincial Third Prize").length
+    assert_equal 2, chinese.scan("省级三等奖").length
+    refute_match(/Shanghai (First|Second|Third) Prize/, english)
+    refute_match(/上海市?[一二三]等奖/, chinese)
   end
 end

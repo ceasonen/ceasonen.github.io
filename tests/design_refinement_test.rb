@@ -44,4 +44,15 @@ class DesignRefinementTest < Minitest::Test
     assert File.size?(File.join(ROOT, "site/assets/fonts/nunito-latin.woff2"))
     assert_empty home.css('link[href*="fonts.googleapis.com"]')
   end
+
+  def test_modeling_awards_and_news_use_provincial_labels
+    refute_match(/Shanghai (First|Second|Third) Prize/, home.text)
+    cards = home.css(".award-card").select { |card| card.at_css("h3").text.include?("Modeling Competition") }
+    assert_equal 2, cards.length
+    cards.each { |card| assert_equal "Provincial Third Prize", card.at_css(".award-prize").text.strip }
+    %w[2025-11-20 2025-06-15].each do |date|
+      news = home.at_css(".news-list time[datetime='#{date}']").parent.text
+      assert_includes news, "Provincial Third Prize"
+    end
+  end
 end
