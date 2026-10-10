@@ -16,7 +16,11 @@ sidebar_bio: >-
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I'm <strong>Cheng Chen</strong>, a Communication Engineering undergraduate at <a href="https://www.tongji.edu.cn/" target="_blank" rel="noopener"><strong>Tongji University</strong></a>, expecting to graduate in June 2027. I am an incoming Ph.D. student at the <a href="https://www.ia.cas.cn/" target="_blank" rel="noopener"><strong>Institute of Automation, Chinese Academy of Sciences</strong></a>, with an expected start in September 2027 under the supervision of Prof. Kaiqi Huang.
+    I'm <strong>Cheng Chen</strong>, a Communication Engineering undergraduate at <a href="https://www.tongji.edu.cn/" target="_blank" rel="noopener"><strong>Tongji University</strong></a>, expecting to graduate in June 2027.
+  </p>
+  <p class="intro-phd-note">
+    <strong>Incoming Ph.D. Student</strong> at the <a href="https://www.ia.cas.cn/" target="_blank" rel="noopener">Institute of Automation, Chinese Academy of Sciences</a><br>
+    <span>Expected start: September 2027 · Supervisor: Prof. Kaiqi Huang</span>
   </p>
   <p>
     I study how models learn from complementary sources of information and how to make that knowledge useful under limited compute. My work spans knowledge distillation, audio-visual understanding, and multimodal evaluation. I also build software for literature discovery and other research workflows.

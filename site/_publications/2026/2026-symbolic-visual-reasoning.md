@@ -4,11 +4,12 @@ date:           2026-03-15 00:00:00 +0800
 rank:           3
 selected:       true
 pub:            "International Joint Conference on Neural Networks (IJCNN)"
+venue_short:    "IJCNN"
 pub_last:       '<span class="badge badge-pill badge-publication badge-info">Corresponding Author</span>'
 pub_date:       "2026"
 cover:          /assets/images/covers/symbolic_visual_reasoning.png
 abstract: >-
-  We convert images into grammar-constrained scene descriptions that can be processed by a text-only LLM. On VQAv2, DeepYOLO achieves 42.3% accuracy while using 2.5× fewer prompt tokens than scene-graph serialization.
+  We convert images into grammar-constrained scene descriptions for text-only LLMs. On a stratified 5,000-image VQAv2 subset, DeepYOLO reaches 42.3% accuracy using 1/2.5 as many prompt tokens as the scene-graph baseline.
 authors:
   - Wenzhuo Lei
   - Mufan Cao

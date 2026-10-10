@@ -4,8 +4,12 @@
     <div class="education-list">
         {% for item in site.data.profile.education %}
         <article class="education-entry">
-            <div><h3>{{ item.name | escape }}</h3><p>{{ item.position | escape }}{% if item.dept %} · {{ item.dept | escape }}{% endif %}</p></div>
-            <time>{{ item.date | escape }}</time>
+            <div class="education-icon">{% include widgets/icon.html name='scholar' %}</div>
+            <div class="experience-info">
+                <h3>{{ item.name | escape }}</h3>
+                <time>{{ item.date | escape }}</time>
+                <p>{{ item.position | escape }}{% if item.dept %} · {{ item.dept | escape }}{% endif %}</p>
+            </div>
         </article>
         {% endfor %}
     </div>
@@ -18,7 +22,7 @@
                 <img{% if item.logo_class %} class="{{ item.logo_class }}"{% endif %} src="{{ item.logo | relative_url }}" alt="{{ item.logo_alt | escape }}" width="64" height="64" loading="lazy">
             </a>
             <div class="experience-info">
-                <h3>{{ item.organization | escape }}</h3>
+                <h3><a class="organization-link" href="{{ item.url | escape }}" target="_blank" rel="noopener">{{ item.organization | escape }}</a></h3>
                 <time datetime="{{ item.datetime | escape }}">{{ item.date | escape }}</time>
                 <p>{{ item.role | escape }}</p>
             </div>

@@ -27,6 +27,7 @@ YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片�
 - `title`：论文真实题目；当前四篇 Preprint 已获授权展示题目。
 - `date`：条目实际日期，保持现有格式。
 - `pub` / `pub_date`：会议名称 / 会议年份；年份加引号。
+- `venue_short`：可选的会议简称（如 `ACM MM`、`IJCAI`），用于论文卡片展示；完整会议名称仍保存在 `pub`。
 - `preprint_year`：预印本年份；当前四篇匿名稿件均为 `"2026"`。网站以 Preprint 展示，原投稿会议字段保留作维护记录。
 - `rank`：越小越靠前；当前已录用是 1、2、3，在投是 101、102、103、104。
 - 首页按 `rank` 显示全部论文，一篇只展示一次。
@@ -78,6 +79,7 @@ badge: "Accepted"
 - 单页导航脚本：`site/assets/js/home.js`，负责手机菜单和当前板块提示。
 - CSS：`site/assets/css/global.css`。修改后可更新 `_config.yml` 的 `asset_version` 字符串，让浏览器重新加载；相应测试也需同步预期。
 - 字体参考 WowPage：正文优先使用系统 Arial Rounded MT Bold，后备 Comic Sans MS / Verdana；欢迎标题使用 Permanent Marker（Google Fonts）。不分发系统商业字体文件。CV 独立使用 Times New Roman，不受网站字体影响。
+- 本轮直接以克隆的 WowPage 源码为基础调整；样式来源和改进说明见 [design-reference.md](design-reference.md)。论文区的三个筛选按钮共用同一组卡片，不需要重复维护内容；联系图标在 `site/_includes/widgets/icon.html`。
 
 ## 构建、预览、发布
 

@@ -15,7 +15,7 @@ class InternPageTest < Minitest::Test
   def test_logo_styles_use_the_latest_cache_busted_asset_version
     config = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
 
-    assert_equal "20261010-rounded-design", config["asset_version"]
+    assert_equal "20261011-wowpage-refined", config["asset_version"]
   end
 
   def test_intern_page_contains_three_internships_without_independent_research

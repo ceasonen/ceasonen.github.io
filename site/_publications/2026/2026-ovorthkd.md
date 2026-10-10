@@ -4,6 +4,7 @@ date:           2026-07-10 00:00:00 +0800
 rank:           1
 selected:       true
 pub:            "ACM Multimedia (ACM MM)"
+venue_short:    "ACM MM"
 pub_date:       "2026"
 cover:          /assets/images/covers/mm.png
 abstract: >-

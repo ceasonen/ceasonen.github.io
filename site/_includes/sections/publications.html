@@ -1,17 +1,29 @@
 <section id="publications" class="home-section">
     <h2>Publications</h2>
-    <p class="publication-legend">* Equal contribution · Corresponding author indicated where applicable.</p>
     {% assign publications = site.publications | sort: 'rank' %}
+    {% assign preprints = publications | where: 'anonymous', true %}
+    {% assign accepted_count = publications.size | minus: preprints.size %}
+    <div class="publication-toolbar">
+        <div class="publication-filters" role="group" aria-label="Filter publications">
+            <button class="publication-filter" type="button" data-filter="all" aria-pressed="true" aria-controls="publication-list">All Research <span>{{ publications.size }}</span></button>
+            <button class="publication-filter" type="button" data-filter="accepted" aria-pressed="false" aria-controls="publication-list">Publications <span>{{ accepted_count }}</span></button>
+            <button class="publication-filter" type="button" data-filter="preprint" aria-pressed="false" aria-controls="publication-list">Preprints <span>{{ preprints.size }}</span></button>
+        </div>
+        <p class="publication-count" role="status" aria-live="polite">{{ publications.size }} papers</p>
+    </div>
+    <p class="publication-legend">* Equal contribution · Corresponding author indicated where applicable.</p>
+    <div id="publication-list">
     {% for item in publications %}
-    <article class="publication-card"{% if item.anonymous %} data-submission="{{ item.pub }}"{% endif %}>
+    <article class="publication-card" data-status="{% if item.anonymous %}preprint{% else %}accepted{% endif %}"{% if item.anonymous %} data-submission="{{ item.pub }}"{% endif %}>
         <div class="publication-media"><img class="publication-cover" src="{{ item.cover | relative_url }}" alt="Figure overview for {{ item.title | escape }}" loading="lazy"></div>
         <div class="publication-body">
             <h3>{{ item.title | escape }}</h3>
             {% unless item.anonymous %}<p class="publication-authors">{% include widgets/author_list.html authors=item.authors %}</p>{% endunless %}
-            <p class="publication-venue">{% if item.anonymous %}<strong>Preprint {{ item.preprint_year }}</strong>{% else %}<strong>{{ item.pub }} {{ item.pub_date }}</strong> {{ item.pub_last }}{% endif %}</p>
             <p class="publication-summary">{{ item.abstract | escape }}</p>
+            <p class="publication-venue">{% if item.anonymous %}<strong>Preprint {{ item.preprint_year }}</strong>{% else %}<strong>{{ item.venue_short | default: item.pub }} {{ item.pub_date }}</strong> {{ item.pub_last }}{% endif %}</p>
             {% if item.links %}<p class="publication-links">{% for link in item.links %}<a href="{% if link[1].url %}{{ link[1].url }}{% else %}{{ link[1] }}{% endif %}" target="_blank" rel="noopener">[{{ link[0] }}]</a> {% endfor %}</p>{% endif %}
         </div>
     </article>
     {% endfor %}
+    </div>
 </section>

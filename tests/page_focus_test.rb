@@ -71,6 +71,27 @@ class PageFocusTest < Minitest::Test
     assert_includes doc.at_css("h1").text, "Welcome"
   end
 
+  def test_profile_has_lightweight_accessible_contact_icons
+    doc = page("index.html")
+    assert_equal 5, doc.css(".profile-links .site-icon").length
+    doc.css(".profile-links .site-icon").each do |icon|
+      assert_equal "true", icon["aria-hidden"]
+    end
+    assert_equal "Tongji University", doc.at_css(".profile-affiliation").text
+    assert doc.at_css('.profile-links a[href="mailto:2351445@tongji.edu.cn"]')
+    assert doc.at_css(".welcome-wave")
+    assert_equal 2, doc.css(".education-entry .education-icon").length
+  end
+
+  def test_intro_separates_current_affiliation_from_future_phd
+    doc = page("index.html")
+    note = doc.at_css(".intro-phd-note")
+    refute_nil note
+    assert_includes note.text, "September 2027"
+    assert_includes note.text, "Prof. Kaiqi Huang"
+    assert_includes doc.at_css(".introduction > p").text, "Tongji University"
+  end
+
   def test_main_cvs_are_two_pages_with_papers_but_no_website_projects
     %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
       pdf = File.join(ROOT, "cv/#{name}.pdf")

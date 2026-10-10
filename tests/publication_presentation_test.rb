@@ -57,4 +57,25 @@ class PublicationPresentationTest < Minitest::Test
       refute_includes text, "Entries under review use broad topic descriptions"
     end
   end
+
+  def test_publication_filters_share_a_single_set_of_visible_paper_cards
+    doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
+    buttons = doc.css(".publication-filter")
+    assert_equal %w[all accepted preprint], buttons.map { |button| button["data-filter"] }
+    assert_equal %w[true false false], buttons.map { |button| button["aria-pressed"] }
+    assert_equal 7, doc.css(".publication-card").length
+    assert_equal 3, doc.css('.publication-card[data-status="accepted"]').length
+    assert_equal 4, doc.css('.publication-card[data-status="preprint"]').length
+    assert_empty doc.css(".publication-card[hidden]")
+    assert_equal "7 papers", doc.at_css(".publication-count").text.strip
+  end
+
+  def test_accepted_papers_use_concise_venue_labels_after_the_summary
+    doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
+    cards = doc.css('.publication-card[data-status="accepted"]')
+    assert_equal ["ACM MM 2026", "IJCAI 2026", "IJCNN 2026"], cards.map { |card| card.at_css(".publication-venue strong").text }
+    cards.each do |card|
+      assert_operator card.to_html.index('class="publication-summary"'), :<, card.to_html.index('class="publication-venue"')
+    end
+  end
 end

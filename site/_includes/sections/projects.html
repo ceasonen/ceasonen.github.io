@@ -3,7 +3,11 @@
     <div class="project-grid">
         {% for project in site.data.projects %}
         <article class="project-card">
-            <p class="project-category">{{ project.category | escape }}</p>
+            <div class="project-card-top">
+                <span class="project-icon">{% include widgets/icon.html name='code' %}</span>
+                <p class="project-category">{{ project.category | escape }}</p>
+                <a class="project-external" href="{{ project.repository | escape }}" target="_blank" rel="noopener" aria-label="Open {{ project.name | escape }} on GitHub">{% include widgets/icon.html name='arrow' %}</a>
+            </div>
             <h3><a href="{{ project.repository | escape }}" target="_blank" rel="noopener">{{ project.name | escape }}</a></h3>
             <p>{{ project.summary | escape }}</p>
             <div class="project-stack">{% for technology in project.stack %}<span>{{ technology | escape }}</span>{% endfor %}</div>
