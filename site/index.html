@@ -27,11 +27,6 @@ title: Homepage
         </div>
     </section>
 
-    <section id="service" class="home-section">
-        <h2>Academic Service</h2>
-        <p><strong>Reviewer:</strong> {{ site.data.service.reviewer | join: ', ' }}.</p>
-    </section>
-
     <section id="news" class="home-section">
         <h2>News</h2>
         {% assign news = site.news | sort: 'date' | reverse %}
@@ -57,4 +52,9 @@ title: Homepage
     </section>
 
     {% include sections/publications.html %}
+
+    <section id="service" class="home-section">
+        <h2>Academic Service</h2>
+        <p><strong>Reviewer:</strong> {{ site.data.service.reviewer | join: ', ' }}.</p>
+    </section>
 </main>

@@ -71,7 +71,7 @@ badge: "Accepted"
 
 ## 页面结构
 
-- 首页板块顺序：`site/index.html`。当前为简介及研究方向 → 学术服务 → News → 教育与实习 → 项目 → 奖项 → 论文。
+- 首页板块顺序：`site/index.html`。当前为简介及研究方向 → News → 教育与实习 → 项目 → 奖项 → 论文 → 学术服务。导航顺序与板块一致，独立的 CV 下载按钮保留在最后。
 - 页面外壳：`site/_layouts/single.html`；侧栏：`site/index.html`。
 - 教育实习 / 项目 / 论文布局：`site/_includes/sections/experience.html` / `projects.html` / `publications.html`。
 - 原独立栏目页面仅保留旧地址跳转，使用 `site/_layouts/redirect.html`，无需重复维护内容。

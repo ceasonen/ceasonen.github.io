@@ -45,8 +45,18 @@ class PageFocusTest < Minitest::Test
     assert_equal 3, doc.css("#experience .experience-card").length
     assert_equal 4, doc.css("#projects .project-card").length
     assert_equal 7, doc.css("#publications .publication-card").length
-    assert_operator doc.to_html.index('id="service"'), :<, doc.to_html.index('id="publications"')
+    assert_equal "service", doc.css("main .home-section").last["id"]
     assert_operator doc.to_html.index('id="projects"'), :<, doc.to_html.index('id="publications"')
+  end
+
+  def test_navigation_order_matches_home_sections_with_cv_last
+    doc = page("index.html")
+    sections = doc.css("main .home-section").map { |section| section["id"] }
+    links = doc.css(".section-nav a")
+    anchors = links.reject { |link| link["href"].end_with?(".pdf") }
+    assert_equal sections, anchors.map { |link| link["href"].delete_prefix("/#") }
+    assert_equal "CV", links.last.text.strip
+    assert_equal "/cv/cheng-chen-cv.pdf", links.last["href"]
   end
 
   def test_home_uses_reference_typography_without_duplicate_anchor_offsets

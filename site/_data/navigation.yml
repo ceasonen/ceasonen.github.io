@@ -9,9 +9,9 @@ pages:
   url: /#projects
 - name: Awards
   url: /#awards
-- name: Service
-  url: /#service
 - name: Publications
   url: /#publications
+- name: Service
+  url: /#service
 - name: CV
   url: /cv/cheng-chen-cv.pdf
