@@ -38,6 +38,13 @@ class CvContentTest < Minitest::Test
     end
   end
 
+  def test_main_cv_section_headings_are_slightly_larger
+    %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
+      heading = source(name).lines.find { |line| line.start_with?('\\newcommand{\\cvsection}') }
+      assert_includes heading, '\\fontsize{13}{15.5}\\selectfont\\bfseries', name
+    end
+  end
+
   def test_main_cvs_cover_every_award_shown_on_the_homepage
     awards = YAML.safe_load(File.read(File.join(ROOT, "site/_data/highlights.yml"))).fetch("awards")
     english = source("cheng-chen-cv").split('\\cvsection{Awards and honors}', 2).last.split('\\cvsection{Technical skills}', 2).first
