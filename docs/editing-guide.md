@@ -10,7 +10,7 @@ VS Code / Cursor：“文件 → 从文件打开工作区” → 根目录 `webs
 
 | 文件（相对 site/） | 修改方法 |
 | --- | --- |
-| `_data/profile.yml` | `short_bio` 首页简介；`education` 教育；联系方式和头像。当前侧栏单位固定为 Tongji University |
+| `_data/profile.yml` | `short_bio` 首页简介；`education` 教育（`detail` 显示本科排名）；`email` 校内邮箱、`additional_email` Gmail；联系方式和头像。当前侧栏单位固定为 Tongji University |
 | `_data/research.yml` | 一行一个方向，按列表顺序显示 |
 | `_data/internships.yml` | 一段一个实习；`organization` 单位、`date` 显示日期、`datetime` 机器可读日期、`logo` 校徽 |
 | `_data/service.yml` | 在 `reviewer` 下增减会议 |
@@ -30,6 +30,7 @@ YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片�
 - `venue_short`：可选的会议简称（如 `ACM MM`、`IJCAI`），用于论文卡片展示；完整会议名称仍保存在 `pub`。
 - `preprint_year`：预印本年份；当前四篇匿名稿件均为 `"2026"`。网站以 Preprint 展示，原投稿会议字段保留作维护记录。
 - `rank`：越小越靠前；当前已录用是 1、2、3，在投是 101、102、103、104。
+- `links`：已核实的论文页面，键名可用 `arXiv` 或 `ResearchGate`；网址和题目必须匹配。当前已录用论文均已添加，核验记录见 [publication-links.md](publication-links.md)。
 - 首页按 `rank` 显示全部论文，一篇只展示一次。
 - `abstract`：简述；在审稿件不写具体方法或实验结果。
 - `cover`：论文主图截图路径，如 `/assets/images/covers/image-evaluation.png`。只截主图区域，避开真实题目、作者、投稿编号及页眉；不添加专门的匿名或在审说明行。
@@ -78,7 +79,7 @@ badge: "Accepted"
 - 原独立栏目页面仅保留旧地址跳转，使用 `site/_layouts/redirect.html`，无需重复维护内容。
 - 单页导航脚本：`site/assets/js/home.js`，负责手机菜单和当前板块提示。
 - CSS：`site/assets/css/global.css`。修改后可更新 `_config.yml` 的 `asset_version` 字符串，让浏览器重新加载；相应测试也需同步预期。
-- 字体参考 WowPage：正文优先使用系统 Arial Rounded MT Bold，后备 Comic Sans MS / Verdana；欢迎标题使用 Permanent Marker（Google Fonts）。不分发系统商业字体文件。CV 独立使用 Times New Roman，不受网站字体影响。
+- 网站字体参考 WowPage：正文优先使用系统 Arial Rounded MT Bold，后备 Comic Sans MS / Verdana；欢迎标题使用 Permanent Marker（Google Fonts）。不分发系统商业字体文件。主 CV 与照片简历使用 Computer Modern Unicode（TeX Live 自带 OpenType 字体），中文保留宋体；不受网站字体影响。
 - 本轮直接以克隆的 WowPage 源码为基础调整；样式来源和改进说明见 [design-reference.md](design-reference.md)。论文区的三个筛选按钮共用同一组卡片，不需要重复维护内容；联系图标在 `site/_includes/widgets/icon.html`。
 
 ## 构建、预览、发布

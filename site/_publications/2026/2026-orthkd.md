@@ -13,4 +13,6 @@ authors:
   - Yi Xu*
   - Cheng Chen*
   - Mufan Cao
+links:
+  arXiv: https://arxiv.org/abs/2607.25545
 ---

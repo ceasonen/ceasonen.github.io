@@ -2,6 +2,7 @@ require "minitest/autorun"
 require "nokogiri"
 require "yaml"
 require "open3"
+require "rexml/document"
 
 class PageFocusTest < Minitest::Test
   ROOT = File.expand_path("..", __dir__)
@@ -73,14 +74,21 @@ class PageFocusTest < Minitest::Test
 
   def test_profile_has_lightweight_accessible_contact_icons
     doc = page("index.html")
-    assert_equal 5, doc.css(".profile-links .site-icon").length
+    assert_equal 6, doc.css(".profile-links .site-icon").length
     doc.css(".profile-links .site-icon").each do |icon|
       assert_equal "true", icon["aria-hidden"]
     end
     assert_equal "Tongji University", doc.at_css(".profile-affiliation").text
     assert doc.at_css('.profile-links a[href="mailto:2351445@tongji.edu.cn"]')
+    assert doc.at_css('.profile-links a[href="mailto:chenceason10@gmail.com"]')
     assert doc.at_css(".welcome-wave")
     assert_equal 2, doc.css(".education-entry .education-icon").length
+  end
+
+  def test_undergraduate_education_displays_major_rank
+    entry = page("index.html").css(".education-entry").find { |item| item.at_css("h3").text == "Tongji University" }
+    refute_nil entry
+    assert_includes entry.text, "Major rank: 2/85"
   end
 
   def test_intro_separates_current_affiliation_from_future_phd
@@ -120,14 +128,35 @@ class PageFocusTest < Minitest::Test
       assert_includes text, "MAIN INTERESTS"
       fonts, status = Open3.capture2e("pdffonts", pdf)
       assert status.success?, fonts
-      assert_includes fonts, "TimesNewRoman"
+      assert_includes fonts, "CMUSerif"
+      refute_includes fonts, "TimesNewRoman"
       refute_includes fonts, "CMSY", "Author symbols should use the CV text font, not a separate math font"
+      assert_includes text, "2351445@tongji.edu.cn"
+      assert_includes text, "chenceason10@gmail.com"
       [
         "From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness",
         "What Can Activation-Patching Evidence Establish?",
         "Follow Me If You Can: Auditing Understanding-to-Generation Transfer",
         "Allocation Entropy for Single-Pass Risk Triage in Neural Operators"
       ].each { |title| assert_includes source, title }
+    end
+  end
+
+  def test_main_cv_builds_have_no_overflow_or_missing_glyphs
+    %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
+      log = File.join(ROOT, ".build/cv/#{name}/build.log")
+      next unless File.file?(log)
+      refute_match(/Overfull \\hbox|Missing character|LaTeX Font Warning/, File.read(log), name)
+    end
+  end
+
+  def test_photo_cv_text_remains_inside_the_page
+    text, status = Open3.capture2e("pdftotext", "-bbox", File.join(ROOT, "cv/cheng-chen-resume-photo-zh.pdf"), "-")
+    assert status.success?
+    doc = REXML::Document.new(text)
+    REXML::XPath.match(doc, '//*[local-name()="page"]').each do |page|
+      words = REXML::XPath.match(page, './/*[local-name()="word"]')
+      assert_operator words.map { |word| word.attributes["yMax"].to_f }.max, :<=, page.attributes["height"].to_f - 12
     end
   end
 end

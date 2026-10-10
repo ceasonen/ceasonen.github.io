@@ -6,6 +6,7 @@ positions:
 - name: Tongji University
 
 email: "2351445@tongji.edu.cn"
+additional_email: "chenceason10@gmail.com"
 phone: "(+86) 13587919792"
 github: ceasonen
 gscholar: "https://scholar.google.com/citations?user=X92zQ68AAAAJ&hl=zh-CN"
@@ -36,5 +37,6 @@ education:
 - name: Tongji University
   position: B.Eng. in Communication Engineering
   date: Sep. 2023 - Jun. 2027
+  detail: "Major rank: 2/85"
 
 # 奖项统一在 highlights.yml 维护，研究方向在 research.yml，实习在 internships.yml。

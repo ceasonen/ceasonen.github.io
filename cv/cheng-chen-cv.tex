@@ -1,8 +1,10 @@
 % Two-page academic CV. Compile with XeLaTeX.
 \documentclass[10pt]{article}
+\usepackage{fix-cm}
 \usepackage[a4paper,left=0.7in,right=0.7in,top=0.55in,bottom=0.55in]{geometry}
 \usepackage{fontspec}
-\setmainfont{Times New Roman}
+% Computer Modern Unicode: the original Computer Modern design in OpenType.
+\setmainfont{cmunrm.otf}[BoldFont=cmunbx.otf,ItalicFont=cmunti.otf,BoldItalicFont=cmunbi.otf]
 \usepackage{enumitem,hyperref,tabularx,fancyhdr,needspace,xcolor}
 \hypersetup{hidelinks,pdftitle={Cheng Chen - Curriculum Vitae},pdfauthor={Cheng Chen}}
 \setlength{\parindent}{0pt}
@@ -16,12 +18,13 @@
 \setlist[itemize]{leftmargin=1.15em,itemsep=2pt,topsep=3pt,parsep=0pt,partopsep=0pt}
 \setlist[enumerate]{leftmargin=1.4em,label=\arabic*),itemsep=4pt,topsep=3pt,parsep=0pt,partopsep=0pt}
 \newcommand{\cvsection}[1]{\par\addvspace{11pt}\Needspace{4\baselineskip}{\fontsize{12}{14}\selectfont\bfseries #1\par}\nobreak\vspace{2pt}\hrule height 0.4pt\nobreak\vspace{5pt}}
-\newcommand{\researchentry}[2]{\par\addvspace{6pt}\Needspace{5\baselineskip}\textbf{#1}\hfill{\small\textit{#2}}\par}
+\newcommand{\researchentry}[2]{\par\addvspace{6pt}\Needspace{5\baselineskip}\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1em}}r@{}}\textbf{#1} & {\small\textit{#2}}\end{tabularx}\par}
 \begin{document}
 \fontsize{10.5}{12.5}\selectfont
 \begin{center}
 {\fontsize{21}{24}\selectfont\bfseries Cheng Chen}\\[5pt]
-Tongji University\quad |\quad \href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn}\quad |\quad (+86) 13587919792\\[2pt]
+Tongji University\quad |\quad (+86) 13587919792\\[2pt]
+\href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn}\quad |\quad \href{mailto:chenceason10@gmail.com}{chenceason10@gmail.com}\\[2pt]
 \href{https://ceasonen.github.io}{Homepage}\quad |\quad \href{https://github.com/ceasonen}{GitHub}\quad |\quad \href{https://scholar.google.com/citations?user=X92zQ68AAAAJ}{Google Scholar}
 \end{center}
 
@@ -39,12 +42,16 @@ I explore interesting approaches to solving problems in AI research simply and e
 \cvsection{PUBLICATIONS}
 {\small * Equal contribution; † corresponding author.}
 \begin{enumerate}
-\item \textbf{Cheng Chen*}, Yi Xu*, Wenzhuo Lei.\\
-If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization. \textit{ACM MM 2026}, accepted.
-\item Yi Xu*, \textbf{Cheng Chen*}, Mufan Cao.\\
-OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment. \textit{IJCAI 2026}, accepted.
-\item Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{†}.\\
-Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions. \textit{IJCNN 2026}, accepted.
+\raggedright
+\item \textbf{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization.}\\
+\textbf{Cheng Chen*}, Yi Xu*, Wenzhuo Lei.\\
+\textit{ACM MM 2026}, accepted.\quad \href{https://arxiv.org/abs/2609.23376}{[arXiv:2609.23376]}
+\item \textbf{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment.}\\
+Yi Xu*, \textbf{Cheng Chen*}, Mufan Cao.\\
+\textit{IJCAI 2026}, accepted.\quad \href{https://arxiv.org/abs/2607.25545}{[arXiv:2607.25545]}
+\item \textbf{Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions.}\\
+Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\raisebox{.5ex}{\scriptsize †}.\\
+\textit{IJCNN 2026}, accepted.\quad \href{https://www.researchgate.net/publication/410953742_Enabling_Visual_Reasoning_in_Text-Only_LLMs_via_Symbolic_Scene_Descriptions}{[ResearchGate]}
 \end{enumerate}
 
 \cvsection{PREPRINTS}

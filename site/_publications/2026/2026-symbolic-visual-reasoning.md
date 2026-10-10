@@ -16,4 +16,6 @@ authors:
   - Chaorong Ye
   - Yi Xu
   - Cheng Chen
+links:
+  ResearchGate: https://www.researchgate.net/publication/410953742_Enabling_Visual_Reasoning_in_Text-Only_LLMs_via_Symbolic_Scene_Descriptions
 ---

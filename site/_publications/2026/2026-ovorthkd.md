@@ -13,4 +13,6 @@ authors:
   - Cheng Chen*
   - Yi Xu*
   - Wenzhuo Lei
+links:
+  arXiv: https://arxiv.org/abs/2609.23376
 ---

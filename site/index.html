@@ -11,6 +11,7 @@ title: Homepage
     <ul class="profile-links">
         <li>{% include widgets/icon.html name='location' %}<span>{{ site.data.profile.location | escape }}</span></li>
         <li><a href="mailto:{{ site.data.profile.email | escape }}" title="{{ site.data.profile.email | escape }}">{% include widgets/icon.html name='email' %}<span>Email</span></a></li>
+        <li><a href="mailto:{{ site.data.profile.additional_email | escape }}" title="{{ site.data.profile.additional_email | escape }}">{% include widgets/icon.html name='email' %}<span>Gmail</span></a></li>
         <li><a href="{{ site.data.profile.gscholar | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='scholar' class='icon-scholar' %}<span>Google Scholar</span></a></li>
         <li><a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener">{% include widgets/icon.html name='github' class='icon-github' %}<span>GitHub</span></a></li>
         <li><a href="{{ '/cv/cheng-chen-cv.pdf' | relative_url }}" target="_blank" rel="noopener">{% include widgets/icon.html name='document' class='icon-cv' %}<span>Curriculum Vitae</span></a></li>
