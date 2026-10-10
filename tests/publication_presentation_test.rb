@@ -22,7 +22,7 @@ class PublicationPresentationTest < Minitest::Test
   end
 
   def test_all_publication_surfaces_use_the_same_order_and_images
-    %w[index.html publications.html awards.html].each do |file|
+    %w[index.html publications.html].each do |file|
       doc = Nokogiri::HTML(File.read(File.join(ROOT, file)))
       entries = file == "publications.html" ? publications : publications.select { |entry| entry["selected"] }
       %w[.publication-item.d-none .publication-item.d-md-none].each do |selector|

@@ -4,8 +4,8 @@
 
 | 文件名（省略扩展名） | 用途 |
 | --- | --- |
-| `cheng-chen-cv` | 英文主简历，网站默认 CV |
-| `cheng-chen-cv-zh` | 中文主简历 |
+| `cheng-chen-cv` | 两页英文主简历，网站默认 CV |
+| `cheng-chen-cv-zh` | 两页中文主简历 |
 | `cheng-chen-resume-photo-zh` | 中文照片版 |
 | `cheng-chen-personal-statement-zh` | 中文个人陈述 |
 | `cheng-chen-additional-profile-zh` | 其他个人经历与特长 |

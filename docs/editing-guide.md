@@ -14,7 +14,8 @@ VS Code / Cursor：“文件 → 从文件打开工作区” → 根目录 `webs
 | `_data/research.yml` | 一行一个方向，按列表顺序显示 |
 | `_data/internships.yml` | 一段一个实习；`organization` 单位、`date` 显示日期、`datetime` 机器可读日期、`logo` 校徽 |
 | `_data/service.yml` | 在 `reviewer` 下增减会议 |
-| `_data/highlights.yml` | `awards` 是奖项；Highlights 的论文卡片共用 `_publications/`，不需重复维护 |
+| `_data/highlights.yml` | Highlights 的奖项；该页不再展示论文 |
+| `_data/projects.yml` | 精选 GitHub 项目；`featured: true` 控制首页的简短预览 |
 | `_data/navigation.yml` | 导航名称、链接、顺序 |
 | `_data/display.yml` | News、精选论文等开关，以及首页新闻条数 |
 
@@ -70,7 +71,7 @@ badge: "Accepted"
 ## 页面结构
 
 - 首页板块顺序：`site/index.html`。当前为简介 → 研究方向 → 学术服务 → News → 论文。
-- Publications / Intern / Highlights 页面结构：`site/publications.html` / `intern.html` / `awards.html`。
+- Publications / Projects / Intern / Highlights 页面结构：`site/publications.html` / `projects.html` / `intern.html` / `awards.html`。
 - 公共侧栏：`site/_includes/widgets/homepage_sidebar.html`。
 - 公共论文卡片：`site/_includes/widgets/publication_item.html`。
 - CSS：`site/assets/css/global.css`。修改后可更新 `_config.yml` 的 `asset_version` 字符串，让浏览器重新加载；相应测试也需同步预期。
@@ -102,7 +103,7 @@ cd ..
 
 ## CV 与本地材料
 
-各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
+中英文主简历均为两页：第一页为个人背景及论文，第二页为研究工作、项目、奖项和技能。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
 
 ```sh
 ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh

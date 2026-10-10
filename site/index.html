@@ -33,6 +33,8 @@ container_class: container-xl
             {% endif %}
         {% endif %}
 
+        {% include widgets/project_preview.html %}
+
         {% if site.data.display.homepage.show_selected_publications %}
             {% assign pubs = site.publications | where: "selected", true | sort: "rank" %}
             {%

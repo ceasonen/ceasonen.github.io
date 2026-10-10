@@ -1,96 +1,105 @@
-% English application CV — section-grouped academic style
-% Compile with pdfLaTeX
+% Two-page academic CV. Compile with pdfLaTeX.
 \documentclass[10pt]{article}
-
-\usepackage[a4paper,left=0.55in,right=0.55in,top=0.45in,bottom=0.35in]{geometry}
-\usepackage{enumitem}
-\usepackage{hyperref}
-\usepackage{tabularx}
-
-\hypersetup{hidelinks}
-\pagestyle{empty}
+\usepackage[a4paper,margin=0.65in,top=0.55in,bottom=0.55in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{enumitem,hyperref,tabularx,fancyhdr,needspace,xcolor}
+\definecolor{accent}{HTML}{224B8D}
+\hypersetup{hidelinks,pdftitle={Cheng Chen - Curriculum Vitae},pdfauthor={Cheng Chen}}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
-\setlength{\baselineskip}{10.5pt}
-\setlist[itemize]{leftmargin=1.05em, itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt}
-
-\newcommand{\cvsection}[2][9pt]{%
-  \par\addvspace{#1}%
-  \noindent{\large\bfseries #2\par}%
-  \nobreak\vspace{2pt}%
-  \hrule height 0.4pt\relax
-  \nobreak\vspace{3pt}%
-}
-
-\newcommand{\researchblock}[3]{%
-  \textbf{#1}\par
-  #2\par
-  \begin{itemize}#3\end{itemize}%
-}
-
+\setlength{\parskip}{2pt}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\small\color{gray}Cheng Chen\quad |\quad Curriculum Vitae}
+\fancyfoot[R]{\small\thepage\ / 2}
+\renewcommand{\headrulewidth}{0pt}
+\setlist[itemize]{leftmargin=1.15em,itemsep=2pt,topsep=3pt,parsep=0pt,partopsep=0pt}
+\newcommand{\cvsection}[1]{\par\addvspace{11pt}\Needspace{5\baselineskip}{\large\bfseries\color{accent}#1\par}\nobreak\vspace{2pt}\hrule height 0.4pt\nobreak\vspace{5pt}}
+\newcommand{\project}[3]{\par\addvspace{6pt}\textbf{#1}\hfill\href{#2}{\small GitHub}\par #3\par}
 \begin{document}
-
+\fontsize{10.5}{13}\selectfont
 \begin{center}
 {\LARGE\bfseries Cheng Chen}\\[4pt]
-Email: \href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn} \textbar{}
-Tel: (+86) 13587919792 \textbar{}
-\href{https://ceasonen.github.io}{Homepage: ceasonen.github.io}
+Tongji University\\[3pt]
+\href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn}\quad |\quad (+86) 13587919792\\[2pt]
+\href{https://ceasonen.github.io}{ceasonen.github.io}\quad |\quad\href{https://github.com/ceasonen}{github.com/ceasonen}
 \end{center}
-\vspace{-2pt}
-\cvsection[2pt]{Education}
-\noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
-  \textbf{Institute of Automation, Chinese Academy of Sciences}, Beijing, China & Sept. 2027 (Expected) \\
-\end{tabularx}\vspace{-2pt}
-Incoming Ph.D. Student; Supervisor: \textbf{Prof. Kaiqi Huang}\\
-\noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
-  \textbf{Tongji University}, Shanghai, China & Sept. 2023 \textendash Jun. 2027 \\
-\end{tabularx}\vspace{-2pt}
-\textbf{B.Eng. in Communication Engineering} (expected Jun. 2027)\\
-Major Rank: \textbf{2/85}
+
+\cvsection{Education}
+\textbf{Institute of Automation, Chinese Academy of Sciences}\hfill Beijing, China\\
+Incoming Ph.D. Student\hfill Sept. 2027 (expected)\\
+Supervisor: \textbf{Prof. Kaiqi Huang}
+\par\addvspace{5pt}
+\textbf{Tongji University}\hfill Shanghai, China\\
+B.Eng. in Communication Engineering\hfill Sept. 2023 - Jun. 2027 (expected)\\
+Major rank: \textbf{2/85}
+
+\cvsection{Research Interests}
+Multimodal learning and audio-visual understanding; large language models and multimodal large language models; embodied AI and reinforcement learning; efficient AI, knowledge distillation, model compression, and lightweight deployment.
+
 \cvsection{Internships}
-\textit{Research Intern}\\
-\begin{tabularx}{\textwidth}{@{}Xr@{}}
-  \textbf{Hong Kong University of Science and Technology (Guangzhou)} & Sept. 2026 \textendash Present \\
-  \textbf{Zhejiang University} & Jun. 2026 \textendash Sept. 2026 \\
-  \textbf{Tongji University} & Oct. 2025 \textendash Jun. 2026 \\
+\textit{Research Intern}
+\par\begin{tabularx}{\textwidth}{@{}Xr@{}}
+\textbf{Hong Kong University of Science and Technology (Guangzhou)} & Sept. 2026 - Present \\[3pt]
+\textbf{Zhejiang University} & Jun. 2026 - Sept. 2026 \\[3pt]
+\textbf{Tongji University} & Oct. 2025 - Jun. 2026
 \end{tabularx}
-\cvsection{Publications}
-\textit{Under-review entries use broad research-topic descriptions.}
-\begin{itemize}
-  \item If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization\\
-  \textbf{\textit{ACM MM 2026}} (Accepted).
-  \item OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment\\
-  \textbf{\textit{IJCAI 2026}} (Accepted).
-  \item \textbf{Generated Image Evaluation} \textendash \textbf{AAAI 2027} (Under Review, Phase 2).\\
-  Assessing whether generated images satisfy textual instructions.
-  \item \textbf{Reliability in Model Interpretability} \textendash \textbf{ICLR 2027} (Submitted).\\
-  Evaluating evidence used to explain neural-network behavior.
-  \item \textbf{Understanding and Generation in Multimodal Models} \textendash \textbf{ICLR 2027} (Submitted).\\
-  Studying how visual understanding relates to image-generation behavior.
-\end{itemize}
-\cvsection{Research Experience}
-\researchblock{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{Accepted at \textbf{ACM MM 2026}, Co-first Author}{
-  \item Addressed modality reliability asymmetry in open-vocabulary audio-visual event localization, where audio is semantically useful but often off-screen, delayed, or noisy, so symmetric distillation lets weak-audio supervision distort temporal boundaries.
-  \item Proposed \textbf{OV-OrthKD}, a reliability-aware asymmetric distillation framework: a strong visual teacher supervises decision-aligned features, we restrict a weak audio teacher to an auxiliary orthogonal subspace, and a text prototype anchors open-vocabulary transfer.
-  \item On OV-AVEBench, reached \textbf{0.816} segment AP and improved F1@0.5 by \textbf{+2.7} points overall and \textbf{+3.4} on unseen categories over the official fine-tuning baseline; ablations show weak-audio feature transfer helps only when kept off the decision path.
-}
-\par\addvspace{4pt}
-\researchblock{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment}{Accepted at \textbf{IJCAI 2026}, Co-first Author}{
-  \item Addressed expertise asymmetry in multi-teacher distillation for diabetic retinopathy screening, where a weaker ViT teacher (\textbf{0.83 QWK}) harms students under standard logit fusion with a stronger CNN teacher (\textbf{0.88 QWK}).
-  \item Proposed \textbf{OrthKD}, distilling only complementary feature-level context from the weak teacher while enforcing orthogonality between teacher projections to avoid redundant knowledge transfer.
-  \item Evaluated on \textbf{132{,}049} retinal images; the \textbf{5.4M}-parameter MobileNetV3 student reached \textbf{0.885 QWK} on EyePACS and improved zero-shot Messidor-2 performance from \textbf{0.507} to \textbf{0.728 QWK} (\textbf{+22.1} percentage points).
-}
-\cvsection{Awards}
-\begin{itemize}
-  \item National First Prize, China Robot and Artificial Intelligence Competition (2026), Team Leader
-  \item National Second Prize, Global Campus Artificial Intelligence Algorithm Elite Competition (2025), Team Leader
-  \item National Third Prize, National Undergraduate Embedded Chip and System Design Contest (2025), Team Leader
-\end{itemize}
+
 \cvsection{Academic Service}
 \textbf{Reviewer:} ICLR, PRCV, ICME, IJCNN, AAAI.
-\cvsection{Skills}
-\textbf{Programming:} Python, C/C++, Verilog.\quad\textbf{Framework:} PyTorch.\\
-\textbf{Tools:} Git, Linux, LaTeX, OpenAI Codex, Claude Code.\\
-\textbf{Foundations:} Machine Learning, Algorithms, Linear Algebra, Probability, Optimization, and Signal Processing.
 
+\cvsection{Publications}
+{\small * Equal contribution.}
+\begin{itemize}
+\item \textbf{Cheng Chen*}, Yi Xu*, Wenzhuo Lei.\\
+If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization. \textit{ACM MM 2026}, accepted.
+\item Yi Xu*, \textbf{Cheng Chen*}, Mufan Cao.\\
+OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment. \textit{IJCAI 2026}, accepted.
+\item Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}.\\
+Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions. \textit{IJCNN 2026}, accepted. \textbf{Corresponding author.}
+\item \textbf{Generated Image Evaluation}. \textit{AAAI 2027}, under review, Phase 2.\\
+Assessing whether generated images satisfy textual instructions.
+\item \textbf{Reliability in Model Interpretability}. \textit{ICLR 2027}, submitted.\\
+Evaluating the evidence behind explanations of neural-network behavior.
+\item \textbf{Understanding and Generation in Multimodal Models}. \textit{ICLR 2027}, submitted.\\
+Studying how visual understanding relates to image-generation behavior.
+\end{itemize}
+
+\newpage
+\cvsection{Selected Research Experience}
+\textbf{OV-OrthKD: Open-Vocabulary Audio-Visual Event Localization}\hfill Co-first author
+\begin{itemize}
+\item Separated strong visual supervision from weaker audio supervision using orthogonal feature paths, with text prototypes for open-vocabulary transfer.
+\item Reached \textbf{0.816 segment AP} on OV-AVEBench. F1@0.5 improved by \textbf{2.7 points} overall and \textbf{3.4 points} on unseen categories over the official fine-tuning baseline.
+\end{itemize}
+\par\addvspace{4pt}
+\textbf{OrthKD: Lightweight Diabetic Retinopathy Screening}\hfill Co-first author
+\begin{itemize}
+\item Transferred complementary knowledge from heterogeneous teachers while restricting weaker-teacher supervision to features and reducing redundancy through orthogonality constraints.
+\item Evaluated on \textbf{132,049} retinal images. A \textbf{5.4M}-parameter student achieved \textbf{0.885 QWK} on EyePACS and improved zero-shot Messidor-2 QWK from \textbf{0.507 to 0.728} (quadratic weighted kappa).
+\end{itemize}
+\par\addvspace{4pt}
+\textbf{DeepYOLO: Symbolic Visual Reasoning}\hfill Corresponding author\\
+Proposed the initial research idea and collaborated with a junior student, who led implementation and experiments, on converting images into scene descriptions for text-only language models.
+
+\cvsection{Selected Software and Engineering Projects}
+\project{AutoSearch AI}{https://github.com/ceasonen/deep-research}{Citation-aware AI search with an arXiv paper radar and PDF reader. Combines a FastAPI backend with a Next.js frontend, streaming answers, and API/pipeline tests.}
+\project{OfferPilot}{https://github.com/ceasonen/offer-pilot}{Technical-interview practice prototype with multi-turn follow-up questions, per-question scoring, and structured reports. Uses TypeScript and Next.js, with configurable model providers and local session history.}
+\project{FPGA Algorithm Optimization}{https://github.com/ceasonen/hlstrack2025-44686}{Vitis HLS competition work targeting Zynq-7000 hardware. Includes C++ algorithm sources and design reports covering compression, cryptographic, and matrix-factorization kernels.}
+\project{Research Skills}{https://github.com/ceasonen/research-skills}{Curated workflow toolkit for CS/EE research, spanning experiment planning, paper implementation, evaluation, and hardware development. Includes an installable catalog and automated repository validation.}
+
+\cvsection{Selected Honors and Awards}
+\begin{itemize}
+\item National First Prize, China Robot and Artificial Intelligence Competition (2026); Team Leader.
+\item National Second Prize, Global Campus AI Algorithm Elite Competition (2025); Team Leader.
+\item National Third Prize, Embedded Chip and System Design Contest, FPGA Track (2025); Team Leader.
+\item Provincial Second Prize, National College Student Mathematics Competition (2024--2025).
+\item Tongji University Outstanding Student Scholarship, Second Class (2023--2024 and 2024--2025).
+\end{itemize}
+
+\cvsection{Technical Skills}
+\textbf{Programming:} Python, C/C++, Verilog.\quad\textbf{Machine learning:} PyTorch.\\
+\textbf{Tools:} Git, Linux, LaTeX, OpenAI Codex, Claude Code.\\
+\textbf{Foundations:} Machine learning, algorithms, linear algebra, probability, optimization, and signal processing.
 \end{document}

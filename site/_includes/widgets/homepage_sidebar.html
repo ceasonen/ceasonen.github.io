@@ -7,7 +7,9 @@
 
     <h2 class="sidebar-name">{{ site.data.profile.primary_name }}</h2>
     <p class="sidebar-affiliation">Tongji University</p>
+    {% if page.navbar_title == 'Home' %}
     <p class="sidebar-bio">{{ site.data.profile.sidebar_bio }}</p>
+    {% endif %}
 
     <ul class="sidebar-links list-unstyled">
         {% if site.data.profile.location %}

@@ -1,5 +1,59 @@
 @charset "utf-8";
 
+.project-grid,
+.project-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid #e8eaed;
+    border-top: 3px solid #224b8d;
+    border-radius: 0.25rem;
+    min-width: 0;
+}
+
+.project-card h2 {
+    font-size: 1.25rem;
+    margin: 0 0 0.85rem;
+}
+
+.project-category {
+    color: #7a8288;
+    font-size: 0.8rem;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    margin-bottom: 0.45rem;
+}
+
+.project-card ul {
+    padding-left: 1.2rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.project-card li + li { margin-top: 0.55rem; }
+.project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.5rem; }
+.project-stack span { background: #f3f5f7; color: #494e52; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.78rem; }
+.project-source { margin-top: 1rem; font-size: 0.9rem; }
+.project-preview { padding: 0.8rem 0 0.25rem; }
+.project-preview h3 { font-size: 1.1rem; }
+.project-preview p { margin-bottom: 0; color: #7a8288; }
+.section-more { margin-top: 0.8rem; }
+.award-detail { display: block; color: #7a8288; font-size: 0.9em; margin-top: 0.25rem; }
+
+@media (max-width: 991px) {
+    .project-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 575px) {
+    .project-preview-grid { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; }
+    .project-card { padding: 1.15rem; }
+}
+
 :root {
     --academic-ink: #494e52;
     --academic-muted: #7a8288;

@@ -1,94 +1,107 @@
-% 中文简历 — 紧凑学术风格
-% 使用 XeLaTeX 编译
+% 两页学术简历，使用 XeLaTeX 编译。
 \documentclass[10pt]{article}
-
-\usepackage[a4paper,left=0.55in,right=0.55in,top=0.45in,bottom=0.35in]{geometry}
+\usepackage[a4paper,margin=0.65in,top=0.55in,bottom=0.55in]{geometry}
 \usepackage[fontset=none]{ctex}
-\usepackage{fontspec}
-\usepackage{enumitem}
-\usepackage{hyperref}
-\usepackage{tabularx}
-
+\usepackage{fontspec,enumitem,hyperref,tabularx,fancyhdr,needspace,xcolor}
 \setmainfont{Times New Roman}
 \setCJKmainfont{Songti SC}[AutoFakeBold=2]
-
-\hypersetup{hidelinks}
-\pagestyle{empty}
+\linespread{1}
+\definecolor{accent}{HTML}{224B8D}
+\hypersetup{hidelinks,pdftitle={陈成 - 学术简历},pdfauthor={陈成}}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
-\setlength{\baselineskip}{10.4pt}
-\setlist[itemize]{leftmargin=1.05em, itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt}
-
-\newcommand{\cvsection}[2][9pt]{%
-  \par\addvspace{#1}%
-  \noindent{\large\bfseries #2\par}%
-  \nobreak\vspace{2pt}%
-  \hrule height 0.4pt\relax
-  \nobreak\vspace{3pt}%
-}
-
-\newcommand{\researchblock}[3]{%
-  \textbf{#1}\par
-  #2\par
-  \begin{itemize}#3\end{itemize}%
-}
-
+\setlength{\parskip}{2pt}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\small\color{gray}陈成\quad |\quad 学术简历}
+\fancyfoot[R]{\small\thepage\ / 2}
+\renewcommand{\headrulewidth}{0pt}
+\setlist[itemize]{leftmargin=1.15em,itemsep=3pt,topsep=3pt,parsep=0pt,partopsep=0pt}
+\newcommand{\cvsection}[1]{\par\addvspace{12pt}\Needspace{5\baselineskip}{\large\bfseries\color{accent}#1\par}\nobreak\vspace{2pt}\hrule height 0.4pt\nobreak\vspace{6pt}}
+\newcommand{\project}[3]{\par\addvspace{7pt}\textbf{#1}\hfill\href{#2}{\small GitHub}\par #3\par}
 \begin{document}
-
+\fontsize{10.5}{14}\selectfont
 \begin{center}
-{\LARGE\bfseries 陈成}\\[4pt]
-邮箱：\href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn} \textbar{}
-电话：(+86) 13587919792 \textbar{}
-\href{https://ceasonen.github.io}{主页：ceasonen.github.io}
+{\LARGE\bfseries 陈成\quad Cheng Chen}\\[4pt]
+同济大学\\[3pt]
+\href{mailto:2351445@tongji.edu.cn}{2351445@tongji.edu.cn}\quad |\quad (+86) 13587919792\\[2pt]
+\href{https://ceasonen.github.io}{ceasonen.github.io}\quad |\quad\href{https://github.com/ceasonen}{github.com/ceasonen}
 \end{center}
-\vspace{-2pt}
-\cvsection[2pt]{教育背景}
-\noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
-  \textbf{中国科学院自动化研究所}，北京 & 2027.09（预计） \\
-\end{tabularx}\vspace{-2pt}
-博士生（拟入学）；导师：\textbf{黄凯奇教授}\\
-\noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
-  \textbf{同济大学}，上海 & 2023.09 \textendash 2027.06 \\
-\end{tabularx}\vspace{-2pt}
-\textbf{通信工程，本科在读（预计 2027 年 6 月毕业）}\\
+
+\cvsection{教育背景}
+\textbf{中国科学院自动化研究所}\hfill 北京\\
+博士生（拟入学）\hfill 2027.09（预计）\\
+导师：\textbf{黄凯奇教授}
+\par\addvspace{5pt}
+\textbf{同济大学}\hfill 上海\\
+通信工程，本科在读\hfill 2023.09 - 2027.06（预计）\\
 专业排名：\textbf{2/85}
+
+\cvsection{研究方向}
+多模态学习与音视频理解；大语言模型与多模态大语言模型；具身智能与强化学习；高效人工智能、知识蒸馏、模型压缩与轻量化部署。
+
 \cvsection{实习经历}
-科研实习生\\
-\begin{tabularx}{\textwidth}{@{}Xr@{}}
-  \textbf{香港科技大学（广州）} & 2026.09 \textendash 至今 \\
-  \textbf{浙江大学} & 2026.06 \textendash 2026.09 \\
-  \textbf{同济大学} & 2025.10 \textendash 2026.06 \\
+科研实习生
+\par\begin{tabularx}{\textwidth}{@{}Xr@{}}
+\textbf{香港科技大学（广州）} & 2026.09 - 至今 \\[3pt]
+\textbf{浙江大学} & 2026.06 - 2026.09 \\[3pt]
+\textbf{同济大学} & 2025.10 - 2026.06
 \end{tabularx}
-\cvsection{论文（在审稿件以研究方向代称）}
-\begin{itemize}
-  \item If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization\\
-  \textbf{\textit{ACM MM 2026}}（录用）。
-  \item OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment\\
-  \textbf{\textit{IJCAI 2026}}（录用）。
-  \item \textbf{生成图像评估}，\textbf{AAAI 2027}（第二阶段审稿中）。研究生成图像是否满足文本指令要求。
-  \item \textbf{模型可解释性的可靠性}，\textbf{ICLR 2027}（已投稿）。研究用于解释神经网络行为的证据是否可靠。
-  \item \textbf{多模态模型的理解与生成}，\textbf{ICLR 2027}（已投稿）。研究视觉理解学习与图像生成行为之间的联系。
-\end{itemize}
-\cvsection{科研经历}
-\researchblock{OV-OrthKD：开放词汇音视频事件定位}{ACM MM 2026，共同一作}{
-  \item 提出 \textbf{OV-OrthKD}，针对音频噪声等模态不对称问题，将弱音频监督限制在辅助正交子空间；结合强视觉教师与文本原型进行开放词汇迁移。
-  \item 在 OV-AVEBench 上取得 \textbf{0.816} segment AP，F1@0.5 较官方微调基线整体提升 \textbf{2.7} 个百分点、未见类别提升 \textbf{3.4} 个百分点。
-}
-\par\addvspace{4pt}
-\researchblock{OrthKD：临床多教师轻量部署}{IJCAI 2026，共同一作}{
-  \item 提出 \textbf{OrthKD}，解决糖网筛查中异构教师能力不对称的问题：由强教师提供完整监督，以正交约束提取弱教师的互补特征并减少冗余。
-  \item 在 \textbf{132{,}049} 张眼底图上，\textbf{5.4M} 参数学生达到 EyePACS \textbf{0.885 QWK}，Messidor-2 零样本结果由 \textbf{0.507} 提升至 \textbf{0.728}。
-}
-\cvsection{获奖情况}
-\begin{itemize}
-  \item 中国机器人及人工智能大赛 全国一等奖（2026），队长
-  \item 全球校园人工智能算法精英大赛 全国二等奖（2025），队长
-  \item 全国大学生嵌入式芯片与系统设计竞赛 全国三等奖（2025），队长
-\end{itemize}
+
 \cvsection{学术服务}
 \textbf{审稿人：}ICLR、PRCV、ICME、IJCNN、AAAI。
+
+\cvsection{学术论文}
+{\small * 表示共同第一作者。}
+\begin{itemize}
+\item \textbf{Cheng Chen*}, Yi Xu*, Wenzhuo Lei.\\
+If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization. \textit{ACM MM 2026}，录用。
+\item Yi Xu*, \textbf{Cheng Chen*}, Mufan Cao.\\
+OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment. \textit{IJCAI 2026}，录用。
+\item Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}.\\
+Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions. \textit{IJCNN 2026}，录用；\textbf{通讯作者}。
+\item \textbf{生成图像评估}。\textit{AAAI 2027}，第二阶段审稿中。\\
+研究生成图像是否满足文本指令要求。
+\item \textbf{模型可解释性的可靠性}。\textit{ICLR 2027}，已投稿。\\
+研究用于解释神经网络行为的证据是否可靠。
+\item \textbf{多模态模型的理解与生成}。\textit{ICLR 2027}，已投稿。\\
+研究视觉理解学习与图像生成行为之间的联系。
+\end{itemize}
+
+\newpage
+\cvsection{代表性科研工作}
+\textbf{OV-OrthKD：开放词汇音视频事件定位}\hfill 共同第一作者
+\begin{itemize}
+\item 针对视觉与音频教师的可靠性差异，通过正交特征路径区分强视觉监督与弱音频监督，结合文本原型实现开放词汇迁移。
+\item 在 OV-AVEBench 上取得 \textbf{0.816 segment AP}；F1@0.5 较官方微调基线整体提升 \textbf{2.7} 个百分点，未见类别提升 \textbf{3.4} 个百分点。
+\end{itemize}
+\par\addvspace{4pt}
+\textbf{OrthKD：轻量化糖尿病视网膜病变筛查}\hfill 共同第一作者
+\begin{itemize}
+\item 从异构教师中提取互补知识，将弱教师监督限制在特征层，并通过正交约束减少冗余信息传递。
+\item 在 \textbf{132,049} 张眼底图像上评估；\textbf{5.4M} 参数学生模型在 EyePACS 上达到 \textbf{0.885 QWK}（二次加权 Kappa），Messidor-2 零样本 QWK 从 \textbf{0.507} 提升至 \textbf{0.728}。
+\end{itemize}
+\par\addvspace{4pt}
+\textbf{DeepYOLO：符号化视觉推理}\hfill 通讯作者\\
+提出初始研究想法，与低年级同学合作探索将图像转换为场景描述、供纯文本语言模型进行推理的路径；该同学负责实现与实验。
+
+\cvsection{精选软件与工程项目}
+\project{AutoSearch AI}{https://github.com/ceasonen/deep-research}{带来源引用的 AI 搜索工具，集成 arXiv 论文发现与 PDF 阅读。采用 FastAPI 后端和 Next.js 前端，提供流式回答、API 与流水线测试。}
+\project{OfferPilot}{https://github.com/ceasonen/offer-pilot}{技术面试练习原型，支持多轮追问、单题评分和结构化报告。采用 TypeScript 与 Next.js，支持模型服务配置及本地会话记录。}
+\project{FPGA 算法优化}{https://github.com/ceasonen/hlstrack2025-44686}{基于 Vitis HLS、面向 Zynq-7000 平台的竞赛工程，包含压缩、密码学和矩阵分解算法的 C++ 源码及设计报告。}
+\project{Research Skills}{https://github.com/ceasonen/research-skills}{整理与维护计算机和电子工程科研工作流工具集，覆盖实验规划、论文实现、评估与硬件开发，提供可安装目录及自动化仓库检查。}
+
+\cvsection{代表性荣誉与奖项}
+\begin{itemize}
+\item 中国机器人及人工智能大赛，全国一等奖（2026），队长。
+\item 全球校园人工智能算法精英大赛，全国二等奖（2025），队长。
+\item 全国大学生嵌入式芯片与系统设计竞赛 FPGA 赛道，全国三等奖（2025），队长。
+\item 全国大学生数学竞赛，省级二等奖（2024--2025）。
+\item 同济大学优秀学生奖学金，二等奖（2023--2024、2024--2025 学年）。
+\end{itemize}
+
 \cvsection{专业能力}
-\textbf{编程：}Python，C/C++，Verilog。\quad\textbf{框架：}PyTorch。\\
-\textbf{工具：}Git，Linux，LaTeX，OpenAI Codex，Claude Code。\\
+\textbf{编程：}Python、C/C++、Verilog。\quad\textbf{机器学习框架：}PyTorch。\\
+\textbf{工具：}Git、Linux、LaTeX、OpenAI Codex、Claude Code。\\
 \textbf{基础：}机器学习、算法、线性代数、概率论、优化方法与信号处理。
 \end{document}

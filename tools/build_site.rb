@@ -10,7 +10,7 @@ ok = system("bundle", "exec", "jekyll", "build", "--destination", destination, c
 abort "Jekyll build failed" unless ok
 
 # Never mirror the entire build tree into the repository: it may contain local files.
-pages = %w[index.html publications.html news.html intern.html awards.html 404.html]
+pages = %w[index.html publications.html projects.html news.html intern.html awards.html 404.html]
 pages += Dir.glob(File.join(destination, "[0-9][0-9][0-9][0-9]", "**", "*.html"))
             .map { |path| path.delete_prefix("#{destination}/") }
 pages.each do |relative|

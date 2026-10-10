@@ -3,6 +3,8 @@ pages:
   url: /
 - name: Publications
   url: /publications
+- name: Projects
+  url: /projects
 - name: Intern
   url: /intern
 - name: News

@@ -1,4 +1,4 @@
-# Highlights 页的奖项。论文卡片统一来自 _publications/，不在这里重复维护。
+# Highlights 只展示奖项和学术服务；论文在 Publications，项目在 Projects。
 awards:
   - date: "2026"
     name: National First Prize, China Robot and Artificial Intelligence Competition (CRAIC) — Team Captain

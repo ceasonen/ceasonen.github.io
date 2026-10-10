@@ -1,0 +1,40 @@
+# Curated from public README files and repository structure, checked 2026-10-10.
+# Keep descriptions scoped to implemented features; do not copy roadmap promises.
+- name: AutoSearch AI
+  category: Research software
+  repository: https://github.com/ceasonen/deep-research
+  summary: Citation-aware AI search with an arXiv paper radar and an integrated PDF reader.
+  stack: [Python, FastAPI, Next.js]
+  featured: true
+  details:
+    - Aggregates web sources and streams answers with source citations across quick, deep, academic, and arXiv search modes.
+    - Connects paper discovery to summaries, method and limitation notes, and a browser-based reading workflow.
+    - Includes API and pipeline tests, deployment documentation, and Docker Compose configuration.
+- name: OfferPilot
+  category: Prototype
+  repository: https://github.com/ceasonen/offer-pilot
+  summary: An AI technical-interview practice app with follow-up questions and structured feedback.
+  stack: [TypeScript, Next.js, Vercel AI SDK]
+  featured: true
+  details:
+    - Configures practice sessions by role and level, with multi-turn questioning and per-question scoring.
+    - Produces interview reports and stores session history locally in the current MVP.
+    - Supports configurable model providers, including an Ollama-based local-model option.
+- name: FPGA Algorithm Optimization
+  category: Competition engineering
+  repository: https://github.com/ceasonen/hlstrack2025-44686
+  summary: Vitis HLS algorithm optimization for the AMD FPGA competition track on a Zynq-7000 target.
+  stack: [C++, Vitis HLS, FPGA]
+  featured: false
+  details:
+    - Covers compression, cryptographic, and matrix-factorization kernels in the competition's Vitis Library workflow.
+    - Includes algorithm sources and design reports, with execution time, resource limits, and simulation correctness as engineering constraints.
+- name: Research Skills
+  category: Curated toolkit
+  repository: https://github.com/ceasonen/research-skills
+  summary: A maintained collection of reusable workflow skills for computer science and electrical engineering research.
+  stack: [Python, Markdown, GitHub Actions]
+  featured: false
+  details:
+    - Organizes installable workflows for experiment planning, paper implementation, evaluation, and hardware development.
+    - Provides a machine-readable catalog, synchronization scripts, and automated checks for structure, metadata, and publication safety.

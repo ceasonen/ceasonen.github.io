@@ -1,0 +1,13 @@
+<section id="projects" class="homepage-section">
+    <h2>Selected Projects</h2>
+    <div class="project-preview-grid">
+        {% assign featured_projects = site.data.projects | where: "featured", true %}
+        {% for project in featured_projects %}
+        <article class="project-preview">
+            <h3><a href="{{ project.repository | escape }}" target="_blank" rel="noopener">{{ project.name | escape }}</a></h3>
+            <p>{{ project.summary | escape }}</p>
+        </article>
+        {% endfor %}
+    </div>
+    <p class="section-more"><a href="{{ '/projects' | relative_url }}">Explore projects and tools <span aria-hidden="true">→</span></a></p>
+</section>

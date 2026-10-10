@@ -37,7 +37,7 @@ class MaintenanceTest < Minitest::Test
     highlights = data("highlights")
     assert_equal 7, highlights.fetch("awards").length
     assert_includes File.read(File.join(ROOT, "site/awards.html")), "site.data.highlights"
-    assert_includes File.read(File.join(ROOT, "site/awards.html")), "site.publications"
+    refute_includes File.read(File.join(ROOT, "site/awards.html")), "site.publications"
   end
 
   def test_workspace_points_to_existing_editing_folders
@@ -70,7 +70,7 @@ class MaintenanceTest < Minitest::Test
   end
 
   def test_published_pages_explain_where_to_edit
-    %w[index.html publications.html news.html intern.html awards.html 404.html].each do |page|
+    %w[index.html publications.html projects.html news.html intern.html awards.html 404.html].each do |page|
       assert File.read(File.join(ROOT, page)).start_with?("<!-- GENERATED FILE: edit site/"), "Missing source reminder in #{page}"
     end
   end

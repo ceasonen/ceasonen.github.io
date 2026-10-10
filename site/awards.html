@@ -21,16 +21,9 @@ container_class: container-xl
         <h2>Honors and Awards</h2>
         <ul class="academic-list award-records">
             {% for item in site.data.highlights.awards %}
-            <li><time>{{ item.date | escape }}:</time><span>{{ item.name | escape }}</span></li>
+            <li><time>{{ item.date | escape }}:</time><span>{{ item.name | escape }}{% if item.detail %}<span class="award-detail">{{ item.detail | escape }}</span>{% endif %}</span></li>
             {% endfor %}
         </ul>
-    </section>
-    <section class="content-section">
-        <h2>Selected Research and Publications</h2>
-        {% assign selected_pubs = site.publications | where: "selected", true | sort: "rank" %}
-        {% for item in selected_pubs %}
-            {% include widgets/publication_item.html item=item first=forloop.first last=forloop.last hide_bottom_border=forloop.last %}
-        {% endfor %}
     </section>
     </main>
 </div>
