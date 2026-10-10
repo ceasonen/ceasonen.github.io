@@ -12,7 +12,7 @@ github: ceasonen
 gscholar: "https://scholar.google.com/citations?user=X92zQ68AAAAJ&hl=zh-CN"
 location: "Shanghai, China"
 sidebar_bio: >-
-  An incoming Ph.D. student at the Institute of Automation, Chinese Academy of Sciences. Interested in multimodal learning, language models, embodied AI, and efficient AI.
+  A Communication Engineering undergraduate at Tongji University, with interests in multimodal large language models, image and video generation, and embodied AI. Incoming Ph.D. student at the Institute of Automation, Chinese Academy of Sciences, starting in September 2027.
 
 short_bio_text_justify: false
 short_bio: >-
@@ -24,7 +24,7 @@ short_bio: >-
     <span>Expected start: September 2027 · Supervisor: Prof. Kaiqi Huang</span>
   </p>
   <p>
-    My current research interests center on finding simpler, more elegant ways to improve model capabilities. Areas of interest include, but are not limited to, multimodal large language models, video and image generation, and embodied intelligence.
+    I explore simple, elegant ways to make AI models more capable. My interests span multimodal large language models, image and video generation, and embodied AI.
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg
@@ -34,9 +34,13 @@ education:
   dept: "Supervisor: Prof. Kaiqi Huang"
   position: Incoming Ph.D. Student
   date: Sep. 2027 (expected)
+  logo: /assets/images/organizations/ucas-university.png
+  logo_alt: University of Chinese Academy of Sciences emblem
 - name: Tongji University
   position: B.Eng. in Communication Engineering
   date: Sep. 2023 - Jun. 2027
   detail: "Major rank: 2/85"
+  logo: /assets/images/organizations/tongji-university.png
+  logo_alt: Tongji University emblem
 
-# 奖项统一在 highlights.yml 维护，研究方向在 research.yml，实习在 internships.yml。
+# 研究兴趣统一在本文件 short_bio 中维护，不另加方向列表；奖项在 highlights.yml，实习在 internships.yml。

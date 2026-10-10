@@ -10,8 +10,7 @@ VS Code / Cursor：“文件 → 从文件打开工作区” → 根目录 `webs
 
 | 文件（相对 site/） | 修改方法 |
 | --- | --- |
-| `_data/profile.yml` | `short_bio` 首页简介；`education` 教育（`detail` 显示本科排名）；`email` 校内邮箱、`additional_email` Gmail；联系方式和头像。当前侧栏单位固定为 Tongji University |
-| `_data/research.yml` | 一行一个方向，按列表顺序显示 |
+| `_data/profile.yml` | `short_bio` 首页简介和唯一一段研究兴趣；`education` 教育（`detail` 显示本科排名，`logo` 和 `logo_alt` 指定校徽与说明）；`email` 校内邮箱、`additional_email` Gmail；联系方式和头像。当前侧栏单位固定为 Tongji University |
 | `_data/internships.yml` | 一段一个实习；`organization` 单位、`date` 显示日期、`datetime` 机器可读日期、`logo` 校徽 |
 | `_data/service.yml` | 在 `reviewer` 下增减会议 |
 | `_data/highlights.yml` | 奖项卡片：`name` 比赛全称、`prize` 奖级、`date` 年份、`role` 角色、`detail` 补充、`featured` 突出展示 |
@@ -111,7 +110,7 @@ cd ..
 
 ## CV 与本地材料
 
-中英文主简历均为两页：第一页为教育、Main interests、已录用论文、预印本、实习和学术服务；第二页逐篇介绍七项研究，再列奖项与技能。成绩当前为均分 92.02/100、GPA 4.70（未添加满分制）、排名 2/85。英文小标题使用句首大写，研究经历题目与论文列表的完整正式题目一致。中文 Main interests 保留指定原句，英文为对应翻译。Preprint 显示真实题目但不列作者。精选 GitHub 项目只放网站，不放 CV。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
+中英文主简历均为两页：第一页为教育、Main interests、已录用论文、预印本、实习和学术服务；第二页逐篇介绍七项研究，再列奖项与技能。成绩当前为均分 92.02/100、GPA 4.70（未添加满分制）、排名 2/85。英文小标题使用句首大写，研究经历题目与论文列表的完整正式题目一致。英文 Main interests 与首页简介的研究兴趣段落一致；中文主简历与照片版同步对应的精简中文表述。首页不再另列重复的方向列表，`_data/research.yml` 只保留给旧模板参考。Preprint 显示真实题目但不列作者。精选 GitHub 项目只放网站，不放 CV。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
 
 ```sh
 ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh

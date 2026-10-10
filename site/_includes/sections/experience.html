@@ -4,7 +4,9 @@
     <div class="education-list">
         {% for item in site.data.profile.education %}
         <article class="education-entry">
-            <div class="education-icon">{% include widgets/icon.html name='scholar' %}</div>
+            <div class="education-icon">
+                <img src="{{ item.logo | relative_url }}" alt="{{ item.logo_alt | escape }}" width="60" height="60" loading="lazy">
+            </div>
             <div class="experience-info">
                 <h3>{{ item.name | escape }}</h3>
                 <time>{{ item.date | escape }}</time>

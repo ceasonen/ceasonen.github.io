@@ -14,7 +14,7 @@
 | 想改什么 | 只改这里 |
 | --- | --- |
 | 身份、联系方式、简介、教育 | [site/_data/profile.yml](site/_data/profile.yml) |
-| Research Areas | [site/_data/research.yml](site/_data/research.yml) |
+| Research interests（简介中的一段，不另列重复列表） | [site/_data/profile.yml](site/_data/profile.yml) 的 `short_bio` |
 | Intern 经历、日期、校徽 | [site/_data/internships.yml](site/_data/internships.yml) |
 | Reviewer | [site/_data/service.yml](site/_data/service.yml) |
 | Highlights 奖项 | [site/_data/highlights.yml](site/_data/highlights.yml) |

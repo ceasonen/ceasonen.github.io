@@ -21,11 +21,17 @@ class CvContentTest < Minitest::Test
     profile = YAML.safe_load(File.read(File.join(ROOT, "site/_data/profile.yml")))
     interests = profile.fetch("short_bio").scan(/<p>(.*?)<\/p>/m).last.first.strip
     assert_includes source("cheng-chen-cv"), interests
-    chinese = "目前主要研究如何用更简洁、优雅的方法提升模型能力，关注方向包括但不限于多模态大语言模型、视频与图像生成，以及具身智能。"
+    chinese = "探索以简洁、优雅的方法提升模型能力，关注多模态大语言模型、图像与视频生成及具身智能。"
     %w[cheng-chen-cv-zh cheng-chen-resume-photo-zh].each do |name|
       assert_includes source(name), chinese, name
     end
     assert_includes source("cheng-chen-resume-photo-zh"), "目前为同济大学通信工程本科生，预计于 2027 年 9 月在黄凯奇老师指导下攻读博士。"
+  end
+
+  def test_photo_cv_uses_the_correct_undergraduate_graduation_year
+    photo = source("cheng-chen-resume-photo-zh")
+    assert_includes photo, "2023.09 至 2027.06（预计）"
+    refute_includes photo, "2023.09 至 2026.06（预计）"
   end
 
   def test_all_research_entries_match_the_full_publication_titles

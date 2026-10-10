@@ -106,7 +106,8 @@ class PageFocusTest < Minitest::Test
     opening = paragraphs.first.text.strip
     assert opening.start_with?("I'm an undergraduate student majoring in Communication Engineering at Tongji University")
     interests = paragraphs.last.text.strip
-    assert_equal "My current research interests center on finding simpler, more elegant ways to improve model capabilities. Areas of interest include, but are not limited to, multimodal large language models, video and image generation, and embodied intelligence.", interests
+    assert_equal "I explore simple, elegant ways to make AI models more capable. My interests span multimodal large language models, image and video generation, and embodied AI.", interests
+    assert_empty page("index.html").css(".research-interests")
   end
 
   def test_main_cvs_are_two_pages_with_papers_but_no_website_projects
@@ -125,10 +126,10 @@ class PageFocusTest < Minitest::Test
       source = File.read(File.join(ROOT, "cv/#{name}.tex"))
       assert_equal 7, source.scan(/^\\researchentry\{/).length
       if name.end_with?("-zh")
-        assert_includes source, "目前主要研究如何用更简洁、优雅的方法提升模型能力"
+        assert_includes source, "探索以简洁、优雅的方法提升模型能力"
       else
         assert_includes text, "Main interests"
-        assert_includes text, "video and image generation"
+        assert_includes text, "image and video generation"
       end
       ["AutoSearch", "OfferPilot", "FPGA Algorithm Optimization", "Research Skills", "精选软件与工程项目"].each do |term|
         refute_includes text, term

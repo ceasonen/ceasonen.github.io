@@ -1,4 +1,4 @@
-# 主页 Research Areas，按下面顺序显示。添加或修改一行即可。
+# 历史方向列表，仅供旧模板使用。当前主页不再展示列表，研究兴趣统一修改 profile.yml 的 short_bio。
 - Multimodal learning and audio-visual understanding
 - Large language models and multimodal large language models
 - Embodied AI and reinforcement learning

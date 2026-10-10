@@ -75,6 +75,17 @@ try {
   }
   console.log('PASS: no horizontal overflow at eight viewport widths');
 
+  await navigate('experience');
+  await waitFor(`[...document.querySelectorAll('.education-icon img')].length === 2 && [...document.querySelectorAll('.education-icon img')].every(img => img.complete && img.naturalWidth > 0)`);
+  const emblems = await evaluate(`[...document.querySelectorAll('.education-icon img')].map(img => ({width:img.getBoundingClientRect().width,height:img.getBoundingClientRect().height,fit:getComputedStyle(img).objectFit}))`);
+  assert.equal(emblems[0].width, emblems[1].width);
+  for (const emblem of emblems) {
+    assert.equal(emblem.width, emblem.height);
+    assert.equal(emblem.fit, 'contain');
+  }
+  assert.equal(await evaluate(`document.querySelectorAll('.research-interests').length`), 0);
+  console.log('PASS: both education emblems load at matching square sizes, with no duplicate interest list');
+
   for (const [filter, count] of [['accepted',3], ['preprint',4], ['all',7]]) {
     await evaluate(`document.querySelector('[data-filter="${filter}"]').click()`);
     assert.equal(await evaluate(`document.querySelectorAll('.publication-card:not([hidden])').length`), count);

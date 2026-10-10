@@ -1,5 +1,6 @@
 require "minitest/autorun"
 require "yaml"
+require "nokogiri"
 
 class InternPageTest < Minitest::Test
   ROOT = File.expand_path("../site", __dir__)
@@ -15,7 +16,7 @@ class InternPageTest < Minitest::Test
   def test_logo_styles_use_the_latest_cache_busted_asset_version
     config = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
 
-    assert_equal "20261011-unified-editorial", config["asset_version"]
+    assert_equal "20261011-education-interests", config["asset_version"]
   end
 
   def test_intern_page_contains_three_internships_without_independent_research
@@ -33,7 +34,7 @@ class InternPageTest < Minitest::Test
     assert_includes page, "Hong Kong University of Science and Technology (Guangzhou)"
     refute_includes page, "The Hong Kong"
     assert_includes page, "Sep. 2026 – Present"
-    assert_equal 1, page.scan("/assets/images/organizations/tongji-university.png").length
+    assert_equal 1, Nokogiri::HTML(page).css('.experience-card img[src="/assets/images/organizations/tongji-university.png"]').length
     assert_includes page, "/assets/images/organizations/zju-university.png"
     assert_includes page, "/assets/images/organizations/hkust-gz-icon.png"
     assert_includes page, "intern-logo-hkust"

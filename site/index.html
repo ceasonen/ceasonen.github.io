@@ -22,10 +22,6 @@ title: Homepage
     <section id="about" class="home-section introduction">
         <h1>Hi there <span class="welcome-wave" aria-hidden="true">👋</span> Welcome to my homepage!</h1>
         {{ site.data.profile.short_bio }}
-        <div class="research-interests">
-            <h3>Research Interests</h3>
-            <ul>{% for area in site.data.research %}<li>{{ area | escape }}</li>{% endfor %}</ul>
-        </div>
     </section>
 
     <section id="news" class="home-section">

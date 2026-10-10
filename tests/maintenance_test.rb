@@ -13,13 +13,14 @@ class MaintenanceTest < Minitest::Test
     YAML.safe_load(File.read(path))
   end
 
-  def test_research_areas_have_one_editing_location
-    areas = data("research")
-    assert_equal 4, areas.length
+  def test_research_interests_have_one_editing_location_without_a_duplicate_list
+    interests = data("profile").fetch("short_bio").scan(/<p>(.*?)<\/p>/m).last.first.strip
     template = File.read(File.join(ROOT, "site/index.html"))
-    assert_includes template, "site.data.research"
+    assert_includes template, "site.data.profile.short_bio"
+    refute_includes template, "site.data.research"
     page = File.read(File.join(ROOT, "index.html"))
-    areas.each { |area| assert_includes page, area }
+    assert_equal 1, page.scan(Regexp.new(Regexp.escape(interests))).length
+    refute_includes page, 'class="research-interests"'
   end
 
   def test_internships_are_data_driven
