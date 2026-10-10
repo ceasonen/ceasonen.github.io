@@ -125,10 +125,10 @@ class PageFocusTest < Minitest::Test
       source = File.read(File.join(ROOT, "cv/#{name}.tex"))
       assert_equal 7, source.scan(/^\\researchentry\{/).length
       if name.end_with?("-zh")
-        assert_includes source, "探索如何用有趣的方法简洁高效地解决人工智能研究中的各种问题，包括但不限于多模态大模型，视频/图片生成，具身智能"
+        assert_includes source, "目前主要研究如何用更简洁、优雅的方法提升模型能力"
       else
         assert_includes text, "Main interests"
-        assert_includes text, "image/video generation"
+        assert_includes text, "video and image generation"
       end
       ["AutoSearch", "OfferPilot", "FPGA Algorithm Optimization", "Research Skills", "精选软件与工程项目"].each do |term|
         refute_includes text, term
