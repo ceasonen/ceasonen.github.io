@@ -38,6 +38,14 @@ const screenshot = async label => fs.writeFile(`.build/preview/refined-${label}.
 const navigate = async section => {
   await evaluate(`document.querySelector('.section-nav a[href="/#${section}"]').click()`);
   await waitFor(`location.hash === '#${section}' && document.querySelector('.section-nav a[aria-current]')?.getAttribute('href') === '/#${section}' && (Math.abs(document.querySelector('#${section}').getBoundingClientRect().top - (document.querySelector('.site-header').getBoundingClientRect().bottom + 24)) < 4 || Math.ceil(scrollY + innerHeight) >= document.documentElement.scrollHeight - 3)`);
+  await evaluate(`new Promise(resolve => {
+    let position = scrollY, stableSince = performance.now();
+    const tick = () => {
+      if (Math.abs(scrollY - position) > .1) { position = scrollY; stableSince = performance.now(); }
+      if (performance.now() - stableSince > 180) return resolve();
+      setTimeout(tick, 60);
+    }; tick();
+  })`);
 };
 
 try {
@@ -98,6 +106,13 @@ try {
   assert(pdf.type.includes('application/pdf'));
   assert.equal(pdf.signature, '%PDF-');
   console.log('PASS: keyboard menu, reduced motion and direct IJCNN PDF response');
+  await send('Emulation.setEmulatedMedia', {features: [{name: 'prefers-reduced-motion', value: 'no-preference'}]});
+  for (const section of ['about','publications','service']) await navigate(section);
+  console.log('PASS: normal-motion anchor navigation, including the last section');
+} catch (error) {
+  console.log('Failure layout', await evaluate(`({width:innerWidth,height:innerHeight,scroll:scrollY,page:document.documentElement.scrollHeight,hash:location.hash,service:document.querySelector('#service').getBoundingClientRect().top,active:document.querySelector('[aria-current]')?.textContent,visualHeight:visualViewport.height,scale:visualViewport.scale})`));
+  await screenshot('failure');
+  throw error;
 } finally {
   ws.close();
 }
