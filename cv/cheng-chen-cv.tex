@@ -19,6 +19,7 @@
 \setlist[enumerate]{leftmargin=1.4em,label=\arabic*),itemsep=4pt,topsep=3pt,parsep=0pt,partopsep=0pt}
 \newcommand{\cvsection}[1]{\par\addvspace{11pt}\Needspace{4\baselineskip}{\fontsize{13}{15.5}\selectfont\bfseries #1\par}\nobreak\vspace{2pt}\hrule height 0.4pt\nobreak\vspace{5pt}}
 \newcommand{\researchentry}[2]{\par\addvspace{5pt}\Needspace{5\baselineskip}\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1em}}r@{}}\textbf{#1} & {\small\textit{#2}}\end{tabularx}\par}
+\newcommand{\papersummary}[1]{\par{\small #1\par}}
 \begin{document}
 \fontsize{10}{12}\selectfont
 \begin{center}
@@ -46,21 +47,28 @@ I explore interesting approaches to solving problems in AI research simply and e
 \item \textbf{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization.}\\
 \textbf{Cheng Chen*}, Yi Xu*, Wenzhuo Lei.\\
 \textit{ACM MM 2026}, accepted.\quad \href{https://arxiv.org/pdf/2609.23376}{[PDF]}
+\papersummary{Separates supervision from visual and audio teachers for open-vocabulary audio-visual event localization.}
 \item \textbf{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment.}\\
 Yi Xu*, \textbf{Cheng Chen*}, Mufan Cao.\\
 \textit{IJCAI 2026}, accepted.\quad \href{https://arxiv.org/pdf/2607.25545}{[PDF]}
+\papersummary{Distills complementary clinical knowledge from heterogeneous teachers into a lightweight retinal-image classifier.}
 \item \textbf{Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions.}\\
 Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\raisebox{.5ex}{\scriptsize †}.\\
 \textit{IJCNN 2026}, accepted.\quad \href{https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf}{[PDF]}
+\papersummary{Links object detection to text-only language models using compact symbolic scene descriptions.}
 \end{enumerate}
 
 \cvsection{Preprints}
 \begin{enumerate}[start=4]
 \raggedright
 \item From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness. \textit{Preprint, 2026.}
+\papersummary{Uses human-annotated rubric checks to evaluate whether generated images satisfy individual prompt requirements.}
 \item What Can Activation-Patching Evidence Establish? \textit{Preprint, 2026.}
+\papersummary{Examines the scope and limitations of the functional claims that activation-patching evidence supports.}
 \item Follow Me If You Can: Auditing Understanding-to-Generation Transfer. \textit{Preprint, 2026.}
+\papersummary{Audits transfer from visual-understanding training to image generation through controlled comparisons.}
 \item Allocation Entropy for Single-Pass Risk Triage in Neural Operators. \textit{Preprint, 2026.}
+\papersummary{Studies single-pass screening of unreliable neural-operator predictions without altering the predicted physical field.}
 \end{enumerate}
 
 \cvsection{Research internships}

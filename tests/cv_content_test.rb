@@ -67,4 +67,16 @@ class CvContentTest < Minitest::Test
     refute_match(/Shanghai (First|Second|Third) Prize/, english)
     refute_match(/上海市?[一二三]等奖/, chinese)
   end
+
+  def test_first_page_explains_each_paper_with_a_short_summary
+    %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
+      first_page = source(name).split('\\newpage', 2).first
+      summaries = first_page.scan(/^\\papersummary\{([^}]+)\}/).flatten
+      assert_equal 7, summaries.length, name
+      summaries.each do |summary|
+        refute_empty summary.strip, name
+        assert_operator summary.length, :<=, 160, name
+      end
+    end
+  end
 end

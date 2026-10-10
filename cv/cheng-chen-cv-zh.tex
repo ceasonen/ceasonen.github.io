@@ -18,8 +18,9 @@
 \renewcommand{\headrulewidth}{0pt}
 \setlist[itemize]{leftmargin=1.15em,itemsep=2pt,topsep=3pt,parsep=0pt,partopsep=0pt}
 \setlist[enumerate]{leftmargin=1.4em,label=\arabic*),itemsep=4pt,topsep=3pt,parsep=0pt,partopsep=0pt}
-\newcommand{\cvsection}[1]{\par\addvspace{11pt}\Needspace{4\baselineskip}{\fontsize{13}{15.5}\selectfont\bfseries #1\par}\nobreak\vspace{2pt}\hrule height 0.4pt\nobreak\vspace{5pt}}
+\newcommand{\cvsection}[2][4]{\par\addvspace{11pt}\Needspace{#1\baselineskip}{\fontsize{13}{15.5}\selectfont\bfseries #2\par}\nobreak\vspace{2pt}\hrule height 0.4pt\nobreak\vspace{5pt}}
 \newcommand{\researchentry}[2]{\par\addvspace{6pt}\Needspace{5\baselineskip}\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1em}}r@{}}\textbf{#1} & {\small #2}\end{tabularx}\par}
+\newcommand{\papersummary}[1]{\par{\small #1\par}}
 \begin{document}
 \fontsize{10.5}{13}\selectfont
 \begin{center}
@@ -47,21 +48,28 @@
 \item \textbf{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization.}\\
 \textbf{Cheng Chen*}, Yi Xu*, Wenzhuo Lei.\\
 \textit{ACM MM 2026}，录用。\quad \href{https://arxiv.org/pdf/2609.23376}{[PDF]}
+\papersummary{分离视觉与音频教师的监督路径，用于开放词表音视频事件定位。}
 \item \textbf{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment.}\\
 Yi Xu*, \textbf{Cheng Chen*}, Mufan Cao.\\
 \textit{IJCAI 2026}，录用。\quad \href{https://arxiv.org/pdf/2607.25545}{[PDF]}
+\papersummary{将异构教师的互补临床知识蒸馏到轻量眼底图像分类模型中。}
 \item \textbf{Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions.}\\
 Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\raisebox{.5ex}{\scriptsize †}.\\
 \textit{IJCNN 2026}，录用。\quad \href{https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf}{[PDF]}
+\papersummary{以紧凑的符号化场景描述连接目标检测与纯文本语言模型。}
 \end{enumerate}
 
 \cvsection{预印本}
 \begin{enumerate}[start=4]
 \raggedright
 \item From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness. \textit{Preprint, 2026.}
+\papersummary{通过人工标注的分项检查，评估生成图像对文本指令各项要求的满足情况。}
 \item What Can Activation-Patching Evidence Establish? \textit{Preprint, 2026.}
+\papersummary{研究激活替换证据所能支持的功能性结论及其适用边界。}
 \item Follow Me If You Can: Auditing Understanding-to-Generation Transfer. \textit{Preprint, 2026.}
+\papersummary{通过受控比较，审计视觉理解训练向图像生成的迁移。}
 \item Allocation Entropy for Single-Pass Risk Triage in Neural Operators. \textit{Preprint, 2026.}
+\papersummary{在保持预测物理场不变的条件下，研究神经算子的单次前向风险筛查。}
 \end{enumerate}
 
 \cvsection{科研实习}
@@ -72,7 +80,8 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\raisebox{.5ex}{\
 \textbf{同济大学} & 2025.10 - 2026.06
 \end{tabularx}
 
-\cvsection{学术服务}
+% Reserve three baselines for the compact heading and one-line reviewer entry.
+\cvsection[3]{学术服务}
 \textbf{审稿人：}ICLR、PRCV、ICME、IJCNN、AAAI。
 
 \newpage
