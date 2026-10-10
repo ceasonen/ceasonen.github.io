@@ -1,0 +1,17 @@
+<section id="publications" class="home-section">
+    <h2>Publications</h2>
+    <p class="publication-legend">* Equal contribution · Corresponding author indicated where applicable.</p>
+    {% assign publications = site.publications | sort: 'rank' %}
+    {% for item in publications %}
+    <article class="publication-card"{% if item.anonymous %} data-submission="{{ item.pub }}"{% endif %}>
+        <div class="publication-media"><img class="publication-cover" src="{{ item.cover | relative_url }}" alt="Figure overview for {{ item.title | escape }}" loading="lazy"></div>
+        <div class="publication-body">
+            <h3>{{ item.title | escape }}</h3>
+            {% unless item.anonymous %}<p class="publication-authors">{% include widgets/author_list.html authors=item.authors %}</p>{% endunless %}
+            <p class="publication-venue"><strong>{{ item.pub }} {{ item.pub_date }}</strong> {{ item.pub_last }}</p>
+            <p class="publication-summary">{{ item.abstract | escape }}</p>
+            {% if item.links %}<p class="publication-links">{% for link in item.links %}<a href="{% if link[1].url %}{{ link[1].url }}{% else %}{{ link[1] }}{% endif %}" target="_blank" rel="noopener">[{{ link[0] }}]</a> {% endfor %}</p>{% endif %}
+        </div>
+    </article>
+    {% endfor %}
+</section>

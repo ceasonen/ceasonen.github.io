@@ -1,48 +1,60 @@
 ---
-layout: default
-title : Homepage
-navbar_title: Home
-container_class: container-xl
+layout: single
+title: Homepage
 ---
 
-<div class="academic-layout homepage-layout">
-    <aside class="academic-sidebar-column homepage-sidebar-column">
-        {% include widgets/homepage_sidebar.html %}
-    </aside>
+<aside class="profile-sidebar" aria-label="Profile and contact">
+    <img class="profile-portrait" src="{{ site.data.profile.portrait_url | relative_url }}" alt="Cheng Chen" width="170" height="170">
+    <h2>Cheng Chen</h2>
+    <p class="profile-affiliation">Tongji University</p>
+    <p class="profile-status">Communication Engineering<br>Undergraduate · Class of 2027</p>
+    <ul class="profile-links">
+        <li>{{ site.data.profile.location | escape }}</li>
+        <li><a href="mailto:{{ site.data.profile.email | escape }}">{{ site.data.profile.email | escape }}</a></li>
+        <li><a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href="{{ site.data.profile.gscholar | escape }}" target="_blank" rel="noopener">Google Scholar ↗</a></li>
+        <li><a href="{{ '/cv/cheng-chen-cv.pdf' | relative_url }}" target="_blank" rel="noopener">Curriculum Vitae ↗</a></li>
+    </ul>
+</aside>
 
-    <main class="academic-main homepage-main">
-        <section id="about-me" class="homepage-introduction">
-            <h1><span class="section-glyph" aria-hidden="true">👋</span>Hi, welcome to my homepage!</h1>
-            <div class="text-profile-bio">
-                {{ site.data.profile.short_bio }}
-            </div>
-        </section>
+<main class="home-content">
+    <section id="about" class="home-section introduction">
+        <h1>Hi, welcome to my homepage!</h1>
+        {{ site.data.profile.short_bio }}
+        <div class="research-interests">
+            <h3>Research Interests</h3>
+            <ul>{% for area in site.data.research %}<li>{{ area | escape }}</li>{% endfor %}</ul>
+        </div>
+    </section>
 
-        {% include widgets/details_card.html %}
+    <section id="service" class="home-section">
+        <h2>Academic Service</h2>
+        <p><strong>Reviewer:</strong> {{ site.data.service.reviewer | join: ', ' }}.</p>
+    </section>
 
-        {% include widgets/reviewer_service.html %}
+    <section id="news" class="home-section">
+        <h2>News</h2>
+        {% assign news = site.news | sort: 'date' | reverse %}
+        <div class="news-box" tabindex="0" aria-label="Research and academic news">
+            <ul class="news-list">
+                {% for item in news %}
+                <li><time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: '%Y.%m' }}</time><span>{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
 
-        {% if site.data.display.homepage.show_experience %}
-            {% include widgets/experience_card.html %}
-        {% endif %}
+    {% include sections/experience.html %}
+    {% include sections/projects.html %}
 
-        {% if site.data.display.homepage.show_news %}
-            {% assign count_news = site.news | size %}
-            {% if count_news > 0 %}
-                {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
-            {% endif %}
-        {% endif %}
+    <section id="awards" class="home-section">
+        <h2>Honors and Awards</h2>
+        <ul class="award-list">
+            {% for item in site.data.highlights.awards %}
+            <li><time>{{ item.date | escape }}</time><span>{{ item.name | escape }}{% if item.detail %}<small>{{ item.detail | escape }}</small>{% endif %}</span></li>
+            {% endfor %}
+        </ul>
+    </section>
 
-        {% include widgets/project_preview.html %}
-
-        {% if site.data.display.homepage.show_selected_publications %}
-            {% assign pubs = site.publications | where: "selected", true | sort: "rank" %}
-            {%
-                include widgets/publication_card.html
-                publications=pubs
-                title='<span class="section-glyph" aria-hidden="true">📄</span>Selected Publications'
-            %}
-        {% endif %}
-
-    </main>
-</div>
+    {% include sections/publications.html %}
+</main>

@@ -13,7 +13,10 @@ class PublicationPresentationTest < Minitest::Test
   end
 
   def test_review_entries_have_real_covers_without_identifying_metadata
-    publications.select { |entry| entry["anonymous"] }.each do |entry|
+    anonymous = publications.select { |entry| entry["anonymous"] }
+    assert_equal 3, anonymous.count { |entry| entry["pub"] == "ICLR" }
+    assert_equal 1, anonymous.count { |entry| entry["pub"] == "AAAI" }
+    anonymous.each do |entry|
       refute_nil entry["cover"], "Missing figure cover for #{entry['title']}"
       assert File.file?(File.join(ROOT, "site", entry.fetch("cover")))
       assert_nil entry["authors"]
@@ -22,20 +25,18 @@ class PublicationPresentationTest < Minitest::Test
   end
 
   def test_all_publication_surfaces_use_the_same_order_and_images
-    %w[index.html publications.html].each do |file|
-      doc = Nokogiri::HTML(File.read(File.join(ROOT, file)))
-      entries = file == "publications.html" ? publications : publications.select { |entry| entry["selected"] }
-      %w[.publication-item.d-none .publication-item.d-md-none].each do |selector|
-        cards = doc.css(selector)
-        assert_equal entries.map { |entry| entry.fetch("title") }, cards.map { |card| card.at_css("h5").text }, "#{file}: #{selector}"
-        cards.zip(entries).each do |card, entry|
+      doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
+      entries = publications
+      cards = doc.css(".publication-card")
+      assert_equal entries.map { |entry| entry.fetch("title") }, cards.map { |card| card.at_css("h3").text }
+      assert_equal 3, cards.index { |card| card["data-submission"] }
+      cards.zip(entries).each do |card, entry|
           image = card.at_css("img.publication-cover")
-          refute_nil image, "#{file}: missing figure for #{entry['title']}"
+          refute_nil image, "Missing figure for #{entry['title']}"
           assert_equal entry.fetch("cover"), image["src"]
           assert_nil card.at_css(".fa-file-alt"), "File icon should not replace a paper figure"
-        end
+          assert_nil card.at_css(".publication-authors") if entry["anonymous"]
       end
-    end
   end
 
   def test_no_dedicated_review_disclaimers_remain

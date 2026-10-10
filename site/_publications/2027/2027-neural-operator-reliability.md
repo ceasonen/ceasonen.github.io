@@ -1,0 +1,13 @@
+---
+title: "Reliability of Neural Operator Predictions"
+date: 2026-10-10 00:00:00 +0800
+rank: 104
+selected: true
+anonymous: true
+cover: /assets/images/covers/neural-operator-reliability.png
+pub: "ICLR"
+pub_date: "2027"
+pub_last: '<span class="badge-publication">Submitted</span>'
+abstract: >-
+  Research on identifying unreliable predicted physical fields efficiently, with a focus on neural operators and single-pass risk assessment.
+---

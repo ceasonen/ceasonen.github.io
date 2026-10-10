@@ -21,9 +21,6 @@ short_bio: >-
   <p>
     I study how models learn from complementary sources of information and how to make that knowledge useful under limited compute. My work spans knowledge distillation, audio-visual understanding, and multimodal evaluation. I also build software for literature discovery and other research workflows.
   </p>
-  <p>
-    This page gives an overview of my work. Browse <a href="/publications">Publications</a> for papers, <a href="/projects">Projects</a> for software and engineering work, and <a href="/intern">Intern</a> for research placements.
-  </p>
 
 portrait_url: /assets/images/photos/portrait.jpg
 

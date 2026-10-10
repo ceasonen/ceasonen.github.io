@@ -1,34 +1,5 @@
 ---
-layout: default
+layout: redirect
 title: Projects
-navbar_title: Projects
-container_class: container-xl
+redirect_target: "#projects"
 ---
-
-<div class="academic-layout">
-    <aside class="academic-sidebar-column">
-        {% include widgets/homepage_sidebar.html %}
-    </aside>
-    <main class="academic-main content-page projects-page">
-        <header class="content-page-header">
-            <h1>Projects</h1>
-            <p>Selected software, engineering work, and research tools from my GitHub.</p>
-        </header>
-        <div class="project-grid">
-            {% for project in site.data.projects %}
-            <article class="project-card">
-                <p class="project-category">{{ project.category | escape }}</p>
-                <h2><a href="{{ project.repository | escape }}" target="_blank" rel="noopener">{{ project.name | escape }}</a></h2>
-                <p>{{ project.summary | escape }}</p>
-                <ul>
-                    {% for detail in project.details %}<li>{{ detail | escape }}</li>{% endfor %}
-                </ul>
-                <div class="project-stack" aria-label="Technologies">
-                    {% for technology in project.stack %}<span>{{ technology | escape }}</span>{% endfor %}
-                </div>
-                <a class="project-source" href="{{ project.repository | escape }}" target="_blank" rel="noopener">View repository <span aria-hidden="true">↗</span></a>
-            </article>
-            {% endfor %}
-        </div>
-    </main>
-</div>

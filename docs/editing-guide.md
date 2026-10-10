@@ -4,20 +4,19 @@
 
 VS Code / Cursor：“文件 → 从文件打开工作区” → 根目录 `website.code-workspace`。其中“01-网站源码”就是 `site/`，“02-CV与个人材料”就是 `cv/`。
 
-旧标签 `academic-homepage/publications.html` 已失效，重新打开 `site/publications.html`。论文内容通常不改这个页面，而是改 `site/_publications/` 的对应文件。
+主页已改为单页展示。旧标签 `academic-homepage/publications.html` 已失效；调整页面结构打开 `site/index.html`，修改论文打开 `site/_publications/` 的对应文件。根目录页面都是生成副本。
 
 ## 日常修改
 
 | 文件（相对 site/） | 修改方法 |
 | --- | --- |
-| `_data/profile.yml` | `positions` 侧栏身份；`sidebar_bio` 侧栏短简介；`short_bio` 首页长简介；`education` 教育数据。这些是不同展示位置，身份变化时一起检查 |
+| `_data/profile.yml` | `short_bio` 首页简介；`education` 教育；联系方式和头像。当前侧栏单位固定为 Tongji University |
 | `_data/research.yml` | 一行一个方向，按列表顺序显示 |
 | `_data/internships.yml` | 一段一个实习；`organization` 单位、`date` 显示日期、`datetime` 机器可读日期、`logo` 校徽 |
 | `_data/service.yml` | 在 `reviewer` 下增减会议 |
-| `_data/highlights.yml` | Highlights 的奖项；该页不再展示论文 |
-| `_data/projects.yml` | 精选 GitHub 项目；`featured: true` 控制首页的简短预览 |
-| `_data/navigation.yml` | 导航名称、链接、顺序 |
-| `_data/display.yml` | News、精选论文等开关，以及首页新闻条数 |
+| `_data/highlights.yml` | 首页奖项列表 |
+| `_data/projects.yml` | 首页精选 GitHub 项目，Projects 板块直接展示全部条目 |
+| `_data/navigation.yml` | 导航名称、顺序；板块链接格式 `/#publications` 等 |
 
 YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片路径写 `/assets/images/...`，图片放 `site/assets/images/...`。
 
@@ -28,8 +27,8 @@ YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片�
 - `title`：展示标题；在审稿件只用宽泛研究方向，不写真题目。
 - `date`：条目实际日期，保持现有格式。
 - `pub` / `pub_date`：会议名称 / 会议年份；年份加引号。
-- `rank`：越小越靠前；当前已录用是 1、2、3，在投是 101、102、103。
-- `selected: true`：同时出现在首页。
+- `rank`：越小越靠前；当前已录用是 1、2、3，在投是 101、102、103、104。
+- 首页按 `rank` 显示全部论文，一篇只展示一次。
 - `abstract`：简述；在审稿件不写具体方法或实验结果。
 - `cover`：论文主图截图路径，如 `/assets/images/covers/image-evaluation.png`。只截主图区域，避开真实题目、作者、投稿编号及页眉；不添加专门的匿名或在审说明行。
 - `authors`：公开条目的作者顺序；链接信息在 `_data/authors.yml`。
@@ -51,7 +50,7 @@ abstract: Research on assessing whether generated images satisfy textual instruc
 ---
 ```
 
-录用后，确认可以公开再更新题目、作者和状态，移除 `anonymous: true`，调整 `rank`。同时检查简介、News、Highlights 和 CV；LaTeX CV 不会自动从网站数据生成。
+录用后，确认可以公开再更新题目、作者和状态，移除 `anonymous: true`，调整 `rank`。同时检查简介、News 和 CV；LaTeX CV 不会自动从网站数据生成。
 
 ## News：一条一个文件
 
@@ -66,14 +65,15 @@ badge: "Accepted"
 ---
 ```
 
-此处仅是格式示例，不要发布未发生的事项。首页显示最新若干条，News 页面显示完整列表。
+此处仅是格式示例，不要发布未发生的事项。首页 News 滚动区域按时间显示完整列表。
 
 ## 页面结构
 
-- 首页板块顺序：`site/index.html`。当前为简介 → 研究方向 → 学术服务 → News → 论文。
-- Publications / Projects / Intern / Highlights 页面结构：`site/publications.html` / `projects.html` / `intern.html` / `awards.html`。
-- 公共侧栏：`site/_includes/widgets/homepage_sidebar.html`。
-- 公共论文卡片：`site/_includes/widgets/publication_item.html`。
+- 首页板块顺序：`site/index.html`。当前为简介及研究方向 → 学术服务 → News → 教育与实习 → 项目 → 奖项 → 论文。
+- 页面外壳：`site/_layouts/single.html`；侧栏：`site/index.html`。
+- 教育实习 / 项目 / 论文布局：`site/_includes/sections/experience.html` / `projects.html` / `publications.html`。
+- 原独立栏目页面仅保留旧地址跳转，使用 `site/_layouts/redirect.html`，无需重复维护内容。
+- 单页导航脚本：`site/assets/js/home.js`，负责手机菜单和当前板块提示。
 - CSS：`site/assets/css/global.css`。修改后可更新 `_config.yml` 的 `asset_version` 字符串，让浏览器重新加载；相应测试也需同步预期。
 
 ## 构建、预览、发布
@@ -111,4 +111,6 @@ ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh
 
 PDF 写回 `cv/`，辅助文件在 `.build/cv/`。发布前打开 PDF 检查排版，身份、日期、排名、实习、审稿服务和论文状态需与网站一致。
 
-`.local/submissions/` 是私有 PDF，`.local/archive/` 是历史归档。根目录 HTML、`assets/`、`2026/` 是自动发布输出，直接修改会被下一次构建覆盖。不要为了改网站翻找这些副本，也不要在旧源码路径新建文件。
+`.local/submissions/aaai-2027/` 有一份当前 AAAI 稿件，`iclr-2027/` 有三份当前 ICLR 稿件；文件映射见 `.local/submissions/README.md`。旧下载在 `.local/submissions/archive/2026-09/`，原 NeurIPS 稿件在 `archive/neurips-2026/`。这些资料仅在本地保存。
+
+根目录 HTML、`assets/`、`2026/` 是自动发布输出，直接修改会被下一次构建覆盖。不要为了改网站翻找这些副本，也不要在旧源码路径新建文件。

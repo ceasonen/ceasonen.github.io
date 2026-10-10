@@ -1,30 +1,5 @@
 ---
-layout: default
-title : Publications
-navbar_title: Publications
-container_class: container-xl
+layout: redirect
+title: Publications
+redirect_target: "#publications"
 ---
-
-{% assign pubs_by_year = site.publications | sort: "rank" | group_by_exp: "item", "item.pub_date" %}
-
-<div class="academic-layout">
-    <aside class="academic-sidebar-column">
-        {% include widgets/homepage_sidebar.html %}
-    </aside>
-
-    <main class="academic-main content-page publications-page">
-        <header class="content-page-header">
-            <h1><span class="section-glyph" aria-hidden="true">📄</span>Publications</h1>
-        </header>
-
-        {% for year in pubs_by_year %}
-        {% assign num_papers = year.items | size %}
-        <h2 class="publication-year-heading" id="year-{{ year.name }}">{{ year.name }}</h2>
-        <div class="my-0 p-0 bg-white shadow-sm rounded-xl">
-            {% for item in year.items %}
-                {% include widgets/publication_item.html item=item hide_bottom_border=forloop.last first=forloop.first last=forloop.last %}
-            {% endfor %}
-        </div>
-        {% endfor %}
-    </main>
-</div>

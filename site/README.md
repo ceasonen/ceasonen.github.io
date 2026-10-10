@@ -1,24 +1,24 @@
 # 网站源码：平时在这里改
 
-原 `academic-homepage/` 已整体迁到这里，请关闭旧路径标签，**不要在旧路径重新创建文件**。
+全部公开内容集中在 `index.html`，顶部导航跳转到同一页的板块。CV 在 `../cv/` 单独维护。根目录的 HTML 是生成副本，不要直接编辑。
 
-- `_data/`：个人资料、研究方向、实习、审稿服务、精选项目、Highlights、导航及显示设置。
-- `_publications/`：一篇论文一个 `.md`，首页与 Publications 共用。
-- `_news/`：一条新闻一个 `.md`。
-- `assets/images/`：头像、校徽、论文封面；`assets/css/global.css`：样式。
-- `index.html` 等：调整板块顺序和页面结构，日常内容优先改数据文件。
-- `_includes/`、`_layouts/`：模板，通常不用改。
+| 想改什么 | 修改位置 |
+| --- | --- |
+| 简介、联系方式、教育背景 | `_data/profile.yml` |
+| 研究方向 | `_data/research.yml` |
+| 实习单位、日期、校徽 | `_data/internships.yml` |
+| 审稿服务 | `_data/service.yml` |
+| 项目 | `_data/projects.yml` |
+| 奖项 | `_data/highlights.yml` |
+| 论文 | `_publications/`，一篇一个文件 |
+| 新闻 | `_news/`，一条一个文件 |
+| 导航及定位 | `_data/navigation.yml`，链接格式 `/#section-id` |
+| 板块顺序 | `index.html` |
+| 实习、项目、论文布局 | `_includes/sections/` |
+| 外壳、侧栏导航 | `_layouts/single.html`、`index.html` |
+| 字体、颜色、间距、手机布局 | `assets/css/global.css` |
+| 头像、校徽、论文主图 | `assets/images/` |
 
-回到仓库根目录运行 `ruby tools/website.rb build`。CV 在 `../cv/`，不要复制进本目录。
+`publications.html`、`projects.html`、`intern.html`、`news.html`、`awards.html` 仅保留旧地址跳转，不是内容编辑入口。旧版 `_includes/widgets/` 中只有作者列表用于新主页，其余为历史模板。
 
-操作示例见 [修改指南](../docs/editing-guide.md)，推荐打开根目录 [website.code-workspace](../website.code-workspace)。
-
-## 页面分工
-
-- Home：简短个人简介、研究方向、服务、最近动态、两个项目预览及论文。
-- Publications：完整论文列表；不再复制到 Highlights。
-- Projects：精选软件、工程项目和研究工具，内容统一维护在 `_data/projects.yml`；`featured: true` 控制首页预览。
-- Intern：实习单位和时间线。
-- News：按时间排列的简短动态，不展开论文或项目卡片。
-- Highlights：奖项和学术服务。
-- CV：中英文主简历均为两页，源码仍在 `../cv/`。
+从仓库根目录运行 `ruby tools/website.rb build`，预览使用 `ruby tools/website.rb preview`。原 `academic-homepage/` 路径已停用，勿重新创建。详细说明见 `../docs/editing-guide.md`。

@@ -16,7 +16,7 @@ class MaintenanceTest < Minitest::Test
   def test_research_areas_have_one_editing_location
     areas = data("research")
     assert_equal 4, areas.length
-    template = File.read(File.join(ROOT, "site/_includes/widgets/details_card.html"))
+    template = File.read(File.join(ROOT, "site/index.html"))
     assert_includes template, "site.data.research"
     page = File.read(File.join(ROOT, "index.html"))
     areas.each { |area| assert_includes page, area }
@@ -25,8 +25,8 @@ class MaintenanceTest < Minitest::Test
   def test_internships_are_data_driven
     entries = data("internships")
     assert_equal 3, entries.length
-    assert_includes File.read(File.join(ROOT, "site/intern.html")), "site.data.internships"
-    page = File.read(File.join(ROOT, "intern.html"))
+    assert_includes File.read(File.join(ROOT, "site/_includes/sections/experience.html")), "site.data.internships"
+    page = File.read(File.join(ROOT, "index.html"))
     entries.each do |entry|
       %w[role organization date logo].each { |field| assert_includes page, entry.fetch(field) }
       assert File.file?(File.join(ROOT, "site", entry.fetch("logo")))
@@ -36,8 +36,7 @@ class MaintenanceTest < Minitest::Test
   def test_highlights_are_data_driven
     highlights = data("highlights")
     assert_equal 7, highlights.fetch("awards").length
-    assert_includes File.read(File.join(ROOT, "site/awards.html")), "site.data.highlights"
-    refute_includes File.read(File.join(ROOT, "site/awards.html")), "site.publications"
+    assert_includes File.read(File.join(ROOT, "site/index.html")), "site.data.highlights"
   end
 
   def test_workspace_points_to_existing_editing_folders

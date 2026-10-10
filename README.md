@@ -2,6 +2,8 @@
 
 线上主页：https://ceasonen.github.io/
 
+主页采用单页展示，导航直接定位到同一页的对应板块；CV 单独下载。旧栏目地址自动跳转到新首页。
+
 **改网站只进 `site/`，改简历只进 `cv/`。根目录 HTML 和 `assets/` 是自动生成的发布副本，不要直接编辑。**
 
 ## 从这里开始
@@ -49,4 +51,4 @@ ruby tools/website.rb cv       # 编译所有 CV，更新 PDF
 
 根目录发布副本保留是为了兼容当前 GitHub Pages 设置及原有网址。不要另建第二套源码，也不要将整个仓库作为本地网页服务器根目录。归档和恢复见 [目录说明](docs/workspace.md)。
 
-项目基于 [academic-homepage](https://github.com/luost26/academic-homepage)，原模板文档保存在 [docs/template-readme.md](docs/template-readme.md)，许可证保留。
+单页设计参考并改编自 [WowPage](https://github.com/WD7ang/WowPage)，许可保存在 [docs/licenses/wowpage-MIT.txt](docs/licenses/wowpage-MIT.txt)。原 academic-homepage 模板资料保留供历史参考。

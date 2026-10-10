@@ -13,39 +13,40 @@ class PageFocusTest < Minitest::Test
   end
 
   def test_projects_have_verified_repositories_and_specific_descriptions
-    doc = page("projects.html")
+    doc = page("index.html")
     cards = doc.css(".project-card")
     assert_equal 4, cards.length
     %w[deep-research offer-pilot hlstrack2025-44686 research-skills].each do |repo|
       assert doc.at_css(".project-card a[href='https://github.com/ceasonen/#{repo}']"), repo
     end
     cards.each do |card|
-      refute_empty card.at_css("h2").text.strip
+      refute_empty card.at_css("h3").text.strip
       assert_operator card.css("li").length, :>=, 2
     end
     assert_includes doc.text, "Prototype"
     assert_includes doc.text, "Curated toolkit"
   end
 
-  def test_secondary_pages_have_distinct_content_and_no_repeated_bio
-    %w[publications.html projects.html intern.html news.html awards.html].each do |name|
-      doc = page(name)
-      assert_nil doc.at_css(".sidebar-bio"), name
-      refute_nil doc.at_css("nav a[href='/projects']"), name
-      next if name == "publications.html"
-      assert_empty doc.css(".publication-item"), "Paper cards belong on Home and Publications: #{name}"
+  def test_legacy_pages_redirect_to_home_sections
+    {"publications" => "publications", "projects" => "projects", "intern" => "experience", "news" => "news", "awards" => "awards"}.each do |path, section|
+      doc = page("#{path}.html")
+      assert_equal "0; url=/##{section}", doc.at_css('meta[http-equiv="refresh"]')["content"]
+      assert_empty doc.css(".publication-card, .project-card, .experience-card")
     end
-    highlights = page("awards.html")
-    assert_includes highlights.text, "Academic Service"
-    assert_includes highlights.text, "Honors and Awards"
-    assert_nil page("projects.html").at_css(".award-records")
   end
 
-  def test_home_provides_short_project_preview_before_papers
+  def test_home_navigation_targets_sections_that_exist_once
     doc = page("index.html")
-    assert_equal 2, doc.css(".project-preview").length
-    assert doc.at_css("a[href='/projects']")
-    assert_operator doc.to_html.index('id="projects"'), :<, doc.to_html.index('class="publication-item')
+    doc.css(".section-nav a").each do |link|
+      next if link["href"].end_with?(".pdf")
+      assert link["href"].start_with?("/#"), link["href"]
+      assert_equal 1, doc.css(link["href"].delete_prefix("/")).length
+    end
+    assert_equal 3, doc.css("#experience .experience-card").length
+    assert_equal 4, doc.css("#projects .project-card").length
+    assert_equal 7, doc.css("#publications .publication-card").length
+    assert_operator doc.to_html.index('id="service"'), :<, doc.to_html.index('id="publications"')
+    assert_operator doc.to_html.index('id="projects"'), :<, doc.to_html.index('id="publications"')
   end
 
   def test_main_cvs_are_two_pages_with_papers_but_no_website_projects
@@ -57,6 +58,7 @@ class PageFocusTest < Minitest::Test
       text, status = Open3.capture2e("pdftotext", pdf, "-")
       assert status.success?, text
       %w[IJCNN AAAI ICLR].each { |term| assert_includes text, term }
+      assert_equal 3, text.scan(/ICLR 2027/).length
       ["AutoSearch", "OfferPilot", "FPGA Algorithm Optimization", "Research Skills", "精选软件与工程项目"].each do |term|
         refute_includes text, term
       end

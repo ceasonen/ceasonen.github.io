@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Cheng Chen, Tongji University. Research, publications, internships, projects, and academic service.">
+    <title>Cheng Chen | Homepage</title>
+    <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}?v={{ site.asset_version }}">
+</head>
+<body>
+    <a class="skip-link" href="#about">Skip to content</a>
+    <header class="site-header">
+        <nav class="site-nav" aria-label="Main navigation">
+            <a class="site-brand" href="{{ '/#about' | relative_url }}">Cheng Chen</a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="section-nav">Menu</button>
+            <div id="section-nav" class="section-nav">
+                {% for item in site.data.navigation.pages %}
+                <a href="{{ item.url | relative_url }}"{% if item.name == 'CV' %} target="_blank" rel="noopener"{% endif %}>{{ item.name }}</a>
+                {% endfor %}
+            </div>
+        </nav>
+    </header>
+    <div class="site-shell">{{ content }}</div>
+    <footer class="site-footer">
+        <span>© {{ 'now' | date: '%Y' }} Cheng Chen · Updated {{ 'now' | date: '%b %Y' }}</span>
+        <span>Layout adapted from <a href="https://github.com/WD7ang/WowPage" target="_blank" rel="noopener">WowPage</a></span>
+    </footer>
+    <script src="{{ '/assets/js/home.js' | relative_url }}" defer></script>
+</body>
+</html>

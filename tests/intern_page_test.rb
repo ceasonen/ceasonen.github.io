@@ -6,20 +6,20 @@ class InternPageTest < Minitest::Test
 
   def test_intern_is_a_top_level_navigation_item
     navigation = YAML.safe_load(File.read(File.join(ROOT, "_data/navigation.yml")))
-    intern = navigation.fetch("pages").find { |item| item["name"] == "Intern" }
+    intern = navigation.fetch("pages").find { |item| item["name"] == "Experience" }
 
     refute_nil intern
-    assert_equal "/intern", intern["url"]
+    assert_equal "/#experience", intern["url"]
   end
 
   def test_logo_styles_use_the_latest_cache_busted_asset_version
     config = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
 
-    assert_equal "20261010-projects", config["asset_version"]
+    assert_equal "20261010-single-page", config["asset_version"]
   end
 
   def test_intern_page_contains_three_internships_without_independent_research
-    page = File.read(File.join(ROOT, "../intern.html"))
+    page = File.read(File.join(ROOT, "../index.html"))
     styles = File.read(File.join(ROOT, "assets/css/global.css"))
 
     refute_includes page, "Independent Researcher"
@@ -42,8 +42,8 @@ class InternPageTest < Minitest::Test
     assert_includes page, "intern-logo-zju"
     assert_includes styles, ".intern-logo-zju"
     assert_includes styles, "transform: scale(1.6)"
-    assert_includes styles, ".intern-logo-hkust"
-    assert_includes styles, "height: 4.5rem"
+    assert_includes styles, ".intern-logo-wrap img"
+    assert_includes styles, "object-fit: contain"
     assert_includes page, "hkust-gz-icon.png"
     assert File.file?(File.join(ROOT, "assets/images/organizations/tongji-university.png"))
     assert File.file?(File.join(ROOT, "assets/images/organizations/zju-university.png"))

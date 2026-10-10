@@ -1,15 +1,17 @@
 pages:
-- name: Home
-  url: /
-- name: Publications
-  url: /publications
-- name: Projects
-  url: /projects
-- name: Intern
-  url: /intern
+- name: About
+  url: /#about
 - name: News
-  url: /news
-- name: Highlights
-  url: /awards
+  url: /#news
+- name: Experience
+  url: /#experience
+- name: Projects
+  url: /#projects
+- name: Awards
+  url: /#awards
+- name: Service
+  url: /#service
+- name: Publications
+  url: /#publications
 - name: CV
   url: /cv/cheng-chen-cv.pdf
