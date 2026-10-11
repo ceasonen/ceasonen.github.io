@@ -19,6 +19,8 @@ VS Code / Cursor：“文件 → 从文件打开工作区” → 根目录 `webs
 
 YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片路径写 `/assets/images/...`，图片放 `site/assets/images/...`。
 
+比赛名称依据见 [competition-names.md](competition-names.md)：英文名同步维护奖项、相关 News 和当前英文 CV；有明确组委会英文名时优先采用，没有统一英文声明时使用有出处的高校或赛事参与方译名，不自行标为“唯一官方英文名”。
+
 ## 论文：一篇一个文件
 
 按会议年份放在 `site/_publications/2026/`、`2027/` 等目录。复制同类现有文件修改即可。

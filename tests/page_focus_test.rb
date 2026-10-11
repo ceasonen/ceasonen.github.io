@@ -106,7 +106,7 @@ class PageFocusTest < Minitest::Test
     opening = paragraphs.first.text.strip
     assert opening.start_with?("I'm an undergraduate student majoring in Communication Engineering at Tongji University")
     interests = paragraphs.last.text.strip
-    assert_equal "I explore simple, elegant ways to make AI models more capable. My interests span multimodal large language models, image and video generation, and embodied AI.", interests
+    assert_equal "I explore simple, elegant ways to make AI models more capable. My interests span multimodal large language models, image/video generation, and embodied AI.", interests
     assert_empty page("index.html").css(".research-interests")
   end
 
@@ -129,7 +129,7 @@ class PageFocusTest < Minitest::Test
         assert_includes source, "探索以简洁、优雅的方法提升模型能力"
       else
         assert_includes text, "Main interests"
-        assert_includes text, "image and video generation"
+        assert_includes text, "image/video generation"
       end
       ["AutoSearch", "OfferPilot", "FPGA Algorithm Optimization", "Research Skills", "精选软件与工程项目"].each do |term|
         refute_includes text, term
