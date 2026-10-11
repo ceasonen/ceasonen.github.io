@@ -6,6 +6,8 @@
 
 日常编辑推荐打开根目录 `website.code-workspace`，按网站、CV、论文、证书、维护指南、工具、测试分组。根目录发布副本不显示在工作区中，避免改错。逐项修改入口见 [editing-guide.md](editing-guide.md)。
 
+`projects/Image2Other/` 是独立 Git 仓库，工作区的“08-Image2Other 独立项目”直接打开其源码。它自行构建和发布到 `https://ceasonen.github.io/Image2Other/`，不属于主页构建输出，也不会随主页提交一起暂存。主页只在 `site/_data/projects.yml` 维护展示介绍和入口。新机器需要另行克隆 `https://github.com/ceasonen/Image2Other.git` 到该路径；项目依赖和测试截图留在项目自己的忽略目录。
+
 CV 和论文分别只在根目录 `cv/`、`papers/` 维护。旧的 `academic-homepage/cv/`、`academic-homepage/papers/` 已比对并完整移入 `.local/archive/source-mirrors-*/`，可按归档说明恢复。论文模板依赖和研究笔记保留在根目录论文目录，避免影响编译。
 
 ## 编译文件与归档

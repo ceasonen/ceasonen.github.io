@@ -1,5 +1,16 @@
 # Curated from public README files and repository structure, checked 2026-10-10.
 # Keep descriptions scoped to implemented features; do not copy roadmap promises.
+- name: Image2Other
+  category: Research software
+  repository: https://github.com/ceasonen/Image2Other
+  website: https://ceasonen.github.io/Image2Other/
+  summary: A local-first image conversion studio with editable SVG paths and native PowerPoint exports.
+  stack: [JavaScript, SVG, PowerPoint]
+  featured: true
+  details:
+    - Traces raster images into vector paths locally, with layer inspection and editable fills, opacity, and added text.
+    - Rebuilds diagram text and shapes through a user-configured vision model or imported Scene JSON; automatic reconstructions need checking.
+    - Exports SVG, native PPTX objects, and Scene JSON, alongside local PNG, JPEG, and WebP conversion with resize controls.
 - name: AutoSearch AI
   category: Research software
   repository: https://github.com/ceasonen/deep-research

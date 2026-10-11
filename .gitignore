@@ -28,6 +28,9 @@ output/playwright/
 /.build/
 /.local/
 
+# Independently versioned project checkout, not homepage source.
+/projects/Image2Other/
+
 # LaTeX intermediate files (keep sources, bibliography .bbl files and PDFs)
 *.aux
 *.bcf

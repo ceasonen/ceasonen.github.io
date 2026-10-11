@@ -16,8 +16,8 @@ class PageFocusTest < Minitest::Test
   def test_projects_have_verified_repositories_and_specific_descriptions
     doc = page("index.html")
     cards = doc.css(".project-card")
-    assert_equal 4, cards.length
-    %w[deep-research offer-pilot hlstrack2025-44686 research-skills].each do |repo|
+    assert_equal 5, cards.length
+    %w[Image2Other deep-research offer-pilot hlstrack2025-44686 research-skills].each do |repo|
       assert doc.at_css(".project-card a[href='https://github.com/ceasonen/#{repo}']"), repo
     end
     cards.each do |card|
@@ -26,6 +26,9 @@ class PageFocusTest < Minitest::Test
     end
     assert_includes doc.text, "Prototype"
     assert_includes doc.text, "Curated toolkit"
+    studio = doc.at_css('.project-card a[href="https://ceasonen.github.io/Image2Other/"]')
+    refute_nil studio
+    assert_equal "Open studio", studio.text.strip
   end
 
   def test_legacy_pages_redirect_to_home_sections
@@ -44,7 +47,7 @@ class PageFocusTest < Minitest::Test
       assert_equal 1, doc.css(link["href"].delete_prefix("/")).length
     end
     assert_equal 3, doc.css("#experience .experience-card").length
-    assert_equal 4, doc.css("#projects .project-card").length
+    assert_equal 5, doc.css("#projects .project-card").length
     assert_equal 7, doc.css("#publications .publication-card").length
     assert_equal "service", doc.css("main .home-section").last["id"]
     assert_operator doc.to_html.index('id="projects"'), :<, doc.to_html.index('id="publications"')

@@ -14,7 +14,7 @@ VS Code / Cursor：“文件 → 从文件打开工作区” → 根目录 `webs
 | `_data/internships.yml` | 一段一个实习；`organization` 单位、`date` 显示日期、`datetime` 机器可读日期、`logo` 校徽 |
 | `_data/service.yml` | 在 `reviewer` 下增减会议 |
 | `_data/highlights.yml` | 奖项卡片：`name` 比赛全称、`prize` 奖级、`date` 年份、`role` 角色、`detail` 补充、`featured` 突出展示 |
-| `_data/projects.yml` | 首页精选 GitHub 项目，Projects 板块直接展示全部条目 |
+| `_data/projects.yml` | 首页精选 GitHub 项目，Projects 板块直接展示全部条目；可选 `website` 字段显示在线工具入口 |
 | `_data/navigation.yml` | 导航名称、顺序；板块链接格式 `/#publications` 等 |
 
 YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片路径写 `/assets/images/...`，图片放 `site/assets/images/...`。
@@ -109,6 +109,18 @@ cd ..
 需要 Ruby、Bundler、Jekyll；预览需要 WEBrick（当前环境已具备）。CV 编译需要 TeX Live 和模板使用的字体。
 
 构建通过后检查 `git status` / `git diff`，只暂存本次相关源码和生成文件，提交后执行 `git push origin main`。**不要用 `git add .` 混入论文工作文件，不要提交 `.local/`。** 维护命令不自动执行 Git 写操作。
+
+## Image2Other 独立工具
+
+工作区的“08-Image2Other 独立项目”对应 `projects/Image2Other/`，在线地址是 `https://ceasonen.github.io/Image2Other/`。界面在 `src/main.js` 和 `src/style.css`，场景与矢量转换在 `src/scene.js`，PPTX 导出在 `src/export.js`，模型接口在 `src/ai.js`。这是另一个 Git 仓库，不能在主页根目录替它提交。
+
+```sh
+cd projects/Image2Other
+npm install --ignore-scripts
+npm run dev
+```
+
+打开 `http://127.0.0.1:5178/Image2Other/`。修改后运行 `npm test` 和 `npm run build`，只在这个目录提交项目代码并推送；其 GitHub Actions 自动发布。主页项目卡片的介绍仍在 `site/_data/projects.yml`，需按主页的构建发布流程更新。详细使用、隐私边界和当前限制见项目 `README.md`。不要把模型密钥、用户图片或未授权的论文图提交到任何仓库。
 
 ## CV 与本地材料
 

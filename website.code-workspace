@@ -6,7 +6,8 @@
     { "name": "04-证书", "path": "awards" },
     { "name": "05-维护指南", "path": "docs" },
     { "name": "06-工具", "path": "tools" },
-    { "name": "07-测试", "path": "tests" }
+    { "name": "07-测试", "path": "tests" },
+    { "name": "08-Image2Other 独立项目", "path": "projects/Image2Other" }
   ],
   "settings": {
     "files.exclude": {
