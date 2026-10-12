@@ -11,7 +11,7 @@
             <h3><a href="{{ project.repository | escape }}" target="_blank" rel="noopener">{{ project.name | escape }}</a></h3>
             <p>{{ project.summary | escape }}</p>
             <div class="project-stack">{% for technology in project.stack %}<span>{{ technology | escape }}</span>{% endfor %}</div>
-            {% if project.website %}<div class="publication-links"><a href="{{ project.website | escape }}" target="_blank" rel="noopener">Open studio</a></div>{% endif %}
+            {% if project.website %}<div class="publication-links"><a href="{{ project.website | escape }}" target="_blank" rel="noopener">{{ project.website_label | default: 'Open studio' | escape }}</a></div>{% endif %}
             <details><summary>What’s included</summary><ul>{% for detail in project.details %}<li>{{ detail | escape }}</li>{% endfor %}</ul></details>
         </article>
         {% endfor %}

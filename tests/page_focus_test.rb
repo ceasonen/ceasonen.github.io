@@ -47,6 +47,22 @@ class PageFocusTest < Minitest::Test
     end
   end
 
+  def test_project_subsites_survive_the_next_site_build
+    source_projects = YAML.load_file(File.join(ROOT, "site/_data/projects.yml"))
+    %w[offer-pilot deep-research].each do |slug|
+      entry = source_projects.find { |project| project["repository"] == "https://github.com/ceasonen/#{slug}" }
+      refute_nil entry
+      assert_equal "https://ceasonen.github.io/#{slug}/", entry["website"]
+      assert File.file?(File.join(ROOT, "site/#{slug}/index.html"))
+    end
+    build_script = File.read(File.join(ROOT, "tools/build_site.rb"))
+    assert_includes build_script, "offer-pilot/index.html"
+    assert_includes build_script, "deep-research/index.html"
+    link_checker = File.read(File.join(ROOT, "tools/check_site.rb"))
+    assert_includes link_checker, "offer-pilot/index.html"
+    assert_includes link_checker, "deep-research/index.html"
+  end
+
   def test_legacy_pages_redirect_to_home_sections
     {"publications" => "publications", "projects" => "projects", "intern" => "experience", "news" => "news", "awards" => "awards"}.each do |path, section|
       doc = page("#{path}.html")

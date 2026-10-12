@@ -14,6 +14,8 @@
 - name: AutoSearch AI
   category: Research software
   repository: https://github.com/ceasonen/deep-research
+  website: https://ceasonen.github.io/deep-research/
+  website_label: Explore project
   summary: Citation-aware AI search with an arXiv paper radar and an integrated PDF reader.
   stack: [Python, FastAPI, Next.js]
   featured: true
@@ -24,6 +26,8 @@
 - name: OfferPilot
   category: Prototype
   repository: https://github.com/ceasonen/offer-pilot
+  website: https://ceasonen.github.io/offer-pilot/
+  website_label: Explore project
   summary: An AI technical-interview practice app with follow-up questions and structured feedback.
   stack: [TypeScript, Next.js, Vercel AI SDK]
   featured: true
