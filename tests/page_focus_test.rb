@@ -31,6 +31,22 @@ class PageFocusTest < Minitest::Test
     assert_equal "Open studio", studio.text.strip
   end
 
+  def test_project_subsites_are_linked_and_explain_runtime_requirements
+    home = page("index.html")
+    {
+      "offer-pilot" => ["OfferPilot", "AI interview", "server"],
+      "deep-research" => ["AutoSearch AI", "research", "FastAPI"]
+    }.each do |slug, terms|
+      link = home.at_css(".project-card a[href='https://ceasonen.github.io/#{slug}/']")
+      refute_nil link, "Missing project entry for #{slug}"
+      project = page("#{slug}/index.html")
+      assert_equal "#{slug}", project.at_css("body")["data-project"]
+      terms.each { |term| assert_includes project.text.downcase, term.downcase }
+      assert project.at_css("a[href='https://github.com/ceasonen/#{slug}']")
+      assert project.at_css("a[href='https://ceasonen.github.io/']")
+    end
+  end
+
   def test_legacy_pages_redirect_to_home_sections
     {"publications" => "publications", "projects" => "projects", "intern" => "experience", "news" => "news", "awards" => "awards"}.each do |path, section|
       doc = page("#{path}.html")

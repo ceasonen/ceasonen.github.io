@@ -30,6 +30,8 @@ output/playwright/
 
 # Independently versioned project checkout, not homepage source.
 /projects/Image2Other/
+/projects/offer-pilot/
+/projects/deep-research/
 
 # LaTeX intermediate files (keep sources, bibliography .bbl files and PDFs)
 *.aux
