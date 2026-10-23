@@ -1,10 +1,10 @@
 {%- assign authors = include.authors -%}
 {%- for _key in authors -%}
-    {%- assign key = _key | remove: '*' | remove: '†' | remove: '#' -%}
+    {%- assign key = _key | remove: '*' | remove: '†' | remove: '‡' -%}
     {%- assign mark = '' -%}
     {%- if _key contains '*' -%}{%- assign mark = mark | append: '<sup>*</sup>' -%}{%- endif -%}
     {%- if _key contains '†' -%}{%- assign mark = mark | append: '<sup>†</sup>' -%}{%- endif -%}
-    {%- if _key contains '#' -%}{%- assign mark = mark | append: '<sup>#</sup>' -%}{%- endif -%}
+    {%- if _key contains '‡' -%}{%- assign mark = mark | append: '<sup>‡</sup>' -%}{%- endif -%}
 
     {%- assign info = site.data.authors[key] -%}
 

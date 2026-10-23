@@ -58,8 +58,8 @@ class PublicationPresentationTest < Minitest::Test
     end
     assert_nil preprints[2]["authors"]
     assert_nil preprints[3]["authors"]
-    assert_equal ["Yi Xu*#", "Cheng Chen*†", "Wenzhuo Lei"], preprints[0].fetch("authors")
-    assert_equal ["Yi Xu†#", "Cheng Chen", "Wenzhuo Lei"], preprints[1].fetch("authors")
+    assert_equal ["Yi Xu*‡", "Cheng Chen*†", "Wenzhuo Lei"], preprints[0].fetch("authors")
+    assert_equal ["Yi Xu†‡", "Cheng Chen", "Wenzhuo Lei"], preprints[1].fetch("authors")
     assert_equal "AAAI 2027 · Phase 2", preprints[0].fetch("submission_note")
     assert_equal "ICLR 2027 · submitted", preprints[1].fetch("submission_note")
     preprints.last(2).each do |entry|
@@ -69,27 +69,45 @@ class PublicationPresentationTest < Minitest::Test
 
   def test_accepted_paper_roles_match_confirmed_authorship
     accepted = publications.reject { |entry| entry["preprint"] }
-    assert_equal ["Cheng Chen*", "Yi Xu*#", "Wenzhuo Lei†"], accepted[0].fetch("authors")
-    assert_equal ["Yi Xu*†", "Cheng Chen*#", "Mufan Cao"], accepted[1].fetch("authors")
-    assert_equal ["Wenzhuo Lei", "Mufan Cao", "Chaorong Ye", "Yi Xu", "Cheng Chen†#"], accepted[2].fetch("authors")
+    assert_equal ["Cheng Chen*", "Yi Xu*‡", "Wenzhuo Lei†"], accepted[0].fetch("authors")
+    assert_equal ["Yi Xu*†", "Cheng Chen*‡", "Mufan Cao"], accepted[1].fetch("authors")
+    assert_equal ["Wenzhuo Lei", "Mufan Cao", "Chaorong Ye", "Yi Xu", "Cheng Chen†‡"], accepted[2].fetch("authors")
     doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
-    assert_equal "* Equal contribution · † Corresponding author · # Project Lead", doc.at_css(".publication-legend").text.strip
+    assert_equal "* Equal contribution · † Corresponding author · ‡ Project lead", doc.at_css(".publication-legend").text.strip
     cards = doc.css(".publication-card")
     cards.first(5).each do |card|
       assert card.at_css(".publication-authors"), card.at_css("h3").text
     end
-    assert_includes cards[0].at_css(".publication-authors").text, "Yi Xu*#"
+    assert_includes cards[0].at_css(".publication-authors").text, "Yi Xu*‡"
     assert_includes cards[0].at_css(".publication-authors").text, "Wenzhuo Lei†"
-    assert_includes cards[1].at_css(".publication-authors").text, "Cheng Chen*#"
-    assert_includes cards[2].at_css(".publication-authors").text, "Cheng Chen†#"
+    assert_includes cards[1].at_css(".publication-authors").text, "Cheng Chen*‡"
+    assert_includes cards[2].at_css(".publication-authors").text, "Cheng Chen†‡"
     assert_includes cards[3].at_css(".publication-authors").text, "Cheng Chen*†"
-    assert_includes cards[4].at_css(".publication-authors").text, "Yi Xu†#"
+    assert_includes cards[4].at_css(".publication-authors").text, "Yi Xu†‡"
     cards.to_a.last(2).each do |card|
       assert_nil card.at_css(".publication-authors")
       assert_equal "Project lead and corresponding author · Cheng Chen", card.at_css(".publication-role-credit")&.text&.strip
     end
     assert_includes cards[3].at_css(".publication-venue").text, "AAAI 2027 · Phase 2"
     assert_includes cards[4].at_css(".publication-venue").text, "ICLR 2027 · submitted"
+  end
+
+  def test_publication_role_marks_are_legible_and_links_are_verified
+    doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
+    assert_equal 3, doc.css(".publication-legend strong").length
+    assert_equal %w[* † ‡], doc.css(".publication-legend strong").map(&:text)
+    assert_includes doc.css(".publication-card").first.css(".publication-authors sup").map(&:text), "‡"
+
+    cards = doc.css(".publication-card")
+    mm_links = cards[0].css(".publication-links a").to_h { |link| [link.text.strip, link["href"]] }
+    ijcai_links = cards[1].css(".publication-links a").to_h { |link| [link.text.strip, link["href"]] }
+    assert_equal "https://github.com/ScottBlizzard/OV-OrthKD", mm_links["[Project]"]
+    refute mm_links.key?("[Code]"), "MM repository has not released code yet"
+    assert_equal "https://github.com/ScottBlizzard/orthkd-dr-screening", ijcai_links["[Code]"]
+    cards.each { |card| refute_includes card.css(".publication-links a").map(&:text), "[Poster]" }
+
+    css = File.read(File.join(ROOT, "site/assets/css/global.css"))
+    assert_match(/\.publication-authors sup\s*\{[^}]*font-size:\s*0\.9em;[^}]*font-weight:\s*900;/m, css)
   end
 
   def test_all_publication_surfaces_use_the_same_order_and_images

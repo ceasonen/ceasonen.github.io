@@ -97,11 +97,13 @@ class CvContentTest < Minitest::Test
     english = source("cheng-chen-cv")
     chinese = source("cheng-chen-cv-zh")
     [english, chinese].each do |cv|
-      assert_includes cv, 'Yi Xu*\textsuperscript{\#}, Wenzhuo Lei\textsuperscript{†}'
-      assert_includes cv, 'Yi Xu*\textsuperscript{†}, \textbf{Cheng Chen*}\textsuperscript{\#}, Mufan Cao'
-      assert_includes cv, '\textbf{Cheng Chen}\textsuperscript{†\#}'
-      assert_includes cv, 'Yi Xu*\textsuperscript{\#}, \textbf{Cheng Chen*}\textsuperscript{†}, Wenzhuo Lei'
-      assert_includes cv, 'Yi Xu\textsuperscript{†\#}, \textbf{Cheng Chen}, Wenzhuo Lei'
+      assert_includes cv, '\href{https://github.com/ScottBlizzard/OV-OrthKD}{[Project]}'
+      assert_includes cv, '\href{https://github.com/ScottBlizzard/orthkd-dr-screening}{[Code]}'
+      assert_includes cv, 'Yi Xu*\textsuperscript{‡}, Wenzhuo Lei\textsuperscript{†}'
+      assert_includes cv, 'Yi Xu*\textsuperscript{†}, \textbf{Cheng Chen*}\textsuperscript{‡}, Mufan Cao'
+      assert_includes cv, '\textbf{Cheng Chen}\textsuperscript{†‡}'
+      assert_includes cv, 'Yi Xu*\textsuperscript{‡}, \textbf{Cheng Chen*}\textsuperscript{†}, Wenzhuo Lei'
+      assert_includes cv, 'Yi Xu\textsuperscript{†‡}, \textbf{Cheng Chen}, Wenzhuo Lei'
       assert_includes cv, 'HKUST-GZ'
     end
     assert_includes english, 'AAAI 2027, Phase 2'
@@ -118,8 +120,8 @@ class CvContentTest < Minitest::Test
     assert_includes photo, '项目负责人：Yi Xu；通讯作者：Wenzhuo Lei'
     assert_includes photo, '项目负责人：Cheng Chen；通讯作者：Yi Xu'
     assert_includes photo, 'IJCNN 2026 · 项目负责人、通讯作者 · 已录用'
-    assert_includes photo, 'AAAI 2027 第二阶段；Yi Xu*\textsuperscript{\#}，Cheng Chen*\textsuperscript{†}，Wenzhuo Lei'
-    assert_includes photo, 'ICLR 2027 已投稿；Yi Xu\textsuperscript{†\#}，Cheng Chen，Wenzhuo Lei'
+    assert_includes photo, 'AAAI 2027 第二阶段；Yi Xu*\textsuperscript{‡}，Cheng Chen*\textsuperscript{†}，Wenzhuo Lei'
+    assert_includes photo, 'ICLR 2027 已投稿；Yi Xu\textsuperscript{†‡}，Cheng Chen，Wenzhuo Lei'
     assert_equal 2, photo.scan('项目负责人、通讯作者：Cheng Chen').length
   end
 

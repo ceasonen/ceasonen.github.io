@@ -11,7 +11,7 @@
         </div>
         <p class="publication-count" role="status" aria-live="polite">{{ publications.size }} papers</p>
     </div>
-    <p class="publication-legend">* Equal contribution · † Corresponding author · # Project Lead</p>
+    <p class="publication-legend"><strong>*</strong> Equal contribution <span aria-hidden="true">·</span> <strong>†</strong> Corresponding author <span aria-hidden="true">·</span> <strong>‡</strong> Project lead</p>
     <div id="publication-list">
     {% for item in publications %}
     <article class="publication-card" data-status="{% if item.preprint %}preprint{% else %}accepted{% endif %}"{% if item.preprint %} data-submission="{{ item.pub }}"{% endif %}>

@@ -14,7 +14,7 @@ authors:
   - Mufan Cao
   - Chaorong Ye
   - Yi Xu
-  - Cheng Chen†#
+  - Cheng Chen†‡
 links:
   PDF: https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf
 ---

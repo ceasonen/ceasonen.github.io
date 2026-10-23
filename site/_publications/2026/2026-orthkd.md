@@ -11,8 +11,9 @@ abstract: >-
   We study multi-teacher distillation for diabetic retinopathy screening. OrthKD transfers complementary feature-level knowledge from heterogeneous teachers to a 5.4M-parameter MobileNetV3 student.
 authors:
   - Yi Xu*†
-  - Cheng Chen*#
+  - Cheng Chen*‡
   - Mufan Cao
 links:
   PDF: https://arxiv.org/pdf/2607.25545
+  Code: https://github.com/ScottBlizzard/orthkd-dr-screening
 ---

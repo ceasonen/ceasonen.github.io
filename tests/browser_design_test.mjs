@@ -110,8 +110,15 @@ try {
   assert.equal(await evaluate(`document.querySelector('.nav-toggle').getAttribute('aria-expanded')`), 'false');
   assert.equal(await evaluate(`getComputedStyle(document.querySelector('.welcome-wave')).animationName`), 'none');
   const links = await evaluate(`[...document.querySelectorAll('.publication-card .publication-links a')].map(a=>({label:a.textContent.trim(),url:a.href}))`);
-  assert.equal(links.length, 3);
-  assert(links.every(link => link.label === '[PDF]' && !link.url.includes('/abs/') && !link.url.includes('researchgate')));
+  assert.equal(links.length, 5);
+  assert.equal(links.filter(link => link.label === '[PDF]').length, 3);
+  assert.equal(links.filter(link => link.label === '[Code]').length, 1);
+  assert.equal(links.filter(link => link.label === '[Project]').length, 1);
+  assert(links.every(link => !link.url.includes('/abs/') && !link.url.includes('researchgate')));
+  const marks = await evaluate(`({legend:getComputedStyle(document.querySelector('.publication-legend')).fontSize, author:getComputedStyle(document.querySelector('.publication-authors')).fontSize, superscript:getComputedStyle(document.querySelector('.publication-authors sup')).fontSize})`);
+  assert(parseFloat(marks.legend) >= 15);
+  assert(parseFloat(marks.author) >= 14);
+  assert(parseFloat(marks.superscript) >= 12);
   const pdf = await evaluate(`fetch('/assets/papers/deepyolo-ijcnn-2026.pdf').then(async r=>({ok:r.ok,type:r.headers.get('content-type'),signature:(await r.text()).slice(0,5)}))`);
   assert.equal(pdf.ok, true);
   assert(pdf.type.includes('application/pdf'));
