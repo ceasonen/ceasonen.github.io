@@ -13,6 +13,9 @@ awards:
     name: National Undergraduate Embedded Chip and System Design Competition
     prize: National Third Prize
     lead: true
+  - date: "2024–25"
+    name: The Chinese Mathematics Competitions
+    prize: Provincial Second Prize
   - date: "2025"
     name: Contemporary Undergraduate Mathematical Contest in Modeling
     prize: Provincial Third Prize
@@ -21,9 +24,6 @@ awards:
     name: National College Student Statistical Modeling Competition
     prize: Provincial Third Prize
     lead: true
-  - date: "2024–25"
-    name: The Chinese Mathematics Competitions
-    prize: Provincial Second Prize
   - date: "2023–25"
     name: Tongji University Outstanding Student Scholarship
     prize: Second-Class Scholarship

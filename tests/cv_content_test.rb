@@ -151,4 +151,33 @@ class CvContentTest < Minitest::Test
       assert_equal 7, first_page.scan(/^\\item /).length, name
     end
   end
+
+  def test_technical_skills_are_separate_concise_and_consistent
+    english = source("cheng-chen-cv")
+    chinese = source("cheng-chen-cv-zh")
+    photo = source("cheng-chen-resume-photo-zh")
+
+    assert_match(/\\textbf\{Programming:\} Python, C\/C\+\+, Verilog\.\\\\\n\\textbf\{Machine learning frameworks:\} PyTorch, JAX\.\\\\/, english)
+    assert_match(/\\textbf\{编程：\}Python、C\/C\+\+、Verilog。\\\\\n\\textbf\{机器学习框架：\}PyTorch、JAX。\\\\/, chinese)
+    assert_includes english, 'ROS 2'
+    refute_includes english, '(learning)'
+    assert_includes chinese, 'ROS 2'
+    refute_includes chinese, '学习中'
+    assert_includes photo, '\\textbf{框架：}PyTorch，JAX\\par'
+    assert_includes photo, 'ROS 2'
+    refute_includes photo, '学习中'
+    assert_includes english, '\\textbf{Foundations:} Machine learning, deep learning, algorithms, linear algebra, probability, optimization, and digital signal processing.'
+    assert_includes chinese, '\\textbf{基础：}机器学习、深度学习、算法、线性代数、概率论、最优化与数字信号处理。'
+    assert_includes photo, '\\textbf{基础：}机器学习、深度学习、算法、线性代数、概率论、最优化、数字信号处理'
+  end
+
+  def test_provincial_second_prize_precedes_provincial_third_prizes
+    awards = YAML.safe_load(File.read(File.join(ROOT, "site/_data/highlights.yml"))).fetch("awards")
+    assert_operator awards.index { |award| award.fetch("prize") == "Provincial Second Prize" }, :<,
+                    awards.index { |award| award.fetch("prize") == "Provincial Third Prize" }
+    english = source("cheng-chen-cv")
+    chinese = source("cheng-chen-cv-zh")
+    assert_operator english.index("Provincial Second Prize"), :<, english.index("Provincial Third Prize")
+    assert_operator chinese.index("省级二等奖"), :<, chinese.index("省级三等奖")
+  end
 end
