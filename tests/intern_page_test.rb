@@ -31,7 +31,7 @@ class InternPageTest < Minitest::Test
     refute_includes page, "School of Artificial Intelligence"
     assert_includes page, "Zhejiang University"
     assert_includes page, "Jun. 2026 – Sep. 2026"
-    assert_equal "HKUST", Nokogiri::HTML(page).css('.experience-card h3').first.text.strip
+    assert_equal "HKUST-GZ", Nokogiri::HTML(page).css('.experience-card h3').first.text.strip
     refute_includes Nokogiri::HTML(page).css('.experience-card h3').map(&:text).join(' '), "Hong Kong University of Science and Technology (Guangzhou)"
     refute_includes page, "The Hong Kong"
     assert_includes page, "Sep. 2026 – Present"

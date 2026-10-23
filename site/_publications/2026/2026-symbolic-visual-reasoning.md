@@ -5,7 +5,6 @@ rank:           3
 selected:       true
 pub:            "International Joint Conference on Neural Networks (IJCNN)"
 venue_short:    "IJCNN"
-pub_last:       '<span class="badge badge-pill badge-publication badge-info">Corresponding Author</span>'
 pub_date:       "2026"
 cover:          /assets/images/covers/symbolic_visual_reasoning.png
 abstract: >-
@@ -15,7 +14,7 @@ authors:
   - Mufan Cao
   - Chaorong Ye
   - Yi Xu
-  - Cheng Chen
+  - Cheng Chen†#
 links:
   PDF: https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf
 ---

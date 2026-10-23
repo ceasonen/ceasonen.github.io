@@ -87,10 +87,37 @@ class CvContentTest < Minitest::Test
 
   def test_internship_display_name_is_short_in_current_cvs
     %w[cheng-chen-cv cheng-chen-cv-zh cheng-chen-resume-photo-zh cheng-chen-cv-legacy].each do |name|
-      assert_includes source(name), "HKUST", name
+      assert_includes source(name), "HKUST-GZ", name
       refute_includes source(name), "Hong Kong University of Science and Technology (Guangzhou)", name
       refute_includes source(name), "香港科技大学（广州）", name
     end
+  end
+
+  def test_main_cvs_label_verified_paper_roles_and_review_stage
+    english = source("cheng-chen-cv")
+    chinese = source("cheng-chen-cv-zh")
+    [english, chinese].each do |cv|
+      assert_includes cv, 'Yi Xu*\textsuperscript{\#}, Wenzhuo Lei\textsuperscript{†}'
+      assert_includes cv, 'Yi Xu*\textsuperscript{†}, \textbf{Cheng Chen*}\textsuperscript{\#}, Mufan Cao'
+      assert_includes cv, '\textbf{Cheng Chen}\textsuperscript{†\#}'
+      assert_includes cv, 'Yi Xu*\textsuperscript{\#}, \textbf{Cheng Chen*}\textsuperscript{†}, Wenzhuo Lei'
+      assert_includes cv, 'Yi Xu\textsuperscript{†\#}, \textbf{Cheng Chen}, Wenzhuo Lei'
+      assert_includes cv, 'HKUST-GZ'
+    end
+    assert_includes english, 'AAAI 2027, Phase 2'
+    assert_includes english, 'ICLR 2027, submitted'
+    assert_includes chinese, 'AAAI 2027}，第二阶段'
+    assert_includes chinese, 'ICLR 2027}，已投稿'
+  end
+
+  def test_photo_cv_labels_verified_paper_roles_and_review_stage
+    photo = source("cheng-chen-resume-photo-zh")
+    assert_includes photo, 'OV-OrthKD'
+    assert_includes photo, '项目负责人：Yi Xu；通讯作者：Wenzhuo Lei'
+    assert_includes photo, '项目负责人：Cheng Chen；通讯作者：Yi Xu'
+    assert_includes photo, 'IJCNN 2026 · 项目负责人、通讯作者 · 已录用'
+    assert_includes photo, 'AAAI 2027 第二阶段；Yi Xu*\textsuperscript{\#}，Cheng Chen*\textsuperscript{†}，Wenzhuo Lei'
+    assert_includes photo, 'ICLR 2027 已投稿；Yi Xu\textsuperscript{†\#}，Cheng Chen，Wenzhuo Lei'
   end
 
   def test_cv_modeling_prizes_use_provincial_labels

@@ -46,19 +46,45 @@ class PublicationPresentationTest < Minitest::Test
     end.sort_by { |entry| entry.fetch("rank") }
   end
 
-  def test_preprints_have_full_titles_and_covers_but_no_authors_or_manuscript_links
-    anonymous = publications.select { |entry| entry["anonymous"] }
-    assert_equal PREPRINT_TITLES, anonymous.map { |entry| entry.fetch("title") }
-    assert_equal 3, anonymous.count { |entry| entry["pub"] == "ICLR" }
-    assert_equal 1, anonymous.count { |entry| entry["pub"] == "AAAI" }
-    anonymous.each do |entry|
-      assert_includes entry.fetch("pub_last"), "Preprint"
-      refute_match(/Under Review|Submitted/i, entry.fetch("pub_last"))
+  def test_preprints_keep_titles_covers_and_no_private_manuscript_links
+    preprints = publications.select { |entry| entry["preprint"] }
+    assert_equal PREPRINT_TITLES, preprints.map { |entry| entry.fetch("title") }
+    assert_equal 3, preprints.count { |entry| entry["pub"] == "ICLR" }
+    assert_equal 1, preprints.count { |entry| entry["pub"] == "AAAI" }
+    preprints.each do |entry|
       refute_nil entry["cover"], "Missing figure cover for #{entry['title']}"
       assert File.file?(File.join(ROOT, "site", entry.fetch("cover")))
-      assert_nil entry["authors"]
       assert_nil entry["links"]
     end
+    assert_nil preprints[2]["authors"]
+    assert_nil preprints[3]["authors"]
+    assert_equal ["Yi Xu*#", "Cheng Chen*†", "Wenzhuo Lei"], preprints[0].fetch("authors")
+    assert_equal ["Yi Xu†#", "Cheng Chen", "Wenzhuo Lei"], preprints[1].fetch("authors")
+    assert_equal "AAAI 2027 · Phase 2", preprints[0].fetch("submission_note")
+    assert_equal "ICLR 2027 · submitted", preprints[1].fetch("submission_note")
+  end
+
+  def test_accepted_paper_roles_match_confirmed_authorship
+    accepted = publications.reject { |entry| entry["preprint"] }
+    assert_equal ["Cheng Chen*", "Yi Xu*#", "Wenzhuo Lei†"], accepted[0].fetch("authors")
+    assert_equal ["Yi Xu*†", "Cheng Chen*#", "Mufan Cao"], accepted[1].fetch("authors")
+    assert_equal ["Wenzhuo Lei", "Mufan Cao", "Chaorong Ye", "Yi Xu", "Cheng Chen†#"], accepted[2].fetch("authors")
+    doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
+    assert_equal "* Equal contribution · † Corresponding author · # Project Lead", doc.at_css(".publication-legend").text.strip
+    cards = doc.css(".publication-card")
+    cards.first(5).each do |card|
+      assert card.at_css(".publication-authors"), card.at_css("h3").text
+    end
+    assert_includes cards[0].at_css(".publication-authors").text, "Yi Xu*#"
+    assert_includes cards[0].at_css(".publication-authors").text, "Wenzhuo Lei†"
+    assert_includes cards[1].at_css(".publication-authors").text, "Cheng Chen*#"
+    assert_includes cards[2].at_css(".publication-authors").text, "Cheng Chen†#"
+    assert_includes cards[3].at_css(".publication-authors").text, "Cheng Chen*†"
+    assert_includes cards[4].at_css(".publication-authors").text, "Yi Xu†#"
+    assert_nil cards[5].at_css(".publication-authors")
+    assert_nil cards[6].at_css(".publication-authors")
+    assert_includes cards[3].at_css(".publication-venue").text, "AAAI 2027 · Phase 2"
+    assert_includes cards[4].at_css(".publication-venue").text, "ICLR 2027 · submitted"
   end
 
   def test_all_publication_surfaces_use_the_same_order_and_images
@@ -72,8 +98,8 @@ class PublicationPresentationTest < Minitest::Test
           refute_nil image, "Missing figure for #{entry['title']}"
           assert_equal entry.fetch("cover"), image["src"]
           assert_nil card.at_css(".fa-file-alt"), "File icon should not replace a paper figure"
-          assert_nil card.at_css(".publication-authors") if entry["anonymous"]
-          assert_equal "Preprint 2026", card.at_css(".publication-venue").text.strip if entry["anonymous"]
+          assert_nil card.at_css(".publication-authors") if entry["preprint"] && !entry["authors"]
+          assert_includes card.at_css(".publication-venue").text, "Preprint 2026" if entry["preprint"]
       end
   end
 

@@ -41,19 +41,19 @@ Average score: \textbf{92.02/100}\quad GPA: \textbf{4.70}\quad Major rank: \text
 I explore simple, elegant ways to make AI models more capable. My interests span multimodal large language models, image/video generation, and embodied AI.
 
 \cvsection{Publications}
-{\small * Equal contribution; † corresponding author.}
+{\small * Equal contribution; † corresponding author; \# project lead.}
 \begin{enumerate}
 \raggedright
 \item \textbf{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization.}\\
-\textbf{Cheng Chen*}, Yi Xu*, Wenzhuo Lei.\\
+\textbf{Cheng Chen*}, Yi Xu*\textsuperscript{\#}, Wenzhuo Lei\textsuperscript{†}.\\
 \textit{ACM MM 2026}, accepted.\quad \href{https://arxiv.org/pdf/2609.23376}{[PDF]}
 \papersummary{Separates supervision from visual and audio teachers for open-vocabulary audio-visual event localization.}
 \item \textbf{OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment.}\\
-Yi Xu*, \textbf{Cheng Chen*}, Mufan Cao.\\
+Yi Xu*\textsuperscript{†}, \textbf{Cheng Chen*}\textsuperscript{\#}, Mufan Cao.\\
 \textit{IJCAI 2026}, accepted.\quad \href{https://arxiv.org/pdf/2607.25545}{[PDF]}
 \papersummary{Distills complementary clinical knowledge from heterogeneous teachers into a lightweight retinal-image classifier.}
 \item \textbf{Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions.}\\
-Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\raisebox{.5ex}{\scriptsize †}.\\
+Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{†\#}.\\
 \textit{IJCNN 2026}, accepted.\quad \href{https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf}{[PDF]}
 \papersummary{Links object detection to text-only language models using compact symbolic scene descriptions.}
 \end{enumerate}
@@ -61,9 +61,11 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\raisebox{.5ex}{\
 \cvsection{Preprints}
 \begin{enumerate}[start=4]
 \raggedright
-\item From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness. \textit{Preprint, 2026.}
+\item From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness.\\
+Yi Xu*\textsuperscript{\#}, \textbf{Cheng Chen*}\textsuperscript{†}, Wenzhuo Lei. \textit{Preprint, 2026; AAAI 2027, Phase 2.}
 \papersummary{Uses human-annotated rubric checks to evaluate whether generated images satisfy individual prompt requirements.}
-\item What Can Activation-Patching Evidence Establish? \textit{Preprint, 2026.}
+\item What Can Activation-Patching Evidence Establish?\\
+Yi Xu\textsuperscript{†\#}, \textbf{Cheng Chen}, Wenzhuo Lei. \textit{Preprint, 2026; ICLR 2027, submitted.}
 \papersummary{Examines the scope and limitations of the functional claims that activation-patching evidence supports.}
 \item Follow Me If You Can: Auditing Understanding-to-Generation Transfer. \textit{Preprint, 2026.}
 \papersummary{Audits transfer from visual-understanding training to image generation through controlled comparisons.}
@@ -74,7 +76,7 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\raisebox{.5ex}{\
 \cvsection{Research internships}
 \textit{Research Intern}
 \par\begin{tabularx}{\textwidth}{@{}Xr@{}}
-\textbf{HKUST} & Sept. 2026 - Present \\[3pt]
+\textbf{HKUST-GZ} & Sept. 2026 - Present \\[3pt]
 \textbf{Zhejiang University} & Jun. 2026 - Sept. 2026 \\[3pt]
 \textbf{Tongji University} & Oct. 2025 - Jun. 2026
 \end{tabularx}
@@ -96,7 +98,7 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\raisebox{.5ex}{\
 \item Combined full supervision from a stronger teacher with representation-level transfer from a weaker teacher; orthogonal student projections preserved complementary clinical information.
 \item Used a combined pool of \textbf{132,049} retinal images. A \textbf{5.4M}-parameter student reached \textbf{0.885 QWK} (quadratic weighted kappa) on EyePACS and improved zero-shot Messidor-2 QWK from \textbf{0.507 to 0.728}.
 \end{itemize}
-\researchentry{Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions}{IJCNN 2026; corresponding author}
+\researchentry{Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions}{IJCNN 2026; lead and corresponding author}
 \begin{itemize}
 \item Proposed the initial idea and worked with a junior student, who led implementation and experiments, to connect an object detector with a text-only language model through compact scene reports.
 \item The pipeline reached \textbf{42.3\%} visual question answering accuracy on a stratified \textbf{5,000-image VQAv2 subset}, versus \textbf{38.2\%} for scene-graph serialization, using \textbf{1/2.5 as many prompt tokens as that baseline}.

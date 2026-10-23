@@ -170,7 +170,7 @@ class PageFocusTest < Minitest::Test
       assert_equal 4, text.scan(/\bPreprint\b/i).length, name
       assert_includes text, "92.02/100"
       assert_includes text, "4.70"
-      refute_match(/under review|submitted|审稿中|已投稿/i, text)
+      refute_match(/under review|审稿中/i, text)
       source = File.read(File.join(ROOT, "cv/#{name}.tex"))
       assert_equal 7, source.scan(/^\\researchentry\{/).length
       if name.end_with?("-zh")
