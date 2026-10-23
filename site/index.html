@@ -14,7 +14,8 @@ title: Homepage
         <li><a href="mailto:{{ site.data.profile.additional_email | escape }}" title="{{ site.data.profile.additional_email | escape }}">{% include widgets/icon.html name='email' %}<span>Gmail</span></a></li>
         <li><a href="{{ site.data.profile.gscholar | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='scholar' class='icon-scholar' %}<span>Google Scholar</span></a></li>
         <li><a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener">{% include widgets/icon.html name='github' class='icon-github' %}<span>GitHub</span></a></li>
-        <li><a href="{{ '/cv/cheng-chen-cv.pdf' | relative_url }}" target="_blank" rel="noopener">{% include widgets/icon.html name='document' class='icon-cv' %}<span>Curriculum Vitae</span></a></li>
+        <li><a href="{{ '/cv/cheng-chen-cv.pdf' | relative_url }}" target="_blank" rel="noopener" aria-label="English curriculum vitae">{% include widgets/icon.html name='document' class='icon-cv' %}<span>CV (EN)</span></a></li>
+        <li><a href="{{ '/cv/cheng-chen-cv-zh.pdf' | relative_url }}" target="_blank" rel="noopener" aria-label="Chinese curriculum vitae">{% include widgets/icon.html name='document' class='icon-cv' %}<span>CV (ZH)</span></a></li>
     </ul>
 </aside>
 
@@ -41,16 +42,18 @@ title: Homepage
 
     <section id="awards" class="home-section">
         <h2>Honors and Awards</h2>
+        <p class="award-legend"><span aria-hidden="true">#</span> Project Lead</p>
         <ul class="award-grid">
             {% for item in site.data.highlights.awards %}
             <li class="award-card{% if item.featured %} award-card--featured{% endif %}">
                 <div class="award-card-top">
                     <span class="award-emblem">{% include widgets/icon.html name='award' %}</span>
                     <span class="award-prize">{{ item.prize | escape }}</span>
+                    {% if item.lead %}<span class="award-lead-mark" aria-label="Project Lead">#</span>{% endif %}
                     <time>{{ item.date | escape }}</time>
                 </div>
                 <h3>{{ item.name | escape }}</h3>
-                {% if item.role or item.detail %}<p class="award-meta">{% if item.role %}<span>{{ item.role | escape }}</span>{% endif %}{% if item.detail %}<span>{{ item.detail | escape }}</span>{% endif %}</p>{% endif %}
+                {% if item.detail %}<p class="award-meta">{{ item.detail | escape }}</p>{% endif %}
             </li>
             {% endfor %}
         </ul>
@@ -60,9 +63,6 @@ title: Homepage
 
     <section id="service" class="home-section">
         <h2>Academic Service</h2>
-        <div class="service-panel">
-            <p><strong>Reviewer</strong></p>
-            <ul class="service-venues" aria-label="Conferences reviewed for">{% for venue in site.data.service.reviewer %}<li>{{ venue | escape }}</li>{% endfor %}</ul>
-        </div>
+        <p class="service-line"><strong>Reviewer:</strong> {{ site.data.service.reviewer | join: ' · ' | escape }}</p>
     </section>
 </main>

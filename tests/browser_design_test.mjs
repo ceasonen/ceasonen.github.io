@@ -59,7 +59,7 @@ try {
   await send('DOM.enable');
   await send('CSS.enable');
   const root = (await send('DOM.getDocument')).root.nodeId;
-  for (const selector of ['h1', '.profile-status', '.news-list li > span', '.experience-info p', '.project-card h3 a', '.award-card h3', '.publication-summary', '.service-venues li']) {
+  for (const selector of ['h1', '.profile-status', '.news-list li > span', '.experience-info p', '.project-card h3 a', '.award-card h3', '.publication-summary', '.service-line']) {
     const nodeId = (await send('DOM.querySelector', {nodeId: root, selector})).nodeId;
     const fonts = (await send('CSS.getPlatformFontsForNode', {nodeId})).fonts;
     assert(fonts.some(font => font.isCustomFont && font.postScriptName.startsWith('Nunito')), selector);
@@ -109,7 +109,7 @@ try {
   await send('Input.dispatchKeyEvent', {type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
   assert.equal(await evaluate(`document.querySelector('.nav-toggle').getAttribute('aria-expanded')`), 'false');
   assert.equal(await evaluate(`getComputedStyle(document.querySelector('.welcome-wave')).animationName`), 'none');
-  const links = await evaluate(`[...document.querySelectorAll('.publication-links a')].map(a=>({label:a.textContent.trim(),url:a.href}))`);
+  const links = await evaluate(`[...document.querySelectorAll('.publication-card .publication-links a')].map(a=>({label:a.textContent.trim(),url:a.href}))`);
   assert.equal(links.length, 3);
   assert(links.every(link => link.label === '[PDF]' && !link.url.includes('/abs/') && !link.url.includes('researchgate')));
   const pdf = await evaluate(`fetch('/assets/papers/deepyolo-ijcnn-2026.pdf').then(async r=>({ok:r.ok,type:r.headers.get('content-type'),signature:(await r.text()).slice(0,5)}))`);

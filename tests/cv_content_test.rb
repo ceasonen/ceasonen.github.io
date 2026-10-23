@@ -69,10 +69,27 @@ class CvContentTest < Minitest::Test
     assert_equal awards.length, english.scan(/^\\item /).length
     assert_equal awards.length, chinese.scan(/^\\item /).length
     awards.each { |award| assert_includes english, award.fetch("name") }
-    assert_equal 5, english.scan("Team Captain").length
-    ["全国大学生数学建模竞赛，省级三等奖（2025），队长",
-     "全国大学生统计建模大赛，省级三等奖（2025），队长"].each do |award|
+    assert_includes english, '\# Project Lead'
+    assert_equal 5, english.scan('\\textsuperscript{\\#}').length
+    refute_match(/\)\\textsuperscript\{\\#\}\./, english)
+    refute_includes english, "Team Captain"
+    refute_includes english, "FPGA Track"
+    assert_includes chinese, '\# 项目负责人'
+    assert_equal 5, chinese.scan('\\textsuperscript{\\#}').length
+    refute_match(/）\\textsuperscript\{\\#\}。/, chinese)
+    refute_includes chinese, "队长"
+    refute_includes chinese, "FPGA 赛道"
+    ["全国大学生数学建模竞赛，省级三等奖（2025）",
+     "全国大学生统计建模大赛，省级三等奖（2025）"].each do |award|
       assert_includes chinese, award
+    end
+  end
+
+  def test_internship_display_name_is_short_in_current_cvs
+    %w[cheng-chen-cv cheng-chen-cv-zh cheng-chen-resume-photo-zh cheng-chen-cv-legacy].each do |name|
+      assert_includes source(name), "HKUST", name
+      refute_includes source(name), "Hong Kong University of Science and Technology (Guangzhou)", name
+      refute_includes source(name), "香港科技大学（广州）", name
     end
   end
 

@@ -74,7 +74,7 @@ badge: "Accepted"
 
 ## 页面结构
 
-- 首页板块顺序：`site/index.html`。当前为简介及研究方向 → News → 教育与实习 → 项目 → 奖项 → 论文 → 学术服务。导航顺序与板块一致，独立的 CV 下载按钮保留在最后。
+- 首页板块顺序：`site/index.html`。当前为简介及研究方向 → News → 教育与实习 → 项目 → 奖项 → 论文 → 学术服务。导航顺序与板块一致，英文 CV（EN）与中文 CV（ZH）下载链接保留在最后，也都显示在左侧资料栏。
 - 页面外壳：`site/_layouts/single.html`；侧栏：`site/index.html`。
 - 教育实习 / 项目 / 论文布局：`site/_includes/sections/experience.html` / `projects.html` / `publications.html`。
 - 原独立栏目页面仅保留旧地址跳转，使用 `site/_layouts/redirect.html`，无需重复维护内容。
@@ -92,7 +92,7 @@ ruby tools/website.rb build
 ruby tools/website.rb preview
 ```
 
-浏览器打开 `http://127.0.0.1:4000`，`Ctrl+C` 停止。预览只提供构建后的公开网站和主 CV，不提供论文工作目录或私有在审稿。
+浏览器打开 `http://127.0.0.1:4000`，`Ctrl+C` 停止。预览只提供构建后的公开网站和中英文主 CV，不提供论文工作目录或私有在审稿。
 
 可选浏览器验证：启动一个专用 Chrome 调试实例（端口 9225），运行 `node tests/browser_design_test.mjs`；也可追加预览地址和调试端口。该检查核验实际渲染字体、八个屏幕宽度、七个板块锚点、论文筛选、菜单与 PDF 响应，截图保存在忽略目录 `.build/preview/`。请只连接专用测试浏览器，不连接日常浏览器。
 

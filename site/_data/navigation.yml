@@ -13,5 +13,7 @@ pages:
   url: /#publications
 - name: Service
   url: /#service
-- name: CV
+- name: CV (EN)
   url: /cv/cheng-chen-cv.pdf
+- name: CV (ZH)
+  url: /cv/cheng-chen-cv-zh.pdf

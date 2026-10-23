@@ -53,15 +53,28 @@ class DesignRefinementTest < Minitest::Test
     entries = YAML.safe_load(File.read(File.join(ROOT, "site/_data/highlights.yml"))).fetch("awards")
     cards = home.css(".award-card")
     assert_equal 7, cards.length
+    assert_equal "# Project Lead", home.at_css(".award-legend")&.text&.strip
     cards.zip(entries).each do |card, entry|
       assert_equal entry.fetch("name"), card.at_css("h3").text.strip
       assert_equal entry.fetch("prize"), card.at_css(".award-prize").text.strip
       assert_equal entry.fetch("date"), card.at_css("time").text.strip
-      assert_includes card.text, entry.fetch("role") if entry["role"]
+      if entry["lead"]
+        assert_equal "#", card.at_css(".award-lead-mark")&.text&.strip
+      else
+        assert_nil card.at_css(".award-lead-mark")
+      end
       assert_includes card.text, entry.fetch("detail") if entry["detail"]
     end
+    refute_includes home.css("#awards").text, "Team Captain"
+    refute_includes home.css("#awards").text, "FPGA Track"
     assert_equal 1, home.css(".award-card--featured").length
     assert_equal 7, home.css(".award-card .site-icon").length
+  end
+
+  def test_competition_news_does_not_repeat_project_lead_or_fpga_track
+    news = home.css(".news-list").text
+    refute_includes news, "team captain"
+    refute_match(/Embedded Chip and System Design Competition, FPGA track/i, news)
   end
 
   def test_competition_names_use_verified_event_or_institutional_english_names

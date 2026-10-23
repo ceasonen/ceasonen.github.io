@@ -85,14 +85,16 @@ class PageFocusTest < Minitest::Test
     assert_operator doc.to_html.index('id="projects"'), :<, doc.to_html.index('id="publications"')
   end
 
-  def test_navigation_order_matches_home_sections_with_cv_last
+  def test_navigation_order_matches_home_sections_with_both_cvs_last
     doc = page("index.html")
     sections = doc.css("main .home-section").map { |section| section["id"] }
     links = doc.css(".section-nav a")
     anchors = links.reject { |link| link["href"].end_with?(".pdf") }
     assert_equal sections, anchors.map { |link| link["href"].delete_prefix("/#") }
-    assert_equal "CV", links.last.text.strip
-    assert_equal "/cv/cheng-chen-cv.pdf", links.last["href"]
+    cv_links = links.to_a.last(2)
+    assert_equal ["CV (EN)", "CV (ZH)"], cv_links.map { |link| link.text.strip }
+    assert_equal ["/cv/cheng-chen-cv.pdf", "/cv/cheng-chen-cv-zh.pdf"], cv_links.map { |link| link["href"] }
+    cv_links.each { |link| assert_equal "_blank", link["target"] }
   end
 
   def test_home_uses_reference_typography_without_duplicate_anchor_offsets
@@ -110,15 +112,26 @@ class PageFocusTest < Minitest::Test
 
   def test_profile_has_lightweight_accessible_contact_icons
     doc = page("index.html")
-    assert_equal 6, doc.css(".profile-links .site-icon").length
+    assert_equal 7, doc.css(".profile-links .site-icon").length
     doc.css(".profile-links .site-icon").each do |icon|
       assert_equal "true", icon["aria-hidden"]
     end
     assert_equal "Tongji University", doc.at_css(".profile-affiliation").text
     assert doc.at_css('.profile-links a[href="mailto:2351445@tongji.edu.cn"]')
     assert doc.at_css('.profile-links a[href="mailto:chenceason10@gmail.com"]')
+    assert_equal ["CV (EN)", "CV (ZH)"], doc.css('.profile-links a[href$=".pdf"]').map { |link| link.text.strip }
+    assert_equal ["/cv/cheng-chen-cv.pdf", "/cv/cheng-chen-cv-zh.pdf"], doc.css('.profile-links a[href$=".pdf"]').map { |link| link["href"] }
     assert doc.at_css(".welcome-wave")
     assert_equal 2, doc.css(".education-entry .education-icon").length
+  end
+
+  def test_service_is_plain_typography_without_nested_cards
+    doc = page("index.html")
+    service = doc.at_css("#service")
+    assert_equal "Reviewer: ICLR · PRCV · ICME · IJCNN · AAAI", service.at_css(".service-line")&.text&.strip
+    assert_empty service.css(".service-panel, .service-venues, li")
+    css = File.read(File.join(ROOT, "site/assets/css/global.css"))
+    refute_match(/\.service-line\s*\{[^}]*\b(?:border|background|box-shadow)\s*:/, css)
   end
 
   def test_undergraduate_education_displays_major_rank

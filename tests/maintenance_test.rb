@@ -64,6 +64,7 @@ class MaintenanceTest < Minitest::Test
   def test_preview_contains_public_cv_but_no_working_materials
     preview = File.join(ROOT, ".build/site")
     assert File.file?(File.join(preview, "cv/cheng-chen-cv.pdf")), "Build must retain the preview CV after every rebuild"
+    assert File.file?(File.join(preview, "cv/cheng-chen-cv-zh.pdf")), "Build must retain the Chinese CV after every rebuild"
     %w[.local .git papers Gemfile README.md cv/cheng-chen-cv.tex].each do |private_path|
       refute File.exist?(File.join(preview, private_path)), "Unexpected working material in preview: #{private_path}"
     end

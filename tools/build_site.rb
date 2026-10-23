@@ -35,7 +35,7 @@ end
 # Copy only explicitly public downloads into the preview, after every build.
 # Never copy cv/ sources, papers/ working trees or .local/ into the server root.
 FileUtils.mkdir_p(File.join(destination, "cv"))
-%w[index.html cheng-chen-cv.pdf].each do |file|
+%w[index.html cheng-chen-cv.pdf cheng-chen-cv-zh.pdf].each do |file|
   FileUtils.cp(File.join(root, "cv", file), File.join(destination, "cv", file))
 end
 puts "Updated #{pages.length} public pages and #{assets.length} assets."

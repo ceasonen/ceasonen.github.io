@@ -3,25 +3,24 @@ awards:
   - date: "2026"
     name: China Robot and Artificial Intelligence Competition
     prize: National First Prize
-    role: Team Captain
+    lead: true
     featured: true
   - date: "2025"
     name: Global Campus Artificial Intelligence Algorithm Elite Competition
     prize: National Second Prize
-    role: Team Captain
+    lead: true
   - date: "2025"
     name: National Undergraduate Embedded Chip and System Design Competition
     prize: National Third Prize
-    role: Team Captain
-    detail: FPGA Track
+    lead: true
   - date: "2025"
     name: Contemporary Undergraduate Mathematical Contest in Modeling
     prize: Provincial Third Prize
-    role: Team Captain
+    lead: true
   - date: "2025"
     name: National College Student Statistical Modeling Competition
     prize: Provincial Third Prize
-    role: Team Captain
+    lead: true
   - date: "2024–25"
     name: The Chinese Mathematics Competitions
     prize: Provincial Second Prize

@@ -16,7 +16,7 @@ class InternPageTest < Minitest::Test
   def test_logo_styles_use_the_latest_cache_busted_asset_version
     config = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
 
-    assert_equal "20261011-education-interests", config["asset_version"]
+    assert_equal "20261023-cv-service", config["asset_version"]
   end
 
   def test_intern_page_contains_three_internships_without_independent_research
@@ -31,7 +31,8 @@ class InternPageTest < Minitest::Test
     refute_includes page, "School of Artificial Intelligence"
     assert_includes page, "Zhejiang University"
     assert_includes page, "Jun. 2026 – Sep. 2026"
-    assert_includes page, "Hong Kong University of Science and Technology (Guangzhou)"
+    assert_equal "HKUST", Nokogiri::HTML(page).css('.experience-card h3').first.text.strip
+    refute_includes Nokogiri::HTML(page).css('.experience-card h3').map(&:text).join(' '), "Hong Kong University of Science and Technology (Guangzhou)"
     refute_includes page, "The Hong Kong"
     assert_includes page, "Sep. 2026 – Present"
     assert_equal 1, Nokogiri::HTML(page).css('.experience-card img[src="/assets/images/organizations/tongji-university.png"]').length

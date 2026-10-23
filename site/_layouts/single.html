@@ -17,7 +17,7 @@
             <button class="nav-toggle" aria-expanded="false" aria-controls="section-nav">Menu</button>
             <div id="section-nav" class="section-nav">
                 {% for item in site.data.navigation.pages %}
-                <a href="{{ item.url | relative_url }}"{% if item.name == 'CV' %} target="_blank" rel="noopener"{% endif %}>{{ item.name }}</a>
+                <a href="{{ item.url | relative_url }}"{% if item.url contains '.pdf' %} target="_blank" rel="noopener"{% endif %}>{{ item.name }}</a>
                 {% endfor %}
             </div>
         </nav>
