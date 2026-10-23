@@ -6,6 +6,7 @@ require "rexml/document"
 
 class PageFocusTest < Minitest::Test
   ROOT = File.expand_path("..", __dir__)
+  CV_EN_URL = "/cv/cheng-chen-cv.pdf?v=20261023b"
 
   def page(name)
     path = File.join(ROOT, name)
@@ -74,7 +75,7 @@ class PageFocusTest < Minitest::Test
   def test_home_navigation_targets_sections_that_exist_once
     doc = page("index.html")
     doc.css(".section-nav a").each do |link|
-      next if link["href"].end_with?(".pdf")
+      next if link["href"].include?(".pdf")
       assert link["href"].start_with?("/#"), link["href"]
       assert_equal 1, doc.css(link["href"].delete_prefix("/")).length
     end
@@ -89,11 +90,11 @@ class PageFocusTest < Minitest::Test
     doc = page("index.html")
     sections = doc.css("main .home-section").map { |section| section["id"] }
     links = doc.css(".section-nav a")
-    anchors = links.reject { |link| link["href"].end_with?(".pdf") }
+    anchors = links.reject { |link| link["href"].include?(".pdf") }
     assert_equal sections, anchors.map { |link| link["href"].delete_prefix("/#") }
     cv_links = links.to_a.last(2)
     assert_equal ["CV (EN)", "CV (ZH)"], cv_links.map { |link| link.text.strip }
-    assert_equal ["/cv/cheng-chen-cv.pdf", "/cv/cheng-chen-cv-zh.pdf"], cv_links.map { |link| link["href"] }
+    assert_equal [CV_EN_URL, "/cv/cheng-chen-cv-zh.pdf"], cv_links.map { |link| link["href"] }
     cv_links.each { |link| assert_equal "_blank", link["target"] }
   end
 
@@ -119,10 +120,21 @@ class PageFocusTest < Minitest::Test
     assert_equal "Tongji University", doc.at_css(".profile-affiliation").text
     assert doc.at_css('.profile-links a[href="mailto:2351445@tongji.edu.cn"]')
     assert doc.at_css('.profile-links a[href="mailto:chenceason10@gmail.com"]')
-    assert_equal ["CV (EN)", "CV (ZH)"], doc.css('.profile-links a[href$=".pdf"]').map { |link| link.text.strip }
-    assert_equal ["/cv/cheng-chen-cv.pdf", "/cv/cheng-chen-cv-zh.pdf"], doc.css('.profile-links a[href$=".pdf"]').map { |link| link["href"] }
+    assert_equal ["CV (EN)", "CV (ZH)"], doc.css('.profile-links a[href*=".pdf"]').map { |link| link.text.strip }
+    assert_equal [CV_EN_URL, "/cv/cheng-chen-cv-zh.pdf"], doc.css('.profile-links a[href*=".pdf"]').map { |link| link["href"] }
     assert doc.at_css(".welcome-wave")
     assert_equal 2, doc.css(".education-entry .education-icon").length
+  end
+
+  def test_all_english_cv_entry_points_request_the_current_pdf
+    home = File.read(File.join(ROOT, "site/index.html"))
+    navigation = File.read(File.join(ROOT, "site/_data/navigation.yml"))
+    sidebar = File.read(File.join(ROOT, "site/_includes/widgets/homepage_sidebar.html"))
+    redirect = File.read(File.join(ROOT, "cv/index.html"))
+    assert_includes home, CV_EN_URL
+    assert_includes navigation, CV_EN_URL
+    assert_includes sidebar, CV_EN_URL
+    assert_equal 4, redirect.scan(CV_EN_URL).length
   end
 
   def test_service_is_plain_typography_without_nested_cards
