@@ -86,10 +86,13 @@ class CvContentTest < Minitest::Test
   end
 
   def test_internship_display_name_is_short_in_current_cvs
-    %w[cheng-chen-cv cheng-chen-cv-zh cheng-chen-resume-photo-zh cheng-chen-cv-legacy].each do |name|
+    %w[cheng-chen-cv cheng-chen-cv-legacy].each do |name|
       assert_includes source(name), "HKUST-GZ", name
       refute_includes source(name), "Hong Kong University of Science and Technology (Guangzhou)", name
-      refute_includes source(name), "香港科技大学（广州）", name
+    end
+    %w[cheng-chen-cv-zh cheng-chen-resume-photo-zh].each do |name|
+      assert_includes source(name), "香港科技大学（广州）", name
+      refute_includes source(name), "HKUST-GZ", name
     end
   end
 
@@ -104,8 +107,12 @@ class CvContentTest < Minitest::Test
       assert_includes cv, '\textbf{Cheng Chen}\textsuperscript{†‡}'
       assert_includes cv, 'Yi Xu*\textsuperscript{‡}, \textbf{Cheng Chen*}\textsuperscript{†}, Wenzhuo Lei'
       assert_includes cv, 'Yi Xu\textsuperscript{†‡}, \textbf{Cheng Chen}, Wenzhuo Lei'
-      assert_includes cv, 'HKUST-GZ'
+      assert_includes cv, '\textbf{Cheng Chen}\textsuperscript{†‡}, Yi Xu, Wenzhuo Lei'
     end
+    assert_includes english, 'HKUST-GZ'
+    assert_includes chinese, '香港科技大学（广州）'
+    assert_includes english, 'Reviewer:} ICLR 2027, AAAI 2027, ICME 2026, IJCNN 2026, IJCNN 2027, PRCV 2026.'
+    assert_includes chinese, '审稿人：}ICLR 2027、AAAI 2027、ICME 2026、IJCNN 2026、IJCNN 2027、PRCV 2026。'
     assert_includes english, 'AAAI 2027, Phase 2'
     assert_includes english, 'ICLR 2027, submitted'
     assert_includes chinese, 'AAAI 2027}，第二阶段'
@@ -122,7 +129,10 @@ class CvContentTest < Minitest::Test
     assert_includes photo, 'IJCNN 2026 · 项目负责人、通讯作者 · 已录用'
     assert_includes photo, 'AAAI 2027 第二阶段；Yi Xu*\textsuperscript{‡}，Cheng Chen*\textsuperscript{†}，Wenzhuo Lei'
     assert_includes photo, 'ICLR 2027 已投稿；Yi Xu\textsuperscript{†‡}，Cheng Chen，Wenzhuo Lei'
-    assert_equal 2, photo.scan('项目负责人、通讯作者：Cheng Chen').length
+    assert_equal 2, photo.scan('Cheng Chen\textsuperscript{†‡}，Yi Xu，Wenzhuo Lei').length
+    assert_includes photo, '香港科技大学（广州）'
+    assert_includes photo, 'ICLR 2027、AAAI 2027、ICME 2026；\\'
+    assert_includes photo, 'IJCNN 2026、IJCNN 2027、PRCV 2026。'
   end
 
   def test_cv_modeling_prizes_use_provincial_labels
@@ -134,15 +144,11 @@ class CvContentTest < Minitest::Test
     refute_match(/上海市?[一二三]等奖/, chinese)
   end
 
-  def test_first_page_explains_each_paper_with_a_short_summary
+  def test_first_page_lists_papers_without_repeating_research_summaries
     %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
       first_page = source(name).split('\\newpage', 2).first
-      summaries = first_page.scan(/^\\papersummary\{([^}]+)\}/).flatten
-      assert_equal 7, summaries.length, name
-      summaries.each do |summary|
-        refute_empty summary.strip, name
-        assert_operator summary.length, :<=, 160, name
-      end
+      refute_includes first_page, '\\papersummary', name
+      assert_equal 7, first_page.scan(/^\\item /).length, name
     end
   end
 end

@@ -63,6 +63,9 @@ title: Homepage
 
     <section id="service" class="home-section">
         <h2>Academic Service</h2>
-        <p class="service-line"><strong>Reviewer:</strong> {{ site.data.service.reviewer | join: ' · ' | escape }}</p>
+        <p class="service-heading">Reviewer</p>
+        <ul class="service-list">
+            {% for venue in site.data.service.reviewer %}<li>{{ venue | escape }}</li>{% endfor %}
+        </ul>
     </section>
 </main>

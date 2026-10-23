@@ -128,10 +128,12 @@ class PageFocusTest < Minitest::Test
   def test_service_is_plain_typography_without_nested_cards
     doc = page("index.html")
     service = doc.at_css("#service")
-    assert_equal "Reviewer: ICLR · PRCV · ICME · IJCNN · AAAI", service.at_css(".service-line")&.text&.strip
-    assert_empty service.css(".service-panel, .service-venues, li")
+    assert_equal "Reviewer", service.at_css(".service-heading")&.text&.strip
+    assert_equal ["ICLR 2027", "AAAI 2027", "ICME 2026", "IJCNN 2026", "IJCNN 2027", "PRCV 2026"],
+                 service.css(".service-list li").map { |item| item.text.strip }
+    assert_empty service.css(".service-panel, .service-venues")
     css = File.read(File.join(ROOT, "site/assets/css/global.css"))
-    refute_match(/\.service-line\s*\{[^}]*\b(?:border|background|box-shadow)\s*:/, css)
+    refute_match(/\.service-list\s*\{[^}]*\b(?:border|background|box-shadow)\s*:/, css)
   end
 
   def test_undergraduate_education_displays_major_rank

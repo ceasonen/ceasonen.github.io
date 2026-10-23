@@ -56,15 +56,13 @@ class PublicationPresentationTest < Minitest::Test
       assert File.file?(File.join(ROOT, "site", entry.fetch("cover")))
       assert_nil entry["links"]
     end
-    assert_nil preprints[2]["authors"]
-    assert_nil preprints[3]["authors"]
+    assert_equal ["Cheng Chen†‡", "Yi Xu", "Wenzhuo Lei"], preprints[2]["authors"]
+    assert_equal ["Cheng Chen†‡", "Yi Xu", "Wenzhuo Lei"], preprints[3]["authors"]
     assert_equal ["Yi Xu*‡", "Cheng Chen*†", "Wenzhuo Lei"], preprints[0].fetch("authors")
     assert_equal ["Yi Xu†‡", "Cheng Chen", "Wenzhuo Lei"], preprints[1].fetch("authors")
     assert_equal "AAAI 2027 · Phase 2", preprints[0].fetch("submission_note")
     assert_equal "ICLR 2027 · submitted", preprints[1].fetch("submission_note")
-    preprints.last(2).each do |entry|
-      assert_equal "Project lead and corresponding author · Cheng Chen", entry["role_credit"]
-    end
+    preprints.last(2).each { |entry| assert_nil entry["role_credit"] }
   end
 
   def test_accepted_paper_roles_match_confirmed_authorship
@@ -85,8 +83,8 @@ class PublicationPresentationTest < Minitest::Test
     assert_includes cards[3].at_css(".publication-authors").text, "Cheng Chen*†"
     assert_includes cards[4].at_css(".publication-authors").text, "Yi Xu†‡"
     cards.to_a.last(2).each do |card|
-      assert_nil card.at_css(".publication-authors")
-      assert_equal "Project lead and corresponding author · Cheng Chen", card.at_css(".publication-role-credit")&.text&.strip
+      assert_equal "Cheng Chen†‡, Yi Xu, Wenzhuo Lei", card.at_css(".publication-authors")&.text&.gsub(/\s+/, " ")&.strip
+      assert_nil card.at_css(".publication-role-credit")
     end
     assert_includes cards[3].at_css(".publication-venue").text, "AAAI 2027 · Phase 2"
     assert_includes cards[4].at_css(".publication-venue").text, "ICLR 2027 · submitted"

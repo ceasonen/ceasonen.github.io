@@ -59,7 +59,7 @@ try {
   await send('DOM.enable');
   await send('CSS.enable');
   const root = (await send('DOM.getDocument')).root.nodeId;
-  for (const selector of ['h1', '.profile-status', '.news-list li > span', '.experience-info p', '.project-card h3 a', '.award-card h3', '.publication-summary', '.service-line']) {
+  for (const selector of ['h1', '.profile-status', '.news-list li > span', '.experience-info p', '.project-card h3 a', '.award-card h3', '.publication-summary', '.service-list li']) {
     const nodeId = (await send('DOM.querySelector', {nodeId: root, selector})).nodeId;
     const fonts = (await send('CSS.getPlatformFontsForNode', {nodeId})).fonts;
     assert(fonts.some(font => font.isCustomFont && font.postScriptName.startsWith('Nunito')), selector);
@@ -92,6 +92,8 @@ try {
     assert.equal(await evaluate(`document.querySelector('.publication-count').textContent`), `${count} papers`);
   }
   console.log('PASS: one set of seven cards, all publication filters');
+  assert.deepEqual(await evaluate(`[...document.querySelectorAll('.service-list li')].map(item => item.textContent.trim())`),
+    ['ICLR 2027', 'AAAI 2027', 'ICME 2026', 'IJCNN 2026', 'IJCNN 2027', 'PRCV 2026']);
 
   for (const width of [1440,390]) {
     await send('Emulation.setDeviceMetricsOverride', {width, height: width === 390 ? 844 : 1100, deviceScaleFactor: 1, mobile: width === 390});
