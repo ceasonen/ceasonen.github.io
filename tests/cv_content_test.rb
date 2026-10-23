@@ -108,6 +108,8 @@ class CvContentTest < Minitest::Test
     assert_includes english, 'ICLR 2027, submitted'
     assert_includes chinese, 'AAAI 2027}，第二阶段'
     assert_includes chinese, 'ICLR 2027}，已投稿'
+    assert_equal 2, english.scan('{2026; lead and corresponding author}').length
+    assert_equal 2, chinese.scan('{2026；项目负责人、通讯作者}').length
   end
 
   def test_photo_cv_labels_verified_paper_roles_and_review_stage
@@ -118,6 +120,7 @@ class CvContentTest < Minitest::Test
     assert_includes photo, 'IJCNN 2026 · 项目负责人、通讯作者 · 已录用'
     assert_includes photo, 'AAAI 2027 第二阶段；Yi Xu*\textsuperscript{\#}，Cheng Chen*\textsuperscript{†}，Wenzhuo Lei'
     assert_includes photo, 'ICLR 2027 已投稿；Yi Xu\textsuperscript{†\#}，Cheng Chen，Wenzhuo Lei'
+    assert_equal 2, photo.scan('项目负责人、通讯作者：Cheng Chen').length
   end
 
   def test_cv_modeling_prizes_use_provincial_labels

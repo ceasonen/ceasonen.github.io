@@ -8,6 +8,7 @@ cover: /assets/images/covers/neural-operator-reliability.png
 pub: "ICLR"
 pub_date: "2027"
 preprint_year: "2026"
+role_credit: "Project lead and corresponding author · Cheng Chen"
 abstract: >-
   Research on identifying unreliable predicted physical fields efficiently, with a focus on neural operators and single-pass risk assessment.
 ---
