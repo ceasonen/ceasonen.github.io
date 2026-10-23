@@ -93,7 +93,7 @@ try {
   }
   console.log('PASS: one set of seven cards, all publication filters');
   assert.deepEqual(await evaluate(`[...document.querySelectorAll('.service-list li')].map(item => item.textContent.trim())`),
-    ['ICLR 2027', 'AAAI 2027', 'ICME 2026', 'IJCNN 2026', 'IJCNN 2027', 'PRCV 2026']);
+    ['ICLR(2027)', 'AAAI(2027)', 'ICME(2026)', 'IJCNN(2026,2027)', 'PRCV(2026)']);
 
   for (const width of [1440,390]) {
     await send('Emulation.setDeviceMetricsOverride', {width, height: width === 390 ? 844 : 1100, deviceScaleFactor: 1, mobile: width === 390});

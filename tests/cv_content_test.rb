@@ -111,8 +111,8 @@ class CvContentTest < Minitest::Test
     end
     assert_includes english, 'HKUST-GZ'
     assert_includes chinese, '香港科技大学（广州）'
-    assert_includes english, 'Reviewer:} ICLR 2027, AAAI 2027, ICME 2026, IJCNN 2026, IJCNN 2027, PRCV 2026.'
-    assert_includes chinese, '审稿人：}ICLR 2027、AAAI 2027、ICME 2026、IJCNN 2026、IJCNN 2027、PRCV 2026。'
+    assert_includes english, 'Reviewer:} ICLR(2027), AAAI(2027), ICME(2026), IJCNN(2026,2027), PRCV(2026).'
+    assert_includes chinese, '审稿人：}ICLR(2027)、AAAI(2027)、ICME(2026)、IJCNN(2026,2027)、PRCV(2026)。'
     assert_includes english, 'AAAI 2027, Phase 2'
     assert_includes english, 'ICLR 2027, submitted'
     assert_includes chinese, 'AAAI 2027}，第二阶段'
@@ -131,8 +131,8 @@ class CvContentTest < Minitest::Test
     assert_includes photo, 'ICLR 2027 已投稿；Yi Xu\textsuperscript{†‡}，Cheng Chen，Wenzhuo Lei'
     assert_equal 2, photo.scan('Cheng Chen\textsuperscript{†‡}，Yi Xu，Wenzhuo Lei').length
     assert_includes photo, '香港科技大学（广州）'
-    assert_includes photo, 'ICLR 2027、AAAI 2027、ICME 2026；\\'
-    assert_includes photo, 'IJCNN 2026、IJCNN 2027、PRCV 2026。'
+    assert_includes photo, 'ICLR(2027)、AAAI(2027)、ICME(2026)；\\'
+    assert_includes photo, 'IJCNN(2026,2027)、PRCV(2026)。'
   end
 
   def test_cv_modeling_prizes_use_provincial_labels
