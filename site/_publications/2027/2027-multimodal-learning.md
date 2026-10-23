@@ -8,6 +8,7 @@ cover: /assets/images/covers/multimodal-learning.png
 pub: "ICLR"
 pub_date: "2027"
 preprint_year: "2026"
+submission_note: "ICLR 2027 · submitted"
 authors:
   - Cheng Chen†‡
   - Yi Xu

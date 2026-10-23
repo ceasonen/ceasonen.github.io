@@ -62,6 +62,9 @@ class PublicationPresentationTest < Minitest::Test
     assert_equal ["Yi Xu†‡", "Cheng Chen", "Wenzhuo Lei"], preprints[1].fetch("authors")
     assert_equal "AAAI 2027 · Phase 2", preprints[0].fetch("submission_note")
     assert_equal "ICLR 2027 · submitted", preprints[1].fetch("submission_note")
+    preprints.last(2).each do |entry|
+      assert_equal "ICLR 2027 · submitted", entry["submission_note"]
+    end
     preprints.last(2).each { |entry| assert_nil entry["role_credit"] }
   end
 
@@ -88,6 +91,9 @@ class PublicationPresentationTest < Minitest::Test
     end
     assert_includes cards[3].at_css(".publication-venue").text, "AAAI 2027 · Phase 2"
     assert_includes cards[4].at_css(".publication-venue").text, "ICLR 2027 · submitted"
+    cards.to_a.last(2).each do |card|
+      assert_includes card.at_css(".publication-venue").text, "ICLR 2027 · submitted"
+    end
   end
 
   def test_publication_role_marks_are_legible_and_links_are_verified
