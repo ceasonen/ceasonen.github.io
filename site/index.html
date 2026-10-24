@@ -13,8 +13,8 @@ title: Homepage
         <li><a href="{{ site.data.profile.gscholar | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='scholar' class='icon-scholar' %}<span>Google Scholar</span></a></li>
         <li><a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener">{% include widgets/icon.html name='github' class='icon-github' %}<span>GitHub</span></a></li>
         <li><a href="{{ site.data.profile.linkedin_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='linkedin' %}<span>LinkedIn</span></a></li>
-        <li><a href="{{ site.data.profile.x_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='x' class='icon-x' %}<span>X</span></a></li>
-        <li><a href="{{ site.data.profile.xiaohongshu_url | escape }}" target="_blank" rel="noopener"><img class="site-icon icon-xiaohongshu" src="https://www.xiaohongshu.com/favicon.ico" alt="" width="21" height="21" loading="lazy"><span>小红书</span></a></li>
+        <li><a href="{{ site.data.profile.x_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='x' class='icon-x' %}<span>Twitter</span></a></li>
+        <li><a href="{{ site.data.profile.xiaohongshu_url | escape }}" target="_blank" rel="noopener"><img class="site-icon icon-xiaohongshu" src="https://www.xiaohongshu.com/favicon.ico" alt="" width="21" height="21" loading="lazy"><span>RedNote</span></a></li>
     </ul>
 </aside>
 
@@ -43,17 +43,11 @@ title: Homepage
     <section id="awards" class="home-section">
         <h2>Honors and Awards</h2>
         <p class="award-legend"><span aria-hidden="true">#</span> Project Lead</p>
-        <ul class="award-grid">
+        <ul class="award-list">
             {% for item in site.data.highlights.awards %}
-            <li class="award-card{% if item.featured %} award-card--featured{% endif %}">
-                <div class="award-card-top">
-                    <span class="award-emblem">{% include widgets/icon.html name='award' %}</span>
-                    <span class="award-prize">{{ item.prize | escape }}</span>
-                    {% if item.lead %}<span class="award-lead-mark" aria-label="Project Lead">#</span>{% endif %}
-                    <time>{{ item.date | escape }}</time>
-                </div>
-                <h3>{{ item.name | escape }}</h3>
-                {% if item.detail %}<p class="award-meta">{{ item.detail | escape }}</p>{% endif %}
+            <li>
+                <time>{{ item.date | escape }}</time>
+                <span class="award-text"><strong class="award-prize">{{ item.prize | escape }}</strong> · <span class="award-name">{{ item.name | escape }}</span>{% if item.lead %} <span class="award-lead-mark" aria-label="Project Lead">#</span>{% endif %}{% if item.detail %}<span class="award-detail"> — {{ item.detail | escape }}</span>{% endif %}</span>
             </li>
             {% endfor %}
         </ul>

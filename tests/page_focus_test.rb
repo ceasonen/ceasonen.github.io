@@ -15,22 +15,21 @@ class PageFocusTest < Minitest::Test
     Nokogiri::HTML(File.read(path))
   end
 
-  def test_projects_have_verified_repositories_and_specific_descriptions
+  def test_projects_are_compact_linked_text_with_verified_repositories
     doc = page("index.html")
-    cards = doc.css(".project-card")
-    assert_equal 5, cards.length
+    entries = doc.css("#projects .project-list > li")
+    assert_equal 5, entries.length
+    assert_empty doc.css("#projects .project-card, #projects details, #projects .project-stack")
     %w[Image2Other deep-research offer-pilot hlstrack2025-44686 research-skills].each do |repo|
-      assert doc.at_css(".project-card a[href='https://github.com/ceasonen/#{repo}']"), repo
+      assert doc.at_css("#projects a[href='https://github.com/ceasonen/#{repo}']"), repo
     end
-    cards.each do |card|
-      refute_empty card.at_css("h3").text.strip
-      assert_operator card.css("li").length, :>=, 2
+    entries.each do |entry|
+      refute_empty entry.at_css(".project-name").text.strip
+      refute_empty entry.at_css(".project-summary").text.strip
     end
-    assert_includes doc.text, "Prototype"
-    assert_includes doc.text, "Curated toolkit"
-    studio = doc.at_css('.project-card a[href="https://ceasonen.github.io/Image2Other/"]')
+    studio = doc.at_css('#projects .project-name[href="https://ceasonen.github.io/Image2Other/"]')
     refute_nil studio
-    assert_equal "Open studio", studio.text.strip
+    assert_equal "Image2Other", studio.text.strip
   end
 
   def test_project_subsites_are_linked_and_explain_runtime_requirements
@@ -39,7 +38,7 @@ class PageFocusTest < Minitest::Test
       "offer-pilot" => ["OfferPilot", "AI interview", "server"],
       "deep-research" => ["AutoSearch AI", "research", "FastAPI"]
     }.each do |slug, terms|
-      link = home.at_css(".project-card a[href='https://ceasonen.github.io/#{slug}/']")
+      link = home.at_css("#projects .project-name[href='https://ceasonen.github.io/#{slug}/']")
       refute_nil link, "Missing project entry for #{slug}"
       project = page("#{slug}/index.html")
       assert_equal "#{slug}", project.at_css("body")["data-project"]
@@ -69,7 +68,7 @@ class PageFocusTest < Minitest::Test
     {"publications" => "publications", "projects" => "projects", "intern" => "experience", "news" => "news", "awards" => "awards"}.each do |path, section|
       doc = page("#{path}.html")
       assert_equal "0; url=/##{section}", doc.at_css('meta[http-equiv="refresh"]')["content"]
-      assert_empty doc.css(".publication-card, .project-card, .experience-card")
+      assert_empty doc.css(".publication-card, .project-list, .experience-card")
     end
   end
 
@@ -81,7 +80,7 @@ class PageFocusTest < Minitest::Test
       assert_equal 1, doc.css(link["href"].delete_prefix("/")).length
     end
     assert_equal 3, doc.css("#experience .experience-card").length
-    assert_equal 5, doc.css("#projects .project-card").length
+    assert_equal 5, doc.css("#projects .project-list > li").length
     assert_equal 7, doc.css("#publications .publication-card").length
     assert_equal "service", doc.css("main .home-section").last["id"]
     assert_operator doc.to_html.index('id="projects"'), :<, doc.to_html.index('id="publications"')
@@ -121,7 +120,7 @@ class PageFocusTest < Minitest::Test
     assert_equal "Tongji University", doc.at_css(".profile-affiliation").text
     assert_empty doc.css('.profile-links a[href^="mailto:"]')
     assert_empty doc.css('.profile-links a[href*=".pdf"]')
-    assert_equal ["Google Scholar", "GitHub", "LinkedIn", "X", "小红书"], doc.css(".profile-links a").map { |link| link.text.strip }
+    assert_equal ["Google Scholar", "GitHub", "LinkedIn", "Twitter", "RedNote"], doc.css(".profile-links a").map { |link| link.text.strip }
     css = File.read(File.join(ROOT, "site/assets/css/global.css"))
     assert_match(/\.profile-links\s*\{[^}]*font-size:\s*14px\b/m, css)
     assert doc.at_css(".welcome-wave")
@@ -154,7 +153,7 @@ class PageFocusTest < Minitest::Test
     assert_equal url, profile["x_url"]
     link = page("index.html").at_css(".profile-links a[href='#{url}']")
     refute_nil link
-    assert_equal "X", link.text.strip
+    assert_equal "Twitter", link.text.strip
     assert_equal "_blank", link["target"]
     assert_includes link["rel"], "noopener"
     assert link.at_css("svg.site-icon.icon-x[aria-hidden='true']")
@@ -180,7 +179,7 @@ class PageFocusTest < Minitest::Test
     assert_equal url, profile["xiaohongshu_url"]
     link = page("index.html").at_css(".profile-links a[href='#{url}']")
     refute_nil link
-    assert_equal "小红书", link.text.strip
+    assert_equal "RedNote", link.text.strip
     assert_equal "_blank", link["target"]
     assert_includes link["rel"], "noopener"
     icon = link.at_css('img.site-icon.icon-xiaohongshu[src="https://www.xiaohongshu.com/favicon.ico"]')
@@ -195,7 +194,7 @@ class PageFocusTest < Minitest::Test
       "Google Scholar" => "M5.242 13.769",
       "GitHub" => "M12 .297",
       "LinkedIn" => "M20.447 20.452",
-      "X" => "M14.234 10.162"
+      "Twitter" => "M14.234 10.162"
     }.each do |label, path_start|
       link = doc.css(".profile-links a").find { |item| item.text.strip == label }
       refute_nil link, label

@@ -59,7 +59,7 @@ try {
   await send('DOM.enable');
   await send('CSS.enable');
   const root = (await send('DOM.getDocument')).root.nodeId;
-  for (const selector of ['h1', '.profile-status', '.news-list li > span', '.experience-info p', '.project-card h3 a', '.award-card h3', '.publication-summary', '.service-list li']) {
+  for (const selector of ['h1', '.profile-status', '.news-list li > span', '.experience-info p', '.project-name', '.award-name', '.publication-summary', '.service-list li']) {
     const nodeId = (await send('DOM.querySelector', {nodeId: root, selector})).nodeId;
     const fonts = (await send('CSS.getPlatformFontsForNode', {nodeId})).fonts;
     assert(fonts.some(font => font.isCustomFont && font.postScriptName.startsWith('Nunito')), selector);
@@ -76,15 +76,15 @@ try {
   console.log('PASS: no horizontal overflow at eight viewport widths');
 
   await navigate('experience');
-  await waitFor(`[...document.querySelectorAll('.education-icon img')].length === 2 && [...document.querySelectorAll('.education-icon img')].every(img => img.complete && img.naturalWidth > 0)`);
+  await waitFor(`[...document.querySelectorAll('.education-icon img')].length === 1 && [...document.querySelectorAll('.education-icon img')].every(img => img.complete && img.naturalWidth > 0)`);
   const emblems = await evaluate(`[...document.querySelectorAll('.education-icon img')].map(img => ({width:img.getBoundingClientRect().width,height:img.getBoundingClientRect().height,fit:getComputedStyle(img).objectFit}))`);
-  assert.equal(emblems[0].width, emblems[1].width);
+  assert.equal(emblems.length, 1);
   for (const emblem of emblems) {
     assert.equal(emblem.width, emblem.height);
     assert.equal(emblem.fit, 'contain');
   }
   assert.equal(await evaluate(`document.querySelectorAll('.research-interests').length`), 0);
-  console.log('PASS: both education emblems load at matching square sizes, with no duplicate interest list');
+  console.log('PASS: undergraduate education emblem loads as a square, with no duplicate interest list');
 
   for (const [filter, count] of [['accepted',3], ['preprint',4], ['all',7]]) {
     await evaluate(`document.querySelector('[data-filter="${filter}"]').click()`);

@@ -100,40 +100,24 @@ strong { font-weight: 800; }
 .experience-info p { color: var(--ink); font-size: 14px; line-height: 1.7; margin: 0; }
 .experience-info .education-detail { color: var(--accent); font-weight: 700; margin-top: 3px; }
 .experience-info time { display: block; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; margin-bottom: 6px; }
-/* Independent, compact project cards: content is not repeated elsewhere. */
-.project-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
-.project-card { display: flex; flex-direction: column; border: 1px solid #e8e7e9; border-radius: 16px; padding: 24px; min-width: 0; background: #fff; box-shadow: var(--soft-shadow); transition: box-shadow .22s ease, border-color .22s ease; }
-.project-card:hover { border-color: #ded5d6; box-shadow: 0 8px 20px rgba(35,42,52,.055); }
-.project-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-.project-icon { width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; background: #f4f1f2; color: var(--accent); border-radius: 9px; }
-.project-icon .site-icon { width: 18px; height: 18px; }
-.project-category { font-size: 11px; font-weight: 700; line-height: 1.5; color: var(--muted); margin: 0; }
-.project-external { color: var(--muted); margin-left: auto; }
-.project-external .site-icon { width: 18px; height: 18px; }
-.project-card h3 { font-size: 16px; margin-bottom: 10px; }
-.project-card h3 a { color: var(--heading); }
-.project-card p:not(.project-category) { font-size: 14px; line-height: 1.75; color: var(--muted); margin-bottom: 18px; }
-.project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
-.project-stack span { font-size: 11px; font-weight: 700; line-height: 1.5; color: #616a75; background: #f4f5f6; border-radius: 6px; padding: 4px 9px; }
-.project-card details { border-top: 1px solid var(--rule); padding-top: 13px; margin-top: 18px; font-size: 13px; line-height: 1.75; color: var(--muted); }
-.project-card summary { cursor: pointer; color: var(--accent); }
-.project-card ul { padding-left: 17px; margin-bottom: 0; }
-.project-card li { margin-bottom: 8px; }
+/* Projects and awards are quiet text lists; publications remain visual. */
+.project-list { margin: 0; padding-left: 22px; font-size: 15px; line-height: 1.7; }
+.project-list li + li { margin-top: 12px; }
+.project-list li::marker { color: var(--welcome); }
+.project-name { color: var(--heading); font-weight: 800; text-decoration: underline; text-decoration-color: #dcc4c8; text-decoration-thickness: 1px; }
+.project-name:hover { text-decoration-color: var(--accent); }
+.project-summary { color: var(--muted); font-weight: 600; }
+.project-source { margin-left: 5px; font-size: 13px; font-weight: 800; white-space: nowrap; }
 .award-legend { color: var(--muted); font-size: 12px; line-height: 1.4; margin: -12px 0 17px; }
 .award-legend span, .award-lead-mark { color: var(--accent); font-weight: 900; }
-.award-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
-.award-card { min-width: 0; border: 1px solid #ebe7e9; border-radius: 16px; padding: 22px 24px; background: #fff; box-shadow: var(--soft-shadow); }
-.award-card--featured { grid-column: 1 / -1; background: #fcf7f8; border-color: #ecd9df; }
-.award-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.award-emblem { display: flex; align-items: center; justify-content: center; flex: 0 0 30px; width: 30px; height: 30px; border-radius: 9px; color: #9a6e34; background: #faf3e7; }
-.award-emblem .site-icon { width: 19px; height: 19px; }
-.award-prize { font-size: 12px; font-weight: 800; line-height: 1.5; color: var(--accent); }
-.award-lead-mark { font-size: 12px; line-height: 1; }
-.award-card time { margin-left: auto; font-size: 12px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.award-card h3 { color: var(--ink); font-size: 16px; line-height: 1.5; margin: 0; }
-.award-card--featured h3 { font-size: 18px; }
-.award-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--muted); margin: 9px 0 0; }
-.award-meta span + span { padding-left: 14px; border-left: 1px solid #ddd5d8; }
+.award-list { margin: 0; padding: 0; list-style: none; font-size: 15px; line-height: 1.65; }
+.award-list li { display: grid; grid-template-columns: 76px minmax(0,1fr); gap: 18px; }
+.award-list li + li { margin-top: 12px; }
+.award-list time { color: var(--muted); font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; padding-top: 1px; }
+.award-prize { color: var(--heading); font-weight: 800; }
+.award-name { color: var(--ink); }
+.award-lead-mark { font-size: 13px; }
+.award-detail { color: var(--muted); font-size: 13px; }
 /* WowPage-style pill filters and 320px figure-first research cards. */
 .publication-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 17px; }
 .publication-filters { display: flex; gap: 9px; flex-wrap: wrap; }
@@ -183,8 +167,6 @@ strong { font-weight: 800; }
     .section-nav.is-open { display: flex; }
     .section-nav a { font-size: 16px; }
     .publication-card { grid-template-columns: 220px minmax(0,1fr); }
-    .project-grid { gap: 16px; }
-    .project-card { padding: 18px; }
 }
 @media (max-width: 820px) {
     .site-shell { display: block; padding-top: 28px; }
@@ -208,10 +190,6 @@ strong { font-weight: 800; }
     .publication-toolbar { align-items: flex-start; flex-direction: column; gap: 10px; }
     .publication-count { font-size: 11px; }
     .publication-filter { padding: 8px 12px; font-size: 12px; }
-    .project-grid { grid-template-columns: minmax(0,1fr); }
-    .award-grid { grid-template-columns: minmax(0,1fr); }
-    .award-card { padding: 20px; }
-    .award-card--featured { grid-column: auto; }
 }
 @media (max-width: 540px) {
     body { font-size: 14px; }
@@ -230,9 +208,9 @@ strong { font-weight: 800; }
     .experience-info p, .experience-info time { font-size: 13px; }
     .news-box { padding: 16px; }
     .news-list li { gap: 10px; grid-template-columns: 58px minmax(0,1fr); font-size: 13px; }
-    .award-card-top { gap: 8px; }
-    .award-prize { font-size: 11.5px; }
-    .award-card h3, .award-card--featured h3 { font-size: 15px; }
+    .project-list, .award-list { font-size: 14px; }
+    .award-list li { grid-template-columns: 64px minmax(0,1fr); gap: 10px; }
+    .award-list time { font-size: 12px; }
     .publication-body h3 { font-size: 15px; }
     .publication-summary { font-size: 13px; }
     .site-footer { display: block; margin-left: 20px; margin-right: 20px; }

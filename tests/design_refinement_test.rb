@@ -47,26 +47,25 @@ class DesignRefinementTest < Minitest::Test
     refute_includes home.text, "(CRAIC)"
   end
 
-  def test_awards_separate_prize_organization_year_and_role
+  def test_awards_are_compact_text_rows_with_prize_year_and_role
     entries = YAML.safe_load(File.read(File.join(ROOT, "site/_data/highlights.yml"))).fetch("awards")
-    cards = home.css(".award-card")
-    assert_equal 7, cards.length
+    rows = home.css("#awards .award-list > li")
+    assert_equal 7, rows.length
     assert_equal "# Project Lead", home.at_css(".award-legend")&.text&.strip
-    cards.zip(entries).each do |card, entry|
-      assert_equal entry.fetch("name"), card.at_css("h3").text.strip
-      assert_equal entry.fetch("prize"), card.at_css(".award-prize").text.strip
-      assert_equal entry.fetch("date"), card.at_css("time").text.strip
+    rows.zip(entries).each do |row, entry|
+      assert_equal entry.fetch("name"), row.at_css(".award-name").text.strip
+      assert_equal entry.fetch("prize"), row.at_css(".award-prize").text.strip
+      assert_equal entry.fetch("date"), row.at_css("time").text.strip
       if entry["lead"]
-        assert_equal "#", card.at_css(".award-lead-mark")&.text&.strip
+        assert_equal "#", row.at_css(".award-lead-mark")&.text&.strip
       else
-        assert_nil card.at_css(".award-lead-mark")
+        assert_nil row.at_css(".award-lead-mark")
       end
-      assert_includes card.text, entry.fetch("detail") if entry["detail"]
+      assert_includes row.text, entry.fetch("detail") if entry["detail"]
     end
     refute_includes home.css("#awards").text, "Team Captain"
     refute_includes home.css("#awards").text, "FPGA Track"
-    assert_equal 1, home.css(".award-card--featured").length
-    assert_equal 7, home.css(".award-card .site-icon").length
+    assert_empty home.css("#awards .award-card, #awards .award-emblem")
   end
 
   def test_competition_news_does_not_repeat_project_lead_or_fpga_track
@@ -105,9 +104,9 @@ class DesignRefinementTest < Minitest::Test
       "Contemporary Undergraduate Mathematical Contest in Modeling",
       "National College Student Statistical Modeling Competition"
     ]
-    cards = home.css(".award-card").select { |card| modeling_events.include?(card.at_css("h3").text.strip) }
-    assert_equal 2, cards.length
-    cards.each { |card| assert_equal "Provincial Third Prize", card.at_css(".award-prize").text.strip }
+    rows = home.css("#awards .award-list > li").select { |row| modeling_events.include?(row.at_css(".award-name").text.strip) }
+    assert_equal 2, rows.length
+    rows.each { |row| assert_equal "Provincial Third Prize", row.at_css(".award-prize").text.strip }
     %w[2025-11-20 2025-06-15].each do |date|
       news = home.at_css(".news-list time[datetime='#{date}']").parent.text
       assert_includes news, "Provincial Third Prize"

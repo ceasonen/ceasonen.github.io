@@ -1,19 +1,10 @@
 <section id="projects" class="home-section">
     <h2>Projects</h2>
-    <div class="project-grid">
+    <ul class="project-list">
         {% for project in site.data.projects %}
-        <article class="project-card">
-            <div class="project-card-top">
-                <span class="project-icon">{% include widgets/icon.html name='code' %}</span>
-                <p class="project-category">{{ project.category | escape }}</p>
-                <a class="project-external" href="{{ project.repository | escape }}" target="_blank" rel="noopener" aria-label="Open {{ project.name | escape }} on GitHub">{% include widgets/icon.html name='arrow' %}</a>
-            </div>
-            <h3><a href="{{ project.repository | escape }}" target="_blank" rel="noopener">{{ project.name | escape }}</a></h3>
-            <p>{{ project.summary | escape }}</p>
-            <div class="project-stack">{% for technology in project.stack %}<span>{{ technology | escape }}</span>{% endfor %}</div>
-            {% if project.website %}<div class="publication-links"><a href="{{ project.website | escape }}" target="_blank" rel="noopener">{{ project.website_label | default: 'Open studio' | escape }}</a></div>{% endif %}
-            <details><summary>What’s included</summary><ul>{% for detail in project.details %}<li>{{ detail | escape }}</li>{% endfor %}</ul></details>
-        </article>
+        <li>
+            <a class="project-name" href="{{ project.website | default: project.repository | escape }}" target="_blank" rel="noopener">{{ project.name | escape }}</a><span class="project-summary"> — {{ project.summary | escape }}</span>{% if project.website %} <a class="project-source" href="{{ project.repository | escape }}" target="_blank" rel="noopener" aria-label="{{ project.name | escape }} source code on GitHub">[Code]</a>{% endif %}
+        </li>
         {% endfor %}
-    </div>
+    </ul>
 </section>
