@@ -13,7 +13,8 @@ title: Homepage
         <li><a href="{{ site.data.profile.gscholar | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='scholar' class='icon-scholar' %}<span>Google Scholar</span></a></li>
         <li><a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener">{% include widgets/icon.html name='github' class='icon-github' %}<span>GitHub</span></a></li>
         <li><a href="{{ site.data.profile.linkedin_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='linkedin' %}<span>LinkedIn</span></a></li>
-        <li><a href="{{ site.data.profile.twitter_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='twitter' class='icon-twitter' %}<span>Twitter</span></a></li>
+        <li><a href="{{ site.data.profile.x_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='x' class='icon-x' %}<span>X</span></a></li>
+        <li><a href="{{ site.data.profile.xiaohongshu_url | escape }}" target="_blank" rel="noopener"><img class="site-icon icon-xiaohongshu" src="https://www.xiaohongshu.com/favicon.ico" alt="" width="21" height="21" loading="lazy"><span>小红书</span></a></li>
     </ul>
 </aside>
 
@@ -22,7 +23,6 @@ title: Homepage
         <h1>Hi there <span class="welcome-wave" aria-hidden="true">👋</span> Welcome to my homepage!</h1>
         {{ site.data.profile.short_bio }}
         <p class="intro-contact">I'm always open to exchanging ideas and exploring collaborations. Feel free to email me at <a href="mailto:{{ site.data.profile.additional_email | escape }}">{{ site.data.profile.additional_email | escape }}</a>.</p>
-        <p class="intro-cv">Curriculum vitae: <a href="{{ '/cv/cheng-chen-cv.pdf?v=20261024-undergrad' | relative_url }}" target="_blank" rel="noopener">English PDF</a> <span aria-hidden="true">·</span> <a href="{{ '/cv/cheng-chen-cv-zh.pdf?v=20261024-undergrad' | relative_url }}" target="_blank" rel="noopener">中文版 PDF</a></p>
     </section>
 
     <section id="news" class="home-section">

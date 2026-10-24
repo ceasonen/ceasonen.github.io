@@ -66,15 +66,13 @@ strong { font-weight: 800; }
 .profile-links .site-icon { width: 21px; height: 21px; }
 .icon-scholar { color: #65aff1; }
 .icon-github { color: #24292f; }
-.icon-twitter { color: #1d9bf0; }
+.icon-xiaohongshu { object-fit: contain; border-radius: 4px; }
 .icon-cv { color: var(--welcome); }
 .home-content { min-width: 0; }
 .home-section { margin-bottom: 58px; scroll-margin-top: calc(var(--nav-height) + 24px); }
 .home-section > h2 { padding-bottom: 13px; border-bottom: 1px solid var(--rule); }
 .introduction p { line-height: 1.75; margin-bottom: 20px; }
 .intro-contact a { font-weight: 800; text-decoration: underline; }
-.intro-cv { color: var(--muted); font-size: 14px; }
-.intro-cv a { font-weight: 800; text-decoration: underline; }
 .introduction { margin-bottom: 48px; }
 .welcome-wave { display: inline-block; font-size: 32px; line-height: 1; vertical-align: -3px; margin: 0 3px; transform-origin: 75% 75%; animation: hello-wave 1.6s ease-in-out 2; }
 @keyframes hello-wave { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(16deg); } 65% { transform: rotate(-8deg); } }

@@ -114,14 +114,14 @@ class PageFocusTest < Minitest::Test
 
   def test_profile_has_lightweight_accessible_contact_icons
     doc = page("index.html")
-    assert_equal 5, doc.css(".profile-links .site-icon").length
-    doc.css(".profile-links .site-icon").each do |icon|
+    assert_equal 6, doc.css(".profile-links .site-icon").length
+    doc.css(".profile-links svg.site-icon").each do |icon|
       assert_equal "true", icon["aria-hidden"]
     end
     assert_equal "Tongji University", doc.at_css(".profile-affiliation").text
     assert_empty doc.css('.profile-links a[href^="mailto:"]')
     assert_empty doc.css('.profile-links a[href*=".pdf"]')
-    assert_equal ["Google Scholar", "GitHub", "LinkedIn", "Twitter"], doc.css(".profile-links a").map { |link| link.text.strip }
+    assert_equal ["Google Scholar", "GitHub", "LinkedIn", "X", "小红书"], doc.css(".profile-links a").map { |link| link.text.strip }
     css = File.read(File.join(ROOT, "site/assets/css/global.css"))
     assert_match(/\.profile-links\s*\{[^}]*font-size:\s*14px\b/m, css)
     assert doc.at_css(".welcome-wave")
@@ -140,29 +140,25 @@ class PageFocusTest < Minitest::Test
     assert_empty page("2026/03/17/acknowledgement.html").css(".sidebar-links a[href^='mailto:']")
   end
 
-  def test_cv_links_are_in_the_introduction_not_the_sidebar
+  def test_cv_links_stay_in_top_navigation_only
     doc = page("index.html")
-    links = doc.css("#about .intro-cv a")
+    assert_empty doc.css("#about .intro-cv")
+    links = doc.css(".section-nav a[href*='.pdf']")
     assert_equal [CV_EN_URL, CV_ZH_URL], links.map { |link| link["href"] }
-    assert_equal ["English PDF", "中文版 PDF"], links.map { |link| link.text.strip }
-    links.each do |link|
-      assert_equal "_blank", link["target"]
-      assert_includes link["rel"], "noopener"
-    end
     assert_empty doc.css('.profile-links a[href*=".pdf"]')
   end
 
-  def test_twitter_profile_link_uses_the_supplied_account
+  def test_x_profile_link_uses_the_supplied_account
     url = "https://x.com/CeasonC87891"
     profile = YAML.safe_load(File.read(File.join(ROOT, "site/_data/profile.yml")))
-    assert_equal url, profile["twitter_url"]
+    assert_equal url, profile["x_url"]
     link = page("index.html").at_css(".profile-links a[href='#{url}']")
     refute_nil link
-    assert_equal "Twitter", link.text.strip
+    assert_equal "X", link.text.strip
     assert_equal "_blank", link["target"]
     assert_includes link["rel"], "noopener"
-    assert link.at_css("svg.site-icon.icon-twitter[aria-hidden='true']")
-    assert_includes File.read(File.join(ROOT, "site/_includes/widgets/homepage_sidebar.html")), "site.data.profile.twitter_url"
+    assert link.at_css("svg.site-icon.icon-x[aria-hidden='true']")
+    assert_includes File.read(File.join(ROOT, "site/_includes/widgets/homepage_sidebar.html")), "site.data.profile.x_url"
   end
 
   def test_linkedin_profile_link_uses_the_supplied_account
@@ -178,12 +174,43 @@ class PageFocusTest < Minitest::Test
     assert page("2026/03/17/acknowledgement.html").at_css(".sidebar-links a[href='#{url}']")
   end
 
+  def test_xiaohongshu_profile_link_uses_the_supplied_account
+    url = "https://www.xiaohongshu.com/user/profile/6587c475000000003d037c4f"
+    profile = YAML.safe_load(File.read(File.join(ROOT, "site/_data/profile.yml")))
+    assert_equal url, profile["xiaohongshu_url"]
+    link = page("index.html").at_css(".profile-links a[href='#{url}']")
+    refute_nil link
+    assert_equal "小红书", link.text.strip
+    assert_equal "_blank", link["target"]
+    assert_includes link["rel"], "noopener"
+    icon = link.at_css('img.site-icon.icon-xiaohongshu[src="https://www.xiaohongshu.com/favicon.ico"]')
+    refute_nil icon
+    assert_equal "", icon["alt"]
+    assert page("2026/03/17/acknowledgement.html").at_css(".sidebar-links a[href='#{url}']")
+  end
+
+  def test_social_icons_use_brand_marks
+    doc = page("index.html")
+    {
+      "Google Scholar" => "M5.242 13.769",
+      "GitHub" => "M12 .297",
+      "LinkedIn" => "M20.447 20.452",
+      "X" => "M14.234 10.162"
+    }.each do |label, path_start|
+      link = doc.css(".profile-links a").find { |item| item.text.strip == label }
+      refute_nil link, label
+      path = link.at_css("svg path")
+      refute_nil path, label
+      assert path["d"].start_with?(path_start), label
+    end
+  end
+
   def test_all_english_cv_entry_points_request_the_current_pdf
     home = File.read(File.join(ROOT, "site/index.html"))
     navigation = File.read(File.join(ROOT, "site/_data/navigation.yml"))
     sidebar = File.read(File.join(ROOT, "site/_includes/widgets/homepage_sidebar.html"))
     redirect = File.read(File.join(ROOT, "cv/index.html"))
-    assert_includes home, CV_EN_URL
+    refute_includes home, CV_EN_URL
     assert_includes navigation, CV_EN_URL
     refute_includes sidebar, CV_EN_URL
     assert_equal 4, redirect.scan(CV_EN_URL).length
@@ -192,7 +219,7 @@ class PageFocusTest < Minitest::Test
   def test_chinese_cv_entry_points_request_the_current_pdf
     home = File.read(File.join(ROOT, "site/index.html"))
     navigation = File.read(File.join(ROOT, "site/_data/navigation.yml"))
-    assert_includes home, CV_ZH_URL
+    refute_includes home, CV_ZH_URL
     assert_includes navigation, CV_ZH_URL
   end
 
