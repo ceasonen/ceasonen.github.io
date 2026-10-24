@@ -2,7 +2,6 @@ primary_name: "Cheng Chen"
 navbar_name: "Cheng Chen"
 
 positions:
-- name: Incoming Ph.D. Student
 - name: Tongji University
 
 email: "2351445@tongji.edu.cn"
@@ -12,16 +11,12 @@ github: ceasonen
 gscholar: "https://scholar.google.com/citations?user=X92zQ68AAAAJ&hl=zh-CN"
 location: "Shanghai, China"
 sidebar_bio: >-
-  A Communication Engineering undergraduate at Tongji University, with interests in multimodal foundation models, AI infrastructure, and reinforcement learning. Incoming Ph.D. student at the Institute of Automation, Chinese Academy of Sciences, starting in September 2027.
+  A Communication Engineering undergraduate at Tongji University, with interests in multimodal foundation models, AI infrastructure, and reinforcement learning.
 
 short_bio_text_justify: false
 short_bio: >-
   <p>
     I'm an undergraduate student majoring in Communication Engineering at <a href="https://www.tongji.edu.cn/" target="_blank" rel="noopener"><strong>Tongji University</strong></a>, expecting to graduate in June 2027.
-  </p>
-  <p class="intro-phd-note">
-    <strong>Incoming Ph.D. Student</strong> at the <a href="https://www.ia.cas.cn/" target="_blank" rel="noopener">Institute of Automation, Chinese Academy of Sciences</a><br>
-    <span>Expected start: September 2027 · Supervisor: Prof. Kaiqi Huang</span>
   </p>
   <p>
     I explore simple, efficient ways to make AI more capable, from learning algorithms to the systems that train and deploy models. My interests span multimodal foundation models, image/video generation, AI infrastructure, and reinforcement learning for embodied agents.
@@ -30,12 +25,6 @@ short_bio: >-
 portrait_url: /assets/images/photos/portrait.jpg
 
 education:
-- name: Institute of Automation, Chinese Academy of Sciences
-  dept: "Supervisor: Prof. Kaiqi Huang"
-  position: Incoming Ph.D. Student
-  date: Sep. 2027 (expected)
-  logo: /assets/images/organizations/ucas-university.png
-  logo_alt: University of Chinese Academy of Sciences emblem
 - name: Tongji University
   position: B.Eng. in Communication Engineering
   date: Sep. 2023 - Jun. 2027

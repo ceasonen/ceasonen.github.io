@@ -9,10 +9,7 @@ pub: "AAAI"
 pub_date: "2027"
 preprint_year: "2026"
 submission_note: "AAAI 2027 · Phase 2"
-authors:
-  - Yi Xu*‡
-  - Cheng Chen*†
-  - Wenzhuo Lei
+display_credit: "Cheng Chen and collaborators"
 abstract: >-
   Research on assessing whether generated images satisfy textual instructions, with a focus on reliable evaluation.
 ---

@@ -9,18 +9,16 @@ class DesignRefinementTest < Minitest::Test
     Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
   end
 
-  def test_education_uses_ucas_and_tongji_emblems_without_placeholder_icons
+  def test_education_uses_tongji_emblem_without_placeholder_icons
     entries = home.css(".education-entry")
-    assert_equal 2, entries.length
-    entries.zip(%w[ucas-university.png tongji-university.png]).each do |entry, filename|
-      images = entry.css(".education-icon img")
-      assert_equal 1, images.length, filename
-      assert_equal "/assets/images/organizations/#{filename}", images.first["src"]
-      refute_empty images.first["alt"]
-      assert_equal images.first["width"], images.first["height"]
-      assert File.file?(File.join(ROOT, "site", images.first["src"]))
-      assert_empty entry.css(".education-icon .site-icon")
-    end
+    assert_equal 1, entries.length
+    images = entries.first.css(".education-icon img")
+    assert_equal 1, images.length
+    assert_equal "/assets/images/organizations/tongji-university.png", images.first["src"]
+    refute_empty images.first["alt"]
+    assert_equal images.first["width"], images.first["height"]
+    assert File.file?(File.join(ROOT, "site", images.first["src"]))
+    assert_empty entries.first.css(".education-icon .site-icon")
   end
 
   def test_iclr_news_has_one_consolidated_update

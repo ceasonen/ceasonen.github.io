@@ -6,8 +6,8 @@ require "rexml/document"
 
 class PageFocusTest < Minitest::Test
   ROOT = File.expand_path("..", __dir__)
-  CV_EN_URL = "/cv/cheng-chen-cv.pdf?v=20261024-interests"
-  CV_ZH_URL = "/cv/cheng-chen-cv-zh.pdf?v=20261024-interests"
+  CV_EN_URL = "/cv/cheng-chen-cv.pdf?v=20261024-undergrad"
+  CV_ZH_URL = "/cv/cheng-chen-cv-zh.pdf?v=20261024-undergrad"
 
   def page(name)
     path = File.join(ROOT, name)
@@ -124,7 +124,7 @@ class PageFocusTest < Minitest::Test
     assert_equal ["CV (EN)", "CV (ZH)"], doc.css('.profile-links a[href*=".pdf"]').map { |link| link.text.strip }
     assert_equal [CV_EN_URL, CV_ZH_URL], doc.css('.profile-links a[href*=".pdf"]').map { |link| link["href"] }
     assert doc.at_css(".welcome-wave")
-    assert_equal 2, doc.css(".education-entry .education-icon").length
+    assert_equal 1, doc.css(".education-entry .education-icon").length
   end
 
   def test_all_english_cv_entry_points_request_the_current_pdf
@@ -162,12 +162,14 @@ class PageFocusTest < Minitest::Test
     assert_includes entry.text, "Major rank: 2/85"
   end
 
-  def test_intro_separates_current_affiliation_from_future_phd
+  def test_profile_lists_only_current_undergraduate_education
     doc = page("index.html")
-    note = doc.at_css(".intro-phd-note")
-    refute_nil note
-    assert_includes note.text, "September 2027"
-    assert_includes note.text, "Prof. Kaiqi Huang"
+    profile = YAML.safe_load(File.read(File.join(ROOT, "site/_data/profile.yml")))
+    assert_equal ["Tongji University"], profile.fetch("education").map { |item| item.fetch("name") }
+    assert_equal ["Tongji University"], profile.fetch("positions").map { |item| item.fetch("name") }
+    assert_equal ["Tongji University"], doc.css(".education-entry h3").map { |heading| heading.text.strip }
+    assert_empty doc.css(".intro-phd-note")
+    refute_match(/incoming|ph\.?d|kaiqi|chinese academy of sciences/i, doc.text)
     assert_includes doc.at_css(".introduction > p").text, "Tongji University"
   end
 

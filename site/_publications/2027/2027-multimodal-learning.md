@@ -9,10 +9,7 @@ pub: "ICLR"
 pub_date: "2027"
 preprint_year: "2026"
 submission_note: "ICLR 2027 · submitted"
-authors:
-  - Cheng Chen†‡
-  - Yi Xu
-  - Wenzhuo Lei
+display_credit: "Cheng Chen and collaborators"
 abstract: >-
   Research on how learning in visual understanding relates to image-generation behavior in multimodal models.
 ---

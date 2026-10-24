@@ -9,10 +9,7 @@ pub: "ICLR"
 pub_date: "2027"
 preprint_year: "2026"
 submission_note: "ICLR 2027 · submitted"
-authors:
-  - Yi Xu†‡
-  - Cheng Chen
-  - Wenzhuo Lei
+display_credit: "Cheng Chen and collaborators"
 abstract: >-
   Research on evaluating the evidence used to explain neural-network behavior and the reliability of the resulting interpretations.
 ---

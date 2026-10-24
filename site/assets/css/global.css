@@ -71,9 +71,6 @@ strong { font-weight: 800; }
 .home-section { margin-bottom: 58px; scroll-margin-top: calc(var(--nav-height) + 24px); }
 .home-section > h2 { padding-bottom: 13px; border-bottom: 1px solid var(--rule); }
 .introduction p { line-height: 1.75; margin-bottom: 20px; }
-.introduction .intro-phd-note { border-left: 3px solid #e6b5b9; border-radius: 0 10px 10px 0; background: #fcf8f9; padding: 14px 18px; font-size: 14px; line-height: 1.8; }
-.intro-phd-note strong { color: var(--ink); }
-.intro-phd-note span { color: var(--muted); font-size: 13px; }
 .introduction { margin-bottom: 48px; }
 .welcome-wave { display: inline-block; font-size: 32px; line-height: 1; vertical-align: -3px; margin: 0 3px; transform-origin: 75% 75%; animation: hello-wave 1.6s ease-in-out 2; }
 @keyframes hello-wave { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(16deg); } 65% { transform: rotate(-8deg); } }

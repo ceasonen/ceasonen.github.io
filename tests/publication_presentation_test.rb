@@ -55,11 +55,9 @@ class PublicationPresentationTest < Minitest::Test
       refute_nil entry["cover"], "Missing figure cover for #{entry['title']}"
       assert File.file?(File.join(ROOT, "site", entry.fetch("cover")))
       assert_nil entry["links"]
+      assert_nil entry["authors"], "Full author order should not be shown for #{entry['title']}"
+      assert_equal "Cheng Chen and collaborators", entry.fetch("display_credit")
     end
-    assert_equal ["Cheng Chen†‡", "Yi Xu", "Wenzhuo Lei"], preprints[2]["authors"]
-    assert_equal ["Cheng Chen†‡", "Yi Xu", "Wenzhuo Lei"], preprints[3]["authors"]
-    assert_equal ["Yi Xu*‡", "Cheng Chen*†", "Wenzhuo Lei"], preprints[0].fetch("authors")
-    assert_equal ["Yi Xu†‡", "Cheng Chen", "Wenzhuo Lei"], preprints[1].fetch("authors")
     assert_equal "AAAI 2027 · Phase 2", preprints[0].fetch("submission_note")
     assert_equal "ICLR 2027 · submitted", preprints[1].fetch("submission_note")
     preprints.last(2).each do |entry|
@@ -76,17 +74,16 @@ class PublicationPresentationTest < Minitest::Test
     doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
     assert_equal "* Equal contribution · † Corresponding author · ‡ Project lead", doc.at_css(".publication-legend").text.strip
     cards = doc.css(".publication-card")
-    cards.first(5).each do |card|
+    cards.first(3).each do |card|
       assert card.at_css(".publication-authors"), card.at_css("h3").text
     end
     assert_includes cards[0].at_css(".publication-authors").text, "Yi Xu*‡"
     assert_includes cards[0].at_css(".publication-authors").text, "Wenzhuo Lei†"
     assert_includes cards[1].at_css(".publication-authors").text, "Cheng Chen*‡"
     assert_includes cards[2].at_css(".publication-authors").text, "Cheng Chen†‡"
-    assert_includes cards[3].at_css(".publication-authors").text, "Cheng Chen*†"
-    assert_includes cards[4].at_css(".publication-authors").text, "Yi Xu†‡"
-    cards.to_a.last(2).each do |card|
-      assert_equal "Cheng Chen†‡, Yi Xu, Wenzhuo Lei", card.at_css(".publication-authors")&.text&.gsub(/\s+/, " ")&.strip
+    cards.to_a.last(4).each do |card|
+      assert_equal "Cheng Chen and collaborators", card.at_css(".publication-authors")&.text&.strip
+      assert_empty card.css(".publication-authors sup")
       assert_nil card.at_css(".publication-role-credit")
     end
     assert_includes cards[3].at_css(".publication-venue").text, "AAAI 2027 · Phase 2"
@@ -125,7 +122,7 @@ class PublicationPresentationTest < Minitest::Test
           refute_nil image, "Missing figure for #{entry['title']}"
           assert_equal entry.fetch("cover"), image["src"]
           assert_nil card.at_css(".fa-file-alt"), "File icon should not replace a paper figure"
-          assert_nil card.at_css(".publication-authors") if entry["preprint"] && !entry["authors"]
+          assert_equal entry["display_credit"], card.at_css(".publication-authors")&.text&.strip if entry["preprint"]
           assert_includes card.at_css(".publication-venue").text, "Preprint 2026" if entry["preprint"]
       end
   end
