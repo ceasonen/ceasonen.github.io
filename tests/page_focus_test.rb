@@ -114,17 +114,28 @@ class PageFocusTest < Minitest::Test
 
   def test_profile_has_lightweight_accessible_contact_icons
     doc = page("index.html")
-    assert_equal 8, doc.css(".profile-links .site-icon").length
+    assert_equal 6, doc.css(".profile-links .site-icon").length
     doc.css(".profile-links .site-icon").each do |icon|
       assert_equal "true", icon["aria-hidden"]
     end
     assert_equal "Tongji University", doc.at_css(".profile-affiliation").text
-    assert doc.at_css('.profile-links a[href="mailto:2351445@tongji.edu.cn"]')
-    assert doc.at_css('.profile-links a[href="mailto:chenceason10@gmail.com"]')
+    assert_empty doc.css('.profile-links a[href^="mailto:"]')
     assert_equal ["CV (EN)", "CV (ZH)"], doc.css('.profile-links a[href*=".pdf"]').map { |link| link.text.strip }
     assert_equal [CV_EN_URL, CV_ZH_URL], doc.css('.profile-links a[href*=".pdf"]').map { |link| link["href"] }
     assert doc.at_css(".welcome-wave")
     assert_equal 1, doc.css(".education-entry .education-icon").length
+  end
+
+  def test_contact_invitation_uses_gmail_in_the_main_text
+    doc = page("index.html")
+    contact = doc.at_css("#about .intro-contact")
+    refute_nil contact
+    assert_includes contact.text, "Feel free to email me"
+    link = contact.at_css('a[href="mailto:chenceason10@gmail.com"]')
+    refute_nil link
+    assert_equal "chenceason10@gmail.com", link.text.strip
+    assert_empty doc.css(".profile-links a[href^='mailto:']")
+    assert_empty page("2026/03/17/acknowledgement.html").css(".sidebar-links a[href^='mailto:']")
   end
 
   def test_x_profile_link_uses_the_supplied_account
@@ -190,7 +201,7 @@ class PageFocusTest < Minitest::Test
     paragraphs = page("index.html").css(".introduction > p")
     opening = paragraphs.first.text.strip
     assert opening.start_with?("I'm an undergraduate student majoring in Communication Engineering at Tongji University")
-    interests = paragraphs.last.text.strip
+    interests = paragraphs[1].text.strip
     assert_equal "I explore simple, efficient ways to make AI more capable, from learning algorithms to the systems that train and deploy models. My interests span multimodal foundation models, image/video generation, AI infrastructure, and reinforcement learning for embodied agents.", interests
     assert_empty page("index.html").css(".research-interests")
   end
