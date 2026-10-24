@@ -114,14 +114,16 @@ class PageFocusTest < Minitest::Test
 
   def test_profile_has_lightweight_accessible_contact_icons
     doc = page("index.html")
-    assert_equal 6, doc.css(".profile-links .site-icon").length
+    assert_equal 5, doc.css(".profile-links .site-icon").length
     doc.css(".profile-links .site-icon").each do |icon|
       assert_equal "true", icon["aria-hidden"]
     end
     assert_equal "Tongji University", doc.at_css(".profile-affiliation").text
     assert_empty doc.css('.profile-links a[href^="mailto:"]')
-    assert_equal ["CV (EN)", "CV (ZH)"], doc.css('.profile-links a[href*=".pdf"]').map { |link| link.text.strip }
-    assert_equal [CV_EN_URL, CV_ZH_URL], doc.css('.profile-links a[href*=".pdf"]').map { |link| link["href"] }
+    assert_empty doc.css('.profile-links a[href*=".pdf"]')
+    assert_equal ["Google Scholar", "GitHub", "LinkedIn", "Twitter"], doc.css(".profile-links a").map { |link| link.text.strip }
+    css = File.read(File.join(ROOT, "site/assets/css/global.css"))
+    assert_match(/\.profile-links\s*\{[^}]*font-size:\s*14px\b/m, css)
     assert doc.at_css(".welcome-wave")
     assert_equal 1, doc.css(".education-entry .education-icon").length
   end
@@ -138,17 +140,42 @@ class PageFocusTest < Minitest::Test
     assert_empty page("2026/03/17/acknowledgement.html").css(".sidebar-links a[href^='mailto:']")
   end
 
-  def test_x_profile_link_uses_the_supplied_account
+  def test_cv_links_are_in_the_introduction_not_the_sidebar
+    doc = page("index.html")
+    links = doc.css("#about .intro-cv a")
+    assert_equal [CV_EN_URL, CV_ZH_URL], links.map { |link| link["href"] }
+    assert_equal ["English PDF", "中文版 PDF"], links.map { |link| link.text.strip }
+    links.each do |link|
+      assert_equal "_blank", link["target"]
+      assert_includes link["rel"], "noopener"
+    end
+    assert_empty doc.css('.profile-links a[href*=".pdf"]')
+  end
+
+  def test_twitter_profile_link_uses_the_supplied_account
     url = "https://x.com/CeasonC87891"
     profile = YAML.safe_load(File.read(File.join(ROOT, "site/_data/profile.yml")))
-    assert_equal url, profile["x_url"]
+    assert_equal url, profile["twitter_url"]
     link = page("index.html").at_css(".profile-links a[href='#{url}']")
     refute_nil link
-    assert_equal "X", link.text.strip
+    assert_equal "Twitter", link.text.strip
+    assert_equal "_blank", link["target"]
+    assert_includes link["rel"], "noopener"
+    assert link.at_css("svg.site-icon.icon-twitter[aria-hidden='true']")
+    assert_includes File.read(File.join(ROOT, "site/_includes/widgets/homepage_sidebar.html")), "site.data.profile.twitter_url"
+  end
+
+  def test_linkedin_profile_link_uses_the_supplied_account
+    url = "https://www.linkedin.com/in/cheng-chen-012a83378/"
+    profile = YAML.safe_load(File.read(File.join(ROOT, "site/_data/profile.yml")))
+    assert_equal url, profile["linkedin_url"]
+    link = page("index.html").at_css(".profile-links a[href='#{url}']")
+    refute_nil link
+    assert_equal "LinkedIn", link.text.strip
     assert_equal "_blank", link["target"]
     assert_includes link["rel"], "noopener"
     assert link.at_css("svg.site-icon[aria-hidden='true']")
-    assert_includes File.read(File.join(ROOT, "site/_includes/widgets/homepage_sidebar.html")), "site.data.profile.x_url"
+    assert page("2026/03/17/acknowledgement.html").at_css(".sidebar-links a[href='#{url}']")
   end
 
   def test_all_english_cv_entry_points_request_the_current_pdf
@@ -158,7 +185,7 @@ class PageFocusTest < Minitest::Test
     redirect = File.read(File.join(ROOT, "cv/index.html"))
     assert_includes home, CV_EN_URL
     assert_includes navigation, CV_EN_URL
-    assert_includes sidebar, CV_EN_URL
+    refute_includes sidebar, CV_EN_URL
     assert_equal 4, redirect.scan(CV_EN_URL).length
   end
 
