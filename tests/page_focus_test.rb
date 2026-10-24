@@ -6,7 +6,8 @@ require "rexml/document"
 
 class PageFocusTest < Minitest::Test
   ROOT = File.expand_path("..", __dir__)
-  CV_EN_URL = "/cv/cheng-chen-cv.pdf?v=20261023b"
+  CV_EN_URL = "/cv/cheng-chen-cv.pdf?v=20261024-interests"
+  CV_ZH_URL = "/cv/cheng-chen-cv-zh.pdf?v=20261024-interests"
 
   def page(name)
     path = File.join(ROOT, name)
@@ -94,7 +95,7 @@ class PageFocusTest < Minitest::Test
     assert_equal sections, anchors.map { |link| link["href"].delete_prefix("/#") }
     cv_links = links.to_a.last(2)
     assert_equal ["CV (EN)", "CV (ZH)"], cv_links.map { |link| link.text.strip }
-    assert_equal [CV_EN_URL, "/cv/cheng-chen-cv-zh.pdf"], cv_links.map { |link| link["href"] }
+    assert_equal [CV_EN_URL, CV_ZH_URL], cv_links.map { |link| link["href"] }
     cv_links.each { |link| assert_equal "_blank", link["target"] }
   end
 
@@ -121,7 +122,7 @@ class PageFocusTest < Minitest::Test
     assert doc.at_css('.profile-links a[href="mailto:2351445@tongji.edu.cn"]')
     assert doc.at_css('.profile-links a[href="mailto:chenceason10@gmail.com"]')
     assert_equal ["CV (EN)", "CV (ZH)"], doc.css('.profile-links a[href*=".pdf"]').map { |link| link.text.strip }
-    assert_equal [CV_EN_URL, "/cv/cheng-chen-cv-zh.pdf"], doc.css('.profile-links a[href*=".pdf"]').map { |link| link["href"] }
+    assert_equal [CV_EN_URL, CV_ZH_URL], doc.css('.profile-links a[href*=".pdf"]').map { |link| link["href"] }
     assert doc.at_css(".welcome-wave")
     assert_equal 2, doc.css(".education-entry .education-icon").length
   end
@@ -135,6 +136,13 @@ class PageFocusTest < Minitest::Test
     assert_includes navigation, CV_EN_URL
     assert_includes sidebar, CV_EN_URL
     assert_equal 4, redirect.scan(CV_EN_URL).length
+  end
+
+  def test_chinese_cv_entry_points_request_the_current_pdf
+    home = File.read(File.join(ROOT, "site/index.html"))
+    navigation = File.read(File.join(ROOT, "site/_data/navigation.yml"))
+    assert_includes home, CV_ZH_URL
+    assert_includes navigation, CV_ZH_URL
   end
 
   def test_service_is_plain_typography_without_nested_cards
@@ -168,8 +176,13 @@ class PageFocusTest < Minitest::Test
     opening = paragraphs.first.text.strip
     assert opening.start_with?("I'm an undergraduate student majoring in Communication Engineering at Tongji University")
     interests = paragraphs.last.text.strip
-    assert_equal "I explore simple, elegant ways to make AI models more capable. My interests span multimodal large language models, image/video generation, and embodied AI.", interests
+    assert_equal "I explore simple, efficient ways to make AI more capable, from learning algorithms to the systems that train and deploy models. My interests span multimodal foundation models, image/video generation, AI infrastructure, and reinforcement learning for embodied agents.", interests
     assert_empty page("index.html").css(".research-interests")
+  end
+
+  def test_sidebar_bio_matches_current_research_interests
+    sidebar_bio = YAML.safe_load(File.read(File.join(ROOT, "site/_data/profile.yml"))).fetch("sidebar_bio")
+    assert_includes sidebar_bio, "multimodal foundation models, AI infrastructure, and reinforcement learning"
   end
 
   def test_main_cvs_are_two_pages_with_papers_but_no_website_projects
@@ -188,10 +201,12 @@ class PageFocusTest < Minitest::Test
       source = File.read(File.join(ROOT, "cv/#{name}.tex"))
       assert_equal 7, source.scan(/^\\researchentry\{/).length
       if name.end_with?("-zh")
-        assert_includes source, "探索以简洁、优雅的方法提升模型能力"
+        assert_includes source, "我探索以简洁高效的方法提升 AI 能力"
       else
         assert_includes text, "Main interests"
         assert_includes text, "image/video generation"
+        assert_includes text, "AI infrastructure"
+        assert_includes text, "reinforcement learning"
       end
       ["AutoSearch", "OfferPilot", "FPGA Algorithm Optimization", "Research Skills", "精选软件与工程项目"].each do |term|
         refute_includes text, term

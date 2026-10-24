@@ -21,7 +21,7 @@ class CvContentTest < Minitest::Test
     profile = YAML.safe_load(File.read(File.join(ROOT, "site/_data/profile.yml")))
     interests = profile.fetch("short_bio").scan(/<p>(.*?)<\/p>/m).last.first.strip
     assert_includes source("cheng-chen-cv"), interests
-    chinese = "探索以简洁、优雅的方法提升模型能力，关注多模态大语言模型、图像与视频生成及具身智能。"
+    chinese = "我探索以简洁高效的方法提升 AI 能力，研究如何改进模型算法及其训练与部署系统。目前尤其关注多模态大模型、图像/视频生成、AI 基础设施与面向具身智能的强化学习。"
     %w[cheng-chen-cv-zh cheng-chen-resume-photo-zh].each do |name|
       assert_includes source(name), chinese, name
     end

@@ -12,7 +12,7 @@ github: ceasonen
 gscholar: "https://scholar.google.com/citations?user=X92zQ68AAAAJ&hl=zh-CN"
 location: "Shanghai, China"
 sidebar_bio: >-
-  A Communication Engineering undergraduate at Tongji University, with interests in multimodal large language models, image/video generation, and embodied AI. Incoming Ph.D. student at the Institute of Automation, Chinese Academy of Sciences, starting in September 2027.
+  A Communication Engineering undergraduate at Tongji University, with interests in multimodal foundation models, AI infrastructure, and reinforcement learning. Incoming Ph.D. student at the Institute of Automation, Chinese Academy of Sciences, starting in September 2027.
 
 short_bio_text_justify: false
 short_bio: >-
@@ -24,7 +24,7 @@ short_bio: >-
     <span>Expected start: September 2027 · Supervisor: Prof. Kaiqi Huang</span>
   </p>
   <p>
-    I explore simple, elegant ways to make AI models more capable. My interests span multimodal large language models, image/video generation, and embodied AI.
+    I explore simple, efficient ways to make AI more capable, from learning algorithms to the systems that train and deploy models. My interests span multimodal foundation models, image/video generation, AI infrastructure, and reinforcement learning for embodied agents.
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg
