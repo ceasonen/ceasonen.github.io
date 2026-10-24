@@ -114,7 +114,7 @@ class PageFocusTest < Minitest::Test
 
   def test_profile_has_lightweight_accessible_contact_icons
     doc = page("index.html")
-    assert_equal 7, doc.css(".profile-links .site-icon").length
+    assert_equal 8, doc.css(".profile-links .site-icon").length
     doc.css(".profile-links .site-icon").each do |icon|
       assert_equal "true", icon["aria-hidden"]
     end
@@ -125,6 +125,19 @@ class PageFocusTest < Minitest::Test
     assert_equal [CV_EN_URL, CV_ZH_URL], doc.css('.profile-links a[href*=".pdf"]').map { |link| link["href"] }
     assert doc.at_css(".welcome-wave")
     assert_equal 1, doc.css(".education-entry .education-icon").length
+  end
+
+  def test_x_profile_link_uses_the_supplied_account
+    url = "https://x.com/CeasonC87891"
+    profile = YAML.safe_load(File.read(File.join(ROOT, "site/_data/profile.yml")))
+    assert_equal url, profile["x_url"]
+    link = page("index.html").at_css(".profile-links a[href='#{url}']")
+    refute_nil link
+    assert_equal "X", link.text.strip
+    assert_equal "_blank", link["target"]
+    assert_includes link["rel"], "noopener"
+    assert link.at_css("svg.site-icon[aria-hidden='true']")
+    assert_includes File.read(File.join(ROOT, "site/_includes/widgets/homepage_sidebar.html")), "site.data.profile.x_url"
   end
 
   def test_all_english_cv_entry_points_request_the_current_pdf
