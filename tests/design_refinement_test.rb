@@ -74,6 +74,16 @@ class DesignRefinementTest < Minitest::Test
     refute_match(/Embedded Chip and System Design Competition, FPGA track/i, news)
   end
 
+  def test_scholarship_row_does_not_repeat_academic_years
+    row = home.css("#awards .award-list > li").find do |item|
+      item.at_css(".award-name")&.text&.strip == "Tongji University Outstanding Student Scholarship"
+    end
+    refute_nil row
+    assert_equal "2023–25", row.at_css("time").text.strip
+    assert_nil row.at_css(".award-detail")
+    refute_includes row.text, "Academic years"
+  end
+
   def test_competition_names_use_verified_event_or_institutional_english_names
     expected = [
       "China Robot and Artificial Intelligence Competition",
