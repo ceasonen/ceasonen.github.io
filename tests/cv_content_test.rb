@@ -141,7 +141,7 @@ class CvContentTest < Minitest::Test
     assert_includes photo, 'OV-OrthKD'
     assert_includes photo, '项目负责人：Yi Xu；通讯作者：Wenzhuo Lei'
     assert_includes photo, '项目负责人：Cheng Chen；通讯作者：Yi Xu'
-    assert_includes photo, 'IJCNN 2026 · 项目负责人、通讯作者 · 已录用'
+    assert_includes photo, 'IJCNN 2026 · 项目负责人、通讯作者 · 已发表'
     preprints = photo.split('\\rightsection{预印本}', 2).last.split('\\rightsection{竞赛与荣誉}', 2).first
     assert_equal 4, preprints.scan('Cheng Chen 等人').length
     refute_includes preprints, 'Yi Xu'

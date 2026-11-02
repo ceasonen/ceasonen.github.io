@@ -14,6 +14,8 @@ authors:
   - Cheng Chen*‡
   - Mufan Cao
 links:
-  PDF: https://arxiv.org/pdf/2607.25545
+  PDF: https://ijcai.org/proceedings/2026/0774.pdf
+  IJCAI: https://ijcai.org/proceedings/2026/774
+  DOI: https://doi.org/10.24963/ijcai.2026/774
   Code: https://github.com/ScottBlizzard/orthkd-dr-screening
 ---
