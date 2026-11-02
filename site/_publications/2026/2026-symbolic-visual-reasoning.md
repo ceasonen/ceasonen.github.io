@@ -17,4 +17,6 @@ authors:
   - Cheng Chen†‡
 links:
   PDF: https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf
+  IEEE Xplore: https://ieeexplore.ieee.org/document/11729294/
+  DOI: https://doi.org/10.1109/IJCNN69854.2026.11729294
 ---

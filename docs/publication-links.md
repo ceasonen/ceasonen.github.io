@@ -15,3 +15,16 @@
 作者顺序仍保持用户此前明确指定的 CV / 主页顺序；OV-OrthKD 的 arXiv 元数据目前列 Yi Xu、Cheng Chen、Wenzhuo Lei，与主页前两位共同一作的展示顺序不同，本次仅加链接，没有擅自改作者排序。
 
 CV 字体参考：[Liming Lu 的 CV](https://elemmire1.github.io/static/assets/CV.pdf)。参考文件嵌入 Computer Modern 系列（CMR / CMBX / CMTI）；本地 XeLaTeX 使用同一设计的 Computer Modern Unicode OpenType（`cmunrm.otf`、`cmunbx.otf`、`cmunti.otf`、`cmunbi.otf`），保证中文兼容和字体嵌入。
+
+## IJCNN DOI 核验（2026-11-02）
+
+IEEE 提交的 [Crossref 原始记录](https://api.crossref.org/works/10.1109/IJCNN69854.2026.11729294) 与论文完整题目及五位作者顺序一致：Wenzhuo Lei、Mufan Cao、Chaorong Ye、Yi Xu、Cheng Chen。终稿首页明确 Cheng Chen 为通讯作者；网站和中英文 CV 保留 † 通讯作者及原有 ‡ 项目负责人标记。
+
+- 最终 DOI：[10.1109/IJCNN69854.2026.11729294](https://doi.org/10.1109/IJCNN69854.2026.11729294)。
+- 出版社论文页面：[IEEE Xplore, document 11729294](https://ieeexplore.ieee.org/document/11729294/)。
+- 会议全名：2026 International Joint Conference on Neural Networks (IJCNN)，页码 1–6。
+- Crossref 的 published / published-print / issued 为 2026-06，仅精确到月；会议日期为 2026-06-22 至 2026-06-26。
+- Crossref created 为 2026-10-19T19:14:25Z，这是 DOI 注册时间，不能替代正式发表日或 Xplore 上线日。
+- 当前访问无法读取 IEEE Xplore 的 Date Added to IEEE Xplore，具体上线日期尚未核实，不写入主页或 CV。
+
+本次同步论文源条目、生成首页及中英文 CV 源码，保留原 PDF 链接。
