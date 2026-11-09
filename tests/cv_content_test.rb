@@ -51,7 +51,7 @@ class CvContentTest < Minitest::Test
     papers = Dir[File.join(ROOT, "site/_publications/**/*.md")].map do |path|
       YAML.safe_load(File.read(path).split("---", 3)[1], permitted_classes: [Date, Time])
     end.sort_by { |paper| paper.fetch("rank") }
-    assert_equal 7, papers.length
+    assert_equal 3, papers.length
     titles = papers.map { |paper| paper.fetch("title") }
     %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
       assert_equal titles, source(name).scan(/^\\researchentry\{([^}]+)\}/).flatten, name
@@ -59,7 +59,7 @@ class CvContentTest < Minitest::Test
   end
 
   def test_cv_section_headings_use_sentence_case
-    assert_equal ["Education", "Main interests", "Publications", "Preprints", "Research internships",
+    assert_equal ["Education", "Main interests", "Publications", "Research internships",
                   "Academic service", "Research experience", "Awards and honors", "Technical skills"],
                  source("cheng-chen-cv").scan(/^\\cvsection\{([^}]+)\}/).flatten
     %w[cheng-chen-cv-zh cheng-chen-resume-photo-zh].each do |name|
@@ -118,20 +118,12 @@ class CvContentTest < Minitest::Test
       assert_includes cv, 'Yi Xu*\textsuperscript{‡}, Wenzhuo Lei\textsuperscript{†}'
       assert_includes cv, 'Yi Xu*\textsuperscript{†}, \textbf{Cheng Chen*}\textsuperscript{‡}, Mufan Cao'
       assert_includes cv, '\textbf{Cheng Chen}\textsuperscript{†‡}'
-      preprints = cv.split('\\cvsection{Preprints}', 2).last.split('\\cvsection{Research internships}', 2).first
-      preprints = cv.split('\\cvsection{预印本}', 2).last.split('\\cvsection{科研实习}', 2).first if preprints == cv
-      assert_equal 4, preprints.scan('Cheng Chen and collaborators').length
-      refute_includes preprints, 'Yi Xu'
-      refute_includes preprints, 'Wenzhuo Lei'
+      refute_match(/Preprints|预印本|Cheng Chen and collaborators|submitted|Phase 2|第二阶段|已投稿/, cv)
     end
     assert_includes english, 'HKUST-GZ'
     assert_includes chinese, '香港科技大学（广州）'
     assert_includes english, 'Reviewer:} ICLR(2027), AAAI(2027), ICME(2026), IJCNN(2026,2027), PRCV(2026).'
     assert_includes chinese, '审稿人：}ICLR(2027)、AAAI(2027)、ICME(2026)、IJCNN(2026,2027)、PRCV(2026)。'
-    assert_includes english, 'AAAI 2027, Phase 2'
-    assert_includes english, 'ICLR 2027, submitted'
-    assert_includes chinese, 'AAAI 2027}，第二阶段'
-    assert_includes chinese, 'ICLR 2027}，已投稿'
     assert_equal 0, english.scan('{2026; lead and corresponding author}').length
     assert_equal 0, chinese.scan('{2026；项目负责人、通讯作者}').length
   end
@@ -142,10 +134,7 @@ class CvContentTest < Minitest::Test
     assert_includes photo, '项目负责人：Yi Xu；通讯作者：Wenzhuo Lei'
     assert_includes photo, '项目负责人：Cheng Chen；通讯作者：Yi Xu'
     assert_includes photo, 'IJCNN 2026 · 项目负责人、通讯作者 · 已发表'
-    preprints = photo.split('\\rightsection{预印本}', 2).last.split('\\rightsection{竞赛与荣誉}', 2).first
-    assert_equal 4, preprints.scan('Cheng Chen 等人').length
-    refute_includes preprints, 'Yi Xu'
-    refute_includes preprints, 'Wenzhuo Lei'
+    refute_match(/预印本|Cheng Chen 等人|第二阶段|已投稿/, photo)
     assert_includes photo, '香港科技大学（广州）'
     assert_includes photo, 'ICLR(2027)、AAAI(2027)、ICME(2026)；\\'
     assert_includes photo, 'IJCNN(2026,2027)、PRCV(2026)。'
@@ -164,7 +153,7 @@ class CvContentTest < Minitest::Test
     %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
       first_page = source(name).split('\\newpage', 2).first
       refute_includes first_page, '\\papersummary', name
-      assert_equal 7, first_page.scan(/^\\item /).length, name
+      assert_equal 3, first_page.scan(/^\\item /).length, name
     end
   end
 

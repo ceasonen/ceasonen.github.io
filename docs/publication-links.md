@@ -10,7 +10,7 @@
 
 2026-10-11 核验时，两个 arXiv PDF 地址均返回 HTTP 200 / `application/pdf`。ResearchGate 提供的直链存在 HTTP 403 访问验证，因此 IJCNN 使用本地已有公开论文 `papers/ijcnn/main.pdf` 的明确发布副本（约 1.1 MB），题目、五位作者及 DeepYOLO 摘要与作者上传页面一致。发布文件只放 `site/assets/papers/`，不公开整个 `papers/` 工作目录。链接可见文字统一为 `[PDF]`。2026-11-02 已将 OrthKD 的 PDF 改为正式论文集版本。
 
-对四篇 Preprint 按完整题目、题目短语、作者与 arXiv 域名组合检索，尚未定位到可靠匹配的公开论文页面，因此不生成链接，也不上传本地稿件。找到链接后需同时更新 `site/_publications/` 与 `cv/` 的对应条目。
+2026-11-09 根据用户要求，主页、各版 CV 与个人陈述撤下全部预印本条目及相关研究介绍，并移除投稿数量和审稿阶段新闻。当前只展示三篇已录用或发表论文；原条目保存在本地私有归档，不随网站发布。
 
 作者顺序仍保持用户此前明确指定的 CV / 主页顺序；OV-OrthKD 的 arXiv 元数据目前列 Yi Xu、Cheng Chen、Wenzhuo Lei，与主页前两位共同一作的展示顺序不同，本次仅加链接，没有擅自改作者排序。
 
@@ -29,11 +29,10 @@ IEEE 提交的 [Crossref 原始记录](https://api.crossref.org/works/10.1109/IJ
 
 本次同步论文源条目、生成首页及中英文 CV 源码，保留原 PDF 链接。
 
-## 七篇论文版本复核（2026-11-02）
+## 已录用论文版本复核（2026-11-02）
 
 - **OrthKD**：已核实 [IJCAI 官方论文集页面](https://ijcai.org/proceedings/2026/774)、[正式 PDF](https://ijcai.org/proceedings/2026/0774.pdf) 和 [Crossref 记录](https://api.crossref.org/works/10.24963/ijcai.2026/774)。DOI 为 `10.24963/ijcai.2026/774`，页码 6958–6965；题目、三位作者顺序及研究内容一致。主页增加官方页面与 DOI，主 CV 和照片版替换 PDF 链接，主 CV 补正式页码。
 - **DeepYOLO / IJCNN**：重新读取 IEEE 提交的 Crossref 记录，题目、五位作者和页码 1–6 均匹配。保留已拉取的 Xplore 与 DOI 链接；主 CV 补正式页码，照片版补 DOI。出版社 PDF 的稳定公开访问未核实，继续保留现有可直接阅读的 PDF。
 - **OV-OrthKD / ACM MM**：arXiv 当前为 v1，注明 ACM Multimedia 2026 poster 录用；完整标题、简称、作者与 ACM/Crossref 组合检索尚未找到可确认的正式出版记录。保留 arXiv PDF，不推测 DOI。
-- **From Scores to Checks**、**What Can Activation-Patching Evidence Establish?**、**Follow Me If You Can**、**Allocation Entropy**：按完整标题、关键短语和作者组合核查，未找到可确认匹配的正式论文集或公开预印本新版本，继续保留现有投稿状态和简略署名。相近标题或匿名资料不作为状态变更依据。
 
 以上只更新有可靠来源的出版信息；未找到不代表尚未发表。保持用户指定的作者展示顺序及贡献标记，不根据检索猜测投稿结果。

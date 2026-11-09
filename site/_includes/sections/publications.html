@@ -7,7 +7,7 @@
         <div class="publication-filters" role="group" aria-label="Filter publications">
             <button class="publication-filter" type="button" data-filter="all" aria-pressed="true" aria-controls="publication-list">All Research <span>{{ publications.size }}</span></button>
             <button class="publication-filter" type="button" data-filter="accepted" aria-pressed="false" aria-controls="publication-list">Publications <span>{{ accepted_count }}</span></button>
-            <button class="publication-filter" type="button" data-filter="preprint" aria-pressed="false" aria-controls="publication-list">Preprints <span>{{ preprints.size }}</span></button>
+            {% if preprints.size > 0 %}<button class="publication-filter" type="button" data-filter="preprint" aria-pressed="false" aria-controls="publication-list">Preprints <span>{{ preprints.size }}</span></button>{% endif %}
         </div>
         <p class="publication-count" role="status" aria-live="polite">{{ publications.size }} papers</p>
     </div>

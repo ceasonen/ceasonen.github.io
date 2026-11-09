@@ -21,11 +21,9 @@ class DesignRefinementTest < Minitest::Test
     assert_empty entries.first.css(".education-icon .site-icon")
   end
 
-  def test_iclr_news_has_one_consolidated_update
-    items = home.css(".news-list li").select { |item| item.text.include?("ICLR 2027") }
-    assert_equal 1, items.length
-    assert_includes items.first.text, "Three papers"
-    assert_equal "2026.10", items.first.at_css("time").text
+  def test_news_omits_submission_and_review_stage_announcements
+    text = home.css(".news-list li").map(&:text).join(" ")
+    refute_match(/ICLR 2027|AAAI 2027|Three papers|Phase 2|submitted/i, text)
   end
 
   def test_browser_icon_is_a_vector_rubiks_cube_with_a_fresh_cache_key

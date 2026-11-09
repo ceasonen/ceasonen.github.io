@@ -86,7 +86,7 @@ try {
   assert.equal(await evaluate(`document.querySelectorAll('.research-interests').length`), 0);
   console.log('PASS: undergraduate education emblem loads as a square, with no duplicate interest list');
 
-  for (const [filter, count] of [['accepted',3], ['preprint',4], ['all',7]]) {
+  for (const [filter, count] of [['accepted',3], ['all',3]]) {
     await evaluate(`document.querySelector('[data-filter="${filter}"]').click()`);
     assert.equal(await evaluate(`document.querySelectorAll('.publication-card:not([hidden])').length`), count);
     assert.equal(await evaluate(`document.querySelector('.publication-count').textContent`), `${count} papers`);

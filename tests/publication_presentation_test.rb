@@ -5,12 +5,6 @@ require "date"
 
 class PublicationPresentationTest < Minitest::Test
   ROOT = File.expand_path("..", __dir__)
-  PREPRINT_TITLES = [
-    "From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness",
-    "What Can Activation-Patching Evidence Establish?",
-    "Follow Me If You Can: Auditing Understanding-to-Generation Transfer",
-    "Allocation Entropy for Single-Pass Risk Triage in Neural Operators"
-  ].freeze
   VERIFIED_PDFS = {
     "If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization" => "https://arxiv.org/pdf/2609.23376",
     "OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment" => "https://ijcai.org/proceedings/2026/0774.pdf",
@@ -46,24 +40,10 @@ class PublicationPresentationTest < Minitest::Test
     end.sort_by { |entry| entry.fetch("rank") }
   end
 
-  def test_preprints_keep_titles_covers_and_no_private_manuscript_links
-    preprints = publications.select { |entry| entry["preprint"] }
-    assert_equal PREPRINT_TITLES, preprints.map { |entry| entry.fetch("title") }
-    assert_equal 3, preprints.count { |entry| entry["pub"] == "ICLR" }
-    assert_equal 1, preprints.count { |entry| entry["pub"] == "AAAI" }
-    preprints.each do |entry|
-      refute_nil entry["cover"], "Missing figure cover for #{entry['title']}"
-      assert File.file?(File.join(ROOT, "site", entry.fetch("cover")))
-      assert_nil entry["links"]
-      assert_nil entry["authors"], "Full author order should not be shown for #{entry['title']}"
-      assert_equal "Cheng Chen and collaborators", entry.fetch("display_credit")
-    end
-    assert_equal "AAAI 2027 · Phase 2", preprints[0].fetch("submission_note")
-    assert_equal "ICLR 2027 · submitted", preprints[1].fetch("submission_note")
-    preprints.last(2).each do |entry|
-      assert_equal "ICLR 2027 · submitted", entry["submission_note"]
-    end
-    preprints.last(2).each { |entry| assert_nil entry["role_credit"] }
+  def test_publications_only_include_accepted_or_published_papers
+    assert_equal 3, publications.length
+    assert_empty publications.select { |entry| entry["preprint"] }
+    publications.each { |entry| assert_nil entry["submission_note"] }
   end
 
   def test_accepted_paper_roles_match_confirmed_authorship
@@ -81,16 +61,7 @@ class PublicationPresentationTest < Minitest::Test
     assert_includes cards[0].at_css(".publication-authors").text, "Wenzhuo Lei†"
     assert_includes cards[1].at_css(".publication-authors").text, "Cheng Chen*‡"
     assert_includes cards[2].at_css(".publication-authors").text, "Cheng Chen†‡"
-    cards.to_a.last(4).each do |card|
-      assert_equal "Cheng Chen and collaborators", card.at_css(".publication-authors")&.text&.strip
-      assert_empty card.css(".publication-authors sup")
-      assert_nil card.at_css(".publication-role-credit")
-    end
-    assert_includes cards[3].at_css(".publication-venue").text, "AAAI 2027 · Phase 2"
-    assert_includes cards[4].at_css(".publication-venue").text, "ICLR 2027 · submitted"
-    cards.to_a.last(2).each do |card|
-      assert_includes card.at_css(".publication-venue").text, "ICLR 2027 · submitted"
-    end
+    assert_empty doc.css(".publication-card[data-submission]")
   end
 
   def test_publication_role_marks_are_legible_and_links_are_verified
@@ -116,7 +87,7 @@ class PublicationPresentationTest < Minitest::Test
       entries = publications
       cards = doc.css(".publication-card")
       assert_equal entries.map { |entry| entry.fetch("title") }, cards.map { |card| card.at_css("h3").text }
-      assert_equal 3, cards.index { |card| card["data-submission"] }
+      assert_nil cards.index { |card| card["data-submission"] }
       cards.zip(entries).each do |card, entry|
           image = card.at_css("img.publication-cover")
           refute_nil image, "Missing figure for #{entry['title']}"
@@ -139,13 +110,13 @@ class PublicationPresentationTest < Minitest::Test
   def test_publication_filters_share_a_single_set_of_visible_paper_cards
     doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
     buttons = doc.css(".publication-filter")
-    assert_equal %w[all accepted preprint], buttons.map { |button| button["data-filter"] }
-    assert_equal %w[true false false], buttons.map { |button| button["aria-pressed"] }
-    assert_equal 7, doc.css(".publication-card").length
+    assert_equal %w[all accepted], buttons.map { |button| button["data-filter"] }
+    assert_equal %w[true false], buttons.map { |button| button["aria-pressed"] }
+    assert_equal 3, doc.css(".publication-card").length
     assert_equal 3, doc.css('.publication-card[data-status="accepted"]').length
-    assert_equal 4, doc.css('.publication-card[data-status="preprint"]').length
+    assert_empty doc.css('.publication-card[data-status="preprint"]')
     assert_empty doc.css(".publication-card[hidden]")
-    assert_equal "7 papers", doc.at_css(".publication-count").text.strip
+    assert_equal "3 papers", doc.at_css(".publication-count").text.strip
   end
 
   def test_accepted_papers_use_concise_venue_labels_after_the_summary
