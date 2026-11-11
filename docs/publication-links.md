@@ -1,10 +1,10 @@
 # 论文公开链接核验
 
-最新核验日期：2026-11-02。只添加题目、作者与内容均匹配的公开论文页面，不用相似研究、搜索结果页或匿名代码仓库代替论文链接。
+最新核验日期：2026-11-11。只添加题目、作者与内容均匹配的公开论文页面，不用相似研究、搜索结果页或匿名代码仓库代替论文链接。
 
 | 论文 | 来源页面 | 网站和 CV 直达 PDF |
 | --- | --- | --- |
-| OV-OrthKD / If You Hear It, Help Find It | [来源](https://arxiv.org/abs/2609.23376) | [PDF](https://arxiv.org/pdf/2609.23376) |
+| OV-OrthKD / If You Hear It, Help Find It | [ACM DOI](https://doi.org/10.1145/3767308.3835302) | [PDF](https://arxiv.org/pdf/2609.23376) |
 | OrthKD | [IJCAI 官方论文集](https://ijcai.org/proceedings/2026/774) | [正式 PDF](https://ijcai.org/proceedings/2026/0774.pdf) |
 | DeepYOLO / Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions | [IEEE Xplore](https://ieeexplore.ieee.org/document/11729294/) | [PDF](https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf) |
 
@@ -12,7 +12,7 @@
 
 2026-11-09 根据用户要求，主页、各版 CV 与个人陈述撤下全部预印本条目及相关研究介绍，并移除投稿数量和审稿阶段新闻。当前只展示三篇已录用或发表论文；原条目保存在本地私有归档，不随网站发布。
 
-作者顺序仍保持用户此前明确指定的 CV / 主页顺序；OV-OrthKD 的 arXiv 元数据目前列 Yi Xu、Cheng Chen、Wenzhuo Lei，与主页前两位共同一作的展示顺序不同，本次仅加链接，没有擅自改作者排序。
+2026-11-11 根据用户确认与正式出版记录，OV-OrthKD 的署名统一为 Yi Xu、Cheng Chen、Wenzhuo Lei；前两位保留共同第一作者标记，Cheng Chen 署名第二。保留此前确认的项目负责人及通讯作者标记。
 
 CV 字体参考：[Liming Lu 的 CV](https://elemmire1.github.io/static/assets/CV.pdf)。参考文件嵌入 Computer Modern 系列（CMR / CMBX / CMTI）；本地 XeLaTeX 使用同一设计的 Computer Modern Unicode OpenType（`cmunrm.otf`、`cmunbx.otf`、`cmunti.otf`、`cmunbi.otf`），保证中文兼容和字体嵌入。
 
@@ -33,6 +33,6 @@ IEEE 提交的 [Crossref 原始记录](https://api.crossref.org/works/10.1109/IJ
 
 - **OrthKD**：已核实 [IJCAI 官方论文集页面](https://ijcai.org/proceedings/2026/774)、[正式 PDF](https://ijcai.org/proceedings/2026/0774.pdf) 和 [Crossref 记录](https://api.crossref.org/works/10.24963/ijcai.2026/774)。DOI 为 `10.24963/ijcai.2026/774`，页码 6958–6965；题目、三位作者顺序及研究内容一致。主页增加官方页面与 DOI，主 CV 和照片版替换 PDF 链接，主 CV 补正式页码。
 - **DeepYOLO / IJCNN**：重新读取 IEEE 提交的 Crossref 记录，题目、五位作者和页码 1–6 均匹配。保留已拉取的 Xplore 与 DOI 链接；主 CV 补正式页码，照片版补 DOI。出版社 PDF 的稳定公开访问未核实，继续保留现有可直接阅读的 PDF。
-- **OV-OrthKD / ACM MM**：arXiv 当前为 v1，注明 ACM Multimedia 2026 poster 录用；完整标题、简称、作者与 ACM/Crossref 组合检索尚未找到可确认的正式出版记录。保留 arXiv PDF，不推测 DOI。
+- **OV-OrthKD / ACM MM**：2026-11-11 已核实 [ACM 提交的 Crossref 记录](https://api.crossref.org/works/10.1145/3767308.3835302) 和[作者仓库](https://github.com/ScottBlizzard/OV-OrthKD)。正式 DOI 为 `10.1145/3767308.3835302`，页码 12794–12802，published 日期为 2026-11-09；题目和三位作者顺序匹配。主页和各版 CV 补 DOI，中英文主 CV 补正式页码。ACM PDF 端点当前返回 HTTP 403，继续使用可直读的 arXiv PDF，不将访问验证页面标成 PDF 下载。
 
 以上只更新有可靠来源的出版信息；未找到不代表尚未发表。保持用户指定的作者展示顺序及贡献标记，不根据检索猜测投稿结果。

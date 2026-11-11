@@ -10,10 +10,11 @@ cover:          /assets/images/covers/mm.png
 abstract: >-
   We study open-vocabulary audio-visual event localization when visual and audio teachers differ in reliability. OV-OrthKD places their supervision in separate orthogonal feature paths and uses text prototypes for open-vocabulary transfer.
 authors:
-  - Cheng Chen*
   - Yi Xu*‡
+  - Cheng Chen*
   - Wenzhuo Lei†
 links:
   PDF: https://arxiv.org/pdf/2609.23376
+  DOI: https://doi.org/10.1145/3767308.3835302
   Project: https://github.com/ScottBlizzard/OV-OrthKD
 ---

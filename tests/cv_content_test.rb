@@ -115,7 +115,7 @@ class CvContentTest < Minitest::Test
     [english, chinese].each do |cv|
       assert_includes cv, '\href{https://github.com/ScottBlizzard/OV-OrthKD}{[Project]}'
       assert_includes cv, '\href{https://github.com/ScottBlizzard/orthkd-dr-screening}{[Code]}'
-      assert_includes cv, 'Yi Xu*\textsuperscript{‡}, Wenzhuo Lei\textsuperscript{†}'
+      assert_includes cv, 'Yi Xu*\textsuperscript{‡}, \textbf{Cheng Chen*}, Wenzhuo Lei\textsuperscript{†}'
       assert_includes cv, 'Yi Xu*\textsuperscript{†}, \textbf{Cheng Chen*}\textsuperscript{‡}, Mufan Cao'
       assert_includes cv, '\textbf{Cheng Chen}\textsuperscript{†‡}'
       refute_match(/Preprints|预印本|Cheng Chen and collaborators|submitted|Phase 2|第二阶段|已投稿/, cv)

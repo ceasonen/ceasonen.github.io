@@ -48,7 +48,7 @@ class PublicationPresentationTest < Minitest::Test
 
   def test_accepted_paper_roles_match_confirmed_authorship
     accepted = publications.reject { |entry| entry["preprint"] }
-    assert_equal ["Cheng Chen*", "Yi Xu*‡", "Wenzhuo Lei†"], accepted[0].fetch("authors")
+    assert_equal ["Yi Xu*‡", "Cheng Chen*", "Wenzhuo Lei†"], accepted[0].fetch("authors")
     assert_equal ["Yi Xu*†", "Cheng Chen*‡", "Mufan Cao"], accepted[1].fetch("authors")
     assert_equal ["Wenzhuo Lei", "Mufan Cao", "Chaorong Ye", "Yi Xu", "Cheng Chen†‡"], accepted[2].fetch("authors")
     doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
