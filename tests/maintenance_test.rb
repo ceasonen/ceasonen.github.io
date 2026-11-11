@@ -36,7 +36,7 @@ class MaintenanceTest < Minitest::Test
 
   def test_highlights_are_data_driven
     highlights = data("highlights")
-    assert_equal 7, highlights.fetch("awards").length
+    assert_equal 8, highlights.fetch("awards").length
     assert_includes File.read(File.join(ROOT, "site/index.html")), "site.data.highlights"
   end
 

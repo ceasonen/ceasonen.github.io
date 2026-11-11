@@ -6,8 +6,8 @@ require "rexml/document"
 
 class PageFocusTest < Minitest::Test
   ROOT = File.expand_path("..", __dir__)
-  CV_EN_URL = "/cv/cheng-chen-cv.pdf?v=20261111-mm-doi"
-  CV_ZH_URL = "/cv/cheng-chen-cv-zh.pdf?v=20261111-mm-doi"
+  CV_EN_URL = "/cv/cheng-chen-cv.pdf?v=20261111-bull-scholarship"
+  CV_ZH_URL = "/cv/cheng-chen-cv-zh.pdf?v=20261111-bull-scholarship"
 
   def page(name)
     path = File.join(ROOT, name)

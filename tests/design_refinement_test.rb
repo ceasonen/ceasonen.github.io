@@ -48,7 +48,7 @@ class DesignRefinementTest < Minitest::Test
   def test_awards_are_compact_text_rows_with_prize_year_and_role
     entries = YAML.safe_load(File.read(File.join(ROOT, "site/_data/highlights.yml"))).fetch("awards")
     rows = home.css("#awards .award-list > li")
-    assert_equal 7, rows.length
+    assert_equal 8, rows.length
     assert_equal "# Project Lead", home.at_css(".award-legend")&.text&.strip
     rows.zip(entries).each do |row, entry|
       assert_equal entry.fetch("name"), row.at_css(".award-name").text.strip
