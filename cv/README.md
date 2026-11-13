@@ -25,7 +25,7 @@ ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh
 
 中英文主 CV 完整列出主页 `site/_data/highlights.yml` 中的八项奖项：六项竞赛奖、公牛奖学金与优秀学生奖学金。保留奖项级别和年份；奖项后的 `#` 统一表示 Project Lead／项目负责人，与主页保持一致。新增奖项时同步维护主 CV，照片版继续保留精选奖项。
 
-公牛奖学金的获奖年份由用户于 2026-11-12 明确为 2026 年；主页、News、所有简历与个人材料统一按获奖年份展示，不使用学年跨度。按用户确认标注“等效一等奖学金”，不展示金额。英文采用描述性译名 Tongji University BULL Scholarship，未声称为校方正式英文名称。检索到的[校方公牛基金公告](https://news.tongji.edu.cn/info/1003/89193.htm)及国际交流奖学金通知不能单独核实上述等级或个人获奖情况，不据此将用户的奖项改名为“国际交流奖学金”。
+按用户 2026-11-13 的最新要求，公牛奖学金统一展示为 2025--2026 学年，英文括注为 “CEIE's highest-tier first-class scholarship”，中文为“电信学院最高等级一等奖学金”，不展示金额；News 日期仍为动态发布时间。CEIE 为用户指定的电信学院简称，等级描述和个人获奖信息以用户确认为依据。英文采用描述性译名 Tongji University BULL Scholarship，未声称为校方正式英文名称；[校方公牛基金公告](https://news.tongji.edu.cn/info/1003/89193.htm)不作为该等级或个人获奖的核验依据，也不据此将奖项改名为“国际交流奖学金”。
 
 中英文主简历与照片版均用 XeLaTeX 编译，英文正文使用 Computer Modern Unicode；中文正文使用宋体。编译机器须安装这些字体。
 
