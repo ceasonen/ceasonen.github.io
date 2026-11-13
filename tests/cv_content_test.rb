@@ -60,7 +60,7 @@ class CvContentTest < Minitest::Test
 
   def test_cv_section_headings_use_sentence_case
     assert_equal ["Education", "Main interests", "Publications", "Research internships",
-                  "Academic service", "Research experience", "Awards and honors", "Technical skills"],
+                  "Academic service", "Technical skills", "Research experience", "Awards and honors"],
                  source("cheng-chen-cv").scan(/^\\cvsection\{([^}]+)\}/).flatten
     %w[cheng-chen-cv-zh cheng-chen-resume-photo-zh].each do |name|
       assert_includes source(name), "{Main interests}", name
