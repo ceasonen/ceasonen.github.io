@@ -87,9 +87,9 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 \cvsection{Research experience}
 \researchentry{CINEMA: Preserving the Rhythm of Image Editing}{First author; project lead}
 \begin{itemize}
-\item Studied text-guided image editing: changing requested content while preserving the surrounding scene, with fewer model evaluations.
-\item Developed a training-free, closed-form coupling operator that preserves the weighted center of paired latent states while accumulating contraction across skipped steps, without extra parameters or neural evaluations.
-\item On \textbf{700 PIE-Bench requests}, the SD1.5 configuration reduced total neural evaluations from \textbf{160 to 120} and latency from \textbf{19.10 to 14.41 s}, while improving background PSNR from \textbf{26.87 to 27.14 dB} against fine EDICT. Evaluated multi-, few-, and one-step editors across five benchmarks.
+\item Developed a training-free image-editing framework for frozen diffusion/flow models, with adapters for multi-step, few-step, and one-step inference. A closed-form coupling rule preserves the center of paired latent states or conditions while accumulating contraction.
+\item Established exact composition and minimum-displacement properties for the paired-state interaction. Evaluated component effects with cross-backbone ablations, source-paired assessments, grouped bootstrap intervals, and complete first-edit cost accounting.
+\item Evaluated preservation, instruction completion, and efficiency across \textbf{five benchmarks}. On PIE100 (\textbf{82 valid backgrounds}), CINEMA/PeRFlow raised background PSNR from \textbf{28.97 to 30.94 dB} over native PeRFlow at \textbf{8 denoiser forwards} and the same \textbf{0.927 s} median complete-edit latency (99 timed edits).
 \end{itemize}
 \researchentry{Unified Multimodal Model Adaptation and Evaluation}{Project lead}
 \begin{itemize}

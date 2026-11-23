@@ -165,7 +165,8 @@
   }
 
   \entry{CINEMA: Preserving the Rhythm of Image Editing}{Cheng Chen\textsuperscript{‡}, Yi Xu, Wenzhuo Lei, Mufan Cao, Kaibo Zheng, Wencheng Ye, Tianyi Wang, Weidong Wu, Zhiyuan Cao\textsuperscript{†}\\预印本 · 已投稿 CVPR 2027 · 第一作者、项目负责人}{2026}{
-    \item 无需训练的闭式耦合算子，在编辑加速中保持双分支加权中心与累积收缩；PIE-Bench 700 条请求上，SD1.5 较细步 EDICT 的总网络求值从 160 降至 120，延迟从 19.10 降至 14.41 秒，背景 PSNR 从 26.87 升至 27.14 dB。
+    \item 无需训练的图像编辑框架，以保持中心和累积收缩的闭式耦合规则适配多步、少步与单步扩散/流模型，并给出配对交互的精确复合与最小位移性质。
+    \item PIE100（82 个背景有效样本）上，较原生 PeRFlow 将背景 PSNR 从 \textbf{28.97 提升至 30.94 dB}；两者均为 8 次去噪调用，99 次计时编辑的完整时延中位数均为 0.927 秒。
   }
 
   \entry{统一多模态模型适配与评测}{项目负责人 · 参数高效适配与评测流程}{2026}{

@@ -29,4 +29,6 @@ ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh
 
 中英文主简历与照片版均用 XeLaTeX 编译，英文正文使用 Computer Modern Unicode；中文正文使用宋体。编译机器须安装这些字体。
 
+CINEMA 的研究介绍结合正文及本地补充材料 A、L--N 节。当前定量例子来自补充材料 Table S4 的 PeRFlow 对照：PIE100 控制集、82 个背景有效样本、99 次预热后的计时编辑；原生与 CINEMA 均为 8 次去噪网络调用、0.927 秒完整编辑时延中位数，背景 PSNR 为 28.97 与 30.94 dB。配对交互的精确复合和最小位移性质不等同于整个神经生成过程的精确性或任务完成保证。不得混用正文与补充实验的计时协议，匿名补充 PDF 只保留本地。
+
 `cheng-chen-cv-legacy` 仅为历史样式参考，不作为当前事实的维护入口；网站默认链接及中英文主 CV 是正式版本。

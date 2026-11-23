@@ -19,5 +19,5 @@ authors:
   - Zhiyuan Cao†
 cover: /assets/images/covers/cinema.png
 abstract: >-
-  A training-free approach to accelerating diffusion/flow image editing. A closed-form coupling operator preserves the weighted center of paired latent states while accumulating contraction across skipped steps. On 700 PIE-Bench requests, the SD1.5 configuration reduces total neural evaluations from 160 to 120 and latency from 19.10 to 14.41 seconds, while improving background PSNR from 26.87 to 27.14 dB against fine EDICT.
+  Training-free image editing for frozen diffusion/flow models across multi-step, few-step, and one-step inference. A closed-form coupling rule preserves paired-state geometry, with exact composition and minimum-displacement properties for the interaction. Cross-backbone ablations, source-paired assessments, and complete first-edit cost measurements evaluate preservation, instruction completion, and efficiency across five benchmarks.
 ---

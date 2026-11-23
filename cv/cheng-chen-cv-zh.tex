@@ -85,9 +85,9 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 \cvsection{科研经历}
 \researchentry{CINEMA: Preserving the Rhythm of Image Editing}{第一作者、项目负责人}
 \begin{itemize}
-\item 研究文本引导的图像编辑：按要求修改目标内容，同时保留周围场景，并以更少的模型调用完成编辑。
-\item 提出无需训练的闭式耦合算子，在跳步加速时保持双分支潜变量的加权中心，并精确累积差异收缩，无需新增参数或神经网络求值。
-\item 在 PIE-Bench 的 \textbf{700 条编辑请求}上，SD1.5 配置较细步 EDICT 将总网络求值次数从 \textbf{160 降至 120}，延迟从 \textbf{19.10 降至 14.41 秒}，背景 PSNR 从 \textbf{26.87 提升至 27.14 dB}；另在多步、少步、单步编辑器及五个基准上评估。
+\item 面向冻结的扩散/流模型设计无需训练的图像编辑框架，适配多步、少步与单步推理；通过闭式耦合规则保持潜变量或条件对的加权中心，同时累积差异收缩。
+\item 推导配对交互的精确复合与最小位移性质；结合跨模型组件消融、源图配对评估、分组 Bootstrap 区间和完整首次编辑成本分析，验证几何设计及其部署代价。
+\item 在\textbf{五个基准}上评估内容保留、指令完成度与效率。PIE100 控制集含 \textbf{82 个背景有效样本}；PeRFlow 接入 CINEMA 后，背景 PSNR 从 \textbf{28.97 提升至 30.94 dB}。两者均为 \textbf{8 次去噪网络调用}，99 次计时编辑的完整时延中位数均为 \textbf{0.927 秒}。
 \end{itemize}
 \researchentry{统一多模态模型适配与评测}{项目负责人}
 \begin{itemize}
