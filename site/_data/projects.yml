@@ -3,8 +3,7 @@
 - name: Unified Multimodal Model Adaptation and Evaluation
   category: Research project
   summary: >-
-    A model adaptation and evaluation pipeline spanning visual question answering and image generation across six unified multimodal architectures.
-    Integrates parameter-efficient adapters, a LoRA baseline, paired generation, and diagnostic controls for counting and spatial-relation tasks.
+    Parameter-efficient adaptation for visual understanding and image generation.
 - name: Image2Other
   category: Research software
   repository: https://github.com/ceasonen/Image2Other

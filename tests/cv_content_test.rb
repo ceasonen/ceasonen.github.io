@@ -169,14 +169,14 @@ class CvContentTest < Minitest::Test
     chinese = source("cheng-chen-cv-zh")
     photo = source("cheng-chen-resume-photo-zh")
 
-    assert_match(/\\textbf\{Programming:\} Python, C\/C\+\+, Verilog\.\\\\\n\\textbf\{Machine learning frameworks:\} PyTorch, JAX\.\\\\/, english)
-    assert_match(/\\textbf\{编程：\}Python、C\/C\+\+、Verilog。\\\\\n\\textbf\{机器学习框架：\}PyTorch、JAX。\\\\/, chinese)
-    assert_includes english, 'ROS 2'
+    assert_match(/\\textbf\{Programming:\} Python, C\/C\+\+, Verilog\.\\\\\n\\textbf\{Machine learning frameworks:\} PyTorch\.\\\\/, english)
+    assert_match(/\\textbf\{编程：\}Python、C\/C\+\+、Verilog。\\\\\n\\textbf\{机器学习框架：\}PyTorch。\\\\/, chinese)
+    refute_match(/JAX|ROS\s*2/i, english)
     refute_includes english, '(learning)'
-    assert_includes chinese, 'ROS 2'
+    refute_match(/JAX|ROS\s*2/i, chinese)
     refute_includes chinese, '学习中'
-    assert_includes photo, '\\textbf{框架：}PyTorch，JAX\\par'
-    assert_includes photo, 'ROS 2'
+    assert_includes photo, '\\textbf{框架：}PyTorch\\par'
+    refute_match(/JAX|ROS\s*2/i, photo)
     refute_includes photo, '学习中'
     assert_includes english, '\\textbf{Foundations:} Machine learning, deep learning, algorithms, linear algebra, probability, optimization, and digital signal processing.'
     assert_includes chinese, '\\textbf{基础：}机器学习、深度学习、算法、线性代数、概率论、最优化与数字信号处理。'
