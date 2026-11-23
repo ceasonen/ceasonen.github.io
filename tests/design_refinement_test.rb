@@ -87,12 +87,12 @@ class DesignRefinementTest < Minitest::Test
       "China Robot and Artificial Intelligence Competition",
       "Global Campus Artificial Intelligence Algorithm Elite Competition",
       "National Undergraduate Embedded Chip and System Design Competition",
-      "The Chinese Mathematics Competitions",
       "Contemporary Undergraduate Mathematical Contest in Modeling",
-      "National College Student Statistical Modeling Competition"
+      "National College Student Statistical Modeling Competition",
+      "The Chinese Mathematics Competitions"
     ]
     entries = YAML.safe_load(File.read(File.join(ROOT, "site/_data/highlights.yml"))).fetch("awards")
-    assert_equal expected, entries.first(6).map { |entry| entry.fetch("name") }
+    assert_equal expected, entries.reject { |entry| entry.fetch("name").include?("Scholarship") }.map { |entry| entry.fetch("name") }
     news = Dir[File.join(ROOT, "site/_news/*.md")].map { |path| File.read(path) }.join("\n")
     expected.each { |name| assert_includes news, name }
   end

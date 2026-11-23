@@ -86,12 +86,12 @@ try {
   assert.equal(await evaluate(`document.querySelectorAll('.research-interests').length`), 0);
   console.log('PASS: undergraduate education emblem loads as a square, with no duplicate interest list');
 
-  for (const [filter, count] of [['accepted',3], ['all',3]]) {
+  for (const [filter, count] of [['accepted',3], ['preprint',1], ['all',4]]) {
     await evaluate(`document.querySelector('[data-filter="${filter}"]').click()`);
     assert.equal(await evaluate(`document.querySelectorAll('.publication-card:not([hidden])').length`), count);
-    assert.equal(await evaluate(`document.querySelector('.publication-count').textContent`), `${count} papers`);
+    assert.equal(await evaluate(`document.querySelector('.publication-count').textContent`), `${count} ${count === 1 ? 'paper' : 'papers'}`);
   }
-  console.log('PASS: one set of seven cards, all publication filters');
+  console.log('PASS: four cards, with three published papers and one preprint');
   assert.deepEqual(await evaluate(`[...document.querySelectorAll('.service-list li')].map(item => item.textContent.trim())`),
     ['ICLR(2027)', 'AAAI(2027)', 'ICME(2026)', 'IJCNN(2026,2027)', 'PRCV(2026)']);
 
@@ -100,6 +100,12 @@ try {
     for (const section of ['about','news','experience','projects','awards','publications','service']) {
       await navigate(section);
       await screenshot(`${width}-${section}`);
+      if (section === 'publications') {
+        await evaluate(`document.querySelector('[data-filter="preprint"]').click()`);
+        await waitFor(`document.querySelector('.publication-card[data-status="preprint"] img').naturalWidth > 0`);
+        await screenshot(`${width}-preprint`);
+        await evaluate(`document.querySelector('[data-filter="all"]').click()`);
+      }
     }
   }
   assert.equal(await evaluate(`location.hash`), '#service');
@@ -112,10 +118,12 @@ try {
   assert.equal(await evaluate(`document.querySelector('.nav-toggle').getAttribute('aria-expanded')`), 'false');
   assert.equal(await evaluate(`getComputedStyle(document.querySelector('.welcome-wave')).animationName`), 'none');
   const links = await evaluate(`[...document.querySelectorAll('.publication-card .publication-links a')].map(a=>({label:a.textContent.trim(),url:a.href}))`);
-  assert.equal(links.length, 5);
+  assert.equal(links.length, 9);
   assert.equal(links.filter(link => link.label === '[PDF]').length, 3);
   assert.equal(links.filter(link => link.label === '[Code]').length, 1);
   assert.equal(links.filter(link => link.label === '[Project]').length, 1);
+  assert.equal(links.filter(link => link.label === '[DOI]').length, 3);
+  assert.equal(links.filter(link => link.label === '[IJCAI]').length, 1);
   assert(links.every(link => !link.url.includes('/abs/') && !link.url.includes('researchgate')));
   const marks = await evaluate(`({legend:getComputedStyle(document.querySelector('.publication-legend')).fontSize, author:getComputedStyle(document.querySelector('.publication-authors')).fontSize, superscript:getComputedStyle(document.querySelector('.publication-authors sup')).fontSize})`);
   assert(parseFloat(marks.legend) >= 15);

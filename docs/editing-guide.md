@@ -25,15 +25,15 @@ YAML 用空格缩进，不用 Tab；含冒号的普通文本加引号。图片�
 
 按会议年份放在 `site/_publications/2026/`、`2027/` 等目录。复制同类现有文件修改即可。
 
-- `title`：论文真实题目；当前四篇 Preprint 已获授权展示题目。
+- `title`：论文真实题目；当前为三篇已发表论文和一篇 CINEMA 预印本。
 - `date`：条目实际日期，保持现有格式。
 - `pub` / `pub_date`：会议名称 / 会议年份；年份加引号。
 - `venue_short`：可选的会议简称（如 `ACM MM`、`IJCAI`），用于论文卡片展示；完整会议名称仍保存在 `pub`。
-- `preprint_year`：预印本年份；当前四篇匿名稿件均为 `"2026"`。网站以 Preprint 展示，原投稿会议字段保留作维护记录。
-- `rank`：越小越靠前；当前已录用是 1、2、3，在投是 101、102、103、104。
+- `preprint_year`：预印本年份；CINEMA 为 2026，状态为已投稿 CVPR 2027，不表示录用。
+- `rank`：越小越靠前；已发表论文为 1、2、3，CINEMA 为 4。
 - `links`：统一使用 `PDF` 键名，网址必须直接打开论文 PDF，而不是摘要页面或登录页面。当前两篇使用 arXiv `/pdf/` 地址，IJCNN 使用明确公开的 `site/assets/papers/deepyolo-ijcnn-2026.pdf`；核验记录见 [publication-links.md](publication-links.md)。不要上传 `.local/` 在审稿件。
 - 首页按 `rank` 显示全部论文，一篇只展示一次。
-- `abstract`：简述；在审稿件不写具体方法或实验结果。
+- `abstract`：按用户授权简述研究问题、方法与有原文依据的结果。
 - `cover`：论文主图截图路径，如 `/assets/images/covers/image-evaluation.png`。只截主图区域，避开真实题目、作者、投稿编号及页眉；不添加专门的匿名或在审说明行。
 - `authors`：公开条目的作者顺序；链接信息在 `_data/authors.yml`。
 - `anonymous: true`：隐藏作者及稿件链接；现在仍显示真实题目。不要把未授权作者或私人稿件链接写进文件，即使页面不显示也不应公开提交。
@@ -124,7 +124,7 @@ npm run dev
 
 ## CV 与本地材料
 
-中英文主简历均为两页：第一页为教育、Main interests、已录用论文、预印本、实习和学术服务；第二页逐篇介绍七项研究，再列奖项与技能。成绩当前为均分 92.02/100、GPA 4.70（未添加满分制）、排名 2/85。英文小标题使用句首大写，研究经历题目与论文列表的完整正式题目一致。英文 Main interests 与首页简介的研究兴趣段落一致；中文主简历与照片版同步对应的精简中文表述。首页不再另列重复的方向列表，`_data/research.yml` 只保留给旧模板参考。Preprint 显示真实题目；已确认完整署名的条目列作者和角色，另两篇只标注 Cheng Chen 的职责，不臆填其余作者。精选 GitHub 项目只放网站，不放 CV。照片版及旧版保留原用途。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
+中英文主简历均为两页：第一页为教育、Main interests、三篇已发表论文、紧随其后的 CINEMA 预印本、实习和奖项；第二页介绍 CINEMA、Follow Me If You Can 及三项已发表研究，再列技能与学术服务。奖项从新到旧排列。成绩为均分 92.02/100、GPA 4.70（不添加未经确认的满分制）、排名 2/85。英文小标题使用句首大写；研究兴趣与主页同步，不另加重复方向列表。CINEMA 按用户确认的九位作者署名，并明确 CVPR 2027 投稿状态；Follow Me If You Can 仅作为研究项目展示，列 Cheng Chen、Yi Xu、Wenzhuo Lei，不写拒稿和评审分数。其他移除稿件不恢复，匿名审稿 PDF 只保留本地。GitHub 软件项目只放网站，不放 CV。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
 
 ```sh
 ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh

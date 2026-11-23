@@ -52,6 +52,11 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 \textit{IJCNN 2026}，第 1--6 页。\quad \href{https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf}{[PDF]}\quad \href{https://doi.org/10.1109/IJCNN69854.2026.11729294}{[DOI]}
 \end{enumerate}
 
+\cvsection{预印本}
+\textbf{CINEMA: Preserving the Rhythm of Image Editing.}\\
+\textbf{Cheng Chen}, Yi Xu, Wenzhuo Lei, Mufan Cao, Kaibo Zheng, Wencheng Ye, Tianyi Wang, Weidong Wu, \mbox{Zhiyuan Cao}。\\
+预印本，2026；已投稿 CVPR 2027。
+
 \cvsection{科研实习}
 科研实习生
 \par\begin{tabularx}{\textwidth}{@{}Xr@{}}
@@ -64,23 +69,30 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 {\small \# 项目负责人\par}
 \begin{itemize}
 \item 中国机器人及人工智能大赛，全国一等奖（2026）。\textsuperscript{\#}
+\item 公牛奖学金（2025--2026 学年；电信学院最高等级一等奖学金）。
 \item 全球校园人工智能算法精英大赛，全国二等奖（2025）。\textsuperscript{\#}
 \item 全国大学生嵌入式芯片与系统设计竞赛，全国三等奖（2025）。\textsuperscript{\#}
-\item 全国大学生数学竞赛，省级二等奖（2024--2025）。
 \item 全国大学生数学建模竞赛，省级三等奖（2025）。\textsuperscript{\#}
 \item 全国大学生统计建模大赛，省级三等奖（2025）。\textsuperscript{\#}
-\item 同济大学公牛奖学金（2025--2026 学年；电信学院最高等级一等奖学金）。
+\item 全国大学生数学竞赛，省级二等奖（2024--2025）。
 \item 同济大学优秀学生奖学金，二等奖（2023--2024、2024--2025 学年）。
 \end{itemize}
 
-\cvsection{专业能力}
-\textbf{编程：}Python、C/C++、Verilog。\\
-\textbf{机器学习框架：}PyTorch、JAX。\\
-\textbf{工具：}Git、Linux、LaTeX、ROS 2、OpenAI Codex、Claude Code。\\
-\textbf{基础：}机器学习、深度学习、算法、线性代数、概率论、最优化与数字信号处理。
-
 \newpage
 \cvsection{科研经历}
+\researchentry{CINEMA: Preserving the Rhythm of Image Editing}{预印本；已投稿 CVPR 2027}
+\begin{itemize}
+\item 研究文本引导的图像编辑：按要求修改目标内容，同时保留周围场景，并以更少的模型调用完成编辑。
+\item 提出无需训练的闭式耦合算子，在跳步加速时保持双分支潜变量的加权中心，并精确累积差异收缩，无需新增参数或神经网络求值。
+\item 在 PIE-Bench 的 \textbf{700 条编辑请求}上，SD1.5 配置较细步 EDICT 将总网络求值次数从 \textbf{160 降至 120}，延迟从 \textbf{19.10 降至 14.41 秒}，背景 PSNR 从 \textbf{26.87 提升至 27.14 dB}；另在多步、少步、单步编辑器及五个基准上评估。
+\end{itemize}
+\researchentry{Follow Me If You Can: Auditing Understanding-to-Generation Transfer}{研究项目}
+\textbf{Cheng Chen}\textsuperscript{†‡}, Yi Xu, Wenzhuo Lei。
+\begin{itemize}
+\item 围绕“理解训练能否迁移到图像生成”设计审计框架，在 BLIP3-o、JanusFlow、Janus-Pro、Show-o2 等\textbf{六种统一多模态架构}上研究计数与空间关系任务。
+\item 结合可移除的 rank-64 适配器、标准 LoRA 对照和范数匹配的条件替换，在相同提示与生成噪声下区分理解增益、生成变化及属性级迁移。
+\item 通过图像与指令对照、接收端/供体双重读数，识别回答格式带来的分数变化，区分原请求改善与目标属性跟随。
+\end{itemize}
 \researchentry{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{ACM MM 2026；共同第一作者}
 \begin{itemize}
 \item 针对音视频教师的可靠性差异，将强视觉监督用于定位路径，将弱音频监督限制在正交辅助路径，并结合文本原型支持未见事件类别。
@@ -96,6 +108,12 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 \item 提出初始研究想法，与负责实现和实验的低年级同学合作，通过紧凑场景报告连接目标检测器与纯文本语言模型。
 \item 在 VQAv2 分层抽样的 \textbf{5,000 张图像子集}上取得 \textbf{42.3\%} 问答准确率，场景图序列化基线为 \textbf{38.2\%}，提示词元用量减少至基线的 \textbf{1/2.5}。
 \end{itemize}
+
+\cvsection{专业能力}
+\textbf{编程：}Python、C/C++、Verilog。\\
+\textbf{机器学习框架：}PyTorch、JAX。\\
+\textbf{工具：}Git、Linux、LaTeX、ROS 2、OpenAI Codex、Claude Code。\\
+\textbf{基础：}机器学习、深度学习、算法、线性代数、概率论、最优化与数字信号处理。
 
 % Reserve three baselines for the compact heading and one-line reviewer entry.
 \cvsection[3]{学术服务}

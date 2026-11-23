@@ -6,8 +6,8 @@ require "rexml/document"
 
 class PageFocusTest < Minitest::Test
   ROOT = File.expand_path("..", __dir__)
-  CV_EN_URL = "/cv/cheng-chen-cv.pdf?v=20261113-cv-page-balance"
-  CV_ZH_URL = "/cv/cheng-chen-cv-zh.pdf?v=20261113-cv-page-balance"
+  CV_EN_URL = "/cv/cheng-chen-cv.pdf?v=20261123-multimodal-research"
+  CV_ZH_URL = "/cv/cheng-chen-cv-zh.pdf?v=20261123-multimodal-research"
 
   def page(name)
     path = File.join(ROOT, name)
@@ -18,13 +18,13 @@ class PageFocusTest < Minitest::Test
   def test_projects_are_compact_linked_text_with_verified_repositories
     doc = page("index.html")
     entries = doc.css("#projects .project-list > li")
-    assert_equal 5, entries.length
+    assert_equal 6, entries.length
     assert_empty doc.css("#projects .project-card, #projects details, #projects .project-stack")
     %w[Image2Other deep-research offer-pilot hlstrack2025-44686 research-skills].each do |repo|
       assert doc.at_css("#projects a[href='https://github.com/ceasonen/#{repo}']"), repo
     end
     entries.each do |entry|
-      refute_empty entry.at_css(".project-name").text.strip
+      refute_empty entry.at_css(".project-name, .project-title").text.strip
       refute_empty entry.at_css(".project-summary").text.strip
     end
     studio = doc.at_css('#projects .project-name[href="https://ceasonen.github.io/Image2Other/"]')
@@ -80,8 +80,8 @@ class PageFocusTest < Minitest::Test
       assert_equal 1, doc.css(link["href"].delete_prefix("/")).length
     end
     assert_equal 3, doc.css("#experience .experience-card").length
-    assert_equal 5, doc.css("#projects .project-list > li").length
-    assert_equal 3, doc.css("#publications .publication-card").length
+    assert_equal 6, doc.css("#projects .project-list > li").length
+    assert_equal 4, doc.css("#publications .publication-card").length
     assert_equal "service", doc.css("main .home-section").last["id"]
     assert_operator doc.to_html.index('id="projects"'), :<, doc.to_html.index('id="publications"')
   end
@@ -273,12 +273,13 @@ class PageFocusTest < Minitest::Test
       text, status = Open3.capture2e("pdftotext", pdf, "-")
       assert status.success?, text
       %w[IJCNN AAAI ICLR].each { |term| assert_includes text, term }
-      refute_match(/\bPreprints?\b/i, text, name)
+      assert_includes text, "CINEMA: Preserving the Rhythm of Image Editing"
+      assert_includes text, "CVPR 2027"
       assert_includes text, "92.02/100"
       assert_includes text, "4.70"
       refute_match(/under review|审稿中/i, text)
       source = File.read(File.join(ROOT, "cv/#{name}.tex"))
-      assert_equal 3, source.scan(/^\\researchentry\{/).length
+      assert_equal 5, source.scan(/^\\researchentry\{/).length
       if name.end_with?("-zh")
         assert_includes source, "我探索以简洁高效的方法提升 AI 能力"
       else
@@ -302,7 +303,6 @@ class PageFocusTest < Minitest::Test
       [
         "From Scores to Checks: A Human-Annotated Rubric Benchmark for AI-Generated Image Faithfulness",
         "What Can Activation-Patching Evidence Establish?",
-        "Follow Me If You Can: Auditing Understanding-to-Generation Transfer",
         "Allocation Entropy for Single-Pass Risk Triage in Neural Operators"
       ].each { |title| refute_includes source, title }
     end

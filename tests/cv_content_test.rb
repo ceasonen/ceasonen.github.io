@@ -51,16 +51,16 @@ class CvContentTest < Minitest::Test
     papers = Dir[File.join(ROOT, "site/_publications/**/*.md")].map do |path|
       YAML.safe_load(File.read(path).split("---", 3)[1], permitted_classes: [Date, Time])
     end.sort_by { |paper| paper.fetch("rank") }
-    assert_equal 3, papers.length
-    titles = papers.map { |paper| paper.fetch("title") }
+    assert_equal 4, papers.length
+    titles = ["CINEMA: Preserving the Rhythm of Image Editing", "Follow Me If You Can: Auditing Understanding-to-Generation Transfer"] + papers.reject { |paper| paper["preprint"] }.map { |paper| paper.fetch("title") }
     %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
       assert_equal titles, source(name).scan(/^\\researchentry\{([^}]+)\}/).flatten, name
     end
   end
 
   def test_cv_section_headings_use_sentence_case
-    assert_equal ["Education", "Main interests", "Publications", "Research internships",
-                  "Awards and honors", "Technical skills", "Research experience", "Academic service"],
+    assert_equal ["Education", "Main interests", "Publications", "Preprint", "Research internships",
+                  "Awards and honors", "Research experience", "Technical skills", "Academic service"],
                  source("cheng-chen-cv").scan(/^\\cvsection\{([^}]+)\}/).flatten
     %w[cheng-chen-cv-zh cheng-chen-resume-photo-zh].each do |name|
       assert_includes source(name), "{Main interests}", name
@@ -77,8 +77,8 @@ class CvContentTest < Minitest::Test
 
   def test_main_cvs_cover_every_award_shown_on_the_homepage
     awards = YAML.safe_load(File.read(File.join(ROOT, "site/_data/highlights.yml"))).fetch("awards")
-    english = source("cheng-chen-cv").split('\\cvsection{Awards and honors}', 2).last.split('\\cvsection{Technical skills}', 2).first
-    chinese = source("cheng-chen-cv-zh").split('\\cvsection{荣誉与奖项}', 2).last.split('\\cvsection{专业能力}', 2).first
+    english = source("cheng-chen-cv").split('\\cvsection{Awards and honors}', 2).last.split('\\newpage', 2).first
+    chinese = source("cheng-chen-cv-zh").split('\\cvsection{荣誉与奖项}', 2).last.split('\\newpage', 2).first
     assert_equal awards.length, english.scan(/^\\item /).length
     assert_equal awards.length, chinese.scan(/^\\item /).length
     awards.each { |award| assert_includes english, award.fetch("name") }
@@ -118,7 +118,9 @@ class CvContentTest < Minitest::Test
       assert_includes cv, 'Yi Xu*\textsuperscript{‡}, \textbf{Cheng Chen*}, Wenzhuo Lei\textsuperscript{†}'
       assert_includes cv, 'Yi Xu*\textsuperscript{†}, \textbf{Cheng Chen*}\textsuperscript{‡}, Mufan Cao'
       assert_includes cv, '\textbf{Cheng Chen}\textsuperscript{†‡}'
-      refute_match(/Preprints|预印本|Cheng Chen and collaborators|submitted|Phase 2|第二阶段|已投稿/, cv)
+      assert_includes cv, 'CINEMA: Preserving the Rhythm of Image Editing'
+      assert_includes cv, 'CVPR 2027'
+      refute_match(/ICLR 2027|Phase 2|第二阶段|rejected|拒稿/i, cv)
     end
     assert_includes english, 'HKUST-GZ'
     assert_includes chinese, '香港科技大学（广州）'
@@ -134,7 +136,9 @@ class CvContentTest < Minitest::Test
     assert_includes photo, '项目负责人：Yi Xu；通讯作者：Wenzhuo Lei'
     assert_includes photo, '项目负责人：Cheng Chen；通讯作者：Yi Xu'
     assert_includes photo, 'IJCNN 2026 · 项目负责人、通讯作者 · 已发表'
-    refute_match(/预印本|Cheng Chen 等人|第二阶段|已投稿/, photo)
+    assert_includes photo, '预印本 · 已投稿 CVPR 2027'
+    assert_includes photo, '理解到生成的能力迁移审计 · 研究项目'
+    refute_match(/ICLR 2027|第二阶段|rejected|拒稿/i, photo)
     assert_includes photo, '香港科技大学（广州）'
     assert_includes photo, 'ICLR(2027)、AAAI(2027)、ICME(2026)；\\'
     assert_includes photo, 'IJCNN(2026,2027)、PRCV(2026)。'
@@ -178,13 +182,40 @@ class CvContentTest < Minitest::Test
     assert_includes photo, '\\textbf{基础：}机器学习、深度学习、算法、线性代数、概率论、最优化、数字信号处理'
   end
 
-  def test_provincial_second_prize_precedes_provincial_third_prizes
+  def test_awards_are_ordered_newest_first_across_home_and_cvs
     awards = YAML.safe_load(File.read(File.join(ROOT, "site/_data/highlights.yml"))).fetch("awards")
-    assert_operator awards.index { |award| award.fetch("prize") == "Provincial Second Prize" }, :<,
-                    awards.index { |award| award.fetch("prize") == "Provincial Third Prize" }
+    periods = awards.map do |award|
+      start_year, end_year = award.fetch("date").split("–").map(&:to_i)
+      end_year += 2000 if end_year && end_year < 100
+      [end_year || start_year, start_year]
+    end
+    assert_equal periods.sort.reverse, periods
     english = source("cheng-chen-cv")
     chinese = source("cheng-chen-cv-zh")
-    assert_operator english.index("Provincial Second Prize"), :<, english.index("Provincial Third Prize")
-    assert_operator chinese.index("省级二等奖"), :<, chinese.index("省级三等奖")
+    positions = awards.map { |award| english.index(award.fetch("name")) }
+    assert_equal positions.sort, positions
+    assert_operator chinese.index("全国一等奖"), :<, chinese.index("公牛奖学金")
+    assert_operator chinese.index("公牛奖学金"), :<, chinese.index("全国二等奖")
+    assert_operator chinese.index("省级三等奖"), :<, chinese.index("省级二等奖")
+    %w[cheng-chen-cv cheng-chen-cv-zh cheng-chen-resume-photo-zh
+       cheng-chen-additional-profile-zh cheng-chen-personal-statement-zh
+       cheng-chen-cv-legacy].each do |name|
+      refute_match(/Tongji University BULL|同济大学公牛/, source(name), name)
+    end
+  end
+
+  def test_confirmed_new_authors_and_preprint_placement_are_consistent
+    authors = ["Yi Xu", "Wenzhuo Lei", "Mufan Cao", "Kaibo Zheng", "Wencheng Ye", "Tianyi Wang", "Weidong Wu", "Zhiyuan Cao"]
+    %w[cheng-chen-cv cheng-chen-cv-zh cheng-chen-resume-photo-zh].each do |name|
+      authors.each { |author| assert_includes source(name), author }
+      refute_match(/Cheng Chen and collaborators|Cheng Chen 等人/, source(name))
+      assert_includes source(name), 'Cheng Chen}\\textsuperscript{†‡}, Yi Xu, Wenzhuo Lei' unless name.include?("photo")
+    end
+    english = source("cheng-chen-cv")
+    chinese = source("cheng-chen-cv-zh")
+    assert_operator english.index('\\cvsection{Publications}'), :<, english.index('\\cvsection{Preprint}')
+    assert_operator english.index('\\cvsection{Preprint}'), :<, english.index('\\cvsection{Research internships}')
+    assert_operator chinese.index('\\cvsection{已录用论文}'), :<, chinese.index('\\cvsection{预印本}')
+    assert_operator chinese.index('\\cvsection{预印本}'), :<, chinese.index('\\cvsection{科研实习}')
   end
 end

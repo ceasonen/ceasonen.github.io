@@ -51,6 +51,11 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 \textit{IJCNN 2026}, pp. 1--6.\quad \href{https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf}{[PDF]}\quad \href{https://doi.org/10.1109/IJCNN69854.2026.11729294}{[DOI]}
 \end{enumerate}
 
+\cvsection{Preprint}
+\textbf{CINEMA: Preserving the Rhythm of Image Editing.}\\
+\textbf{Cheng Chen}, Yi Xu, Wenzhuo Lei, Mufan Cao, Kaibo Zheng, Wencheng Ye, Tianyi Wang, Weidong Wu, \mbox{Zhiyuan Cao}.\\
+\textit{Preprint, 2026; submitted to CVPR 2027.}
+
 \cvsection{Research internships}
 \textit{Research Intern}
 \par\begin{tabularx}{\textwidth}{@{}Xr@{}}
@@ -63,25 +68,32 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 {\small \# Project Lead\par}
 \begin{itemize}
 \item National First Prize, China Robot and Artificial Intelligence Competition (2026).\textsuperscript{\#}
+\item BULL Scholarship (2025--2026; CEIE's highest-tier first-class scholarship).
 \item National Second Prize, Global Campus Artificial Intelligence Algorithm Elite Competition (2025).\textsuperscript{\#}
 \item National Third Prize, National Undergraduate Embedded Chip and System Design Competition (2025).\textsuperscript{\#}
-\item Provincial Second Prize, The Chinese Mathematics Competitions (2024--2025).
 \item Provincial Third Prize, Contemporary Undergraduate Mathematical Contest in Modeling (2025).\textsuperscript{\#}
 \item Provincial Third Prize, National College Student Statistical Modeling Competition (2025).\textsuperscript{\#}
-\item Tongji University BULL Scholarship (2025--2026; CEIE's highest-tier first-class scholarship).
+\item Provincial Second Prize, The Chinese Mathematics Competitions (2024--2025).
 \item Tongji University Outstanding Student Scholarship, Second Class (2023--2024 and 2024--2025).
 \end{itemize}
-
-\cvsection{Technical skills}
-\textbf{Programming:} Python, C/C++, Verilog.\\
-\textbf{Machine learning frameworks:} PyTorch, JAX.\\
-\textbf{Tools:} Git, Linux, LaTeX, ROS 2, OpenAI Codex, Claude Code.\\
-\textbf{Foundations:} Machine learning, deep learning, algorithms, linear algebra, probability, optimization, and digital signal processing.
 
 \newpage
 % Keep the detailed research entries together on page two.
 \setlist[itemize]{leftmargin=1.15em,itemsep=0pt,topsep=1pt,parsep=0pt,partopsep=0pt}
 \cvsection{Research experience}
+\researchentry{CINEMA: Preserving the Rhythm of Image Editing}{Preprint; CVPR 2027 submission}
+\begin{itemize}
+\item Studied text-guided image editing: changing requested content while preserving the surrounding scene, with fewer model evaluations.
+\item Developed a training-free, closed-form coupling operator that preserves the weighted center of paired latent states while accumulating contraction across skipped steps, without extra parameters or neural evaluations.
+\item On \textbf{700 PIE-Bench requests}, the SD1.5 configuration reduced total neural evaluations from \textbf{160 to 120} and latency from \textbf{19.10 to 14.41 s}, while improving background PSNR from \textbf{26.87 to 27.14 dB} against fine EDICT. Evaluated multi-, few-, and one-step editors across five benchmarks.
+\end{itemize}
+\researchentry{Follow Me If You Can: Auditing Understanding-to-Generation Transfer}{Research project}
+\textbf{Cheng Chen}\textsuperscript{†‡}, Yi Xu, Wenzhuo Lei.
+\begin{itemize}
+\item Audited whether understanding-only training transfers to image generation across \textbf{six unified multimodal architectures}, including BLIP3-o, JanusFlow, Janus-Pro, and Show-o2, on counting and spatial tasks.
+\item Used removable rank-64 adapters, a standard LoRA reference, and norm-matched conditioning swaps; paired prompts and generation noise separated source-task gains, generation effects, and attribute-level transfer.
+\item Combined image and instruction controls with recipient/donor readouts to distinguish genuine attribute correspondence from answer-format effects and improvements in the original request.
+\end{itemize}
 \researchentry{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{ACM MM 2026; co-first author}
 \begin{itemize}
 \item Routed strong visual supervision to the localization path and weaker audio supervision to an orthogonal auxiliary path; used text prototypes to support unseen event categories.
@@ -97,6 +109,12 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 \item Proposed the initial idea and worked with a junior student, who led implementation and experiments, to connect an object detector with a text-only language model through compact scene reports.
 \item The pipeline reached \textbf{42.3\%} visual question answering accuracy on a stratified \textbf{5,000-image VQAv2 subset}, versus \textbf{38.2\%} for scene-graph serialization, using \textbf{1/2.5 as many prompt tokens as that baseline}.
 \end{itemize}
+
+\cvsection{Technical skills}
+\textbf{Programming:} Python, C/C++, Verilog.\\
+\textbf{Machine learning frameworks:} PyTorch, JAX.\\
+\textbf{Tools:} Git, Linux, LaTeX, ROS 2, OpenAI Codex, Claude Code.\\
+\textbf{Foundations:} Machine learning, deep learning, algorithms, linear algebra, probability, optimization, and digital signal processing.
 
 \cvsection{Academic service}
 \textbf{Reviewer:} ICLR(2027), AAAI(2027), ICME(2026), IJCNN(2026,2027), PRCV(2026).

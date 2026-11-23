@@ -40,10 +40,21 @@ class PublicationPresentationTest < Minitest::Test
     end.sort_by { |entry| entry.fetch("rank") }
   end
 
-  def test_publications_only_include_accepted_or_published_papers
-    assert_equal 3, publications.length
-    assert_empty publications.select { |entry| entry["preprint"] }
-    publications.each { |entry| assert_nil entry["submission_note"] }
+  def test_new_preprint_is_separate_from_published_papers_and_research_projects
+    assert_equal 4, publications.length
+    preprints = publications.select { |entry| entry["preprint"] }
+    assert_equal ["CINEMA: Preserving the Rhythm of Image Editing"], preprints.map { |entry| entry.fetch("title") }
+    assert_equal "Submitted to CVPR 2027", preprints.first.fetch("submission_note")
+    assert_equal ["Cheng Chen", "Yi Xu", "Wenzhuo Lei", "Mufan Cao", "Kaibo Zheng", "Wencheng Ye", "Tianyi Wang", "Weidong Wu", "Zhiyuan Cao"], preprints.first.fetch("authors")
+    assert_nil preprints.first["display_credit"]
+    publications.reject { |entry| entry["preprint"] }.each { |entry| assert_nil entry["submission_note"] }
+    doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
+    project = doc.css("#projects li").find { |item| item.text.include?("Follow Me If You Can") }
+    refute_nil project
+    assert_includes project.text, "Cheng Chen, Yi Xu, Wenzhuo Lei"
+    refute project.at_css("a"), "Do not invent a public repository or publish the anonymous review PDF"
+    refute_match(/ICLR|rejected|accepted/i, project.text)
+    assert_empty doc.css('a[href*="18456_"], a[href*="6090_"]')
   end
 
   def test_accepted_paper_roles_match_confirmed_authorship
@@ -61,7 +72,7 @@ class PublicationPresentationTest < Minitest::Test
     assert_includes cards[0].at_css(".publication-authors").text, "Wenzhuo Lei†"
     assert_includes cards[1].at_css(".publication-authors").text, "Cheng Chen*‡"
     assert_includes cards[2].at_css(".publication-authors").text, "Cheng Chen†‡"
-    assert_empty doc.css(".publication-card[data-submission]")
+    assert_equal 1, doc.css('.publication-card[data-submission="CVPR 2027"]').length
   end
 
   def test_publication_role_marks_are_legible_and_links_are_verified
@@ -87,13 +98,15 @@ class PublicationPresentationTest < Minitest::Test
       entries = publications
       cards = doc.css(".publication-card")
       assert_equal entries.map { |entry| entry.fetch("title") }, cards.map { |card| card.at_css("h3").text }
-      assert_nil cards.index { |card| card["data-submission"] }
+      assert_equal 3, cards.index { |card| card["data-submission"] }
       cards.zip(entries).each do |card, entry|
           image = card.at_css("img.publication-cover")
           refute_nil image, "Missing figure for #{entry['title']}"
           assert_equal entry.fetch("cover"), image["src"]
           assert_nil card.at_css(".fa-file-alt"), "File icon should not replace a paper figure"
-          assert_equal entry["display_credit"], card.at_css(".publication-authors")&.text&.strip if entry["preprint"]
+          if entry["preprint"]
+            entry.fetch("authors").each { |author| assert_includes card.at_css(".publication-authors").text, author }
+          end
           assert_includes card.at_css(".publication-venue").text, "Preprint 2026" if entry["preprint"]
       end
   end
@@ -110,13 +123,13 @@ class PublicationPresentationTest < Minitest::Test
   def test_publication_filters_share_a_single_set_of_visible_paper_cards
     doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
     buttons = doc.css(".publication-filter")
-    assert_equal %w[all accepted], buttons.map { |button| button["data-filter"] }
-    assert_equal %w[true false], buttons.map { |button| button["aria-pressed"] }
-    assert_equal 3, doc.css(".publication-card").length
+    assert_equal %w[all accepted preprint], buttons.map { |button| button["data-filter"] }
+    assert_equal %w[true false false], buttons.map { |button| button["aria-pressed"] }
+    assert_equal 4, doc.css(".publication-card").length
     assert_equal 3, doc.css('.publication-card[data-status="accepted"]').length
-    assert_empty doc.css('.publication-card[data-status="preprint"]')
+    assert_equal 1, doc.css('.publication-card[data-status="preprint"]').length
     assert_empty doc.css(".publication-card[hidden]")
-    assert_equal "3 papers", doc.at_css(".publication-count").text.strip
+    assert_equal "4 papers", doc.at_css(".publication-count").text.strip
   end
 
   def test_accepted_papers_use_concise_venue_labels_after_the_summary
