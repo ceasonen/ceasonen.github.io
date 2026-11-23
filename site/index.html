@@ -7,7 +7,7 @@ title: Homepage
     <img class="profile-portrait" src="{{ site.data.profile.portrait_url | relative_url }}" alt="Cheng Chen" width="170" height="170">
     <h2>Cheng Chen</h2>
     <p class="profile-affiliation">Tongji University</p>
-    <p class="profile-status">Communication Engineering<br>Undergraduate · Class of 2027</p>
+    <p class="profile-status">{{ site.data.profile.college | escape }}<br>{{ site.data.profile.student_status | escape }}</p>
     <ul class="profile-links">
         <li>{% include widgets/icon.html name='location' %}<span>{{ site.data.profile.location | escape }}</span></li>
         <li><a href="{{ site.data.profile.gscholar | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='scholar' class='icon-scholar' %}<span>Google Scholar</span></a></li>

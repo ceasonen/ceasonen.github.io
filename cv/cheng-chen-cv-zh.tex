@@ -30,8 +30,8 @@
 \end{center}
 
 \cvsection{教育背景}
-\textbf{同济大学}\hfill 2023.09 - 2027.06（预计）\\
-通信工程，本科在读，上海。\\
+\textbf{同济大学}，上海\hfill 2023.09 - 2027.06（预计）\\
+电子与信息工程学院，通信工程，本科在读\\
 平均成绩：\textbf{92.02/100}\quad GPA：\textbf{4.70}\quad 专业排名：\textbf{2/85}
 
 \cvsection{Main interests}
@@ -53,9 +53,12 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 \end{enumerate}
 
 \cvsection{预印本}
-\textbf{CINEMA: Preserving the Rhythm of Image Editing.}\\
-\textbf{Cheng Chen}, Yi Xu, Wenzhuo Lei, Mufan Cao, Kaibo Zheng, Wencheng Ye, Tianyi Wang, Weidong Wu, \mbox{Zhiyuan Cao}。\\
-预印本，2026；已投稿 CVPR 2027。
+\begin{enumerate}[start=4]
+\raggedright
+\item \textbf{CINEMA: Preserving the Rhythm of Image Editing.}\\
+\textbf{Cheng Chen}\textsuperscript{‡}, Yi Xu, Wenzhuo Lei, Mufan Cao, Kaibo Zheng, Wencheng Ye, Tianyi Wang, Weidong Wu, \mbox{Zhiyuan Cao}\textsuperscript{†}。\\
+\textit{Preprint, 2026}；已投稿 CVPR 2027。
+\end{enumerate}
 
 \cvsection{科研实习}
 科研实习生
@@ -68,8 +71,8 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 \cvsection{荣誉与奖项}
 {\small \# 项目负责人\par}
 \begin{itemize}
+\item 公牛奖学金（2025--2026 学年；电子与信息工程学院最高等级一等奖学金）。
 \item 中国机器人及人工智能大赛，全国一等奖（2026）。\textsuperscript{\#}
-\item 公牛奖学金（2025--2026 学年；电信学院最高等级一等奖学金）。
 \item 全球校园人工智能算法精英大赛，全国二等奖（2025）。\textsuperscript{\#}
 \item 全国大学生嵌入式芯片与系统设计竞赛，全国三等奖（2025）。\textsuperscript{\#}
 \item 全国大学生数学建模竞赛，省级三等奖（2025）。\textsuperscript{\#}
@@ -80,18 +83,17 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 
 \newpage
 \cvsection{科研经历}
-\researchentry{CINEMA: Preserving the Rhythm of Image Editing}{预印本；已投稿 CVPR 2027}
+\researchentry{CINEMA: Preserving the Rhythm of Image Editing}{第一作者、项目负责人}
 \begin{itemize}
 \item 研究文本引导的图像编辑：按要求修改目标内容，同时保留周围场景，并以更少的模型调用完成编辑。
 \item 提出无需训练的闭式耦合算子，在跳步加速时保持双分支潜变量的加权中心，并精确累积差异收缩，无需新增参数或神经网络求值。
 \item 在 PIE-Bench 的 \textbf{700 条编辑请求}上，SD1.5 配置较细步 EDICT 将总网络求值次数从 \textbf{160 降至 120}，延迟从 \textbf{19.10 降至 14.41 秒}，背景 PSNR 从 \textbf{26.87 提升至 27.14 dB}；另在多步、少步、单步编辑器及五个基准上评估。
 \end{itemize}
-\researchentry{Follow Me If You Can: Auditing Understanding-to-Generation Transfer}{研究项目}
-\textbf{Cheng Chen}\textsuperscript{†‡}, Yi Xu, Wenzhuo Lei。
+\researchentry{统一多模态模型适配与评测}{项目负责人}
 \begin{itemize}
-\item 围绕“理解训练能否迁移到图像生成”设计审计框架，在 BLIP3-o、JanusFlow、Janus-Pro、Show-o2 等\textbf{六种统一多模态架构}上研究计数与空间关系任务。
-\item 结合可移除的 rank-64 适配器、标准 LoRA 对照和范数匹配的条件替换，在相同提示与生成噪声下区分理解增益、生成变化及属性级迁移。
-\item 通过图像与指令对照、接收端/供体双重读数，识别回答格式带来的分数变化，区分原请求改善与目标属性跟随。
+\item 搭建统一多模态模型评测流程，覆盖计数和空间关系任务中的视觉问答与文本生成图像，分析理解训练对生成能力的影响。
+\item 在 BLIP3-o、JanusFlow、Janus-Pro、Show-o2 等\textbf{六种架构}中接入可移除的 rank-64 适配器与 LoRA 对照，统一提示和生成噪声以支持可复现比较。
+\item 通过图像与指令对照、条件替换等诊断实验，区分真实语义变化与回答格式敏感性，为模型适配及后续训练提供分析依据。
 \end{itemize}
 \researchentry{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{ACM MM 2026；共同第一作者}
 \begin{itemize}

@@ -52,9 +52,10 @@ class CvContentTest < Minitest::Test
       YAML.safe_load(File.read(path).split("---", 3)[1], permitted_classes: [Date, Time])
     end.sort_by { |paper| paper.fetch("rank") }
     assert_equal 4, papers.length
-    titles = ["CINEMA: Preserving the Rhythm of Image Editing", "Follow Me If You Can: Auditing Understanding-to-Generation Transfer"] + papers.reject { |paper| paper["preprint"] }.map { |paper| paper.fetch("title") }
+    titles = ["CINEMA: Preserving the Rhythm of Image Editing", "Unified Multimodal Model Adaptation and Evaluation"] + papers.reject { |paper| paper["preprint"] }.map { |paper| paper.fetch("title") }
     %w[cheng-chen-cv cheng-chen-cv-zh].each do |name|
-      assert_equal titles, source(name).scan(/^\\researchentry\{([^}]+)\}/).flatten, name
+      expected = titles.map { |title| name.end_with?("-zh") && title == "Unified Multimodal Model Adaptation and Evaluation" ? "统一多模态模型适配与评测" : title }
+      assert_equal expected, source(name).scan(/^\\researchentry\{([^}]+)\}/).flatten, name
     end
   end
 
@@ -137,7 +138,7 @@ class CvContentTest < Minitest::Test
     assert_includes photo, '项目负责人：Cheng Chen；通讯作者：Yi Xu'
     assert_includes photo, 'IJCNN 2026 · 项目负责人、通讯作者 · 已发表'
     assert_includes photo, '预印本 · 已投稿 CVPR 2027'
-    assert_includes photo, '理解到生成的能力迁移审计 · 研究项目'
+    assert_includes photo, '项目负责人 · 参数高效适配与评测流程'
     refute_match(/ICLR 2027|第二阶段|rejected|拒稿/i, photo)
     assert_includes photo, '香港科技大学（广州）'
     assert_includes photo, 'ICLR(2027)、AAAI(2027)、ICME(2026)；\\'
@@ -184,7 +185,8 @@ class CvContentTest < Minitest::Test
 
   def test_awards_are_ordered_newest_first_across_home_and_cvs
     awards = YAML.safe_load(File.read(File.join(ROOT, "site/_data/highlights.yml"))).fetch("awards")
-    periods = awards.map do |award|
+    assert_equal "BULL Scholarship", awards.first.fetch("name")
+    periods = awards.drop(1).map do |award|
       start_year, end_year = award.fetch("date").split("–").map(&:to_i)
       end_year += 2000 if end_year && end_year < 100
       [end_year || start_year, start_year]
@@ -194,7 +196,7 @@ class CvContentTest < Minitest::Test
     chinese = source("cheng-chen-cv-zh")
     positions = awards.map { |award| english.index(award.fetch("name")) }
     assert_equal positions.sort, positions
-    assert_operator chinese.index("全国一等奖"), :<, chinese.index("公牛奖学金")
+    assert_operator chinese.index("公牛奖学金"), :<, chinese.index("全国一等奖")
     assert_operator chinese.index("公牛奖学金"), :<, chinese.index("全国二等奖")
     assert_operator chinese.index("省级三等奖"), :<, chinese.index("省级二等奖")
     %w[cheng-chen-cv cheng-chen-cv-zh cheng-chen-resume-photo-zh
@@ -209,7 +211,14 @@ class CvContentTest < Minitest::Test
     %w[cheng-chen-cv cheng-chen-cv-zh cheng-chen-resume-photo-zh].each do |name|
       authors.each { |author| assert_includes source(name), author }
       refute_match(/Cheng Chen and collaborators|Cheng Chen 等人/, source(name))
-      assert_includes source(name), 'Cheng Chen}\\textsuperscript{†‡}, Yi Xu, Wenzhuo Lei' unless name.include?("photo")
+      refute_includes source(name), 'Follow Me If You Can'
+      assert_includes source(name), 'Zhiyuan Cao'
+      assert_includes source(name), '电子与信息工程学院' if name.include?("zh")
+      unless name.include?("photo")
+        assert_includes source(name), '\\begin{enumerate}[start=4]'
+        assert_includes source(name), '\\textbf{Cheng Chen}\\textsuperscript{‡}, Yi Xu'
+        assert_includes source(name), '\\mbox{Zhiyuan Cao}\\textsuperscript{†}'
+      end
     end
     english = source("cheng-chen-cv")
     chinese = source("cheng-chen-cv-zh")

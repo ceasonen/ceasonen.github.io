@@ -26,7 +26,7 @@ class InternPageTest < Minitest::Test
     refute_includes page, "Independent Researcher"
     refute_includes page, "Apr. 2025 – Present"
     assert_includes page, "Tongji University"
-    refute_includes page, "College of Electronic and Information Engineering"
+    refute_includes Nokogiri::HTML(page).css('.experience-card').text, "College of Electronic and Information Engineering"
     assert_includes page, "Oct. 2025 – Jun. 2026"
     refute_includes page, "School of Artificial Intelligence"
     assert_includes page, "Zhejiang University"

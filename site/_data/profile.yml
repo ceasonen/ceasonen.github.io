@@ -4,6 +4,9 @@ navbar_name: "Cheng Chen"
 positions:
 - name: Tongji University
 
+college: "College of Electronic and Information Engineering"
+student_status: "Undergraduate · Class of 2027"
+
 email: "2351445@tongji.edu.cn"
 additional_email: "chenceason10@gmail.com"
 phone: "(+86) 13587919792"
@@ -30,6 +33,7 @@ portrait_url: /assets/images/photos/portrait.jpg
 education:
 - name: Tongji University
   position: B.Eng. in Communication Engineering
+  dept: College of Electronic and Information Engineering
   date: Sep. 2023 - Jun. 2027
   detail: "Major rank: 2/85"
   logo: /assets/images/organizations/tongji-university.png

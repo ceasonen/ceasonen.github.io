@@ -6,8 +6,8 @@ require "rexml/document"
 
 class PageFocusTest < Minitest::Test
   ROOT = File.expand_path("..", __dir__)
-  CV_EN_URL = "/cv/cheng-chen-cv.pdf?v=20261123-multimodal-research"
-  CV_ZH_URL = "/cv/cheng-chen-cv-zh.pdf?v=20261123-multimodal-research"
+  CV_EN_URL = "/cv/cheng-chen-cv.pdf?v=20261123-project-profile"
+  CV_ZH_URL = "/cv/cheng-chen-cv-zh.pdf?v=20261123-project-profile"
 
   def page(name)
     path = File.join(ROOT, name)
@@ -262,6 +262,10 @@ class PageFocusTest < Minitest::Test
   def test_sidebar_bio_matches_current_research_interests
     sidebar_bio = YAML.safe_load(File.read(File.join(ROOT, "site/_data/profile.yml"))).fetch("sidebar_bio")
     assert_includes sidebar_bio, "multimodal foundation models, AI infrastructure, and reinforcement learning"
+    sidebar = page("index.html").at_css(".profile-status")
+    assert_includes sidebar.text, "College of Electronic and Information Engineering"
+    assert_includes sidebar.text, "Undergraduate · Class of 2027"
+    refute_includes sidebar.text, "Communication Engineering"
   end
 
   def test_main_cvs_are_two_pages_with_papers_but_no_website_projects

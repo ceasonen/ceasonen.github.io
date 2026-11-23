@@ -124,7 +124,7 @@ npm run dev
 
 ## CV 与本地材料
 
-中英文主简历均为两页：第一页为教育、Main interests、三篇已发表论文、紧随其后的 CINEMA 预印本、实习和奖项；第二页介绍 CINEMA、Follow Me If You Can 及三项已发表研究，再列技能与学术服务。奖项从新到旧排列。成绩为均分 92.02/100、GPA 4.70（不添加未经确认的满分制）、排名 2/85。英文小标题使用句首大写；研究兴趣与主页同步，不另加重复方向列表。CINEMA 按用户确认的九位作者署名，并明确 CVPR 2027 投稿状态；Follow Me If You Can 仅作为研究项目展示，列 Cheng Chen、Yi Xu、Wenzhuo Lei，不写拒稿和评审分数。其他移除稿件不恢复，匿名审稿 PDF 只保留本地。GitHub 软件项目只放网站，不放 CV。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
+中英文主简历均为两页：第一页为教育、Main interests、三篇已发表论文、紧随其后且使用相同格式的 CINEMA 预印本、实习和奖项；第二页介绍 CINEMA、“统一多模态模型适配与评测”项目及三项已发表研究，再列技能与学术服务。最新的公牛奖学金排第一，其余奖项从新到旧排列。成绩为均分 92.02/100、GPA 4.70、排名 2/85。Education 列出学院全称并定义 CEIE，奖学金说明继续使用 CEIE 缩写。主页左侧展示学校、学院及本科毕业年份，专业保留在正文与教育信息中。CINEMA 的 Cheng Chen 为第一作者、项目负责人，Zhiyuan Cao 为通讯作者，状态为 CVPR 2027 投稿；模型适配与评测项目不展示旧论文题目、论文式作者行或评审信息。其他移除稿件不恢复，匿名审稿 PDF 只保留本地。各版本用途见 [cv/README.md](../cv/README.md)。只编译中英文主简历：
 
 ```sh
 ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh

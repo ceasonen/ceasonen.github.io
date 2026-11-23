@@ -1,13 +1,13 @@
 # Highlights 只展示奖项和学术服务；论文在 Publications，项目在 Projects。
 awards:
+  - date: "2025–26"
+    name: BULL Scholarship
+    prize: First-Class Scholarship (highest tier in CEIE)
   - date: "2026"
     name: China Robot and Artificial Intelligence Competition
     prize: National First Prize
     lead: true
     featured: true
-  - date: "2025–26"
-    name: BULL Scholarship
-    prize: First-Class Scholarship (highest tier in CEIE)
   - date: "2025"
     name: Global Campus Artificial Intelligence Algorithm Elite Competition
     prize: National Second Prize

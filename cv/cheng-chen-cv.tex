@@ -29,8 +29,9 @@ Tongji University\quad |\quad (+86) 13587919792\\[2pt]
 \end{center}
 
 \cvsection{Education}
-\textbf{Tongji University}\hfill Sept. 2023 - Jun. 2027 (expected)\\
-B.Eng. in Communication Engineering, Shanghai, China.\\
+\textbf{Tongji University}, Shanghai, China\hfill Sept. 2023 - Jun. 2027 (expected)\\
+B.Eng. in Communication Engineering\\
+College of Electronic and Information Engineering (CEIE)\\
 Average score: \textbf{92.02/100}\quad GPA: \textbf{4.70}\quad Major rank: \textbf{2/85}
 
 \cvsection{Main interests}
@@ -52,9 +53,12 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 \end{enumerate}
 
 \cvsection{Preprint}
-\textbf{CINEMA: Preserving the Rhythm of Image Editing.}\\
-\textbf{Cheng Chen}, Yi Xu, Wenzhuo Lei, Mufan Cao, Kaibo Zheng, Wencheng Ye, Tianyi Wang, Weidong Wu, \mbox{Zhiyuan Cao}.\\
-\textit{Preprint, 2026; submitted to CVPR 2027.}
+\begin{enumerate}[start=4]
+\raggedright
+\item \textbf{CINEMA: Preserving the Rhythm of Image Editing.}\\
+\textbf{Cheng Chen}\textsuperscript{‡}, Yi Xu, Wenzhuo Lei, Mufan Cao, Kaibo Zheng, Wencheng Ye, Tianyi Wang, Weidong Wu, \mbox{Zhiyuan Cao}\textsuperscript{†}.\\
+\textit{Preprint, 2026}; submitted to CVPR 2027.
+\end{enumerate}
 
 \cvsection{Research internships}
 \textit{Research Intern}
@@ -67,8 +71,8 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 \cvsection{Awards and honors}
 {\small \# Project Lead\par}
 \begin{itemize}
-\item National First Prize, China Robot and Artificial Intelligence Competition (2026).\textsuperscript{\#}
 \item BULL Scholarship (2025--2026; CEIE's highest-tier first-class scholarship).
+\item National First Prize, China Robot and Artificial Intelligence Competition (2026).\textsuperscript{\#}
 \item National Second Prize, Global Campus Artificial Intelligence Algorithm Elite Competition (2025).\textsuperscript{\#}
 \item National Third Prize, National Undergraduate Embedded Chip and System Design Competition (2025).\textsuperscript{\#}
 \item Provincial Third Prize, Contemporary Undergraduate Mathematical Contest in Modeling (2025).\textsuperscript{\#}
@@ -81,18 +85,17 @@ Wenzhuo Lei, Mufan Cao, Chaorong Ye, Yi Xu, \textbf{Cheng Chen}\textsuperscript{
 % Keep the detailed research entries together on page two.
 \setlist[itemize]{leftmargin=1.15em,itemsep=0pt,topsep=1pt,parsep=0pt,partopsep=0pt}
 \cvsection{Research experience}
-\researchentry{CINEMA: Preserving the Rhythm of Image Editing}{Preprint; CVPR 2027 submission}
+\researchentry{CINEMA: Preserving the Rhythm of Image Editing}{First author; project lead}
 \begin{itemize}
 \item Studied text-guided image editing: changing requested content while preserving the surrounding scene, with fewer model evaluations.
 \item Developed a training-free, closed-form coupling operator that preserves the weighted center of paired latent states while accumulating contraction across skipped steps, without extra parameters or neural evaluations.
 \item On \textbf{700 PIE-Bench requests}, the SD1.5 configuration reduced total neural evaluations from \textbf{160 to 120} and latency from \textbf{19.10 to 14.41 s}, while improving background PSNR from \textbf{26.87 to 27.14 dB} against fine EDICT. Evaluated multi-, few-, and one-step editors across five benchmarks.
 \end{itemize}
-\researchentry{Follow Me If You Can: Auditing Understanding-to-Generation Transfer}{Research project}
-\textbf{Cheng Chen}\textsuperscript{†‡}, Yi Xu, Wenzhuo Lei.
+\researchentry{Unified Multimodal Model Adaptation and Evaluation}{Project lead}
 \begin{itemize}
-\item Audited whether understanding-only training transfers to image generation across \textbf{six unified multimodal architectures}, including BLIP3-o, JanusFlow, Janus-Pro, and Show-o2, on counting and spatial tasks.
-\item Used removable rank-64 adapters, a standard LoRA reference, and norm-matched conditioning swaps; paired prompts and generation noise separated source-task gains, generation effects, and attribute-level transfer.
-\item Combined image and instruction controls with recipient/donor readouts to distinguish genuine attribute correspondence from answer-format effects and improvements in the original request.
+\item Built an evaluation pipeline for unified multimodal models, covering visual question answering and text-to-image generation on counting and spatial-relation tasks.
+\item Integrated removable rank-64 adapters and a LoRA baseline across \textbf{six architectures}, including BLIP3-o, JanusFlow, Janus-Pro, and Show-o2; aligned prompts and generation noise for reproducible comparisons.
+\item Used image/instruction controls and conditioning interventions to diagnose how adaptation affects generated images and separate semantic changes from prompt-format sensitivity.
 \end{itemize}
 \researchentry{If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization}{ACM MM 2026; co-first author}
 \begin{itemize}
