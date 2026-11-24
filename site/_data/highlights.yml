@@ -3,30 +3,38 @@ awards:
   - date: "2025–26"
     name: BULL Scholarship
     prize: First-Class Scholarship (highest tier in CEIE)
+    # https://www.gongniu.cn/fer/upimg/logo.png
+    logo: /assets/images/organizations/bull.png
   - date: "2026"
     name: China Robot and Artificial Intelligence Competition
     prize: National First Prize
     lead: true
-    featured: true
+    icon: robot
   - date: "2025"
     name: Global Campus Artificial Intelligence Algorithm Elite Competition
     prize: National Second Prize
+    icon: code
     lead: true
   - date: "2025"
     name: National Undergraduate Embedded Chip and System Design Competition
     prize: National Third Prize
+    icon: chip
     lead: true
   - date: "2025"
     name: Contemporary Undergraduate Mathematical Contest in Modeling
+    icon: chart
     prize: Provincial Third Prize
     lead: true
   - date: "2025"
     name: National College Student Statistical Modeling Competition
+    icon: chart
     prize: Provincial Third Prize
     lead: true
   - date: "2024–25"
     name: The Chinese Mathematics Competitions
+    icon: math
     prize: Provincial Second Prize
   - date: "2023–25"
     name: Tongji University Outstanding Student Scholarship
+    logo: /assets/images/organizations/tongji-university.png
     prize: Second-Class Scholarship

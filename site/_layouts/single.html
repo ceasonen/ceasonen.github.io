@@ -13,7 +13,10 @@
     <a class="skip-link" href="#about">Skip to content</a>
     <header class="site-header">
         <nav class="site-nav" aria-label="Main navigation">
-            <a class="site-brand" href="{{ '/#about' | relative_url }}">Cheng Chen / Homepage</a>
+            <a class="site-brand" href="{{ '/#about' | relative_url }}">
+                <img src="{{ '/favicon.svg' | relative_url }}" width="26" height="26" alt="">
+                <span>Cheng Chen</span>
+            </a>
             <button class="nav-toggle" aria-expanded="false" aria-controls="section-nav">Menu</button>
             <div id="section-nav" class="section-nav">
                 {% for item in site.data.navigation.pages %}

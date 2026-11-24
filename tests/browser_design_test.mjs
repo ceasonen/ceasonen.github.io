@@ -116,7 +116,7 @@ try {
   assert.equal(await evaluate(`document.querySelector('.nav-toggle').getAttribute('aria-expanded')`), 'true');
   await send('Input.dispatchKeyEvent', {type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
   assert.equal(await evaluate(`document.querySelector('.nav-toggle').getAttribute('aria-expanded')`), 'false');
-  assert.equal(await evaluate(`getComputedStyle(document.querySelector('.welcome-wave')).animationName`), 'none');
+  assert.equal(await evaluate(`getComputedStyle(document.documentElement).scrollBehavior`), 'auto');
   const links = await evaluate(`[...document.querySelectorAll('.publication-card .publication-links a')].map(a=>({label:a.textContent.trim(),url:a.href}))`);
   assert.equal(links.length, 9);
   assert.equal(links.filter(link => link.label === '[PDF]').length, 3);

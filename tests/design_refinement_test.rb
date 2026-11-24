@@ -45,7 +45,7 @@ class DesignRefinementTest < Minitest::Test
     refute_includes home.text, "(CRAIC)"
   end
 
-  def test_awards_are_compact_text_rows_with_prize_year_and_role
+  def test_awards_are_compact_rows_with_mark_prize_year_and_role
     entries = YAML.safe_load(File.read(File.join(ROOT, "site/_data/highlights.yml"))).fetch("awards")
     rows = home.css("#awards .award-list > li")
     assert_equal 8, rows.length
@@ -54,6 +54,13 @@ class DesignRefinementTest < Minitest::Test
       assert_equal entry.fetch("name"), row.at_css(".award-name").text.strip
       assert_equal entry.fetch("prize"), row.at_css(".award-prize").text.strip
       assert_equal entry.fetch("date"), row.at_css("time").text.strip
+      mark = row.at_css(".recognition-mark[aria-hidden='true']")
+      refute_nil mark
+      if entry["logo"]
+        assert_equal entry["logo"], mark.at_css("img")["src"]
+      else
+        assert mark.at_css("svg path"), entry.fetch("name")
+      end
       if entry["lead"]
         assert_equal "#", row.at_css(".award-lead-mark")&.text&.strip
       else

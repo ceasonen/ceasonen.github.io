@@ -108,7 +108,7 @@ class PageFocusTest < Minitest::Test
     assert_match(/\.home-section\s*\{[^}]*scroll-margin-top/, css)
     doc = page("index.html")
     assert doc.at_css('link[rel="preload"][as="font"][href="/assets/fonts/nunito-latin.woff2"]')
-    assert_includes doc.at_css("h1").text, "Welcome"
+    assert_equal "About me", doc.at_css("h1").text.strip
   end
 
   def test_profile_has_lightweight_accessible_contact_icons
@@ -123,7 +123,7 @@ class PageFocusTest < Minitest::Test
     assert_equal ["Google Scholar", "GitHub", "LinkedIn", "Twitter", "RedNote"], doc.css(".profile-links a").map { |link| link.text.strip }
     css = File.read(File.join(ROOT, "site/assets/css/global.css"))
     assert_match(/\.profile-links\s*\{[^}]*font-size:\s*14px\b/m, css)
-    assert doc.at_css(".welcome-wave")
+    assert doc.at_css('.site-brand img[src="/favicon.svg"]')
     assert_equal 1, doc.css(".education-entry .education-icon").length
   end
 
@@ -229,6 +229,7 @@ class PageFocusTest < Minitest::Test
     assert_equal ["ICLR(2027)", "AAAI(2027)", "ICME(2026)", "IJCNN(2026,2027)", "PRCV(2026)"],
                  service.css(".service-list li").map { |item| item.text.strip }
     assert_empty service.css(".service-panel, .service-venues")
+    assert_equal 1, service.css(".recognition-mark svg").length
     css = File.read(File.join(ROOT, "site/assets/css/global.css"))
     refute_match(/\.service-list\s*\{[^}]*\b(?:border|background|box-shadow)\s*:/, css)
   end
