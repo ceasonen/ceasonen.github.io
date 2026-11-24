@@ -67,13 +67,13 @@ try {
   }
   console.log('PASS: actual rendered Nunito font across all eight text surfaces');
 
-  for (const width of [320,390,768,1024,1100,1280,1440,1920]) {
+  for (const width of [320,390,768,1024,1025,1100,1280,1440,1920]) {
     await send('Emulation.setDeviceMetricsOverride', {width, height: 1000, deviceScaleFactor: 1, mobile: width < 600});
     const state = await evaluate(`({width: innerWidth, content: document.documentElement.scrollWidth})`);
     assert.equal(state.width, width);
     assert.equal(state.content, width, `Overflow at ${width}px`);
   }
-  console.log('PASS: no horizontal overflow at eight viewport widths');
+  console.log('PASS: no horizontal overflow at nine viewport widths');
 
   await navigate('experience');
   await waitFor(`[...document.querySelectorAll('.education-icon img')].length === 1 && [...document.querySelectorAll('.education-icon img')].every(img => img.complete && img.naturalWidth > 0)`);
@@ -97,8 +97,11 @@ try {
 
   for (const width of [1440,390]) {
     await send('Emulation.setDeviceMetricsOverride', {width, height: width === 390 ? 844 : 1100, deviceScaleFactor: 1, mobile: width === 390});
-    for (const section of ['about','news','experience','projects','awards','publications','service']) {
+    for (const section of ['about','news','experience','projects','awards','publications','talks','reports','service']) {
       await navigate(section);
+      if (section === 'awards') {
+        await waitFor(`[...document.querySelectorAll('.award-list .recognition-mark img')].every(img => img.complete && img.naturalWidth > 0)`);
+      }
       await screenshot(`${width}-${section}`);
       if (section === 'publications') {
         await evaluate(`document.querySelector('[data-filter="preprint"]').click()`);
@@ -135,7 +138,7 @@ try {
   assert.equal(pdf.signature, '%PDF-');
   console.log('PASS: keyboard menu, reduced motion and direct IJCNN PDF response');
   await send('Emulation.setEmulatedMedia', {features: [{name: 'prefers-reduced-motion', value: 'no-preference'}]});
-  for (const section of ['about','publications','service']) await navigate(section);
+  for (const section of ['about','publications','talks','reports','service']) await navigate(section);
   console.log('PASS: normal-motion anchor navigation, including the last section');
 } catch (error) {
   console.log('Failure layout', await evaluate(`({width:innerWidth,height:innerHeight,scroll:scrollY,page:document.documentElement.scrollHeight,hash:location.hash,service:document.querySelector('#service').getBoundingClientRect().top,active:document.querySelector('[aria-current]')?.textContent,visualHeight:visualViewport.height,scale:visualViewport.scale})`));

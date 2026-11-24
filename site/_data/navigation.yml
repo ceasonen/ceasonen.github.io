@@ -11,6 +11,10 @@ pages:
   url: /#awards
 - name: Publications
   url: /#publications
+- name: Talks
+  url: /#talks
+- name: Reports
+  url: /#reports
 - name: Service
   url: /#service
 - name: CV (EN)

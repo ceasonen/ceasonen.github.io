@@ -50,7 +50,13 @@ function updateNavigation() {
     const marker = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 70) + 40;
     const atBottom = Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight - 2;
     let active = atBottom ? sectionLinks[sectionLinks.length - 1] : sectionLinks[0];
-    if (!atBottom) {
+    if (atBottom) {
+        const target = sectionLinks.find(({link}) => link.hash === window.location.hash);
+        if (target) {
+            const top = target.section.getBoundingClientRect().top;
+            if (top >= marker - 40 && top < window.innerHeight) active = target;
+        }
+    } else {
         sectionLinks.forEach(item => {
             if (item.section.getBoundingClientRect().top <= marker) active = item;
         });

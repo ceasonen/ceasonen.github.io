@@ -5,7 +5,7 @@
         {% for item in site.data.profile.education %}
         <article class="education-entry">
             <div class="education-icon">
-                <img src="{{ item.logo | relative_url }}" alt="{{ item.logo_alt | escape }}" width="60" height="60" loading="lazy">
+                <img src="{{ item.logo | relative_url }}" alt="{{ item.logo_alt | escape }}" width="72" height="72" loading="lazy">
             </div>
             <div class="experience-info">
                 <h3>{{ item.name | escape }}</h3>
@@ -22,7 +22,7 @@
         {% for item in internships %}
         <article class="experience-card">
             <a class="intern-logo-wrap" href="{{ item.url | escape }}" target="_blank" rel="noopener" aria-label="{{ item.link_label | escape }}">
-                <img{% if item.logo_class %} class="{{ item.logo_class }}"{% endif %} src="{{ item.logo | relative_url }}" alt="{{ item.logo_alt | escape }}" width="64" height="64" loading="lazy">
+                <img{% if item.logo_class %} class="{{ item.logo_class }}"{% endif %} src="{{ item.logo | relative_url }}" alt="{{ item.logo_alt | escape }}" width="72" height="72" loading="lazy">
             </a>
             <div class="experience-info">
                 <h3><a class="organization-link" href="{{ item.url | escape }}" target="_blank" rel="noopener">{{ item.organization | escape }}</a></h3>

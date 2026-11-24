@@ -31,8 +31,9 @@ awards:
     lead: true
   - date: "2025"
     name: National College Student Statistical Modeling Competition
-    # Original homepage mark for this competition.
-    logo: /assets/images/organizations/statistical-modeling-mark.svg
+    # Emblem from the 2025 national finals artwork published by the host.
+    # https://stat.dufe.edu.cn/content_94956.html
+    logo: /assets/images/organizations/statistical-modeling-competition.png
     prize: Provincial Third Prize
     lead: true
   - date: "2024–25"
