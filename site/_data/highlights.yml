@@ -2,37 +2,43 @@
 awards:
   - date: "2025–26"
     name: BULL Scholarship
-    prize: First-Class Scholarship (highest tier in CEIE)
+    prize: CEIE’s highest-value scholarship, awarded to a single student across the college
     # https://www.gongniu.cn/fer/upimg/logo.png
     logo: /assets/images/organizations/bull.png
   - date: "2026"
     name: China Robot and Artificial Intelligence Competition
     prize: National First Prize
     lead: true
-    icon: robot
+    # https://www.caairobot.com/images/CRAICLOGO480270.png
+    logo: /assets/images/organizations/craic.png
   - date: "2025"
     name: Global Campus Artificial Intelligence Algorithm Elite Competition
     prize: National Second Prize
-    icon: code
+    # https://www.aicomp.cn/wp-content/themes/aicomp/uploads/favicon-192.png
+    logo: /assets/images/organizations/aic.png
     lead: true
   - date: "2025"
     name: National Undergraduate Embedded Chip and System Design Competition
     prize: National Third Prize
-    icon: chip
+    # Emblem from https://www.socchina.net/images/logo.png
+    logo: /assets/images/organizations/socchina.png
     lead: true
   - date: "2025"
     name: Contemporary Undergraduate Mathematical Contest in Modeling
-    icon: chart
+    # https://english.shanghai.gov.cn/en-CompetitionsForIntlStudents/20240411/78ba91116d4a47fbbbf87ce36ae95395.html
+    logo: /assets/images/organizations/cumcm.png
     prize: Provincial Third Prize
     lead: true
   - date: "2025"
     name: National College Student Statistical Modeling Competition
-    icon: chart
+    # Original homepage mark for this competition.
+    logo: /assets/images/organizations/statistical-modeling-mark.svg
     prize: Provincial Third Prize
     lead: true
   - date: "2024–25"
     name: The Chinese Mathematics Competitions
-    icon: math
+    # Organizer emblem from https://www.cms.org.cn/favicon.ico
+    logo: /assets/images/organizations/chinese-mathematical-society.png
     prize: Provincial Second Prize
   - date: "2023–25"
     name: Tongji University Outstanding Student Scholarship

@@ -25,7 +25,7 @@ ruby tools/website.rb cv cheng-chen-cv cheng-chen-cv-zh
 
 中英文主 CV 完整列出主页 `site/_data/highlights.yml` 中的八项奖项。按用户确认，最新的公牛奖学金排第一，其余按时间从新到旧排列。奖项后的 `#` 表示 Project Lead／项目负责人。照片版保留精选奖项。
 
-公牛奖学金是企业奖学金，统一命名为 BULL Scholarship／公牛奖学金，不加学校前缀。展示 2025--2026 学年，英文括注保留 “CEIE's highest-tier first-class scholarship”，不展示金额；News 日期为动态发布时间。Education 定义 CEIE 为 College of Electronic and Information Engineering／电子与信息工程学院，英文名按[学院官网](https://see-en.tongji.edu.cn/about_Us/Introduction_to_CEIE.htm)。等级与个人获奖信息以用户确认为依据。
+公牛奖学金是企业奖学金，统一命名为 BULL Scholarship／公牛奖学金。2025--2026 学年为学院最高资助等级，全院仅一名获奖者，按用户确认展示这两项信息。News 日期为动态发布时间。Education 定义 CEIE 为 College of Electronic and Information Engineering／电子与信息工程学院，英文名按[学院官网](https://see-en.tongji.edu.cn/about_Us/Introduction_to_CEIE.htm)。
 
 中英文主简历与照片版均用 XeLaTeX 编译，英文正文使用 Computer Modern Unicode；中文正文使用宋体。编译机器须安装这些字体。
 
