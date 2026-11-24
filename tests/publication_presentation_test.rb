@@ -7,7 +7,7 @@ class PublicationPresentationTest < Minitest::Test
   ROOT = File.expand_path("..", __dir__)
   VERIFIED_PDFS = {
     "If You Hear It, Help Find It: Orthogonal Knowledge Distillation for Open-Vocabulary Audio-Visual Event Localization" => "https://arxiv.org/pdf/2609.23376",
-    "OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment" => "https://ijcai.org/proceedings/2026/0774.pdf",
+    "OrthKD: Extracting Generalized Clinical Knowledge from Heterogeneous Teachers for Lightweight Deployment" => "https://arxiv.org/pdf/2607.25545v1",
     "Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions" => "https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf"
   }.freeze
 

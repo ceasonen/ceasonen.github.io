@@ -1,11 +1,11 @@
 # 论文公开链接核验
 
-最新核验日期：2026-11-11。只添加题目、作者与内容均匹配的公开论文页面，不用相似研究、搜索结果页或匿名代码仓库代替论文链接。
+最新核验日期：2026-11-24。只添加题目、作者与内容均匹配的公开论文页面，不用相似研究、搜索结果页或匿名代码仓库代替论文链接。
 
 | 论文 | 来源页面 | 网站和 CV 直达 PDF |
 | --- | --- | --- |
 | OV-OrthKD / If You Hear It, Help Find It | [ACM DOI](https://doi.org/10.1145/3767308.3835302) | [PDF](https://arxiv.org/pdf/2609.23376) |
-| OrthKD | [IJCAI 官方论文集](https://ijcai.org/proceedings/2026/774) | [正式 PDF](https://ijcai.org/proceedings/2026/0774.pdf) |
+| OrthKD | [IJCAI 官方论文集](https://ijcai.org/proceedings/2026/774) | [作者 PDF](https://arxiv.org/pdf/2607.25545v1) |
 | DeepYOLO / Enabling Visual Reasoning in Text-Only LLMs via Symbolic Scene Descriptions | [IEEE Xplore](https://ieeexplore.ieee.org/document/11729294/) | [PDF](https://ceasonen.github.io/assets/papers/deepyolo-ijcnn-2026.pdf) |
 
 2026-10-11 核验时，两个 arXiv PDF 地址均返回 HTTP 200 / `application/pdf`。ResearchGate 提供的直链存在 HTTP 403 访问验证，因此 IJCNN 使用本地已有公开论文 `papers/ijcnn/main.pdf` 的明确发布副本（约 1.1 MB），题目、五位作者及 DeepYOLO 摘要与作者上传页面一致。发布文件只放 `site/assets/papers/`，不公开整个 `papers/` 工作目录。链接可见文字统一为 `[PDF]`。2026-11-02 已将 OrthKD 的 PDF 改为正式论文集版本。
@@ -13,6 +13,8 @@
 2026-11-09 根据用户要求，主页、各版 CV 与个人陈述撤下全部预印本条目及相关研究介绍，并移除投稿数量和审稿阶段新闻。当前只展示三篇已录用或发表论文；原条目保存在本地私有归档，不随网站发布。
 
 2026-11-11 根据用户确认与正式出版记录，OV-OrthKD 的署名统一为 Yi Xu、Cheng Chen、Wenzhuo Lei；前两位保留共同第一作者标记，Cheng Chen 署名第二。保留此前确认的项目负责人及通讯作者标记。
+
+2026-11-24 将 OrthKD 的直达 PDF 更新为用户本地论文对应的 [arXiv 作者版 v1](https://arxiv.org/abs/2607.25545v1)。作者版首页标注 Yi Xu 和 Cheng Chen 共同第一作者，Yi Xu 为通讯作者。正式页码及 DOI 继续引用 IJCAI 论文集。
 
 CV 字体参考：[Liming Lu 的 CV](https://elemmire1.github.io/static/assets/CV.pdf)。参考文件嵌入 Computer Modern 系列（CMR / CMBX / CMTI）；本地 XeLaTeX 使用同一设计的 Computer Modern Unicode OpenType（`cmunrm.otf`、`cmunbx.otf`、`cmunti.otf`、`cmunbi.otf`），保证中文兼容和字体嵌入。
 

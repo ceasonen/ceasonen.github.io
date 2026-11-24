@@ -8,13 +8,13 @@ venue_short:    "IJCAI"
 pub_date:       "2026"
 cover:          /assets/images/covers/orthkd.png
 abstract: >-
-  We study multi-teacher distillation for diabetic retinopathy screening. OrthKD transfers complementary feature-level knowledge from heterogeneous teachers to a 5.4M-parameter MobileNetV3 student.
+  OrthKD combines decision supervision from a CNN with complementary visual features from a Transformer. Orthogonal projections keep these signals separate as they train a 5.4M-parameter MobileNetV3 student for diabetic retinopathy screening.
 authors:
   - Yi Xu*†
   - Cheng Chen*‡
   - Mufan Cao
 links:
-  PDF: https://ijcai.org/proceedings/2026/0774.pdf
+  PDF: https://arxiv.org/pdf/2607.25545v1
   IJCAI: https://ijcai.org/proceedings/2026/774
   DOI: https://doi.org/10.24963/ijcai.2026/774
   Code: https://github.com/ScottBlizzard/orthkd-dr-screening
