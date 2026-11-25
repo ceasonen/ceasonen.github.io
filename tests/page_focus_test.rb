@@ -179,6 +179,9 @@ class PageFocusTest < Minitest::Test
     refute_nil watermark
     assert_equal "/assets/images/writing/usagi.png", watermark["src"]
     assert_equal "", watermark["alt"]
+    rides = archive.css('main > .reading-watermark--ride[aria-hidden="true"] img')
+    assert_equal 2, rides.length
+    assert_equal ["/assets/images/writing/usagi-ride.png"], rides.map { |ride| ride["src"] }.uniq
 
     entry = archive.at_css('.writing-entry[href="/2026/11/26/homepage-refresh.html"]')
     assert_equal "A Small Homepage Refresh", entry.at_css(".writing-title").text

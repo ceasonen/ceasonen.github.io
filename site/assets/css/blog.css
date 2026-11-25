@@ -13,6 +13,31 @@
     pointer-events: none;
     user-select: none;
 }
+.reading-watermark--ride {
+    inset-inline-end: auto;
+    aspect-ratio: 317 / 415;
+    overflow: hidden;
+}
+.reading-watermark--ride img {
+    inline-size: 200%;
+    block-size: 100%;
+    max-inline-size: none;
+}
+.reading-watermark--left {
+    inset-block-start: clamp(12rem, 33vw, 15rem);
+    inset-inline-start: var(--page-pad);
+    inline-size: clamp(5.4rem, 24vw, 9.25rem);
+    opacity: .18;
+}
+.reading-watermark--bottom {
+    inset-block-start: clamp(21rem, 45vw, 24rem);
+    inset-inline-start: 35%;
+    inline-size: clamp(4.4rem, 17vw, 6.75rem);
+    opacity: .15;
+    transform: scaleX(-1);
+}
+.reading-watermark--bottom img { margin-inline-start: -100%; }
+
 .writing-archive { min-block-size: 23rem; }
 .reading-heading { padding-bottom: .7rem; border-bottom: 1px solid var(--rule); margin-bottom: 1rem; }
 .reading-heading h1 { margin: 0 0 .42rem; font-size: clamp(2.05rem, 5vw, 2.75rem); line-height: 1.1; }
