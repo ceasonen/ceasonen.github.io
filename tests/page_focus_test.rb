@@ -18,9 +18,9 @@ class PageFocusTest < Minitest::Test
   def test_projects_are_compact_linked_text_with_verified_repositories
     doc = page("index.html")
     entries = doc.css("#projects .project-list > li")
-    assert_equal 6, entries.length
+    assert_equal 7, entries.length
     assert_empty doc.css("#projects .project-card, #projects details, #projects .project-stack")
-    %w[Image2Other deep-research offer-pilot hlstrack2025-44686 research-skills].each do |repo|
+    %w[Image2Other deep-research offer-pilot hlstrack2025-44686 research-skills arxiv_paper_ai].each do |repo|
       assert doc.at_css("#projects a[href='https://github.com/ceasonen/#{repo}']"), repo
     end
     entries.each do |entry|
@@ -30,6 +30,9 @@ class PageFocusTest < Minitest::Test
     studio = doc.at_css('#projects .project-name[href="https://ceasonen.github.io/Image2Other/"]')
     refute_nil studio
     assert_equal "Image2Other", studio.text.strip
+    radar = doc.at_css('#projects .project-name[href="https://ceasonen.github.io/arxiv_paper_ai/"]')
+    refute_nil radar
+    assert_equal "Paper Radar", radar.text.strip
   end
 
   def test_project_subsites_are_linked_and_explain_runtime_requirements
@@ -80,7 +83,6 @@ class PageFocusTest < Minitest::Test
       assert_equal 1, doc.css(link["href"].delete_prefix("/")).length
     end
     assert_equal 3, doc.css("#experience .experience-card").length
-    assert_equal 6, doc.css("#projects .project-list > li").length
     assert_equal 4, doc.css("#publications .publication-card").length
     assert_equal "service", doc.css("main .home-section").last["id"]
     assert_operator doc.to_html.index('id="projects"'), :<, doc.to_html.index('id="publications"')

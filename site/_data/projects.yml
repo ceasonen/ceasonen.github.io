@@ -15,6 +15,13 @@
     - Traces raster images into vector paths locally, with layer inspection and editable fills, opacity, and added text.
     - Rebuilds diagram text and shapes through a user-configured vision model or imported Scene JSON; automatic reconstructions need checking.
     - Exports SVG, native PPTX objects, and Scene JSON, alongside local PNG, JPEG, and WebP conversion with resize controls.
+- name: Paper Radar
+  category: Research software
+  repository: https://github.com/ceasonen/arxiv_paper_ai
+  website: https://ceasonen.github.io/arxiv_paper_ai/
+  summary: A daily arXiv feed for AI research with topic filters, a reading list, and direct PDF links.
+  stack: [Python, JavaScript, GitHub Actions]
+  featured: false
 - name: AutoSearch AI
   category: Research software
   repository: https://github.com/ceasonen/deep-research
