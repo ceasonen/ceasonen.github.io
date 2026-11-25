@@ -6,7 +6,9 @@
     <meta name="description" content="Cheng Chen, Tongji University. Research, publications, internships, projects, and academic service.">
     <title>Cheng Chen | {{ page.title | escape }}</title>
     <link rel="icon" href="{{ '/favicon.svg' | relative_url }}?v=rubik-1" type="image/svg+xml">
-    <link rel="preload" href="{{ '/assets/fonts/templates/sourcesans3.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/templates/inter-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/caveat-bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/templates/comic-neue.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}?v={{ site.asset_version }}">
     <link rel="stylesheet" href="{{ '/assets/css/tone.css' | relative_url }}?v={{ site.asset_version }}">
 </head>
@@ -19,9 +21,7 @@
             </a>
             <div id="section-nav" class="section-nav">
                 {% for item in site.data.navigation.pages %}
-                {% unless item.name == 'Writing' and site.posts.size == 0 %}
-                <a href="{{ item.url | relative_url }}"{% if item.url contains '.pdf' %} target="_blank" rel="noopener"{% endif %}>{% if item.name == 'Writing' %}<img class="writing-nav-avatar" src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="24" height="24" alt="">{% endif %}{{ item.name }}</a>
-                {% endunless %}
+                <a href="{{ item.url | relative_url }}"{% if item.name == 'Writing' %} class="writing-nav-link"{% endif %}{% if item.url contains '.pdf' %} target="_blank" rel="noopener"{% endif %}>{% if item.name == 'Writing' %}<img class="writing-nav-avatar" src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="24" height="24" alt="">{% endif %}{{ item.name }}</a>
                 {% endfor %}
             </div>
             {% include tone.html %}

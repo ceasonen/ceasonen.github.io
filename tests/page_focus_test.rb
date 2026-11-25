@@ -114,14 +114,14 @@ class PageFocusTest < Minitest::Test
 
   def test_home_places_the_portrait_and_identity_in_a_separate_left_column
     css = File.read(File.join(ROOT, "site/assets/css/global.css"))
-    assert_includes css, '"Source Sans 3"'
-    assert_includes css, '"Literata"'
+    assert_includes css, '"Inter"'
+    assert_includes css, 'font-family: Caveat'
     assert_includes css, '@font-face'
     refute_includes css, '--detail-font'
     refute_match(/html\s*\{[^}]*scroll-padding-top/, css)
     assert_match(/\.home-section\s*\{[^}]*scroll-margin-top/, css)
     doc = page("index.html")
-    assert doc.at_css('link[rel="preload"][as="font"][href="/assets/fonts/templates/sourcesans3.woff2"]')
+    assert doc.at_css('link[rel="preload"][as="font"][href="/assets/fonts/templates/inter-latin.woff2"]')
     assert_equal "Cheng Chen", doc.at_css("aside.profile-sidebar h1").text.strip
     assert doc.at_css("aside.profile-sidebar .profile-portrait")
     assert doc.at_css("aside.profile-sidebar .profile-links")
@@ -164,16 +164,34 @@ class PageFocusTest < Minitest::Test
     assert_empty doc.css('.profile-links a[href*=".pdf"]')
   end
 
-  def test_unverified_writing_is_absent_and_news_and_tone_controls_remain
+  def test_empty_writing_section_keeps_the_mascot_and_has_no_sample_post
     home = page("index.html")
-    refute home.at_css("#writing")
-    refute home.at_css('.section-nav a[href="/#writing"]')
+    writing = home.at_css("#writing")
+    refute_nil writing
+    assert_equal "Writing", writing.at_css("h2").text.strip
+    assert_equal "/assets/images/writing/usagi.png", writing.at_css("h2 img")["src"]
+    nav = home.at_css('.section-nav a[href="/#writing"]')
+    refute_nil nav
+    assert_equal "/assets/images/writing/usagi.png", nav.at_css("img")["src"]
+    assert_equal "No posts yet.", writing.at_css(".writing-empty").text.strip
+    assert_empty writing.css(".writing-list, .writing-entry")
     refute File.exist?(File.join(ROOT, "2026/03/17/acknowledgement.html"))
 
-    assert_equal 4, home.css("#news > .section-body > .news-list > li").length
-    assert_operator home.css("#news .news-archive li").length, :>, 0
     assert_equal 1, home.css('[data-tone-control] input[type="range"]').length
     assert_equal 1, home.css('[data-tone-control] [data-tone-reset]').length
+  end
+
+  def test_news_keeps_every_event_in_one_keyboard_accessible_list
+    home = page("index.html")
+    news = home.at_css('#news .news-window[role="region"][tabindex="0"]')
+    refute_nil news
+    assert_equal "news-title", news["aria-labelledby"]
+    assert_equal 1, news.css(".news-list").length
+    dates = news.css(".news-list time").map { |entry| entry["datetime"] }
+    assert_equal Dir.glob(File.join(ROOT, "site/_news/*.md")).length, dates.length
+    assert_operator dates.length, :>, 4
+    assert_equal dates.sort.reverse, dates
+    assert_empty home.css("#news details")
   end
 
   def test_x_profile_link_uses_the_supplied_account

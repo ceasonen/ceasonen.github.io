@@ -30,16 +30,10 @@ title: Homepage
     </section>
 
     <section id="news" class="home-section">
-        <h2>News</h2>
-        <div class="section-body">
+        <h2 id="news-title">News</h2>
+        <div class="section-body news-window" role="region" aria-labelledby="news-title" tabindex="0">
             {% assign news = site.news | sort: 'date' | reverse %}
-            {% include sections/news-list.html items=news limit=4 offset=0 %}
-            {% if news.size > 4 %}
-            <details class="news-archive">
-                <summary>Earlier updates</summary>
-                {% include sections/news-list.html items=news limit=news.size offset=4 %}
-            </details>
-            {% endif %}
+            {% include sections/news-list.html items=news %}
         </div>
     </section>
 
@@ -74,9 +68,9 @@ title: Homepage
 
     {% include sections/publications.html %}
 
-    {% if site.posts.size > 0 %}
     <section id="writing" class="home-section">
-        <h2>Writing</h2>
+        <h2 class="writing-heading">Writing<img src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="44" height="44" alt="" loading="lazy"></h2>
+        {% if site.posts.size > 0 %}
         <ul class="writing-list">
             {% for post in site.posts %}
             <li>
@@ -88,8 +82,10 @@ title: Homepage
             </li>
             {% endfor %}
         </ul>
+        {% else %}
+        <p class="writing-empty">No posts yet.</p>
+        {% endif %}
     </section>
-    {% endif %}
 
     <section id="service" class="home-section">
         <h2>Academic Service</h2>

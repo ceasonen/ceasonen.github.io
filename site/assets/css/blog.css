@@ -1,8 +1,8 @@
 .reading-page .site-nav { display: flex; }
-.reading-page .writing-back { display: inline-flex; align-items: center; gap: .43rem; margin-inline-start: auto; font-size: .94rem; font-weight: 790; }
+.reading-page .writing-back { display: inline-flex; align-items: center; gap: .43rem; margin-inline-start: auto; font-family: var(--personal-font); font-size: .94rem; font-weight: 400; }
 .reading-shell { max-width: 752px; margin-inline: auto; padding: clamp(1.65rem, 4.4vw, 3.85rem) var(--page-pad) 5rem; }
 .reading-heading { padding-bottom: .7rem; border-bottom: 1px solid var(--rule); margin-bottom: 1rem; }
-.reading-heading h1 { margin: 0 0 .42rem; font-size: clamp(1.6rem, 4.5vw, 2rem); line-height: 1.16; letter-spacing: -.025em; font-weight: 800; }
+.reading-heading h1 { margin: 0 0 .42rem; font-size: clamp(2.05rem, 5vw, 2.75rem); line-height: 1.1; }
 .reading-byline { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .65rem; margin: 0; color: var(--muted); font-size: .9rem; }
 .reading-byline time::before { content: "·"; margin-inline-end: .65rem; }
 .reading-prose { color: var(--ink); font-size: 1.02rem; line-height: 1.7; overflow-wrap: anywhere; }

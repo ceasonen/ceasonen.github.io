@@ -104,13 +104,14 @@ class DesignRefinementTest < Minitest::Test
     expected.each { |name| assert_includes news, name }
   end
 
-  def test_typography_uses_local_fonts_for_prose_and_headings
+  def test_typography_uses_local_fonts_for_ui_introduction_and_headings
     css = File.read(File.join(ROOT, "site/assets/css/global.css"))
     refute_match(/Segoe UI|Verdana|--detail-font|Permanent Marker/, css)
-    assert_includes css, 'font-family: "Source Sans 3"'
-    assert_includes css, 'font-family: "Literata"'
-    %w[sourcesans3 literata].each do |name|
-      assert File.size?(File.join(ROOT, "site/assets/fonts/templates/#{name}.woff2"))
+    assert_includes css, 'font-family: "Inter"'
+    assert_includes css, 'font-family: "Comic Neue"'
+    assert_includes css, 'font-family: Caveat'
+    %w[templates/inter-latin templates/comic-neue caveat-bold].each do |name|
+      assert File.size?(File.join(ROOT, "site/assets/fonts/#{name}.woff2"))
     end
     assert_empty home.css('link[href*="fonts.googleapis.com"]')
   end

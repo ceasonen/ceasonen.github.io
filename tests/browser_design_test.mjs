@@ -36,7 +36,14 @@ const waitFor = expression => evaluate(`new Promise((resolve,reject) => {
 })`);
 const screenshot = async label => fs.writeFile(`.build/preview/refined-${label}.png`, Buffer.from((await send('Page.captureScreenshot')).data, 'base64'));
 const navigate = async section => {
-  await evaluate(`document.querySelector('.section-nav a[href="/#${section}"]').click()`);
+  const {x, y} = await evaluate(`(() => {
+    const link = document.querySelector('.section-nav a[href="/#${section}"]');
+    if (link.getBoundingClientRect().bottom < 0) window.scrollTo({top: 0, behavior: 'instant'});
+    const bounds = link.getBoundingClientRect();
+    return {x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2};
+  })()`);
+  await send('Input.dispatchMouseEvent', {type: 'mousePressed', x, y, button: 'left', clickCount: 1});
+  await send('Input.dispatchMouseEvent', {type: 'mouseReleased', x, y, button: 'left', clickCount: 1});
   await waitFor(`location.hash === '#${section}' && document.querySelector('.section-nav a[aria-current]')?.getAttribute('href') === '/#${section}' && document.querySelector('#${section}').getBoundingClientRect().top >= Math.max(0, document.querySelector('.site-header').getBoundingClientRect().bottom) - 1`);
   await evaluate(`new Promise(resolve => {
     let position = scrollY, stableSince = performance.now();
@@ -59,15 +66,23 @@ try {
   await send('CSS.enable');
   const root = (await send('DOM.getDocument')).root.nodeId;
   const textSurfaces = {
-    h1: 'Literata',
-    '#about h2': 'Literata',
-    '.profile-status': 'SourceSans3',
-    '.news-list li > span': 'SourceSans3',
-    '.experience-info p': 'SourceSans3',
-    '.project-name': 'SourceSans3',
-    '.award-name': 'SourceSans3',
-    '.publication-summary': 'SourceSans3',
-    '.service-list li': 'SourceSans3',
+    h1: 'Caveat',
+    '#about h2': 'Caveat',
+    '#publications h2': 'Caveat',
+    '.experience-internships > h3': 'Caveat',
+    '.profile-introduction p': 'ComicNeue',
+    '.intro-contact a': 'ComicNeue',
+    '.section-nav a[href="/#about"]': 'Inter',
+    '#writing h2': 'Caveat',
+    '#writing .writing-empty': 'ComicNeue',
+    '.section-nav .writing-nav-link': 'ComicNeue',
+    '.profile-status': 'Inter',
+    '.news-list li > span': 'Inter',
+    '.experience-info p': 'Inter',
+    '.project-name': 'Inter',
+    '.award-name': 'Inter',
+    '.publication-summary': 'Inter',
+    '.service-list li': 'Inter',
   };
   for (const [selector, fontName] of Object.entries(textSurfaces)) {
     const nodeId = (await send('DOM.querySelector', {nodeId: root, selector})).nodeId;
@@ -115,15 +130,27 @@ try {
     ['ICLR(2027)', 'AAAI(2027)', 'ICME(2026)', 'IJCNN(2026,2027)', 'PRCV(2026)']);
 
   const sections = await evaluate(`[...document.querySelectorAll('.section-nav a[href^="/#"]')].map(link => link.hash.slice(1))`);
-  assert(!sections.includes('writing'));
+  assert(sections.includes('writing'));
   for (const width of [1440,390]) {
     await send('Emulation.setDeviceMetricsOverride', {width, height: width === 390 ? 844 : 1100, deviceScaleFactor: 1, mobile: width === 390});
     for (const section of sections) {
       await navigate(section);
+      if (section === 'writing') {
+        await waitFor(`[...document.querySelectorAll('#writing h2 img, .writing-nav-link img')].every(img => img.complete && img.naturalWidth > 0)`);
+      }
       if (section === 'awards') {
         await waitFor(`[...document.querySelectorAll('.award-list .recognition-mark img')].every(img => img.complete && img.naturalWidth > 0)`);
       }
+      if (section === 'news') await evaluate(`document.querySelector('.news-window').scrollTop = 0`);
       await screenshot(`${width}-${section}`);
+      if (section === 'news') {
+        const pageScroll = await evaluate('scrollY');
+        await evaluate(`document.querySelector('.news-window').focus({preventScroll: true})`);
+        await send('Input.dispatchKeyEvent', {type: 'keyDown', key: 'PageDown', code: 'PageDown', windowsVirtualKeyCode: 34});
+        await send('Input.dispatchKeyEvent', {type: 'keyUp', key: 'PageDown', code: 'PageDown', windowsVirtualKeyCode: 34});
+        await waitFor(`document.querySelector('.news-window').scrollTop > 50`);
+        assert.equal(await evaluate('scrollY'), pageScroll);
+      }
       if (section === 'publications') {
         await evaluate(`document.querySelector('[data-filter="preprint"]').click()`);
         await waitFor(`document.querySelector('.publication-card[data-status="preprint"] img').naturalWidth > 0`);
