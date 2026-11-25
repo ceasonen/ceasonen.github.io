@@ -4,17 +4,17 @@ title: Homepage
 ---
 
 <aside class="profile-sidebar" aria-label="Profile and contact">
-    <img class="profile-portrait" src="{{ site.data.profile.portrait_url | relative_url }}" alt="Cheng Chen" width="170" height="170">
+    <img class="profile-portrait" src="{{ site.data.profile.portrait_url | relative_url }}" alt="A Rubik’s Cube with yellow, blue and red faces" width="140" height="140">
     <h2>Cheng Chen</h2>
     <p class="profile-affiliation">Tongji University</p>
-    <p class="profile-status">{{ site.data.profile.college | escape }}<br>{{ site.data.profile.student_status | escape }}</p>
+    <p class="profile-status">{{ site.data.profile.college | escape }}<br><span class="profile-student">{{ site.data.profile.student_status | escape }}</span></p>
     <ul class="profile-links">
         <li>{% include widgets/icon.html name='location' %}<span>{{ site.data.profile.location | escape }}</span></li>
         <li><a href="{{ site.data.profile.gscholar | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='scholar' class='icon-scholar' %}<span>Google Scholar</span></a></li>
         <li><a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener">{% include widgets/icon.html name='github' class='icon-github' %}<span>GitHub</span></a></li>
         <li><a href="{{ site.data.profile.linkedin_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='linkedin' %}<span>LinkedIn</span></a></li>
         <li><a href="{{ site.data.profile.x_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='x' class='icon-x' %}<span>Twitter</span></a></li>
-        <li><a href="{{ site.data.profile.xiaohongshu_url | escape }}" target="_blank" rel="noopener"><img class="site-icon icon-xiaohongshu" src="https://www.xiaohongshu.com/favicon.ico" alt="" width="25" height="25" loading="lazy"><span>RedNote</span></a></li>
+        <li><a href="{{ site.data.profile.xiaohongshu_url | escape }}" target="_blank" rel="noopener"><img class="site-icon icon-xiaohongshu" src="{{ '/assets/images/social/rednote.ico' | relative_url }}" alt="" width="25" height="25" loading="lazy"><span>RedNote</span></a></li>
     </ul>
 </aside>
 
@@ -22,19 +22,19 @@ title: Homepage
     <section id="about" class="home-section introduction">
         <h1>About me</h1>
         {{ site.data.profile.short_bio }}
-        <p class="intro-contact">I'm always open to exchanging ideas and exploring collaborations. Feel free to email me at <a href="mailto:{{ site.data.profile.additional_email | escape }}">{{ site.data.profile.additional_email | escape }}</a>.</p>
+        <p class="intro-contact">Feel free to email me at <a href="mailto:{{ site.data.profile.additional_email | escape }}">{{ site.data.profile.additional_email | escape }}</a>.</p>
     </section>
 
     <section id="news" class="home-section">
         <h2>News</h2>
         {% assign news = site.news | sort: 'date' | reverse %}
-        <div class="news-box" tabindex="0" aria-label="Research and academic news">
-            <ul class="news-list">
-                {% for item in news %}
-                <li><time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: '%Y.%m' }}</time><span>{% if item.category == 'paper' or item.category == 'competition' %}<span class="news-celebration" aria-hidden="true">🎉</span> {% endif %}{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span></li>
-                {% endfor %}
-            </ul>
-        </div>
+        {% include sections/news-list.html items=news limit=4 offset=0 %}
+        {% if news.size > 4 %}
+        <details class="news-archive">
+            <summary>Earlier updates</summary>
+            {% include sections/news-list.html items=news limit=news.size offset=4 %}
+        </details>
+        {% endif %}
     </section>
 
     {% include sections/experience.html %}
@@ -66,13 +66,22 @@ title: Homepage
 
     {% include sections/publications.html %}
 
-    <section id="talks" class="home-section home-section--empty">
-        <h2>Talks</h2>
+    {% if site.posts.size > 0 %}
+    <section id="writing" class="home-section">
+        <h2>Writing</h2>
+        <ul class="writing-list">
+            {% for post in site.posts %}
+            <li>
+                <a class="writing-entry" href="{{ post.url | relative_url }}">
+                    <img class="writing-avatar" src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="54" height="54" alt="">
+                    <span class="writing-title">{{ post.title | escape }}</span>
+                    <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%b %d, %Y' }}</time>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
     </section>
-
-    <section id="reports" class="home-section home-section--empty">
-        <h2>Reports</h2>
-    </section>
+    {% endif %}
 
     <section id="service" class="home-section">
         <h2>Academic Service</h2>

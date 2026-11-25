@@ -1,18 +1,4 @@
-// Single-page navigation: keyboard-friendly menu and section highlighting.
-const menuButton = document.querySelector('.nav-toggle');
-const menu = document.querySelector('#section-nav');
 const links = [...document.querySelectorAll('.section-nav a[href*="#"]')];
-
-menuButton?.addEventListener('click', () => {
-    const open = menuButton.getAttribute('aria-expanded') !== 'true';
-    menuButton.setAttribute('aria-expanded', String(open));
-    menu.classList.toggle('is-open', open);
-});
-
-links.forEach(link => link.addEventListener('click', () => {
-    menuButton?.setAttribute('aria-expanded', 'false');
-    menu.classList.remove('is-open');
-}));
 
 // One set of cards, as in WowPage; filtering never duplicates paper content.
 const publicationFilters = [...document.querySelectorAll('.publication-filter')];
@@ -28,14 +14,6 @@ publicationFilters.forEach(button => button.addEventListener('click', () => {
     if (publicationCount) publicationCount.textContent = `${count} ${count === 1 ? 'paper' : 'papers'}`;
     scheduleNavigationUpdate();
 }));
-document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
-        menuButton.setAttribute('aria-expanded', 'false');
-        menu.classList.remove('is-open');
-        menuButton.focus();
-    }
-});
-
 // A short final section cannot reach the header at the bottom of the page.
 // Use document position, rather than a narrow IntersectionObserver band.
 const sectionLinks = links.map(link => ({

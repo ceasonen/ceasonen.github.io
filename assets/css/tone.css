@@ -1,0 +1,72 @@
+/* Palette shared by the academic homepage and article layout. */
+:root {
+    --site-hue: 205;
+    --tone-ink: hsl(var(--site-hue) 14% 18%);
+    --tone-heading: hsl(var(--site-hue) 25% 21%);
+    --tone-muted: hsl(var(--site-hue) 12% 34%);
+    --tone-accent: hsl(var(--site-hue) 51% 31%);
+    --tone-surface: hsl(var(--site-hue) 28% 99.4%);
+    --tone-panel: hsl(var(--site-hue) 37% 96.5%);
+    --tone-rule: hsl(var(--site-hue) 19% 87%);
+}
+
+.tone-control { position: relative; flex: none; }
+.tone-control[hidden] { display: none; }
+.tone-toggle {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--tone-rule);
+    border-radius: 50%;
+    cursor: pointer;
+    list-style: none;
+    background: var(--tone-surface);
+}
+.tone-toggle::-webkit-details-marker { display: none; }
+.tone-toggle:hover, .tone-control[open] .tone-toggle { border-color: var(--tone-accent); }
+.tone-swatch, .tone-dial {
+    --spectrum: conic-gradient(#e7837a, #dcb66a, #99c27e, #6cbeb1, #829fdb, #c08fca, #e7837a);
+    background: var(--spectrum);
+}
+.tone-swatch { width: 17px; height: 17px; border-radius: 50%; display: grid; place-items: center; }
+.tone-swatch::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--tone-surface); }
+.tone-panel {
+    position: absolute;
+    inset-block-start: calc(100% + .58rem);
+    inset-inline-end: 0;
+    z-index: 35;
+    inline-size: 10.75rem;
+    display: grid;
+    justify-items: center;
+    gap: .62rem;
+    padding: .8rem .8rem .68rem;
+    border: 1px solid var(--tone-rule);
+    border-radius: .76rem;
+    background: var(--tone-surface);
+    box-shadow: 0 7px 24px #12182014;
+    color: var(--tone-ink);
+    line-height: 1.35;
+}
+.tone-heading { margin: 0; font-size: .83rem; font-weight: 800; }
+.tone-dial { position: relative; width: 112px; height: 112px; display: grid; place-items: center; border-radius: 50%; touch-action: none; cursor: grab; }
+.tone-dial:active { cursor: grabbing; }
+.tone-dial:focus-within { outline: 2px solid var(--tone-accent); outline-offset: 4px; }
+.tone-dial::before { position: absolute; inset: 11px; border-radius: 50%; background: var(--tone-surface); content: ""; pointer-events: none; }
+.tone-marker {
+    position: absolute;
+    z-index: 1;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #2035456b;
+    background: var(--tone-accent);
+    transform: rotate(calc(var(--site-hue) * 1deg)) translateY(-50px);
+    pointer-events: none;
+}
+.tone-label { position: absolute; inset: 0; pointer-events: none; }
+.tone-label input, .tone-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.tone-value { z-index: 1; font-size: .86rem; font-weight: 750; font-variant-numeric: tabular-nums; pointer-events: none; }
+.tone-reset { border: 0; padding: .25rem .5rem; background: transparent; color: var(--tone-accent); cursor: pointer; font: inherit; font-size: .8rem; }
+.tone-reset:hover { text-decoration: underline; }

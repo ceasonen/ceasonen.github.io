@@ -15,7 +15,7 @@
     <div id="publication-list">
     {% for item in publications %}
     <article class="publication-card" data-status="{% if item.preprint %}preprint{% else %}accepted{% endif %}"{% if item.preprint %} data-submission="{{ item.pub }}"{% endif %}>
-        <div class="publication-media"><img class="publication-cover" src="{{ item.cover | relative_url }}" alt="Figure overview for {{ item.title | escape }}" loading="lazy"></div>
+        <div class="publication-media"><img class="publication-cover" src="{{ item.cover | relative_url }}" alt="Figure overview for {{ item.title | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"></div>
         <div class="publication-body">
             <h3>{{ item.title | escape }}</h3>
             {% if item.preprint and item.display_credit %}<p class="publication-authors">{{ item.display_credit | escape }}</p>{% elsif item.authors %}<p class="publication-authors">{% include widgets/author_list.html authors=item.authors %}</p>{% endif %}

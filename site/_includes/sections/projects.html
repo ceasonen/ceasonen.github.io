@@ -3,7 +3,7 @@
     <ul class="project-list">
         {% for project in site.data.projects %}
         <li>
-            {% if project.website or project.repository %}<a class="project-name" href="{{ project.website | default: project.repository | escape }}" target="_blank" rel="noopener">{{ project.name | escape }}</a>{% else %}<strong class="project-title">{{ project.name | escape }}</strong>{% endif %}{% if project.authors %}<span class="project-authors"> · {{ project.authors | escape }}</span>{% endif %}<span class="project-summary"> — {{ project.summary | escape }}</span>{% if project.website and project.repository %} <a class="project-source" href="{{ project.repository | escape }}" target="_blank" rel="noopener" aria-label="{{ project.name | escape }} source code on GitHub">[Code]</a>{% endif %}
+            {% if project.website or project.repository %}<a class="project-name" href="{{ project.website | default: project.repository | escape }}" target="_blank" rel="noopener">{{ project.name | escape }}</a>{% else %}<strong class="project-title">{{ project.name | escape }}</strong>{% endif %}{% if project.authors %}<span class="project-authors"> · {{ project.authors | escape }}</span>{% endif %}<span class="project-summary">{{ project.summary | escape }}</span>{% if project.website and project.repository %} <a class="project-source" href="{{ project.repository | escape }}" target="_blank" rel="noopener" aria-label="{{ project.name | escape }} source code on GitHub">[Code]</a>{% endif %}
         </li>
         {% endfor %}
     </ul>

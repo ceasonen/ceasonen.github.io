@@ -16,7 +16,9 @@ class InternPageTest < Minitest::Test
   def test_logo_styles_use_the_latest_cache_busted_asset_version
     config = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
 
-    assert_equal "20261124-home-marks", config["asset_version"]
+    page = Nokogiri::HTML(File.read(File.join(ROOT, "../index.html")))
+    assert_match(/\A\d{8}-[a-z0-9-]+\z/, config.fetch("asset_version"))
+    assert page.at_css('link[href="/assets/css/global.css?v=' + config["asset_version"] + '"]')
   end
 
   def test_intern_page_contains_three_internships_without_independent_research

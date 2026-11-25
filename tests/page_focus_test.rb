@@ -158,6 +158,27 @@ class PageFocusTest < Minitest::Test
     assert_empty doc.css('.profile-links a[href*=".pdf"]')
   end
 
+  def test_writing_entry_and_article_use_the_same_tone_control
+    home = page("index.html")
+    entry = home.at_css("#writing .writing-entry")
+    refute_nil entry
+    assert_equal "/2026/03/17/acknowledgement.html", entry["href"]
+    assert_equal "/assets/images/writing/usagi.png", entry.at_css("img")["src"]
+    assert_equal 4, home.css("#news > .news-list > li").length
+    assert_operator home.css("#news .news-archive li").length, :>, 0
+
+    article = page("2026/03/17/acknowledgement.html")
+    assert_equal "Acknowledgement", article.at_css("article h1").text
+    assert article.at_css('a.writing-back[href="/#writing"]')
+    assert_empty article.css("aside, .badge, .sidebar-links")
+    assert_includes article.at_css(".reading-prose").text, "Yuqing Xie and Kun Chen"
+    refute_includes article.at_css(".reading-prose").text, "Section 1"
+    [home, article].each do |doc|
+      assert_equal 1, doc.css('[data-tone-control] input[type="range"]').length
+      assert_equal 1, doc.css('[data-tone-control] [data-tone-reset]').length
+    end
+  end
+
   def test_x_profile_link_uses_the_supplied_account
     url = "https://x.com/CeasonC87891"
     profile = YAML.safe_load(File.read(File.join(ROOT, "site/_data/profile.yml")))
@@ -181,7 +202,6 @@ class PageFocusTest < Minitest::Test
     assert_equal "_blank", link["target"]
     assert_includes link["rel"], "noopener"
     assert link.at_css("svg.site-icon[aria-hidden='true']")
-    assert page("2026/03/17/acknowledgement.html").at_css(".sidebar-links a[href='#{url}']")
   end
 
   def test_xiaohongshu_profile_link_uses_the_supplied_account
@@ -193,10 +213,9 @@ class PageFocusTest < Minitest::Test
     assert_equal "RedNote", link.text.strip
     assert_equal "_blank", link["target"]
     assert_includes link["rel"], "noopener"
-    icon = link.at_css('img.site-icon.icon-xiaohongshu[src="https://www.xiaohongshu.com/favicon.ico"]')
+    icon = link.at_css('img.site-icon.icon-xiaohongshu[src="/assets/images/social/rednote.ico"]')
     refute_nil icon
     assert_equal "", icon["alt"]
-    assert page("2026/03/17/acknowledgement.html").at_css(".sidebar-links a[href='#{url}']")
   end
 
   def test_social_icons_use_brand_marks

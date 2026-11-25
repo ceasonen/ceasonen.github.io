@@ -1,0 +1,8 @@
+<ul class="news-list">
+    {% for item in include.items limit:include.limit offset:include.offset %}
+    <li>
+        <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: '%b %Y' }}</time>
+        <span>{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
+    </li>
+    {% endfor %}
+</ul>

@@ -8,6 +8,7 @@
     <link rel="icon" href="{{ '/favicon.svg' | relative_url }}?v=rubik-1" type="image/svg+xml">
     <link rel="preload" href="{{ '/assets/fonts/nunito-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}?v={{ site.asset_version }}">
+    <link rel="stylesheet" href="{{ '/assets/css/tone.css' | relative_url }}?v={{ site.asset_version }}">
 </head>
 <body>
     <a class="skip-link" href="#about">Skip to content</a>
@@ -17,19 +18,20 @@
                 <img src="{{ '/favicon.svg' | relative_url }}" width="26" height="26" alt="">
                 <span>Cheng Chen</span>
             </a>
-            <button class="nav-toggle" aria-expanded="false" aria-controls="section-nav">Menu</button>
             <div id="section-nav" class="section-nav">
                 {% for item in site.data.navigation.pages %}
-                <a href="{{ item.url | relative_url }}"{% if item.url contains '.pdf' %} target="_blank" rel="noopener"{% endif %}>{{ item.name }}</a>
+                <a href="{{ item.url | relative_url }}"{% if item.url contains '.pdf' %} target="_blank" rel="noopener"{% endif %}>{% if item.name == 'Writing' %}<img class="writing-nav-avatar" src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="20" height="20" alt="">{% endif %}{{ item.name }}</a>
                 {% endfor %}
             </div>
+            {% include tone.html %}
         </nav>
     </header>
     <div class="site-shell">{{ content }}</div>
     <footer class="site-footer">
-        <span>© {{ 'now' | date: '%Y' }} Cheng Chen · Updated {{ 'now' | date: '%b %Y' }}</span>
+        <span>© {{ 'now' | date: '%Y' }} Cheng Chen · <a href="https://github.com/ceasonen/cube_page">Cube Page</a></span>
         <span>Layout adapted from <a href="https://github.com/WD7ang/WowPage" target="_blank" rel="noopener">WowPage</a></span>
     </footer>
+    <script src="{{ '/assets/js/tone.js' | relative_url }}?v={{ site.asset_version }}" defer></script>
     <script src="{{ '/assets/js/home.js' | relative_url }}?v={{ site.asset_version }}" defer></script>
 </body>
 </html>
