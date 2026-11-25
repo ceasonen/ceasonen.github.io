@@ -3,52 +3,58 @@ layout: single
 title: Homepage
 ---
 
-<aside class="profile-sidebar" aria-label="Profile and contact">
-    <img class="profile-portrait" src="{{ site.data.profile.portrait_url | relative_url }}" alt="A Rubik’s Cube with yellow, blue and red faces" width="140" height="140">
-    <h2>Cheng Chen</h2>
-    <p class="profile-affiliation">Tongji University</p>
-    <p class="profile-status">{{ site.data.profile.college | escape }}<br><span class="profile-student">{{ site.data.profile.student_status | escape }}</span></p>
-    <ul class="profile-links">
-        <li>{% include widgets/icon.html name='location' %}<span>{{ site.data.profile.location | escape }}</span></li>
-        <li><a href="{{ site.data.profile.gscholar | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='scholar' class='icon-scholar' %}<span>Google Scholar</span></a></li>
-        <li><a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener">{% include widgets/icon.html name='github' class='icon-github' %}<span>GitHub</span></a></li>
-        <li><a href="{{ site.data.profile.linkedin_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='linkedin' %}<span>LinkedIn</span></a></li>
-        <li><a href="{{ site.data.profile.x_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='x' class='icon-x' %}<span>Twitter</span></a></li>
-        <li><a href="{{ site.data.profile.xiaohongshu_url | escape }}" target="_blank" rel="noopener"><img class="site-icon icon-xiaohongshu" src="{{ '/assets/images/social/rednote.ico' | relative_url }}" alt="" width="25" height="25" loading="lazy"><span>RedNote</span></a></li>
-    </ul>
-</aside>
-
 <main class="home-content">
     <section id="about" class="home-section introduction">
-        <h1>About me</h1>
-        {{ site.data.profile.short_bio }}
-        <p class="intro-contact">Feel free to email me at <a href="mailto:{{ site.data.profile.additional_email | escape }}">{{ site.data.profile.additional_email | escape }}</a>.</p>
+        <div class="profile-frame">
+            <img class="profile-portrait" src="{{ site.data.profile.portrait_url | relative_url }}" alt="A Rubik’s Cube with yellow, blue and red faces" width="1280" height="1365" fetchpriority="high">
+        </div>
+        <div class="profile-heading">
+            <h1>{{ site.data.profile.primary_name | escape }}</h1>
+            <p class="profile-affiliation">Tongji University</p>
+            <p class="profile-status">{{ site.data.profile.college | escape }} <span class="profile-student">{{ site.data.profile.student_status | escape }}</span></p>
+        </div>
+        <div class="profile-introduction">
+            {{ site.data.profile.short_bio }}
+            <p class="intro-contact">Feel free to email me at <a href="mailto:{{ site.data.profile.additional_email | escape }}">{{ site.data.profile.additional_email | escape }}</a>.</p>
+        </div>
+        <ul class="profile-links" aria-label="Location and profiles">
+            <li>{% include widgets/icon.html name='location' %}<span>{{ site.data.profile.location | escape }}</span></li>
+            <li><a href="{{ site.data.profile.gscholar | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='scholar' class='icon-scholar' %}<span>Google Scholar</span></a></li>
+            <li><a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener">{% include widgets/icon.html name='github' class='icon-github' %}<span>GitHub</span></a></li>
+            <li><a href="{{ site.data.profile.linkedin_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='linkedin' %}<span>LinkedIn</span></a></li>
+            <li><a href="{{ site.data.profile.x_url | escape }}" target="_blank" rel="noopener">{% include widgets/icon.html name='x' class='icon-x' %}<span>Twitter</span></a></li>
+            <li><a href="{{ site.data.profile.xiaohongshu_url | escape }}" target="_blank" rel="noopener"><img class="site-icon icon-xiaohongshu" src="{{ '/assets/images/social/rednote.ico' | relative_url }}" alt="" width="25" height="25" loading="lazy"><span>RedNote</span></a></li>
+        </ul>
     </section>
 
     <section id="news" class="home-section">
         <h2>News</h2>
-        {% assign news = site.news | sort: 'date' | reverse %}
-        {% include sections/news-list.html items=news limit=4 offset=0 %}
-        {% if news.size > 4 %}
-        <details class="news-archive">
-            <summary>Earlier updates</summary>
-            {% include sections/news-list.html items=news limit=news.size offset=4 %}
-        </details>
-        {% endif %}
+        <div class="section-body">
+            {% assign news = site.news | sort: 'date' | reverse %}
+            {% include sections/news-list.html items=news limit=4 offset=0 %}
+            {% if news.size > 4 %}
+            <details class="news-archive">
+                <summary>Earlier updates</summary>
+                {% include sections/news-list.html items=news limit=news.size offset=4 %}
+            </details>
+            {% endif %}
+        </div>
     </section>
 
     {% include sections/experience.html %}
     {% include sections/projects.html %}
 
     <section id="awards" class="home-section">
-        <h2>Honors and Awards</h2>
-        <p class="award-legend"><span aria-hidden="true">#</span> Project Lead</p>
+        <div class="section-heading">
+            <h2>Honors and Awards</h2>
+            <p class="award-legend"><span aria-hidden="true">#</span> Project Lead</p>
+        </div>
         <ul class="award-list">
             {% for item in site.data.highlights.awards %}
             <li class="recognition-row{% if forloop.first %} recognition-row--featured{% endif %}">
                 <span class="recognition-mark" aria-hidden="true">
                     {% if item.logo %}
-                    <img src="{{ item.logo | relative_url }}" width="104" height="58" alt="" loading="lazy">
+                    <img src="{{ item.logo | relative_url }}" width="88" height="60" alt="" loading="lazy">
                     {% else %}
                     {% include widgets/icon.html name=item.icon %}
                     {% endif %}
@@ -73,7 +79,7 @@ title: Homepage
             {% for post in site.posts %}
             <li>
                 <a class="writing-entry" href="{{ post.url | relative_url }}">
-                    <img class="writing-avatar" src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="54" height="54" alt="">
+                    <img class="writing-avatar" src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="64" height="64" alt="">
                     <span class="writing-title">{{ post.title | escape }}</span>
                     <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%b %d, %Y' }}</time>
                 </a>

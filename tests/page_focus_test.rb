@@ -122,7 +122,9 @@ class PageFocusTest < Minitest::Test
     assert_match(/\.home-section\s*\{[^}]*scroll-margin-top/, css)
     doc = page("index.html")
     assert doc.at_css('link[rel="preload"][as="font"][href="/assets/fonts/nunito-latin.woff2"]')
-    assert_equal "About me", doc.at_css("h1").text.strip
+    assert_equal "Cheng Chen", doc.at_css("#about h1").text.strip
+    assert doc.at_css("#about .profile-portrait")
+    assert_equal 1, doc.css("h1").length
   end
 
   def test_profile_has_lightweight_accessible_contact_icons
@@ -167,7 +169,7 @@ class PageFocusTest < Minitest::Test
     refute_nil entry
     assert_equal "/2026/03/17/acknowledgement.html", entry["href"]
     assert_equal "/assets/images/writing/usagi.png", entry.at_css("img")["src"]
-    assert_equal 4, home.css("#news > .news-list > li").length
+    assert_equal 4, home.css("#news > .section-body > .news-list > li").length
     assert_operator home.css("#news .news-archive li").length, :>, 0
 
     article = page("2026/03/17/acknowledgement.html")
@@ -281,11 +283,11 @@ class PageFocusTest < Minitest::Test
     assert_equal ["Tongji University"], doc.css(".education-entry h3").map { |heading| heading.text.strip }
     assert_empty doc.css(".intro-phd-note")
     refute_match(/incoming|ph\.?d|kaiqi|chinese academy of sciences/i, doc.text)
-    assert_includes doc.at_css(".introduction > p").text, "Tongji University"
+    assert_includes doc.at_css(".profile-introduction > p").text, "Tongji University"
   end
 
   def test_intro_describes_current_interests_and_undergraduate_major
-    paragraphs = page("index.html").css(".introduction > p")
+    paragraphs = page("index.html").css(".profile-introduction > p")
     opening = paragraphs.first.text.strip
     assert opening.start_with?("I'm an undergraduate student majoring in Communication Engineering at Tongji University")
     interests = paragraphs[1].text.strip

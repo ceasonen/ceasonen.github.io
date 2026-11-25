@@ -1,12 +1,11 @@
-.reading-page .site-nav, .reading-shell { max-width: 760px; }
 .reading-page .site-nav { display: flex; }
-.reading-page .writing-back { display: inline-flex; align-items: center; gap: .4rem; margin-inline-start: auto; font-size: .91rem; font-weight: 800; }
-.reading-shell { margin: 0 auto; padding: clamp(2.1rem, 7vw, 5.4rem) var(--page-pad) 5rem; }
-.reading-heading { padding-bottom: .95rem; border-bottom: 1px solid var(--rule); margin-bottom: 1.4rem; }
-.reading-heading h1 { margin: 0 0 .5rem; font-size: clamp(2.15rem, 5.2vw, 3.5rem); line-height: 1.1; letter-spacing: -.04em; }
-.reading-byline { display: flex; flex-wrap: wrap; align-items: center; gap: .32rem .9rem; margin: 0; color: var(--muted); font-size: .88rem; }
-.reading-byline time { border-inline-start: 1px solid var(--rule); padding-inline-start: .85rem; }
-.reading-prose { color: var(--ink); font-size: clamp(1.03rem, 1.9vw, 1.12rem); line-height: 1.73; overflow-wrap: anywhere; }
+.reading-page .writing-back { display: inline-flex; align-items: center; gap: .43rem; margin-inline-start: auto; font-size: .94rem; font-weight: 790; }
+.reading-shell { max-width: 752px; margin-inline: auto; padding: clamp(1.65rem, 4.4vw, 3.85rem) var(--page-pad) 5rem; }
+.reading-heading { padding-bottom: .7rem; border-bottom: 1px solid var(--rule); margin-bottom: 1rem; }
+.reading-heading h1 { margin: 0 0 .42rem; font-size: clamp(1.6rem, 4.5vw, 2rem); line-height: 1.16; letter-spacing: -.025em; font-weight: 800; }
+.reading-byline { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .65rem; margin: 0; color: var(--muted); font-size: .9rem; }
+.reading-byline time::before { content: "·"; margin-inline-end: .65rem; }
+.reading-prose { color: var(--ink); font-size: 1.02rem; line-height: 1.7; overflow-wrap: anywhere; }
 .reading-prose a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
 .reading-prose h2, .reading-prose h3 { margin: 1.4em 0 .4em; }
 .reading-prose pre { overflow-x: auto; overflow-wrap: normal; padding: .85rem; background: var(--panel); border-radius: .4rem; }

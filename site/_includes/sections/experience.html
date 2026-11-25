@@ -1,7 +1,7 @@
 <section id="experience" class="home-section">
     <h2>Experience</h2>
-    <h3 class="subheading">Education</h3>
     <div class="education-list">
+        <h3 class="subheading">Education</h3>
         {% for item in site.data.profile.education %}
         <article class="education-entry">
             <div class="education-icon">
@@ -16,20 +16,22 @@
         </article>
         {% endfor %}
     </div>
-    <h3 class="subheading">Research Internships</h3>
-    <div class="experience-container">
-        {% assign internships = site.data.internships | reverse %}
-        {% for item in internships %}
-        <article class="experience-card">
-            <a class="intern-logo-wrap" href="{{ item.url | escape }}" target="_blank" rel="noopener" aria-label="{{ item.link_label | escape }}">
-                <img{% if item.logo_class %} class="{{ item.logo_class }}"{% endif %} src="{{ item.logo | relative_url }}" alt="{{ item.logo_alt | escape }}" width="72" height="72" loading="lazy">
-            </a>
-            <div class="experience-info">
-                <h3><a class="organization-link" href="{{ item.url | escape }}" target="_blank" rel="noopener">{{ item.organization | escape }}</a></h3>
-                <time datetime="{{ item.datetime | escape }}">{{ item.date | escape }}</time>
-                <p>{{ item.role | escape }}</p>
-            </div>
-        </article>
-        {% endfor %}
+    <div class="experience-internships">
+        <h3 class="subheading">Research Internships</h3>
+        <div class="experience-container">
+            {% assign internships = site.data.internships | reverse %}
+            {% for item in internships %}
+            <article class="experience-card">
+                <a class="intern-logo-wrap" href="{{ item.url | escape }}" target="_blank" rel="noopener" aria-label="{{ item.link_label | escape }}">
+                    <img{% if item.logo_class %} class="{{ item.logo_class }}"{% endif %} src="{{ item.logo | relative_url }}" alt="{{ item.logo_alt | escape }}" width="72" height="72" loading="lazy">
+                </a>
+                <div class="experience-info">
+                    <h3><a class="organization-link" href="{{ item.url | escape }}" target="_blank" rel="noopener">{{ item.organization | escape }}</a></h3>
+                    <time datetime="{{ item.datetime | escape }}">{{ item.date | escape }}</time>
+                    <p>{{ item.role | escape }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
     </div>
 </section>

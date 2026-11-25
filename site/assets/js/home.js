@@ -25,7 +25,8 @@ let navigationFramePending = false;
 function updateNavigation() {
     navigationFramePending = false;
     if (!sectionLinks.length) return;
-    const marker = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 70) + 40;
+    const headerBottom = document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 0;
+    const marker = Math.max(0, headerBottom) + 40;
     const atBottom = Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight - 2;
     let active = atBottom ? sectionLinks[sectionLinks.length - 1] : sectionLinks[0];
     if (atBottom) {

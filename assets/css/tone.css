@@ -15,8 +15,8 @@
 .tone-toggle {
     display: grid;
     place-items: center;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border: 1px solid var(--tone-rule);
     border-radius: 50%;
     cursor: pointer;
@@ -29,8 +29,8 @@
     --spectrum: conic-gradient(#e7837a, #dcb66a, #99c27e, #6cbeb1, #829fdb, #c08fca, #e7837a);
     background: var(--spectrum);
 }
-.tone-swatch { width: 17px; height: 17px; border-radius: 50%; display: grid; place-items: center; }
-.tone-swatch::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--tone-surface); }
+.tone-swatch { width: 21px; height: 21px; border-radius: 50%; display: grid; place-items: center; }
+.tone-swatch::after { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--tone-surface); }
 .tone-panel {
     position: absolute;
     inset-block-start: calc(100% + .58rem);
