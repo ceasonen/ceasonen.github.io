@@ -4,29 +4,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Cheng Chen, Tongji University. Research, publications, internships, projects, and academic service.">
-    <title>Cheng Chen | Homepage</title>
+    <title>Cheng Chen | {{ page.title | escape }}</title>
     <link rel="icon" href="{{ '/favicon.svg' | relative_url }}?v=rubik-1" type="image/svg+xml">
-    <link rel="preload" href="{{ '/assets/fonts/nunito-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/templates/sourcesans3.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}?v={{ site.asset_version }}">
     <link rel="stylesheet" href="{{ '/assets/css/tone.css' | relative_url }}?v={{ site.asset_version }}">
 </head>
 <body>
-    <a class="skip-link" href="#about">Skip to content</a>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
         <nav class="site-nav" aria-label="Main navigation">
-            <a class="site-brand" href="{{ '/#about' | relative_url }}">
-                <img src="{{ '/favicon.svg' | relative_url }}" width="34" height="34" alt="">
-                <span>Cheng Chen</span>
+            <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="Cheng Chen · Homepage">
+                <img src="{{ '/favicon.svg' | relative_url }}" width="38" height="38" alt="">
             </a>
             <div id="section-nav" class="section-nav">
                 {% for item in site.data.navigation.pages %}
+                {% unless item.name == 'Writing' and site.posts.size == 0 %}
                 <a href="{{ item.url | relative_url }}"{% if item.url contains '.pdf' %} target="_blank" rel="noopener"{% endif %}>{% if item.name == 'Writing' %}<img class="writing-nav-avatar" src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="24" height="24" alt="">{% endif %}{{ item.name }}</a>
+                {% endunless %}
                 {% endfor %}
             </div>
             {% include tone.html %}
         </nav>
     </header>
-    <div class="site-shell">{{ content }}</div>
+    <div class="site-shell{% if page.url == '/' %} site-shell--home{% endif %}">{{ content }}</div>
     <footer class="site-footer">
         <span>© {{ 'now' | date: '%Y' }} Cheng Chen · <a href="https://github.com/ceasonen/cube_page">Cube Page</a></span>
         <span>Layout adapted from <a href="https://github.com/WD7ang/WowPage" target="_blank" rel="noopener">WowPage</a></span>

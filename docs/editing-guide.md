@@ -74,14 +74,14 @@ badge: "Accepted"
 
 ## 页面结构
 
-- 首页板块顺序：`site/index.html`。当前为简介及研究方向 → News → 教育与实习 → 项目 → 奖项 → 论文 → 学术服务。导航顺序与板块一致，英文 CV（EN）与中文 CV（ZH）下载链接保留在最后，也都显示在左侧资料栏。
+- 首页板块顺序：`site/index.html`。当前为简介及研究方向 → News → 教育与实习 → 项目 → 奖项 → 论文 → 学术服务。导航顺序与板块一致，英文 CV（EN）与中文 CV（ZH）下载链接保留在最后。
 - 页面外壳：`site/_layouts/single.html`；侧栏：`site/index.html`。
 - 教育实习 / 项目 / 论文布局：`site/_includes/sections/experience.html` / `projects.html` / `publications.html`。
 - 原独立栏目页面仅保留旧地址跳转，使用 `site/_layouts/redirect.html`，无需重复维护内容。
-- 单页导航脚本：`site/assets/js/home.js`，负责手机菜单和当前板块提示。
+- 单页导航脚本：`site/assets/js/home.js`，负责论文筛选和当前板块提示。
 - CSS：`site/assets/css/global.css`。修改后可更新 `_config.yml` 的 `asset_version` 字符串，让浏览器重新加载；相应测试也需同步预期。
-- 网站保持 WowPage 的圆润风格，全站统一使用本地托管的 Nunito 可变字体（`site/assets/fonts/nunito-latin.woff2`，约 38 KB，SIL 开源授权）；标题、正文、简介、奖项、论文、导航使用同一家族，以字号和字重区分层级，不混用其他正文或手写字体，也不依赖 Google Fonts 在线加载。主 CV 与照片简历仍使用 Computer Modern Unicode，中文保留宋体；不受网站字体影响。
-- 本轮直接以克隆的 WowPage 源码为基础调整；样式来源和改进说明见 [design-reference.md](design-reference.md)。论文区的三个筛选按钮共用同一组卡片，不需要重复维护内容；联系图标在 `site/_includes/widgets/icon.html`。
+- 主页的姓名和章节标题使用本地 Literata，正文和导航使用本地 Source Sans 3。主 CV 与照片简历使用 Computer Modern Unicode，中文使用宋体。
+- 设计来源见 [design-reference.md](design-reference.md)。论文筛选按钮共用同一组卡片，联系图标在 `site/_includes/widgets/icon.html`。Writing 在 `site/_posts/` 中有文章时出现。
 
 ## 构建、预览、发布
 

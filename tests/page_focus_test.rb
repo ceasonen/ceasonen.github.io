@@ -112,18 +112,20 @@ class PageFocusTest < Minitest::Test
     cv_links.each { |link| assert_equal "_blank", link["target"] }
   end
 
-  def test_home_uses_reference_typography_without_duplicate_anchor_offsets
+  def test_home_places_the_portrait_and_identity_in_a_separate_left_column
     css = File.read(File.join(ROOT, "site/assets/css/global.css"))
-    assert_includes css, '"Nunito"'
-    assert_includes css, '"Comic Sans MS"'
+    assert_includes css, '"Source Sans 3"'
+    assert_includes css, '"Literata"'
     assert_includes css, '@font-face'
     refute_includes css, '--detail-font'
     refute_match(/html\s*\{[^}]*scroll-padding-top/, css)
     assert_match(/\.home-section\s*\{[^}]*scroll-margin-top/, css)
     doc = page("index.html")
-    assert doc.at_css('link[rel="preload"][as="font"][href="/assets/fonts/nunito-latin.woff2"]')
-    assert_equal "Cheng Chen", doc.at_css("#about h1").text.strip
-    assert doc.at_css("#about .profile-portrait")
+    assert doc.at_css('link[rel="preload"][as="font"][href="/assets/fonts/templates/sourcesans3.woff2"]')
+    assert_equal "Cheng Chen", doc.at_css("aside.profile-sidebar h1").text.strip
+    assert doc.at_css("aside.profile-sidebar .profile-portrait")
+    assert doc.at_css("aside.profile-sidebar .profile-links")
+    assert doc.at_css("aside.profile-sidebar + main #about")
     assert_equal 1, doc.css("h1").length
   end
 
@@ -152,7 +154,6 @@ class PageFocusTest < Minitest::Test
     refute_nil link
     assert_equal "chenceason10@gmail.com", link.text.strip
     assert_empty doc.css(".profile-links a[href^='mailto:']")
-    assert_empty page("2026/03/17/acknowledgement.html").css(".sidebar-links a[href^='mailto:']")
   end
 
   def test_cv_links_stay_in_top_navigation_only
@@ -163,25 +164,16 @@ class PageFocusTest < Minitest::Test
     assert_empty doc.css('.profile-links a[href*=".pdf"]')
   end
 
-  def test_writing_entry_and_article_use_the_same_tone_control
+  def test_unverified_writing_is_absent_and_news_and_tone_controls_remain
     home = page("index.html")
-    entry = home.at_css("#writing .writing-entry")
-    refute_nil entry
-    assert_equal "/2026/03/17/acknowledgement.html", entry["href"]
-    assert_equal "/assets/images/writing/usagi.png", entry.at_css("img")["src"]
+    refute home.at_css("#writing")
+    refute home.at_css('.section-nav a[href="/#writing"]')
+    refute File.exist?(File.join(ROOT, "2026/03/17/acknowledgement.html"))
+
     assert_equal 4, home.css("#news > .section-body > .news-list > li").length
     assert_operator home.css("#news .news-archive li").length, :>, 0
-
-    article = page("2026/03/17/acknowledgement.html")
-    assert_equal "Acknowledgement", article.at_css("article h1").text
-    assert article.at_css('a.writing-back[href="/#writing"]')
-    assert_empty article.css("aside, .badge, .sidebar-links")
-    assert_includes article.at_css(".reading-prose").text, "Yuqing Xie and Kun Chen"
-    refute_includes article.at_css(".reading-prose").text, "Section 1"
-    [home, article].each do |doc|
-      assert_equal 1, doc.css('[data-tone-control] input[type="range"]').length
-      assert_equal 1, doc.css('[data-tone-control] [data-tone-reset]').length
-    end
+    assert_equal 1, home.css('[data-tone-control] input[type="range"]').length
+    assert_equal 1, home.css('[data-tone-control] [data-tone-reset]').length
   end
 
   def test_x_profile_link_uses_the_supplied_account

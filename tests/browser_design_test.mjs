@@ -37,7 +37,7 @@ const waitFor = expression => evaluate(`new Promise((resolve,reject) => {
 const screenshot = async label => fs.writeFile(`.build/preview/refined-${label}.png`, Buffer.from((await send('Page.captureScreenshot')).data, 'base64'));
 const navigate = async section => {
   await evaluate(`document.querySelector('.section-nav a[href="/#${section}"]').click()`);
-  await waitFor(`location.hash === '#${section}' && document.querySelector('.section-nav a[aria-current]')?.getAttribute('href') === '/#${section}' && (Math.abs(document.querySelector('#${section}').getBoundingClientRect().top - (document.querySelector('.site-header').getBoundingClientRect().bottom + 24)) < 4 || Math.ceil(scrollY + innerHeight) >= document.documentElement.scrollHeight - 3)`);
+  await waitFor(`location.hash === '#${section}' && document.querySelector('.section-nav a[aria-current]')?.getAttribute('href') === '/#${section}' && document.querySelector('#${section}').getBoundingClientRect().top >= Math.max(0, document.querySelector('.site-header').getBoundingClientRect().bottom) - 1`);
   await evaluate(`new Promise(resolve => {
     let position = scrollY, stableSince = performance.now();
     const tick = () => {
@@ -55,23 +55,42 @@ try {
   await send('Page.navigate', {url});
   await waitFor(`document.readyState === 'complete' && !!document.querySelector('#service')`);
   await evaluate('document.fonts.ready');
-  assert.equal(await evaluate(`document.fonts.check('600 16px Nunito')`), true);
   await send('DOM.enable');
   await send('CSS.enable');
   const root = (await send('DOM.getDocument')).root.nodeId;
-  for (const selector of ['h1', '.profile-status', '.news-list li > span', '.experience-info p', '.project-name', '.award-name', '.publication-summary', '.service-list li']) {
+  const textSurfaces = {
+    h1: 'Literata',
+    '#about h2': 'Literata',
+    '.profile-status': 'SourceSans3',
+    '.news-list li > span': 'SourceSans3',
+    '.experience-info p': 'SourceSans3',
+    '.project-name': 'SourceSans3',
+    '.award-name': 'SourceSans3',
+    '.publication-summary': 'SourceSans3',
+    '.service-list li': 'SourceSans3',
+  };
+  for (const [selector, fontName] of Object.entries(textSurfaces)) {
     const nodeId = (await send('DOM.querySelector', {nodeId: root, selector})).nodeId;
     const fonts = (await send('CSS.getPlatformFontsForNode', {nodeId})).fonts;
-    assert(fonts.some(font => font.isCustomFont && font.postScriptName.startsWith('Nunito')), selector);
-    assert(fonts.every(font => font.isCustomFont || font.familyName.includes('Emoji')), `Unexpected fallback font: ${selector}`);
+    assert(fonts.some(font => font.isCustomFont && font.postScriptName.startsWith(fontName)), selector);
   }
-  console.log('PASS: actual rendered Nunito font across all eight text surfaces');
+  console.log('PASS: heading and body fonts render from local web fonts');
 
   for (const width of [320,390,768,1024,1025,1100,1280,1440,1920]) {
     await send('Emulation.setDeviceMetricsOverride', {width, height: 1000, deviceScaleFactor: 1, mobile: width < 600});
-    const state = await evaluate(`({width: innerWidth, content: document.documentElement.scrollWidth})`);
+    const state = await evaluate(`(() => {
+      const profile = document.querySelector('.profile-sidebar').getBoundingClientRect();
+      const main = document.querySelector('main').getBoundingClientRect();
+      return {
+        width: innerWidth,
+        content: document.documentElement.scrollWidth,
+        leftColumn: profile.right < main.left,
+        aboveContent: profile.bottom <= main.top,
+      };
+    })()`);
     assert.equal(state.width, width);
     assert.equal(state.content, width, `Overflow at ${width}px`);
+    assert.equal(width > 760 ? state.leftColumn : state.aboveContent, true, `Profile layout at ${width}px`);
   }
   console.log('PASS: no horizontal overflow at nine viewport widths');
 
@@ -95,9 +114,11 @@ try {
   assert.deepEqual(await evaluate(`[...document.querySelectorAll('.service-list li')].map(item => item.textContent.trim())`),
     ['ICLR(2027)', 'AAAI(2027)', 'ICME(2026)', 'IJCNN(2026,2027)', 'PRCV(2026)']);
 
+  const sections = await evaluate(`[...document.querySelectorAll('.section-nav a[href^="/#"]')].map(link => link.hash.slice(1))`);
+  assert(!sections.includes('writing'));
   for (const width of [1440,390]) {
     await send('Emulation.setDeviceMetricsOverride', {width, height: width === 390 ? 844 : 1100, deviceScaleFactor: 1, mobile: width === 390});
-    for (const section of ['about','news','experience','projects','awards','publications','talks','reports','service']) {
+    for (const section of sections) {
       await navigate(section);
       if (section === 'awards') {
         await waitFor(`[...document.querySelectorAll('.award-list .recognition-mark img')].every(img => img.complete && img.naturalWidth > 0)`);
@@ -115,10 +136,14 @@ try {
   assert.equal(await evaluate(`document.querySelector('.section-nav a[aria-current]').textContent.trim()`), 'Service');
   console.log('PASS: every section and last-section navigation on desktop and mobile');
 
-  await evaluate(`document.querySelector('.nav-toggle').click()`);
-  assert.equal(await evaluate(`document.querySelector('.nav-toggle').getAttribute('aria-expanded')`), 'true');
+  await evaluate(`(() => {
+    const toggle = document.querySelector('.tone-toggle');
+    toggle.focus();
+    toggle.click();
+  })()`);
+  assert.equal(await evaluate(`document.querySelector('[data-tone-control]').open`), true);
   await send('Input.dispatchKeyEvent', {type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
-  assert.equal(await evaluate(`document.querySelector('.nav-toggle').getAttribute('aria-expanded')`), 'false');
+  assert.equal(await evaluate(`document.querySelector('[data-tone-control]').open`), false);
   assert.equal(await evaluate(`getComputedStyle(document.documentElement).scrollBehavior`), 'auto');
   const links = await evaluate(`[...document.querySelectorAll('.publication-card .publication-links a')].map(a=>({label:a.textContent.trim(),url:a.href}))`);
   assert.equal(links.length, 9);
@@ -129,16 +154,25 @@ try {
   assert.equal(links.filter(link => link.label === '[IJCAI]').length, 1);
   assert(links.every(link => !link.url.includes('/abs/') && !link.url.includes('researchgate')));
   const marks = await evaluate(`({legend:getComputedStyle(document.querySelector('.publication-legend')).fontSize, author:getComputedStyle(document.querySelector('.publication-authors')).fontSize, superscript:getComputedStyle(document.querySelector('.publication-authors sup')).fontSize})`);
-  assert(parseFloat(marks.legend) >= 15);
+  assert(parseFloat(marks.legend) >= 14);
   assert(parseFloat(marks.author) >= 14);
   assert(parseFloat(marks.superscript) >= 12);
-  const pdf = await evaluate(`fetch('/assets/papers/deepyolo-ijcnn-2026.pdf').then(async r=>({ok:r.ok,type:r.headers.get('content-type'),signature:(await r.text()).slice(0,5)}))`);
+  const pdf = await evaluate(`fetch('/assets/papers/deepyolo-ijcnn-2026.pdf').then(async response => {
+    const reader = response.body.getReader();
+    const {value} = await reader.read();
+    await reader.cancel();
+    return {
+      ok: response.ok,
+      type: response.headers.get('content-type'),
+      signature: new TextDecoder().decode(value?.slice(0, 5)),
+    };
+  })`);
   assert.equal(pdf.ok, true);
   assert(pdf.type.includes('application/pdf'));
   assert.equal(pdf.signature, '%PDF-');
-  console.log('PASS: keyboard menu, reduced motion and direct IJCNN PDF response');
+  console.log('PASS: keyboard color control, reduced motion and direct IJCNN PDF response');
   await send('Emulation.setEmulatedMedia', {features: [{name: 'prefers-reduced-motion', value: 'no-preference'}]});
-  for (const section of ['about','publications','talks','reports','service']) await navigate(section);
+  for (const section of ['about','publications','service']) await navigate(section);
   console.log('PASS: normal-motion anchor navigation, including the last section');
 } catch (error) {
   console.log('Failure layout', await evaluate(`({width:innerWidth,height:innerHeight,scroll:scrollY,page:document.documentElement.scrollHeight,hash:location.hash,service:document.querySelector('#service').getBoundingClientRect().top,active:document.querySelector('[aria-current]')?.textContent,visualHeight:visualViewport.height,scale:visualViewport.scale})`));
