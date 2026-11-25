@@ -1,10 +1,10 @@
 # Research descriptions are checked against the local manuscripts; software entries against public repositories.
 # Keep descriptions scoped to implemented features; do not copy roadmap promises.
-- name: Auditing Transfer from Visual QA to Image Generation
+- name: Transfer Audit
   category: Research project
   repository: https://github.com/ceasonen/umm_audit
   website: https://ceasonen.github.io/umm_audit/
-  summary: Counting and spatial tests.
+  summary: Counting and spatial tests across six multimodal models.
 - name: Cube Page
   category: Website template
   repository: https://github.com/ceasonen/cube_page

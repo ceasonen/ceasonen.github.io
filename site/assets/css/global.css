@@ -15,6 +15,13 @@
     font-display: swap;
 }
 @font-face {
+    font-family: "Comic Neue";
+    src: url("../fonts/templates/comic-neue-bold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+@font-face {
     font-family: Caveat;
     src: url("../fonts/caveat-bold.woff2") format("woff2");
     font-style: normal;
@@ -90,7 +97,8 @@ strong { font-weight: 650; }
 .profile-affiliation { margin: .48rem 0 .15rem; font-weight: 650; }
 .profile-status { color: var(--muted); font-size: .94rem; line-height: 1.4; margin: 0; }
 .profile-student { display: block; margin-top: .35rem; font-size: .82rem; }
-.profile-introduction { max-width: 69ch; font: 400 1.18rem/1.56 var(--personal-font); }
+.profile-introduction { max-width: 69ch; font: 700 1.18rem/1.56 var(--personal-font); }
+.profile-introduction strong { font-weight: inherit; }
 .profile-introduction p { margin-bottom: .65rem; }
 .profile-introduction .intro-contact { margin-bottom: 0; color: var(--muted); overflow-wrap: anywhere; }
 .intro-contact a { text-decoration: underline; }

@@ -35,7 +35,7 @@ class PageFocusTest < Minitest::Test
     assert_equal "Paper Radar", radar.text.strip
     audit = doc.at_css('#projects .project-name[href="https://ceasonen.github.io/umm_audit/"]')
     refute_nil audit
-    assert_equal "Auditing Transfer from Visual QA to Image Generation", audit.text.strip
+    assert_equal "Transfer Audit", audit.text.strip
     cube = doc.at_css('#projects .project-name[href="https://ceasonen.github.io/cube_page/"]')
     refute_nil cube
     assert_equal "Cube Page", cube.text.strip
