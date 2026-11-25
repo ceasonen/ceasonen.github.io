@@ -12,7 +12,7 @@ pages:
 - name: Publications
   url: /#publications
 - name: Writing
-  url: /#writing
+  url: /writing/
 - name: Talks
   url: /#talks
 - name: Reports

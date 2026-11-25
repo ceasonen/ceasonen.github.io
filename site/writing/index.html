@@ -1,0 +1,26 @@
+---
+layout: reading
+title: Writing
+writing_index: true
+---
+
+<img class="reading-watermark" src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="318" height="319" alt="">
+<section class="writing-archive" aria-labelledby="writing-title">
+    <header class="reading-heading">
+        <h1 id="writing-title">Writing</h1>
+    </header>
+    {% if site.posts.size > 0 %}
+    <ul class="writing-list">
+        {% for post in site.posts %}
+        <li>
+            <a class="writing-entry" href="{{ post.url | relative_url }}">
+                <span class="writing-title">{{ post.title | escape }}</span>
+                <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%b %d, %Y' }}</time>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="writing-empty">No posts yet.</p>
+    {% endif %}
+</section>

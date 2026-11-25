@@ -74,7 +74,7 @@ try {
     '.intro-contact a': 'ComicNeue',
     '.section-nav a[href="/#about"]': 'Outfit',
     '#writing h2': 'Caveat',
-    '#writing .writing-title': 'Outfit',
+    '#writing .writing-button': 'Outfit',
     '.section-nav .writing-nav-link': 'ComicNeue',
     '.profile-status': 'Outfit',
     '.news-text': 'Outfit',
@@ -131,14 +131,13 @@ try {
     ['ICLR(2027)', 'AAAI(2027)', 'ICME(2026)', 'IJCNN(2026,2027)', 'PRCV(2026)']);
 
   const sections = await evaluate(`[...document.querySelectorAll('.section-nav a[href^="/#"]')].map(link => link.hash.slice(1))`);
-  for (const section of ['writing', 'talks', 'reports']) assert(sections.includes(section));
+  for (const section of ['talks', 'reports']) assert(sections.includes(section));
+  assert.equal(await evaluate(`document.querySelector('#writing .writing-button').getAttribute('href')`), '/writing/');
+  assert.equal(await evaluate(`document.querySelector('.writing-nav-link').getAttribute('href')`), '/writing/');
   for (const width of [1440,390]) {
     await send('Emulation.setDeviceMetricsOverride', {width, height: width === 390 ? 844 : 1100, deviceScaleFactor: 1, mobile: width === 390});
     for (const section of sections) {
       await navigate(section);
-      if (section === 'writing') {
-        await waitFor(`[...document.querySelectorAll('#writing h2 img, .writing-nav-link img')].every(img => img.complete && img.naturalWidth > 0)`);
-      }
       if (section === 'awards') {
         await waitFor(`[...document.querySelectorAll('.award-list .recognition-mark img')].every(img => img.complete && img.naturalWidth > 0)`);
       }

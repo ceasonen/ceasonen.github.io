@@ -1,6 +1,19 @@
 .reading-page .site-nav { display: flex; }
+.reading-page .site-brand { gap: .4rem; }
 .reading-page .writing-back { display: inline-flex; align-items: center; gap: .43rem; margin-inline-start: auto; font-family: var(--personal-font); font-size: .94rem; font-weight: 400; }
-.reading-shell { max-width: 752px; margin-inline: auto; padding: clamp(1.65rem, 4.4vw, 3.85rem) var(--page-pad) 5rem; }
+.reading-shell { position: relative; isolation: isolate; max-width: 752px; margin-inline: auto; padding: clamp(1.65rem, 4.4vw, 3.85rem) var(--page-pad) 5rem; }
+.reading-watermark {
+    position: absolute;
+    z-index: -1;
+    inset-block-start: clamp(5.25rem, 21vw, 8rem);
+    inset-inline-end: var(--page-pad);
+    inline-size: clamp(10rem, 55vw, 21rem);
+    block-size: auto;
+    opacity: .18;
+    pointer-events: none;
+    user-select: none;
+}
+.writing-archive { min-block-size: 23rem; }
 .reading-heading { padding-bottom: .7rem; border-bottom: 1px solid var(--rule); margin-bottom: 1rem; }
 .reading-heading h1 { margin: 0 0 .42rem; font-size: clamp(2.05rem, 5vw, 2.75rem); line-height: 1.1; }
 .reading-byline { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .65rem; margin: 0; color: var(--muted); font-size: .9rem; }

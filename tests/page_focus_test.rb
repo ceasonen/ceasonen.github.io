@@ -90,7 +90,7 @@ class PageFocusTest < Minitest::Test
   def test_home_navigation_targets_sections_that_exist_once
     doc = page("index.html")
     doc.css(".section-nav a").each do |link|
-      next if link["href"].include?(".pdf")
+      next if link["href"].include?(".pdf") || link["href"] == "/writing/"
       assert link["href"].start_with?("/#"), link["href"]
       assert_equal 1, doc.css(link["href"].delete_prefix("/")).length
     end
@@ -105,7 +105,7 @@ class PageFocusTest < Minitest::Test
     sections = doc.css("main .home-section").map { |section| section["id"] }
     links = doc.css(".section-nav a")
     anchors = links.reject { |link| link["href"].include?(".pdf") }
-    assert_equal sections, anchors.map { |link| link["href"].delete_prefix("/#") }
+    assert_equal sections.map { |id| id == "writing" ? "/writing/" : "/##{id}" }, anchors.map { |link| link["href"] }
     cv_links = links.to_a.last(2)
     assert_equal ["CV (EN)", "CV (ZH)"], cv_links.map { |link| link.text.strip }
     assert_equal [CV_EN_URL, CV_ZH_URL], cv_links.map { |link| link["href"] }
@@ -164,30 +164,36 @@ class PageFocusTest < Minitest::Test
     assert_empty doc.css('.profile-links a[href*=".pdf"]')
   end
 
-  def test_writing_links_to_the_homepage_refresh
+  def test_writing_button_opens_the_watermarked_article_index
     home = page("index.html")
     writing = home.at_css("#writing")
-    refute_nil writing
     assert_equal "Writing", writing.at_css("h2").text.strip
+    assert_equal "/writing/", writing.at_css(".writing-button")["href"]
     assert_equal "/assets/images/writing/usagi.png", writing.at_css("h2 img")["src"]
-    nav = home.at_css('.section-nav a[href="/#writing"]')
-    refute_nil nav
-    assert_equal "/assets/images/writing/usagi.png", nav.at_css("img")["src"]
-    entry = writing.at_css(".writing-entry")
-    refute_nil entry
+    assert home.at_css('.section-nav .writing-nav-link[href="/writing/"]')
+    assert_empty writing.css(".writing-entry, .reading-watermark")
+
+    archive = page("writing/index.html")
+    assert_equal "Writing", archive.at_css("main h1").text
+    watermark = archive.at_css('main > img.reading-watermark')
+    refute_nil watermark
+    assert_equal "/assets/images/writing/usagi.png", watermark["src"]
+    assert_equal "", watermark["alt"]
+
+    entry = archive.at_css('.writing-entry[href="/2026/11/26/homepage-refresh.html"]')
     assert_equal "A Small Homepage Refresh", entry.at_css(".writing-title").text
-    assert_equal "/2026/11/26/homepage-refresh.html", entry["href"]
     assert_equal "2026-11-26", entry.at_css("time")["datetime"]
-    assert_empty writing.css(".writing-empty")
+    assert_empty archive.css(".writing-empty")
     refute File.exist?(File.join(ROOT, "2026/03/17/acknowledgement.html"))
 
     article = page(entry["href"].delete_prefix("/"))
     assert_equal "A Small Homepage Refresh", article.at_css("article h1").text
-    assert article.at_css('.writing-back[href="/#writing"]')
+    assert article.at_css('.writing-back[href="/writing/"]')
+    assert_empty article.css(".reading-watermark")
     assert_equal 3, article.css(".reading-prose p").length
     assert_includes article.at_css(".reading-prose").text, "Outfit"
 
-    [home, article].each do |doc|
+    [home, archive, article].each do |doc|
       assert_equal 1, doc.css('[data-tone-control] input[type="range"]').length
       assert_equal 1, doc.css('[data-tone-control] [data-tone-reset]').length
     end

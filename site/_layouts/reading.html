@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | escape }} · {{ site.data.profile.navbar_name | escape }}</title>
+    <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="preload" href="{{ '/assets/fonts/templates/outfit-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}?v={{ site.asset_version }}">
+    <link rel="stylesheet" href="{{ '/assets/css/tone.css' | relative_url }}?v={{ site.asset_version }}">
+    <link rel="stylesheet" href="{{ '/assets/css/blog.css' | relative_url }}?v={{ site.asset_version }}">
+</head>
+<body class="reading-page">
+    <a class="skip-link" href="#article">Skip to content</a>
+    <header class="site-header">
+        <nav class="site-nav" aria-label="Article navigation">
+            <a class="site-brand" href="{{ '/' | relative_url }}">
+                <img src="{{ '/favicon.svg' | relative_url }}" width="34" height="34" alt="">
+                <span>{{ site.data.profile.navbar_name | escape }}</span>
+            </a>
+            {% if page.writing_index %}
+            <a class="writing-back" href="{{ '/' | relative_url }}">← Home</a>
+            {% else %}
+            <a class="writing-back" href="{{ '/writing/' | relative_url }}">
+                <img class="writing-nav-avatar" src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="24" height="24" alt="">
+                Writing
+            </a>
+            {% endif %}
+            {% include tone.html %}
+        </nav>
+    </header>
+    <main id="article" class="reading-shell">
+        {{ content }}
+    </main>
+    <script src="{{ '/assets/js/tone.js' | relative_url }}?v={{ site.asset_version }}" defer></script>
+</body>
+</html>

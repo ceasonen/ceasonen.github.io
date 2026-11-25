@@ -70,21 +70,7 @@ title: Homepage
 
     <section id="writing" class="home-section">
         <h2 class="writing-heading">Writing<img src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="44" height="44" alt="" loading="lazy"></h2>
-        {% if site.posts.size > 0 %}
-        <ul class="writing-list">
-            {% for post in site.posts %}
-            <li>
-                <a class="writing-entry" href="{{ post.url | relative_url }}">
-                    <img class="writing-avatar" src="{{ '/assets/images/writing/usagi.png' | relative_url }}" width="64" height="64" alt="">
-                    <span class="writing-title">{{ post.title | escape }}</span>
-                    <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%b %d, %Y' }}</time>
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p class="writing-empty">No posts yet.</p>
-        {% endif %}
+        <a class="writing-button" href="{{ '/writing/' | relative_url }}">View all posts <span aria-hidden="true">→</span></a>
     </section>
 
     <section id="talks" class="home-section">

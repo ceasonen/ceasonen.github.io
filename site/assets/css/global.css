@@ -202,13 +202,24 @@ strong { font-weight: 650; }
     gap: .45rem;
 }
 .writing-heading img { width: 44px; height: 44px; object-fit: contain; }
-.writing-empty { margin: -.45rem 0 0; color: var(--muted); font-family: var(--personal-font); }
-.writing-list { border-block: 1px solid var(--rule); }
+.writing-button {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    min-block-size: 2.65rem;
+    padding: .42rem .8rem;
+    border: 1px solid var(--rule);
+    border-radius: .48rem;
+    background: var(--panel);
+    font-weight: 600;
+}
+.writing-button:hover { border-color: var(--accent); }
+.writing-empty { margin: 0; color: var(--muted); font-family: var(--personal-font); }
+.writing-list { border-bottom: 1px solid var(--rule); }
 .writing-list li + li { border-top: 1px solid var(--rule); }
-.writing-entry { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; align-items: center; gap: .25rem .9rem; padding: .46rem 0; }
+.writing-entry { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: .25rem .9rem; padding: .58rem 0 .7rem; }
 .writing-entry:hover { text-decoration: none; }
 .writing-entry:hover .writing-title { text-decoration: underline; }
-.writing-avatar { width: 64px; height: 64px; padding: 5px; border-radius: 50%; background: var(--panel); object-fit: contain; }
 .writing-title { color: var(--heading); font-weight: 650; }
 .service-row { grid-template-columns: 34px minmax(0, 1fr); align-items: start; padding-block: .15rem; }
 .service-row .site-icon { width: 28px; height: 28px; }
@@ -263,10 +274,7 @@ strong { font-weight: 650; }
     .publication-cover { aspect-ratio: 1.95; }
     .publication-filters { column-gap: .17rem; }
     .publication-filter { padding-inline: .38rem; }
-    .writing-entry { grid-template-columns: 56px minmax(0, 1fr); gap: 0 .72rem; }
-    .writing-avatar { width: 56px; height: 56px; grid-row: span 2; }
-    .writing-entry time { grid-column: 2; align-self: start; }
-    .writing-title { align-self: end; }
+    .writing-entry { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
     .service-row { grid-template-columns: 30px minmax(0, 1fr); }
 }
 @media (max-height: 640px) {

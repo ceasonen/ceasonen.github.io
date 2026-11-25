@@ -4,7 +4,7 @@ require "cgi"
 require "uri"
 
 root = File.expand_path("..", __dir__)
-pages = %w[index.html publications.html projects.html news.html intern.html awards.html 404.html cv/index.html offer-pilot/index.html deep-research/index.html fpga-optimization/index.html research-skills/index.html]
+pages = %w[index.html publications.html projects.html news.html intern.html awards.html 404.html writing/index.html cv/index.html offer-pilot/index.html deep-research/index.html fpga-optimization/index.html research-skills/index.html]
 pages += Dir.glob(File.join(root, "[0-9][0-9][0-9][0-9]", "**", "*.html"))
             .map { |path| path.delete_prefix("#{root}/") }
 errors = []
