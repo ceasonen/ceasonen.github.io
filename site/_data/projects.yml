@@ -19,7 +19,7 @@
   category: Research software
   repository: https://github.com/ceasonen/arxiv_paper_ai
   website: https://ceasonen.github.io/arxiv_paper_ai/
-  summary: A daily arXiv feed for AI research with topic filters, a reading list, and direct PDF links.
+  summary: A daily arXiv browser for AI research with topic filters, searchable abstracts, and a reading list with direct PDF links.
   stack: [Python, JavaScript, GitHub Actions]
   featured: false
 - name: AutoSearch AI
