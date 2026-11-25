@@ -13,6 +13,10 @@ pages:
   url: /#publications
 - name: Writing
   url: /#writing
+- name: Talks
+  url: /#talks
+- name: Reports
+  url: /#reports
 - name: Service
   url: /#service
 - name: CV (EN)

@@ -164,7 +164,7 @@ class PageFocusTest < Minitest::Test
     assert_empty doc.css('.profile-links a[href*=".pdf"]')
   end
 
-  def test_empty_writing_section_keeps_the_mascot_and_has_no_sample_post
+  def test_writing_links_to_the_homepage_refresh
     home = page("index.html")
     writing = home.at_css("#writing")
     refute_nil writing
@@ -173,12 +173,35 @@ class PageFocusTest < Minitest::Test
     nav = home.at_css('.section-nav a[href="/#writing"]')
     refute_nil nav
     assert_equal "/assets/images/writing/usagi.png", nav.at_css("img")["src"]
-    assert_equal "No posts yet.", writing.at_css(".writing-empty").text.strip
-    assert_empty writing.css(".writing-list, .writing-entry")
+    entry = writing.at_css(".writing-entry")
+    refute_nil entry
+    assert_equal "A Small Homepage Refresh", entry.at_css(".writing-title").text
+    assert_equal "/2026/11/26/homepage-refresh.html", entry["href"]
+    assert_equal "2026-11-26", entry.at_css("time")["datetime"]
+    assert_empty writing.css(".writing-empty")
     refute File.exist?(File.join(ROOT, "2026/03/17/acknowledgement.html"))
 
-    assert_equal 1, home.css('[data-tone-control] input[type="range"]').length
-    assert_equal 1, home.css('[data-tone-control] [data-tone-reset]').length
+    article = page(entry["href"].delete_prefix("/"))
+    assert_equal "A Small Homepage Refresh", article.at_css("article h1").text
+    assert article.at_css('.writing-back[href="/#writing"]')
+    assert_equal 3, article.css(".reading-prose p").length
+    assert_includes article.at_css(".reading-prose").text, "Outfit"
+
+    [home, article].each do |doc|
+      assert_equal 1, doc.css('[data-tone-control] input[type="range"]').length
+      assert_equal 1, doc.css('[data-tone-control] [data-tone-reset]').length
+    end
+  end
+
+  def test_talks_and_reports_have_only_headings
+    home = page("index.html")
+    %w[talks reports].each do |id|
+      section = home.at_css("#" + id)
+      refute_nil section
+      assert_equal ["h2"], section.element_children.map(&:name)
+      assert_equal id.capitalize, section.at_css("h2").text
+      assert home.at_css(%(.section-nav a[href="/##{id}"]))
+    end
   end
 
   def test_news_keeps_every_event_in_one_keyboard_accessible_list
