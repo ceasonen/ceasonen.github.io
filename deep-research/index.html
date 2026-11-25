@@ -1,12 +1,79 @@
 <!-- GENERATED FILE: edit site/ sources, then run ruby tools/website.rb build. Do not edit this copy. -->
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="AutoSearch AI is an open-source research search engine with source citations, an arXiv paper radar, and a PDF reader."><title>AutoSearch AI · Cheng Chen</title><link rel="stylesheet" href="/assets/css/project-showcase.css"></head>
+<!DOCTYPE html>
+<!-- Adapted from Solid State by HTML5 UP, CC BY 3.0. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AutoSearch AI connects research search, citations, and an integrated paper reader.">
+  <title>AutoSearch AI · Research with sources</title>
+  <link rel="stylesheet" href="/assets/vendor/solid-state/main.css">
+  <link rel="stylesheet" href="/assets/css/project-templates.css">
+</head>
 <body data-project="deep-research">
-<header class="masthead shell"><a class="brand" href="https://ceasonen.github.io/"><span class="brand-mark">✳</span>Cheng Chen / Projects</a><nav class="nav-links" aria-label="Project navigation"><a href="#workflow">Workflow</a><a href="#runtime">Run it</a><a href="https://github.com/ceasonen/deep-research">GitHub ↗</a></nav></header>
-<main class="shell">
-<section class="hero"><div><div class="eyebrow">Research software · Search &amp; reading</div><h1>Research starts with a <span>better trail.</span></h1><p class="lead">AutoSearch AI brings web search, academic discovery, citation-aware synthesis, and an arXiv paper radar into one reading workflow—so sources remain visible as the answer takes shape.</p><div class="hero-actions"><a class="button primary" href="https://github.com/ceasonen/deep-research">View source &amp; setup ↗</a><a class="button secondary" href="#workflow">Explore the pipeline ↓</a></div></div><div class="hero-visual" aria-label="Illustrative research search interface"><div class="visual-top"><i></i><i></i><i></i></div><div class="visual-caption">Illustrative search · backend not running here</div><div class="search-preview">⌕ &nbsp; Efficient multimodal models <em>· arXiv mode</em></div><div class="source-preview"><b>01</b><span>Find relevant papers and source metadata</span></div><div class="source-preview"><b>02</b><span>Extract evidence before synthesizing an answer</span></div><div class="source-preview"><b>03</b><span>Follow citations into a focused PDF reading view</span></div><div class="feedback"><span>Search → evidence → answer → reader</span><span>ARXIV</span></div></div></section>
-<div class="status"><strong>Project preview</strong><span>This page introduces the open-source system. Live research search needs its FastAPI backend, search providers, and an LLM configuration; GitHub Pages serves only this static preview.</span></div>
-<section class="content" id="workflow"><div class="section-heading"><div><div class="section-label">Inside the system</div><h2>Keep the evidence in view</h2></div><p>The repository contains a Python/FastAPI pipeline and a Next.js reading interface—not merely a search-box mockup.</p></div><div class="steps"><div class="step"><div class="num">01 / DISCOVER</div><h3>Search across modes</h3><p>Switch among quick, deep, academic, and arXiv modes according to the question.</p></div><div class="step"><div class="num">02 / SYNTHESIZE</div><h3>Ground the answer</h3><p>Aggregate sources, extract content, and stream an answer with citation links and follow-up queries.</p></div><div class="step"><div class="num">03 / READ</div><h3>Go back to the paper</h3><p>Use paper metadata, method notes, and the integrated reader to inspect the original PDF.</p></div></div></section>
-<section class="content" id="runtime"><div class="split"><div><div class="section-label">Run the full system</div><h2>A local research stack, with visible sources.</h2><p>The search API cannot execute on GitHub Pages. The repository documents local development and Docker Compose, including optional search engines, model settings, and runtime LLM overrides.</p><a class="button primary" href="https://github.com/ceasonen/deep-research#quick-start">Open setup guide ↗</a></div><ul class="detail-list"><li><strong>Backend</strong>Python, FastAPI, search aggregation, content extraction</li><li><strong>Frontend</strong>Next.js search interface and PDF reader</li><li><strong>Modes</strong>Quick, deep, academic, and arXiv paper radar</li><li><strong>Deployment boundary</strong>Live queries need a running backend; no API credentials are published here.</li></ul></div></section>
-</main><footer class="footer shell"><span>AutoSearch AI · An open-source project by Cheng Chen</span><span><a href="https://ceasonen.github.io/">Back to homepage</a> · <a href="https://github.com/ceasonen/deep-research">Source code</a></span></footer>
-</body></html>
+  <div id="page-wrapper">
+    <header id="header" class="alt project-nav">
+      <h1><a href="https://ceasonen.github.io/">Cheng Chen</a></h1>
+      <nav aria-label="Project navigation">
+        <a href="#workflow">Workflow</a><a href="#runtime">Setup</a><a href="https://github.com/ceasonen/deep-research">GitHub</a>
+      </nav>
+    </header>
+    <section id="banner">
+      <div class="inner">
+        <h2>AutoSearch AI</h2>
+        <p>Research search with citations you can follow.</p>
+        <ul class="actions">
+          <li><a class="button primary" href="#workflow">Explore the workflow</a></li>
+          <li><a class="button" href="https://github.com/ceasonen/deep-research">Source code</a></li>
+        </ul>
+      </div>
+    </section>
+    <main id="wrapper">
+      <section id="workflow" class="wrapper spotlight style1">
+        <div class="inner">
+          <div class="content">
+            <h2 class="major">From a question to the paper</h2>
+            <p>Search across the web and academic sources, inspect the citations behind the answer, then open the original PDF in the reader.</p>
+            <div class="table-wrapper">
+              <table class="alt">
+                <caption>Available search modes</caption>
+                <thead><tr><th scope="col">Mode</th><th scope="col">Use it for</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Quick</th><td>A first pass on a focused question</td></tr>
+                  <tr><th scope="row">Deep</th><td>Investigating a question across multiple sources</td></tr>
+                  <tr><th scope="row">Academic</th><td>Finding research papers and their evidence</td></tr>
+                  <tr><th scope="row">arXiv</th><td>Finding preprints and following new work</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="wrapper alt style2">
+        <div class="inner">
+          <h2 class="major">Search, synthesize, read</h2>
+          <section class="features">
+            <article><h3 class="major">Collect sources</h3><p>Aggregate results and extract relevant passages from the retrieved material.</p></article>
+            <article><h3 class="major">Trace the answer</h3><p>Stream synthesis with source citations and suggested follow-up queries.</p></article>
+            <article><h3 class="major">Inspect papers</h3><p>Use paper metadata, method notes, and the PDF reader to check the original evidence.</p></article>
+            <article><h3 class="major">Tune the pipeline</h3><p>Configure search providers and model settings to fit your research workflow.</p></article>
+          </section>
+        </div>
+      </section>
+      <section id="runtime" class="wrapper style3">
+        <div class="inner">
+          <h2 class="major">Run AutoSearch AI</h2>
+          <p>Live queries require the FastAPI backend, search providers and a configured language model. The repository includes local development and Docker Compose instructions.</p>
+          <ul class="actions"><li><a class="button" href="https://github.com/ceasonen/deep-research#quick-start">Setup instructions</a></li></ul>
+        </div>
+      </section>
+    </main>
+    <footer id="footer">
+      <div class="inner"><ul class="copyright">
+        <li><a href="https://ceasonen.github.io/#projects">Cheng Chen</a></li>
+        <li>Adapted from <a href="https://html5up.net/solid-state">Solid State by HTML5 UP</a> under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+      </ul></div>
+    </footer>
+  </div>
+</body>
+</html>

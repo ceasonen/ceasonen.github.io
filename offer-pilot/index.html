@@ -1,12 +1,71 @@
 <!-- GENERATED FILE: edit site/ sources, then run ruby tools/website.rb build. Do not edit this copy. -->
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="OfferPilot is an AI technical-interview practice project with follow-up questions and structured feedback."><title>OfferPilot · Cheng Chen</title><link rel="stylesheet" href="/assets/css/project-showcase.css"></head>
+<!DOCTYPE html>
+<!-- Adapted from Hyperspace by HTML5 UP, CC BY 3.0. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OfferPilot is an AI interview practice project with adaptive follow-ups and structured feedback.">
+  <title>OfferPilot · Technical interview practice</title>
+  <link rel="stylesheet" href="/assets/vendor/hyperspace/main.css">
+  <link rel="stylesheet" href="/assets/css/project-templates.css">
+</head>
 <body data-project="offer-pilot">
-<header class="masthead shell"><a class="brand" href="https://ceasonen.github.io/"><span class="brand-mark">◇</span>Cheng Chen / Projects</a><nav class="nav-links" aria-label="Project navigation"><a href="#workflow">Workflow</a><a href="#runtime">Run it</a><a href="https://github.com/ceasonen/offer-pilot">GitHub ↗</a></nav></header>
-<main class="shell">
-<section class="hero"><div><div class="eyebrow">Prototype · AI interview practice</div><h1>Practice the interview, <span>not just the answers.</span></h1><p class="lead">OfferPilot builds a structured technical-interview session around your target role and level. It follows up on your answers, evaluates individual questions, and assembles a report you can use for the next round.</p><div class="hero-actions"><a class="button primary" href="https://github.com/ceasonen/offer-pilot">View source &amp; setup ↗</a><a class="button secondary" href="#workflow">Explore the flow ↓</a></div></div><div class="hero-visual" aria-label="Illustrative interview transcript"><div class="visual-top"><i></i><i></i><i></i></div><div class="visual-caption">Illustrative session · backend not running here</div><div class="bubble"><strong>Interviewer</strong>How would you keep an API responsive when a downstream service slows down?</div><div class="bubble response"><strong>Candidate</strong>I would set timeouts and use a circuit breaker to prevent cascading failures.</div><div class="bubble"><strong>Follow-up</strong>What signals would tell you the circuit should close again?</div><div class="feedback"><span>Role-aware follow-up → structured report</span><span>01 / 03</span></div></div></section>
-<div class="status"><strong>Project preview</strong><span>This page introduces the open-source app. Live AI interviews require the Next.js server and a user-configured model API; GitHub Pages cannot run those server routes.</span></div>
-<section class="content" id="workflow"><div class="section-heading"><div><div class="section-label">How it works</div><h2>A complete practice loop</h2></div><p>The project joins company-style prompts, a multi-turn interview flow, per-question evaluation, and a final report.</p></div><div class="steps"><div class="step"><div class="num">01 / CONFIGURE</div><h3>Set the context</h3><p>Choose a company, target role, seniority, interview round, and optional résumé context.</p></div><div class="step"><div class="num">02 / RESPOND</div><h3>Work through follow-ups</h3><p>Answer technical questions while the interview state tracks the conversation and its next phase.</p></div><div class="step"><div class="num">03 / REVIEW</div><h3>See the report</h3><p>Inspect question-level feedback, an overall breakdown, and a locally saved session history.</p></div></div></section>
-<section class="content" id="runtime"><div class="split"><div><div class="section-label">Run the full app</div><h2>Bring your own model, keep control of the session.</h2><p>The full product is a Next.js application, not a static HTML demo. Its chat, evaluation, and reporting routes call the model selected in Settings. Follow the repository README to run it locally.</p><a class="button primary" href="https://github.com/ceasonen/offer-pilot#readme">Open setup guide ↗</a></div><ul class="detail-list"><li><strong>Application</strong>Next.js, TypeScript, Tailwind CSS, Zustand</li><li><strong>AI integration</strong>Vercel AI SDK; provider and API key configured by the user</li><li><strong>Output</strong>Question feedback, report, PDF export, and local history</li><li><strong>Deployment boundary</strong>Server routes need a compatible host; no API key is embedded in this page.</li></ul></div></section>
-</main><footer class="footer shell"><span>OfferPilot · An open-source project by Cheng Chen</span><span><a href="https://ceasonen.github.io/">Back to homepage</a> · <a href="https://github.com/ceasonen/offer-pilot">Source code</a></span></footer>
-</body></html>
+  <section id="sidebar">
+    <div class="inner">
+      <nav aria-label="Page sections"><ul>
+        <li><a href="#intro">OfferPilot</a></li>
+        <li><a href="#session">Example session</a></li>
+        <li><a href="#workflow">Workflow</a></li>
+        <li><a href="#runtime">Run locally</a></li>
+      </ul></nav>
+    </div>
+  </section>
+  <main id="wrapper">
+    <section id="intro" class="wrapper style1 fullscreen">
+      <div class="inner">
+        <h1>OfferPilot</h1>
+        <p>AI interview practice with role-specific questions, adaptive follow-ups, and structured feedback.</p>
+        <ul class="actions">
+          <li><a class="button primary" href="#session">See an example session</a></li>
+          <li><a class="button" href="https://github.com/ceasonen/offer-pilot">Source code</a></li>
+        </ul>
+      </div>
+    </section>
+    <section id="session" class="wrapper style2 spotlights">
+      <section><div class="content"><div class="inner">
+        <h2>Example session</h2>
+        <dl class="interview-transcript">
+          <dt>Interviewer</dt><dd>How would you keep an API responsive when a downstream service slows down?</dd>
+          <dt>Candidate</dt><dd>I’d put a timeout on the request, limit retries, and use a circuit breaker to prevent cascading failures.</dd>
+          <dt>Follow-up</dt><dd>What metrics and thresholds would let you reopen traffic to the downstream service?</dd>
+        </dl>
+      </div></div></section>
+    </section>
+    <section id="workflow" class="wrapper style3">
+      <div class="inner">
+        <h2>Practice and review</h2>
+        <div class="features">
+          <section><h3>Set the context</h3><p>Choose a role, seniority, company and interview round. Add résumé context if useful.</p></section>
+          <section><h3>Work through follow-ups</h3><p>Continue answering as the interviewer probes design decisions and trade-offs.</p></section>
+          <section><h3>Inspect your report</h3><p>Review question-level feedback and the overall assessment after the session.</p></section>
+          <section><h3>Keep your practice history</h3><p>Revisit saved sessions and export a report as PDF.</p></section>
+        </div>
+      </div>
+    </section>
+    <section id="runtime" class="wrapper style1">
+      <div class="inner">
+        <h2>Run a live interview</h2>
+        <p>Start the Next.js server and select a model provider in Settings. The setup guide covers the server routes that power questions and feedback.</p>
+        <ul class="actions"><li><a class="button" href="https://github.com/ceasonen/offer-pilot#readme">Open the setup guide</a></li></ul>
+      </div>
+    </section>
+  </main>
+  <footer id="footer" class="wrapper style1-alt">
+    <div class="inner"><ul class="menu">
+      <li><a href="https://ceasonen.github.io/#projects">Cheng Chen</a></li>
+      <li>Adapted from <a href="https://html5up.net/hyperspace">Hyperspace by HTML5 UP</a> under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+    </ul></div>
+  </footer>
+</body>
+</html>

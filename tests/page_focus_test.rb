@@ -42,32 +42,38 @@ class PageFocusTest < Minitest::Test
     home = page("index.html")
     {
       "offer-pilot" => ["OfferPilot", "AI interview", "server"],
-      "deep-research" => ["AutoSearch AI", "research", "FastAPI"]
+      "deep-research" => ["AutoSearch AI", "research", "FastAPI"],
+      "fpga-optimization" => ["FPGA Algorithm", "Zynq-7000", "Co-simulation"],
+      "research-skills" => ["Research Skills", "Skill catalog", "Installation"]
     }.each do |slug, terms|
       link = home.at_css("#projects .project-name[href='https://ceasonen.github.io/#{slug}/']")
       refute_nil link, "Missing project entry for #{slug}"
       project = page("#{slug}/index.html")
       assert_equal "#{slug}", project.at_css("body")["data-project"]
       terms.each { |term| assert_includes project.text.downcase, term.downcase }
-      assert project.at_css("a[href='https://github.com/ceasonen/#{slug}']")
-      assert project.at_css("a[href='https://ceasonen.github.io/']")
+      repo = slug == "fpga-optimization" ? "hlstrack2025-44686" : slug
+      assert project.at_css("a[href='https://github.com/ceasonen/#{repo}']")
+      assert project.at_css("a[href='https://ceasonen.github.io/'], a[href='https://ceasonen.github.io/#projects']")
     end
   end
 
   def test_project_subsites_survive_the_next_site_build
     source_projects = YAML.load_file(File.join(ROOT, "site/_data/projects.yml"))
-    %w[offer-pilot deep-research].each do |slug|
-      entry = source_projects.find { |project| project["repository"] == "https://github.com/ceasonen/#{slug}" }
+    build_script = File.read(File.join(ROOT, "tools/build_site.rb"))
+    link_checker = File.read(File.join(ROOT, "tools/check_site.rb"))
+    {
+      "offer-pilot" => "offer-pilot",
+      "deep-research" => "deep-research",
+      "fpga-optimization" => "hlstrack2025-44686",
+      "research-skills" => "research-skills"
+    }.each do |slug, repo|
+      entry = source_projects.find { |project| project["repository"] == "https://github.com/ceasonen/#{repo}" }
       refute_nil entry
       assert_equal "https://ceasonen.github.io/#{slug}/", entry["website"]
       assert File.file?(File.join(ROOT, "site/#{slug}/index.html"))
+      assert_includes build_script, "#{slug}/index.html"
+      assert_includes link_checker, "#{slug}/index.html"
     end
-    build_script = File.read(File.join(ROOT, "tools/build_site.rb"))
-    assert_includes build_script, "offer-pilot/index.html"
-    assert_includes build_script, "deep-research/index.html"
-    link_checker = File.read(File.join(ROOT, "tools/check_site.rb"))
-    assert_includes link_checker, "offer-pilot/index.html"
-    assert_includes link_checker, "deep-research/index.html"
   end
 
   def test_legacy_pages_redirect_to_home_sections

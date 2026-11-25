@@ -50,6 +50,7 @@
 - name: FPGA Algorithm Optimization
   category: Competition engineering
   repository: https://github.com/ceasonen/hlstrack2025-44686
+  website: https://ceasonen.github.io/fpga-optimization/
   summary: Vitis HLS algorithm optimization for the AMD FPGA competition track on a Zynq-7000 target.
   stack: [C++, Vitis HLS, FPGA]
   featured: false
@@ -59,6 +60,7 @@
 - name: Research Skills
   category: Curated toolkit
   repository: https://github.com/ceasonen/research-skills
+  website: https://ceasonen.github.io/research-skills/
   summary: A maintained collection of reusable workflow skills for computer science and electrical engineering research.
   stack: [Python, Markdown, GitHub Actions]
   featured: false

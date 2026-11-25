@@ -1,0 +1,66 @@
+<!-- GENERATED FILE: edit site/ sources, then run ruby tools/website.rb build. Do not edit this copy. -->
+<!DOCTYPE html>
+<!-- Adapted from Massively by HTML5 UP, CC BY 3.0. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vitis HLS kernel optimization for Zynq-7000, covering LZ4, SHA-256 and complex Cholesky.">
+  <title>FPGA Algorithm Optimization · Vitis HLS</title>
+  <link rel="stylesheet" href="/assets/vendor/massively/main.css">
+  <link rel="stylesheet" href="/assets/css/project-templates.css">
+</head>
+<body data-project="fpga-optimization">
+  <div id="wrapper">
+    <div class="bg" aria-hidden="true"></div>
+    <div id="intro">
+      <h1>FPGA Algorithm<br>Optimization</h1>
+      <p>Vitis HLS kernels for Zynq-7000<br>2025 National Third Prize</p>
+      <ul class="actions"><li><a class="button" href="#kernels">Browse kernels</a></li></ul>
+    </div>
+    <nav id="nav" aria-label="Project navigation">
+      <ul class="links"><li class="active"><a href="#kernels">Kernels</a></li><li><a href="#evaluation">Evaluation</a></li><li><a href="https://github.com/ceasonen/hlstrack2025-44686">GitHub</a></li></ul>
+    </nav>
+    <main id="main">
+      <article class="post featured" id="evaluation">
+        <header class="major">
+          <h2>Three kernels, one hardware target</h2>
+          <p>The project uses Vitis HLS 2024.2 for the AMD FPGA competition track. The target device is the Zynq-7000 <code>xc7z020-clg484-1</code>.</p>
+        </header>
+        <div class="box timing-box">
+          <h3>How execution time is measured</h3>
+          <p><code>Execution time = estimated clock period × co-simulation latency</code></p>
+          <p>Validate outputs in C simulation and RTL co-simulation. Timing violations affect the competition score.</p>
+        </div>
+      </article>
+      <section class="posts" id="kernels" aria-label="Kernel implementations">
+        <article>
+          <header><h2>LZ4 compression</h2></header>
+          <p>Inspect the compression benchmark and its inputs in the Vitis Library test directory.</p>
+          <ul class="actions special"><li><a class="button" href="https://github.com/ceasonen/hlstrack2025-44686/tree/main/data_compression/L1/tests/lz4_compress">Browse LZ4</a></li></ul>
+        </article>
+        <article>
+          <header><h2>Complex Cholesky</h2></header>
+          <p>Explore the fixed-size complex matrix factorization test and architecture configuration.</p>
+          <ul class="actions special"><li><a class="button" href="https://github.com/ceasonen/hlstrack2025-44686/tree/main/solver/L1/tests/cholesky/complex_fixed_arch0">Browse Cholesky</a></li></ul>
+        </article>
+        <article>
+          <header><h2>SHA-256</h2></header>
+          <p>Read the security kernel's synthesis and co-simulation test configuration.</p>
+          <ul class="actions special"><li><a class="button" href="https://github.com/ceasonen/hlstrack2025-44686/tree/main/security/L1/tests/sha224_256/sha256">Browse SHA-256</a></li></ul>
+        </article>
+        <article>
+          <header><h2>Build and verify</h2></header>
+          <p>The repository documents supported tools, timing requirements, test directories and submission reports.</p>
+          <ul class="actions special"><li><a class="button" href="https://github.com/ceasonen/hlstrack2025-44686#readme">Read the build guide</a></li></ul>
+        </article>
+      </section>
+    </main>
+    <footer id="copyright"><ul>
+      <li><a href="https://ceasonen.github.io/#projects">Cheng Chen</a></li>
+      <li>Adapted from <a href="https://html5up.net/massively">Massively by HTML5 UP</a> under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Embedded_World_2014_Xilinx_ZedBoard_Developer_Board.jpg">ZedBoard photograph by Thomas Springer</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a></li>
+    </ul></footer>
+  </div>
+</body>
+</html>
