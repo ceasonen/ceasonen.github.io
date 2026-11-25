@@ -1,8 +1,17 @@
 <ul class="news-list">
     {% for item in include.items %}
+    {% assign news_emoji = '' %}
+    {% case item.category %}
+    {% when 'scholarship' %}{% assign news_emoji = '🎓' %}
+    {% when 'competition' %}{% assign news_emoji = '🏆' %}
+    {% when 'paper' %}{% assign news_emoji = '🎉' %}
+    {% endcase %}
     <li>
         <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: '%b %Y' }}</time>
-        <span>{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
+        <span class="news-event">
+            {% if news_emoji != '' %}<span class="news-emoji" aria-hidden="true">{{ news_emoji }}</span>{% endif %}
+            <span class="news-text">{{ item.title | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}</span>
+        </span>
     </li>
     {% endfor %}
 </ul>

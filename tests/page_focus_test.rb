@@ -114,14 +114,14 @@ class PageFocusTest < Minitest::Test
 
   def test_home_places_the_portrait_and_identity_in_a_separate_left_column
     css = File.read(File.join(ROOT, "site/assets/css/global.css"))
-    assert_includes css, '"Inter"'
+    assert_includes css, '"Outfit"'
     assert_includes css, 'font-family: Caveat'
     assert_includes css, '@font-face'
     refute_includes css, '--detail-font'
     refute_match(/html\s*\{[^}]*scroll-padding-top/, css)
     assert_match(/\.home-section\s*\{[^}]*scroll-margin-top/, css)
     doc = page("index.html")
-    assert doc.at_css('link[rel="preload"][as="font"][href="/assets/fonts/templates/inter-latin.woff2"]')
+    assert doc.at_css('link[rel="preload"][as="font"][href="/assets/fonts/templates/outfit-latin.woff2"]')
     assert_equal "Cheng Chen", doc.at_css("aside.profile-sidebar h1").text.strip
     assert doc.at_css("aside.profile-sidebar .profile-portrait")
     assert doc.at_css("aside.profile-sidebar .profile-links")
@@ -192,6 +192,13 @@ class PageFocusTest < Minitest::Test
     assert_operator dates.length, :>, 4
     assert_equal dates.sort.reverse, dates
     assert_empty home.css("#news details")
+    assert_equal ["🎓", "🏆", "🎉"], news.css(".news-emoji[aria-hidden='true']").map(&:text).uniq
+  end
+
+  def test_footer_keeps_only_personal_site_credit
+    footer = page("index.html").at_css(".site-footer")
+    assert footer.at_css('a[href="https://github.com/ceasonen/cube_page"]')
+    refute_includes footer.text, "Layout adapted from"
   end
 
   def test_x_profile_link_uses_the_supplied_account
@@ -279,9 +286,11 @@ class PageFocusTest < Minitest::Test
     refute_match(/\.service-list\s*\{[^}]*\b(?:border|background|box-shadow)\s*:/, css)
   end
 
-  def test_undergraduate_education_displays_major_rank
+  def test_undergraduate_education_displays_college_and_major_rank
     entry = page("index.html").css(".education-entry").find { |item| item.at_css("h3").text == "Tongji University" }
     refute_nil entry
+    assert_equal "College of Electronic and Information Engineering", entry.at_css(".education-department")&.text
+    refute_includes entry.text, "B.Eng."
     assert_includes entry.text, "Major rank: 2/85"
   end
 

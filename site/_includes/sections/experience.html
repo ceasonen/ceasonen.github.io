@@ -10,7 +10,7 @@
             <div class="experience-info">
                 <h3>{{ item.name | escape }}</h3>
                 <time>{{ item.date | escape }}</time>
-                <p>{{ item.position | escape }}{% if item.dept %} · {{ item.dept | escape }}{% endif %}</p>
+                {% if item.dept %}<p class="education-department">{{ item.dept | escape }}</p>{% endif %}
                 {% if item.detail %}<p class="education-detail">{{ item.detail | escape }}</p>{% endif %}
             </div>
         </article>

@@ -1,10 +1,10 @@
 @charset "utf-8";
 /* Academic homepage originally adapted from WowPage (MIT). */
 @font-face {
-    font-family: "Inter";
-    src: url("../fonts/templates/inter-latin.woff2") format("woff2");
+    font-family: "Outfit";
+    src: url("../fonts/templates/outfit-latin.woff2") format("woff2");
     font-style: normal;
-    font-weight: 400 900;
+    font-weight: 100 900;
     font-display: swap;
 }
 @font-face {
@@ -29,7 +29,7 @@
     --panel: var(--tone-panel, #f2f6fa);
     --rule: var(--tone-rule, #e0e6eb);
     --surface: var(--tone-surface, #fff);
-    --body-font: "Inter", system-ui, sans-serif;
+    --body-font: "Outfit", system-ui, sans-serif;
     --personal-font: "Comic Neue", "Comic Sans MS", var(--body-font);
     --title-font: Caveat, var(--personal-font);
     --content-width: 1100px;
@@ -51,6 +51,8 @@ h1 { font-size: 2.5rem; }
 h2 { font-size: 2.2rem; }
 h3 { font-size: 1.08rem; }
 strong { font-weight: 650; }
+.heading-emoji, .news-emoji { font-family: "Apple Color Emoji", "Noto Color Emoji", emoji; font-weight: 400; }
+.heading-emoji { display: inline-block; margin-inline-start: .5rem; font-size: .55em; vertical-align: .13em; }
 .site-icon { display: inline-block; width: 22px; height: 22px; flex: none; vertical-align: middle; }
 .skip-link { position: fixed; top: -80px; left: 16px; z-index: 100; background: var(--surface); padding: 10px; }
 .skip-link:focus { top: 10px; }
@@ -121,6 +123,8 @@ strong { font-weight: 650; }
 }
 .news-list li { display: grid; grid-template-columns: 5.15rem minmax(0, 1fr); align-items: baseline; gap: .8rem; padding: .6rem 0; }
 .news-list li + li { border-top: 1px solid var(--rule); }
+.news-event { display: flex; align-items: baseline; gap: .42rem; }
+.news-emoji { flex: none; width: 1.22em; font-size: .95em; }
 .news-list time, .experience-info time, .award-list time, .writing-entry time { color: var(--muted); font-size: .875rem; font-weight: 580; font-variant-numeric: tabular-nums; }
 .news-list time { white-space: nowrap; color: var(--accent); }
 .subheading, .service-heading { color: var(--muted); font: 700 1.34rem/1.12 var(--title-font); }
@@ -210,7 +214,7 @@ strong { font-weight: 650; }
 .service-row .site-icon { width: 28px; height: 28px; }
 .service-heading { margin-bottom: .35rem; }
 .service-list { font-size: .96rem; display: grid; gap: .07rem; }
-.site-footer { position: relative; padding-block: .85rem 1.25rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .3rem 1rem; color: var(--muted); font-size: .87rem; }
+.site-footer { position: relative; padding-block: .85rem 1.25rem; color: var(--muted); font-size: .87rem; }
 .site-footer::before { content: ""; position: absolute; top: 0; inset-inline: var(--page-pad); border-top: 1px solid var(--rule); }
 .not-found { text-align: center; padding: 60px 20px 100px; }
 

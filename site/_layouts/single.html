@@ -6,7 +6,7 @@
     <meta name="description" content="Cheng Chen, Tongji University. Research, publications, internships, projects, and academic service.">
     <title>Cheng Chen | {{ page.title | escape }}</title>
     <link rel="icon" href="{{ '/favicon.svg' | relative_url }}?v=rubik-1" type="image/svg+xml">
-    <link rel="preload" href="{{ '/assets/fonts/templates/inter-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/templates/outfit-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/caveat-bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/templates/comic-neue.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}?v={{ site.asset_version }}">
@@ -30,7 +30,6 @@
     <div class="site-shell{% if page.url == '/' %} site-shell--home{% endif %}">{{ content }}</div>
     <footer class="site-footer">
         <span>© {{ 'now' | date: '%Y' }} Cheng Chen · <a href="https://github.com/ceasonen/cube_page">Cube Page</a></span>
-        <span>Layout adapted from <a href="https://github.com/WD7ang/WowPage" target="_blank" rel="noopener">WowPage</a></span>
     </footer>
     <script src="{{ '/assets/js/tone.js' | relative_url }}?v={{ site.asset_version }}" defer></script>
     <script src="{{ '/assets/js/home.js' | relative_url }}?v={{ site.asset_version }}" defer></script>

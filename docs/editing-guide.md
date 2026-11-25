@@ -80,7 +80,7 @@ badge: "Accepted"
 - 原独立栏目页面仅保留旧地址跳转，使用 `site/_layouts/redirect.html`，无需重复维护内容。
 - 单页导航脚本：`site/assets/js/home.js`，负责论文筛选和当前板块提示。
 - CSS：`site/assets/css/global.css`。修改后可更新 `_config.yml` 的 `asset_version` 字符串，让浏览器重新加载；相应测试也需同步预期。
-- 主页的姓名和章节标题使用 Caveat，个人介绍使用 Comic Neue，其他正文和导航主要使用 Inter。字体在本地托管。主 CV 与照片简历使用 Computer Modern Unicode，中文使用宋体。
+- 主页的姓名和章节标题使用 Caveat，个人介绍使用 Comic Neue，其他正文和导航主要使用 Outfit。字体在本地托管。主 CV 与照片简历使用 Computer Modern Unicode，中文使用宋体。
 - 设计来源见 [design-reference.md](design-reference.md)。论文筛选按钮共用同一组卡片，联系图标在 `site/_includes/widgets/icon.html`。Writing 栏目常驻，文章从 `site/_posts/` 读取。
 
 ## 构建、预览、发布
