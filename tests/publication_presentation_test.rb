@@ -49,11 +49,12 @@ class PublicationPresentationTest < Minitest::Test
     assert_nil preprints.first["display_credit"]
     publications.reject { |entry| entry["preprint"] }.each { |entry| assert_nil entry["submission_note"] }
     doc = Nokogiri::HTML(File.read(File.join(ROOT, "index.html")))
-    project = doc.css("#projects li").find { |item| item.text.include?("Unified Multimodal Model Adaptation and Evaluation") }
+    project = doc.css("#projects li").find { |item| item.at_css('a[href="https://ceasonen.github.io/umm_audit/"]') }
     refute_nil project
     assert_nil project.at_css(".project-authors"), "Research projects should not have a paper-style author list"
     refute_includes doc.at_css("main").text, "Follow Me If You Can"
-    refute project.at_css("a"), "Do not invent a public repository or publish the anonymous review PDF"
+    assert project.at_css('a[href="https://github.com/ceasonen/umm_audit"]')
+    refute project.at_css('a[href$=".pdf"]'), "Keep the anonymous review PDF private"
     refute_match(/ICLR|rejected|accepted/i, project.text)
     assert_empty doc.css('a[href*="18456_"], a[href*="6090_"]')
   end

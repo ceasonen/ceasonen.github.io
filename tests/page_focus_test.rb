@@ -20,7 +20,7 @@ class PageFocusTest < Minitest::Test
     entries = doc.css("#projects .project-list > li")
     assert_equal 7, entries.length
     assert_empty doc.css("#projects .project-card, #projects details, #projects .project-stack")
-    %w[Image2Other deep-research offer-pilot hlstrack2025-44686 research-skills arxiv_paper_ai].each do |repo|
+    %w[Image2Other deep-research offer-pilot hlstrack2025-44686 research-skills arxiv_paper_ai umm_audit].each do |repo|
       assert doc.at_css("#projects a[href='https://github.com/ceasonen/#{repo}']"), repo
     end
     entries.each do |entry|
@@ -33,6 +33,9 @@ class PageFocusTest < Minitest::Test
     radar = doc.at_css('#projects .project-name[href="https://ceasonen.github.io/arxiv_paper_ai/"]')
     refute_nil radar
     assert_equal "Paper Radar", radar.text.strip
+    audit = doc.at_css('#projects .project-name[href="https://ceasonen.github.io/umm_audit/"]')
+    refute_nil audit
+    assert_equal "Auditing Transfer from Visual QA to Image Generation", audit.text.strip
   end
 
   def test_project_subsites_are_linked_and_explain_runtime_requirements
