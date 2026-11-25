@@ -4,7 +4,12 @@
   category: Research project
   repository: https://github.com/ceasonen/umm_audit
   website: https://ceasonen.github.io/umm_audit/
-  summary: Paired counting and spatial evaluations across six unified multimodal models.
+  summary: Counting and spatial tests.
+- name: Cube Page
+  category: Website template
+  repository: https://github.com/ceasonen/cube_page
+  website: https://ceasonen.github.io/cube_page/
+  summary: An academic homepage template with a color dial and article pages.
 - name: Image2Other
   category: Research software
   repository: https://github.com/ceasonen/Image2Other

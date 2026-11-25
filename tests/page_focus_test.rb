@@ -18,9 +18,9 @@ class PageFocusTest < Minitest::Test
   def test_projects_are_compact_linked_text_with_verified_repositories
     doc = page("index.html")
     entries = doc.css("#projects .project-list > li")
-    assert_equal 7, entries.length
+    assert_equal 8, entries.length
     assert_empty doc.css("#projects .project-card, #projects details, #projects .project-stack")
-    %w[Image2Other deep-research offer-pilot hlstrack2025-44686 research-skills arxiv_paper_ai umm_audit].each do |repo|
+    %w[Image2Other deep-research offer-pilot hlstrack2025-44686 research-skills arxiv_paper_ai umm_audit cube_page].each do |repo|
       assert doc.at_css("#projects a[href='https://github.com/ceasonen/#{repo}']"), repo
     end
     entries.each do |entry|
@@ -36,6 +36,9 @@ class PageFocusTest < Minitest::Test
     audit = doc.at_css('#projects .project-name[href="https://ceasonen.github.io/umm_audit/"]')
     refute_nil audit
     assert_equal "Auditing Transfer from Visual QA to Image Generation", audit.text.strip
+    cube = doc.at_css('#projects .project-name[href="https://ceasonen.github.io/cube_page/"]')
+    refute_nil cube
+    assert_equal "Cube Page", cube.text.strip
   end
 
   def test_project_subsites_are_linked_and_explain_runtime_requirements

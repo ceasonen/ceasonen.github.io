@@ -105,12 +105,13 @@ strong { font-weight: 820; }
 .experience-info p { grid-column: 1; color: var(--muted); font-size: .91rem; margin: 0; }
 .organization-link, .project-name { color: var(--heading); }
 
-.project-list li { display: grid; grid-template-columns: minmax(0, 12.6rem) minmax(0, 1fr) auto; gap: .16rem .9rem; align-items: baseline; padding: .52rem 0; border-bottom: 1px solid var(--rule); }
+.project-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .75rem; align-items: baseline; padding: .52rem 0; border-bottom: 1px solid var(--rule); }
 .project-list li:last-child { border-bottom: 0; }
-.project-name, .project-title { font-size: .97rem; font-weight: 820; line-height: 1.36; }
+.project-overview { line-height: 1.48; }
+.project-name, .project-title { font-size: .97rem; font-weight: 820; }
 .project-name { text-decoration: underline; text-decoration-color: var(--rule); }
-.project-summary { color: var(--muted); font-size: .92rem; line-height: 1.48; }
-.project-source { align-self: start; font-size: .83rem; font-weight: 790; }
+.project-summary { color: var(--muted); font-size: .92rem; }
+.project-source { font-size: .83rem; font-weight: 790; }
 .award-legend, .publication-legend { color: var(--muted); font-size: .83rem; margin: 0 0 .4rem; }
 .award-legend span, .award-lead-mark, .publication-legend strong { color: var(--accent); font-weight: 900; }
 .recognition-row { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; gap: .2rem .8rem; align-items: center; padding: .47rem 0; border-bottom: 1px solid var(--rule); }
@@ -155,7 +156,6 @@ strong { font-weight: 820; }
 @media (max-width: 900px) {
     .section-nav { column-gap: .52rem; }
     .site-shell { gap: 2rem; grid-template-columns: 155px minmax(0, 1fr); }
-    .project-list li { grid-template-columns: minmax(0, 10.8rem) minmax(0, 1fr) auto; }
     .publication-card { grid-template-columns: minmax(7rem, 150px) minmax(0, 1fr); }
 }
 @media (max-width: 790px) {
@@ -179,9 +179,6 @@ strong { font-weight: 820; }
     .news-list li { grid-template-columns: 4.35rem minmax(0, 1fr); gap: .45rem; }
     .experience-info { grid-template-columns: minmax(0, 1fr); }
     .experience-info time { grid-column: 1; grid-row: auto; }
-    .project-list li { grid-template-columns: minmax(0, 1fr) auto; }
-    .project-summary { grid-column: 1 / -1; }
-    .project-source { grid-column: 2; grid-row: 1; }
     .recognition-row { grid-template-columns: 43px minmax(0, 1fr); gap: .1rem .6rem; }
     .award-list .recognition-mark { grid-row: span 2; }
     .award-list time { grid-column: 2; }
