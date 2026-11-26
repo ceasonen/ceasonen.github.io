@@ -233,6 +233,15 @@ strong { font-weight: 650; }
 .service-row .site-icon { width: 28px; height: 28px; }
 .service-heading { margin-bottom: .35rem; }
 .service-list { font-size: .96rem; display: grid; gap: .07rem; }
+.visitor-map {
+    padding-block: 1.2rem 1.5rem;
+    border-top: 1px solid var(--rule);
+    scroll-margin-top: 5rem;
+}
+.visitor-map figure { width: min(100%, 35rem); margin: .8rem 0 0; }
+.visitor-map img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); border-radius: .65rem; }
+.visitor-map figcaption { margin-top: .5rem; color: var(--muted); font-size: .85rem; }
+
 .site-footer { position: relative; padding-block: .85rem 1.25rem; color: var(--muted); font-size: .87rem; }
 .site-footer::before { content: ""; position: absolute; top: 0; inset-inline: var(--page-pad); border-top: 1px solid var(--rule); }
 .not-found { text-align: center; padding: 60px 20px 100px; }

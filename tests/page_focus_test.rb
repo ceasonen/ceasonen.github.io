@@ -100,6 +100,19 @@ class PageFocusTest < Minitest::Test
     assert_operator doc.to_html.index('id="projects"'), :<, doc.to_html.index('id="publications"')
   end
 
+  def test_visitor_map_uses_a_single_image_after_academic_service
+    doc = page("index.html")
+    map = doc.at_css("main > #visitor-map")
+    refute_nil map
+    assert_equal "visitor-map", doc.css("main > section").last["id"]
+    assert_equal "Visitor Map", map.at_css("h2").text.strip
+    image = map.at_css("img")
+    assert_match %r{\Ahttps://www\.stats4u\.net/c/\d+-map_w\.png\?[^ ]*orte=1}, image["src"]
+    assert_equal "low", image["fetchpriority"]
+    refute_equal "lazy", image["loading"]
+    assert_empty map.css("script, iframe")
+  end
+
   def test_navigation_order_matches_home_sections_with_both_cvs_last
     doc = page("index.html")
     sections = doc.css("main .home-section").map { |section| section["id"] }
